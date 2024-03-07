@@ -22,4 +22,12 @@ public class Demon extends Minion{
     }
 
     private List<Minion> minions;
+
+    public int getMinionsHealth() {
+        int totalHealth = 0;
+        for (Minion m: minions) {
+            totalHealth += m.getHealth();
+        }
+        return totalHealth;
+    }
 }

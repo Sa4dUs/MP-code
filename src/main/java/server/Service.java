@@ -1,4 +1,4 @@
 package server;
 
-public class Service {
+public interface Service {
 }

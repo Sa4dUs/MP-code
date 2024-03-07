@@ -1,11 +1,69 @@
 package server;
 
-import server.characters.FightCharacter;
+import server.characters.*;
+import server.characters.Character;
 
 public class ChallengeResult {
     private Player attackingPlayer, attackedPlayer;
     private FightCharacter attackingCharacter, attackedCharacter;
     private int bet, turns;
 
-    private boolean winnerAttacking;
+    private boolean winnerAttacking = true;
+
+    public ChallengeResult(ChallengeRequest request, PlayerCharacter otherCharacter)
+    {
+        attackingPlayer = request.getAttackingPlayer();
+        attackedPlayer = request.getAttackedPlayer();
+
+        attackingCharacter = CreateFightCharacterFromCharacter(request.getAttackingCharacter());
+        attackedCharacter = CreateFightCharacterFromCharacter(otherCharacter);
+
+        CalculateDuel();
+    }
+
+    private FightCharacter CreateFightCharacterFromCharacter(PlayerCharacter character)
+    {
+        switch (character.getBreed())
+        {
+            case Hunter -> {
+                return new Hunter(character);
+            }
+
+            case Vampire -> {
+                return new Vampire(character);
+            }
+
+            case Licantrope -> {
+                return new Licantrope(character);
+            }
+        }
+    }
+
+    private void CalculateDuel()
+    {
+        FightCharacter attacker = attackingCharacter, defender = attackedCharacter;
+
+        while (!defender.isDead())
+        {
+            CalculateTurn(attacker, defender);
+
+            FightCharacter aux = attacker;
+            attacker = defender;
+            defender = aux;
+
+            turns ++;
+        }
+
+        if(defender == attackingCharacter)
+            winnerAttacking = false;
+    }
+
+    private void CalculateTurn(FightCharacter attacker, FightCharacter defender)
+    {
+        int dmg = attacker.CalculateDamage();
+        int dfs = defender.CalculateDefense();
+
+        if(dmg >= dfs)
+            defender.recieveDamage();
+    }
 }

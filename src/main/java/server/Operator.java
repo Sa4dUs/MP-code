@@ -1,4 +1,4 @@
 package server;
 
-public class Operator {
+public class Operator extends User{
 }

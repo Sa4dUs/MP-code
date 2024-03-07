@@ -11,8 +11,4 @@ public class Database {
             instance = this;
     }
 
-    public User getUser()
-    {
-        return  null;
-    }
 }

@@ -1,4 +1,7 @@
 package server.items;
 
-public class Stats {
+public abstract class Stats {
+    private String name;
+    private int attack;
+    private int defense;
 }

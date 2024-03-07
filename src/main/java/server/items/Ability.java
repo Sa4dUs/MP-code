@@ -1,4 +1,4 @@
-package server;
+package server.items;
 
 public class Ability {
 }

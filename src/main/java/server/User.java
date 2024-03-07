@@ -1,4 +1,4 @@
 package server;
 
-public class User {
+public abstract class User {
 }

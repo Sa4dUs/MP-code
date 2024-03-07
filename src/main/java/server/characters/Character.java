@@ -63,55 +63,29 @@ public class Character {
         return weaponsList;
     }
 
-    public void setWeaponsList(List<Weapon> weaponsList) {
-        this.weaponsList = weaponsList;
-    }
+    public void addWeaponToList(Weapon newWeapon) {weaponsList.add(newWeapon);}
 
     public List<Armor> getArmorList() {
         return armorList;
-    }
-
-    public void setArmorList(List<Armor> armorList) {
-        this.armorList = armorList;
     }
 
     public List<Ability> getAbilityList() {
         return abilityList;
     }
 
-    public void setAbilityList(List<Ability> abilityList) {
-        this.abilityList = abilityList;
-    }
-
     public List<Ability> getSpecialAbilityList() {
         return specialAbilityList;
-    }
-
-    public void setSpecialAbilityList(List<Ability> specialAbilityList) {
-        this.specialAbilityList = specialAbilityList;
     }
 
     public List<Minion> getMinionList() {
         return minionList;
     }
 
-    public void setMinionList(List<Minion> minionList) {
-        this.minionList = minionList;
-    }
-
     public List<Characteristic> getDebilitiesList() {
         return debilitiesList;
     }
 
-    public void setDebilitiesList(List<Characteristic> debilitiesList) {
-        this.debilitiesList = debilitiesList;
-    }
-
     public List<Characteristic> getResistancesList() {
         return resistancesList;
-    }
-
-    public void setResistancesList(List<Characteristic> resistancesList) {
-        this.resistancesList = resistancesList;
     }
 }

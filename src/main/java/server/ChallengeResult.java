@@ -64,8 +64,8 @@ public class ChallengeResult {
 
     private void CalculateTurn(FightCharacter attacker, FightCharacter defender)
     {
-        int dmg = attacker.CalculateDamage();
-        int dfs = defender.CalculateDefense();
+        int dmg = attacker.calculateDamage();
+        int dfs = defender.calculateDefense();
 
         if(dmg >= dfs)
             defender.recieveDamage();

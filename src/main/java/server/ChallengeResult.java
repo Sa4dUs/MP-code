@@ -19,6 +19,11 @@ public class ChallengeResult {
         attackedCharacter = CreateFightCharacterFromCharacter(otherCharacter);
 
         CalculateDuel();
+
+        if(winnerAttacking)
+            otherCharacter.removeGold(bet);
+        else
+            request.getAttackingCharacter().removeGold(bet);
     }
 
     private FightCharacter CreateFightCharacterFromCharacter(PlayerCharacter character)

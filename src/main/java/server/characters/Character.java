@@ -51,6 +51,8 @@ public class Character {
         this.gold = gold;
     }
 
+    public void removeGold(int amount) { this.gold -= amount; }
+
     public CharacterType getBreed() {
         return breed;
     }

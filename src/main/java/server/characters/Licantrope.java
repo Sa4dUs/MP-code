@@ -6,4 +6,9 @@ public class Licantrope extends FightCharacter{
     public Licantrope(PlayerCharacter character) {
         super(character);
     }
+
+    @Override
+    public void tick() {
+
+    }
 }

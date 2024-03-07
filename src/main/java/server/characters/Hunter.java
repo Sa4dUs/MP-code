@@ -6,4 +6,9 @@ public class Hunter extends FightCharacter{
     public Hunter(PlayerCharacter character) {
         super(character);
     }
+
+    @Override
+    public void tick() {
+
+    }
 }

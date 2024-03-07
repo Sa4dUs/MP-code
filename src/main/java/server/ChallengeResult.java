@@ -36,6 +36,10 @@ public class ChallengeResult {
             case Licantrope -> {
                 return new Licantrope(character);
             }
+
+            default -> {
+                return  null;
+            }
         }
     }
 

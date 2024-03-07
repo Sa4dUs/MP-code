@@ -6,4 +6,9 @@ public class Vampire extends FightCharacter{
     public Vampire(PlayerCharacter character) {
         super(character);
     }
+
+    @Override
+    public void tick() {
+
+    }
 }

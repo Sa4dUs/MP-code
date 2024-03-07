@@ -3,7 +3,9 @@ package server.characters;
 import server.items.Ability;
 import server.items.Armor;
 import server.items.Weapon;
+import server.minions.Minion;
 
+import java.util.List;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -18,16 +20,29 @@ public abstract class FightCharacter {
     {
         name = character.getName();
 
-        maxHealth = character.getHealth();
-        health = maxHealth;
+        health = character.getHealth();
+        minionHealth = getMinionHealth(character);
+        maxHealth = health + minionHealth;
+
 
         activeWeaponL = character.getActiveWeaponL();
         activeWeaponR = character.getActiveWeaponR();
+
+
 
         activeArmor = character.getActiveArmor();
 
         activeNormalAbility = character.getActiveNormalAbility();
         activeSpecialAbility = character.getActiveSpecialAbility();
+    }
+
+    private int getMinionHealth(PlayerCharacter character){
+        List<Minion> minionList = character.getMinionList();
+        int minionHealth = 0;
+        for (Minion m: minionList) {
+            minionHealth += m.getHealth();
+        }
+        return minionHealth;
     }
 
     public void recieveDamage()
@@ -116,8 +131,6 @@ public abstract class FightCharacter {
         return res;
     }
 
-    private int CalculateHealth()
-    {
-        return 0;
-    }
+    private int calculateHealth()
+    { return health + minionHealth; }
 }

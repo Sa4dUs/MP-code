@@ -51,10 +51,12 @@ public abstract class FightCharacter {
         if(activeSpecialAbility.getCost() <= mana)
         {
             totalDamage += activeSpecialAbility.getAttack();
+            UseSpecialAbility();
         }
         else if (activeNormalAbility.getCost() <= power)
         {
             totalDamage += activeNormalAbility.getAttack();
+            UseNormalAbility();
         }
         else
         {
@@ -74,10 +76,12 @@ public abstract class FightCharacter {
         if(activeSpecialAbility.getCost() <= mana)
         {
             totalDefense += activeSpecialAbility.getDefense();
+            UseSpecialAbility();
         }
         else if (activeNormalAbility.getCost() <= power)
         {
             totalDefense += activeNormalAbility.getDefense();
+            UseNormalAbility();
         }
         else
         {
@@ -86,6 +90,16 @@ public abstract class FightCharacter {
         }
 
         return Roll(totalDefense, 1, 6, 2);
+    }
+
+    private  void UseNormalAbility()
+    {
+        power -= activeNormalAbility.getCost();
+    }
+
+    private  void UseSpecialAbility()
+    {
+        mana -= activeSpecialAbility.getCost();
     }
 
     private  int Roll(int amount, int min, int max, int required)

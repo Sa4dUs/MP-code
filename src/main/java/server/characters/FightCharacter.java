@@ -38,11 +38,11 @@ public abstract class FightCharacter {
 
     private int getMinionHealth(PlayerCharacter character){
         List<Minion> minionList = character.getMinionList();
-        int minionHealth = 0;
+        int mHealth = 0;
         for (Minion m: minionList) {
-            minionHealth += m.getHealth();
+            mHealth += m.getHealth();
         }
-        return minionHealth;
+        return mHealth;
     }
 
     public void recieveDamage()

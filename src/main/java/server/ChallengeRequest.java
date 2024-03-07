@@ -1,5 +1,6 @@
 package server;
 
+import server.characters.Character;
 import server.characters.PlayerCharacter;
 
 public class ChallengeRequest {
@@ -37,5 +38,12 @@ public class ChallengeRequest {
 
     public void setBet(int bet) {
         this.bet = bet;
+    }
+
+    public ChallengeRequest(Player attackingPlayer, Player attackedPlayer, PlayerCharacter character)
+    {
+        this.attackingPlayer = attackingPlayer;
+        this.attackedPlayer = attackedPlayer;
+        this.attackingCharacter = character;
     }
 }

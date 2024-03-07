@@ -3,14 +3,11 @@ package api;
 import lib.RequestBody;
 import lib.ResponseBody;
 import lib.Route;
+import api.Endpoint;
 
 import java.util.HashMap;
 
 public class RequestHandler implements Handler {
-    private final String AUTH_ENDPOINT = "auth";
-    private final String CHARACTER_ENDPOINT = "character";
-    private final String CHALLENGE_ENDPOINT = "challenge";
-
     public ResponseBody request(String endpoint, RequestBody body) {
         System.out.println("[RequestHandler.java] " + endpoint);
 
@@ -19,13 +16,13 @@ public class RequestHandler implements Handler {
         Handler handler;
 
         switch (route.pop()) {
-            case AUTH_ENDPOINT:
+            case Endpoint.AUTH:
                 handler = new AutenticationHandler();
                 break;
-            case CHARACTER_ENDPOINT:
+            case Endpoint.CHARACTER:
                 handler = new CharacterHandler();
                 break;
-            case CHALLENGE_ENDPOINT:
+            case Endpoint.CHALLENGE:
                 handler = new ChallengeHandler();
                 break;
             default:

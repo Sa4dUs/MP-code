@@ -4,8 +4,8 @@ import java.util.List;
 import java.util.Stack;
 
 public class Route {
-    private String raw;
-    private Stack<String> route;
+    private final String raw;
+    private final Stack<String> route;
 
     public Route(String raw) {
         this.raw = raw;

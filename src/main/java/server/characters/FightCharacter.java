@@ -44,12 +44,48 @@ public abstract class FightCharacter {
 
     public int CalculateDamage()
     {
-        return 0;
+        int totalDamage = 0;
+
+        totalDamage += activeArmor.getAttack();
+
+        if(activeSpecialAbility.getCost() <= mana)
+        {
+            totalDamage += activeSpecialAbility.getAttack();
+        }
+        else if (activeNormalAbility.getCost() <= power)
+        {
+            totalDamage += activeNormalAbility.getAttack();
+        }
+        else
+        {
+            totalDamage += activeWeaponL != null ? activeWeaponL.getAttack() : 0;
+            totalDamage += activeWeaponR != null ? activeWeaponR.getAttack() : 0;
+        }
+
+        return Roll(totalDamage, 1, 6, 2);
     }
 
     public int CalculateDefense()
     {
-        return 0;
+        int totalDefense = 0;
+
+        totalDefense += activeArmor.getDefense();
+
+        if(activeSpecialAbility.getCost() <= mana)
+        {
+            totalDefense += activeSpecialAbility.getDefense();
+        }
+        else if (activeNormalAbility.getCost() <= power)
+        {
+            totalDefense += activeNormalAbility.getDefense();
+        }
+        else
+        {
+            totalDefense += activeWeaponL != null ? activeWeaponL.getDefense() : 0;
+            totalDefense += activeWeaponR != null ? activeWeaponR.getDefense() : 0;
+        }
+
+        return Roll(totalDefense, 1, 6, 2);
     }
 
     private  int Roll(int amount, int min, int max, int required)

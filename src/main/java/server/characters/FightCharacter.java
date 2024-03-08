@@ -38,10 +38,16 @@ public abstract class FightCharacter {
 
     private int getMinionHealth(PlayerCharacter character){
         List<Minion> minionList = character.getMinionList();
+
+        if(minionList == null)
+            return  0;
+
         int mHealth = 0;
+
         for (Minion m: minionList) {
-            mHealth += m.getHealth();
+            mHealth += m != null ? m.getHealth() : 0;
         }
+
         return mHealth;
     }
 
@@ -61,14 +67,14 @@ public abstract class FightCharacter {
     {
         int totalDamage = 0;
 
-        totalDamage += activeArmor.getAttack();
+        totalDamage += activeArmor != null ? activeArmor.getAttack() : 0;
 
-        if(activeSpecialAbility.getCost() <= mana)
+        if(canUseAbility(activeSpecialAbility, mana))
         {
             totalDamage += activeSpecialAbility.getAttack();
             useSpecialAbility();
         }
-        else if (activeNormalAbility.getCost() <= power)
+        else if (canUseAbility(activeNormalAbility, power))
         {
             totalDamage += activeNormalAbility.getAttack();
             useNormalAbility();
@@ -86,14 +92,14 @@ public abstract class FightCharacter {
     {
         int totalDefense = 0;
 
-        totalDefense += activeArmor.getDefense();
+        totalDefense += activeArmor != null ? activeArmor.getDefense() : 0;
 
-        if(activeSpecialAbility.getCost() <= mana)
+        if(canUseAbility(activeSpecialAbility, mana))
         {
             totalDefense += activeSpecialAbility.getDefense();
             useSpecialAbility();
         }
-        else if (activeNormalAbility.getCost() <= power)
+        else if (canUseAbility(activeNormalAbility, power))
         {
             totalDefense += activeNormalAbility.getDefense();
             useNormalAbility();
@@ -107,17 +113,21 @@ public abstract class FightCharacter {
         return roll(totalDefense, 1, 6, 2);
     }
 
-    private  void useNormalAbility()
+    private void useNormalAbility()
     {
         power -= activeNormalAbility.getCost();
     }
 
-    private  void useSpecialAbility()
+    private void useSpecialAbility()
     {
         mana -= activeSpecialAbility.getCost();
     }
 
-    private  int roll(int amount, int min, int max, int required)
+    private boolean canUseAbility(Ability ability, int resource) {
+        return (ability != null && ability.getCost() <= resource);
+    }
+
+    private int roll(int amount, int min, int max, int required)
     {
         int res = 0;
         for(int i = 0; i < amount; i++)

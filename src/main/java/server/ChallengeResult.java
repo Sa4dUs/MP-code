@@ -58,13 +58,13 @@ public class ChallengeResult {
     {
         switch (character.getBreed())
         {
-            case Hunter -> { return new Hunter(character); }
+            case Hunter: return new Hunter(character);
 
-            case Vampire -> { return new Vampire(character); }
+            case Vampire: return new Vampire(character);
 
-            case Licantrope -> { return new Licantrope(character); }
+            case Licantrope: return new Licantrope(character);
 
-            default -> { return  null; }
+            default: return  null;
         }
     }
 

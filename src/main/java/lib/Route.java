@@ -1,5 +1,7 @@
 package lib;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Stack;
 
@@ -14,7 +16,9 @@ public class Route {
 
     public Stack<String> parse() {
         Stack<String> s = new Stack<>();
-        List.of(this.raw.split("/")).forEach(s::push);
+        List<String> items = Arrays.asList(this.raw.split("/"));
+        Collections.reverse(items);
+        items.forEach(s::push);
         return s;
     }
 

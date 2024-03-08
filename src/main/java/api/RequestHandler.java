@@ -4,7 +4,6 @@ import lib.RequestBody;
 import lib.ResponseBody;
 import lib.Route;
 import api.Endpoint;
-
 import java.util.HashMap;
 
 public class RequestHandler implements Handler {

@@ -6,10 +6,11 @@ import lib.Route;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.BiFunction;
+import java.util.function.Function;
 import java.util.function.Supplier;
 
-public class RequestHandler extends Handler<BiFunction<String, RequestBody, ResponseBody>> {
-    private final Map<String, Handler<BiFunction<String, RequestBody, ResponseBody>>> endpointHandlers = new HashMap<>();
+public class RequestHandler extends Handler<Function<RequestBody, ResponseBody>> {
+    private final Map<String, Handler<Function<RequestBody, ResponseBody>>> endpointHandlers = new HashMap<>();
 
     public RequestHandler() {
         endpointHandlers.put(Endpoint.AUTH, new AutenticationHandler());
@@ -22,7 +23,7 @@ public class RequestHandler extends Handler<BiFunction<String, RequestBody, Resp
 
         Route route = new Route(endpoint);
 
-        Handler<BiFunction<String, RequestBody, ResponseBody>> handler = endpointHandlers.getOrDefault(route.pop(), null);
+        Handler<Function<RequestBody, ResponseBody>> handler = endpointHandlers.getOrDefault(route.pop(), null);
 
         return handler == null ? null : handler.request(route.pop(), body);
     }

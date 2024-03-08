@@ -4,7 +4,9 @@ import lib.RequestBody;
 import lib.ResponseBody;
 import api.Handler;
 
-public class ChallengeHandler implements Handler {
+import java.util.function.BiFunction;
+
+public class ChallengeHandler extends Handler<BiFunction<String, RequestBody, ResponseBody>> {
     public ResponseBody request(String endpoint, RequestBody body) {
 
         return new ResponseBody();

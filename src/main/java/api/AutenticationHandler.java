@@ -4,7 +4,10 @@ import lib.RequestBody;
 import lib.ResponseBody;
 import api.Handler;
 
-public class AutenticationHandler implements Handler {
+import java.util.function.BiFunction;
+
+public class AutenticationHandler extends Handler<BiFunction<String, RequestBody, ResponseBody>> {
+
     public ResponseBody request(String endpoint, RequestBody body) {
 
         return new ResponseBody();

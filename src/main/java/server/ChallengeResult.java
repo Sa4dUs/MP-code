@@ -56,16 +56,12 @@ public class ChallengeResult {
 
     private FightCharacter CreateFightCharacterFromCharacter(PlayerCharacter character)
     {
-        switch (character.getBreed())
-        {
-            case Hunter: return new Hunter(character);
-
-            case Vampire: return new Vampire(character);
-
-            case Licantrope: return new Licantrope(character);
-
-            default: return  null;
-        }
+        return switch (character.getBreed()) {
+            case Hunter -> new Hunter(character);
+            case Vampire -> new Vampire(character);
+            case Licantrope -> new Licantrope(character);
+            default -> null;
+        };
     }
 
     private void CalculateDuel()
@@ -83,8 +79,7 @@ public class ChallengeResult {
             turns ++;
         }
 
-        if(defender == attackingCharacter)
-            winnerAttacking = false;
+        winnerAttacking = attacker == attackingCharacter;
     }
 
     private void CalculateTurn(FightCharacter attacker, FightCharacter defender)

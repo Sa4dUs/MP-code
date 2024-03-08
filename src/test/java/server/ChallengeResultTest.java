@@ -41,4 +41,12 @@ public class ChallengeResultTest {
 
         assertTrue(res.isWinnerAttacking());
     }
+
+    @Test
+    public void Clase()
+    {
+
+
+        System.out.println(a);
+    }
 }

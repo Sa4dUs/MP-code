@@ -10,12 +10,11 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 
 public class RequestHandler extends Handler<Function<RequestBody, ResponseBody>> {
-    private final Map<String, Handler<Function<RequestBody, ResponseBody>>> endpointHandlers = new HashMap<>();
 
     public RequestHandler() {
-        endpointHandlers.put(Endpoint.AUTH, new AutenticationHandler());
-        endpointHandlers.put(Endpoint.CHARACTER, new CharacterHandler());
-        endpointHandlers.put(Endpoint.CHALLENGE, new ChallengeHandler());
+        this.operations.put(Endpoint.AUTH, new AutenticationHandler());
+        this.operations.put(Endpoint.CHARACTER, new CharacterHandler());
+        this.operations.put(Endpoint.CHALLENGE, new ChallengeHandler());
     }
 
     public ResponseBody request(String endpoint, RequestBody body) {
@@ -23,7 +22,7 @@ public class RequestHandler extends Handler<Function<RequestBody, ResponseBody>>
 
         Route route = new Route(endpoint);
 
-        Handler<Function<RequestBody, ResponseBody>> handler = endpointHandlers.getOrDefault(route.pop(), null);
+        Handler<Function<RequestBody, ResponseBody>> handler = this.operations.getOrDefault(route.pop(), null);
 
         return handler == null ? null : handler.request(route.pop(), body);
     }

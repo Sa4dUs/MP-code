@@ -8,7 +8,7 @@ import java.util.Map;
 
 public abstract class Handler<T> {
     Service service = null;
-    Map<String, Handler<T>> operations = null;
+    Map<String, T> operations = null;
 
     public abstract ResponseBody request(String endpoint, RequestBody body);
 }

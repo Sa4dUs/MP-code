@@ -22,11 +22,6 @@ public class RequestHandler extends Handler<BiFunction<String, RequestBody, Resp
 
         Route route = new Route(endpoint);
 
-        BiFunction<String, RequestBody, ResponseBody> defaultHandler = (reqBody, r) -> {
-            System.out.println("[RequestHandler.java] 404: Endpoint not found");
-            return null;
-        };
-
         Handler<BiFunction<String, RequestBody, ResponseBody>> handler = endpointHandlers.getOrDefault(route.pop(), null);
 
         return handler == null ? null : handler.request(route.pop(), body);

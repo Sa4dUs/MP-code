@@ -1,16 +1,17 @@
+package server;
+
 import org.junit.Test;
-import server.ChallengeRequest;
-import server.ChallengeResult;
-import server.Player;
-import server.characters.CharacterType;
-import server.characters.Hunter;
-import server.characters.PlayerCharacter;
-import server.items.Weapon;
+import server.characters.*;
+import server.items.*;
+import server.minions.*;
+import server.services.*;
+import server.*;
 
-import java.io.Console;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class ResultTest {
-   @Test
+public class ChallengeResultTest {
+
+    @Test
     public void testDuelResult()
     {
         Player p1 = new Player();
@@ -38,5 +39,6 @@ public class ResultTest {
         ChallengeRequest request = new ChallengeRequest(p1, p2, attCharacter);
         ChallengeResult res = new ChallengeResult(request, defCharacter);
 
+        assertTrue(res.isWinnerAttacking());
     }
 }

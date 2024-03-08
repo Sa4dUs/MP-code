@@ -6,7 +6,6 @@ import server.items.Weapon;
 import server.minions.Minion;
 
 import java.util.List;
-import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 public abstract class FightCharacter {
@@ -51,7 +50,7 @@ public abstract class FightCharacter {
         return mHealth;
     }
 
-    public void recieveDamage()
+    public void receiveDamage()
     {
         health --;
     }

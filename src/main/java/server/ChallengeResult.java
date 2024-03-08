@@ -1,11 +1,39 @@
 package server;
 
 import server.characters.*;
-import server.characters.Character;
 
 public class ChallengeResult {
-    private Player attackingPlayer, attackedPlayer;
-    private FightCharacter attackingCharacter, attackedCharacter;
+    public Player getAttackingPlayer() {
+        return attackingPlayer;
+    }
+
+    public Player getAttackedPlayer() {
+        return attackedPlayer;
+    }
+
+    public FightCharacter getAttackingCharacter() {
+        return attackingCharacter;
+    }
+
+    public FightCharacter getAttackedCharacter() {
+        return attackedCharacter;
+    }
+
+    public int getBet() {
+        return bet;
+    }
+
+    public int getTurns() {
+        return turns;
+    }
+
+    public boolean isWinnerAttacking() {
+        return winnerAttacking;
+    }
+
+
+    private final Player attackingPlayer, attackedPlayer;
+    private final FightCharacter attackingCharacter, attackedCharacter;
     private int bet, turns;
 
     private boolean winnerAttacking = true;
@@ -30,21 +58,13 @@ public class ChallengeResult {
     {
         switch (character.getBreed())
         {
-            case Hunter -> {
-                return new Hunter(character);
-            }
+            case Hunter -> { return new Hunter(character); }
 
-            case Vampire -> {
-                return new Vampire(character);
-            }
+            case Vampire -> { return new Vampire(character); }
 
-            case Licantrope -> {
-                return new Licantrope(character);
-            }
+            case Licantrope -> { return new Licantrope(character); }
 
-            default -> {
-                return  null;
-            }
+            default -> { return  null; }
         }
     }
 
@@ -73,6 +93,6 @@ public class ChallengeResult {
         int dfs = defender.calculateDefense();
 
         if(dmg >= dfs)
-            defender.recieveDamage();
+            defender.receiveDamage();
     }
 }

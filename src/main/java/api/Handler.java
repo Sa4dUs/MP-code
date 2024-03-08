@@ -1,12 +1,14 @@
 package api;
 
-import lib.Route;
 import server.services.Service;
 import lib.RequestBody;
 import lib.ResponseBody;
 
-public interface Handler {
-    Service service = null;
+import java.util.Map;
 
-    public ResponseBody request(String endpoint, RequestBody body);
+public abstract class Handler<T> {
+    Service service = null;
+    Map<String, T> operations = null;
+
+    public abstract ResponseBody request(String endpoint, RequestBody body);
 }

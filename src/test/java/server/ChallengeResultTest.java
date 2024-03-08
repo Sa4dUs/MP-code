@@ -28,10 +28,10 @@ public class ChallengeResultTest {
 
 
         Weapon wp1 = new Weapon();
-        wp1.setAttack(2);
+        wp1.setAttack(1);
 
         Weapon wp2 = new Weapon();
-        wp2.setAttack(1);
+        wp2.setAttack(0);
 
         attCharacter.setActiveWeaponL(wp1);
         defCharacter.setActiveWeaponL(wp2);

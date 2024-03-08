@@ -19,9 +19,9 @@ public abstract class FightCharacter {
     {
         name = character.getName();
 
-        health = character.getHealth();
         minionHealth = getMinionHealth(character);
-        maxHealth = health + minionHealth;
+        health = character.getHealth() + minionHealth;
+        maxHealth = health;
 
 
         activeWeaponL = character.getActiveWeaponL();

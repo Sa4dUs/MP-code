@@ -7,6 +7,6 @@ import api.Handler;
 public class ChallengeHandler implements Handler {
     public ResponseBody request(String endpoint, RequestBody body) {
 
-        return null;
+        return new ResponseBody();
     }
 }

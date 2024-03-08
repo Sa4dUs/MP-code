@@ -23,6 +23,6 @@ public class Route {
     }
 
     public String pop() {
-        return route.pop();
+        return route.isEmpty() ? null : route.pop();
     }
 }

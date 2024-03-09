@@ -1,4 +1,4 @@
 package client;
 
-public class CharacterScreen implements Screen{
+public class CharacterScreen implements Screen {
 }

@@ -43,10 +43,10 @@ public class ChallengeResult {
         attackingPlayer = request.getAttackingPlayer();
         attackedPlayer = request.getAttackedPlayer();
 
-        attackingCharacter = CreateFightCharacterFromCharacter(request.getAttackingCharacter());
-        attackedCharacter = CreateFightCharacterFromCharacter(otherCharacter);
+        attackingCharacter = createFightCharacterFromCharacter(request.getAttackingCharacter());
+        attackedCharacter = createFightCharacterFromCharacter(otherCharacter);
 
-        CalculateDuel();
+        calculateDuel();
 
         if(winnerAttacking)
             otherCharacter.removeGold(bet);
@@ -54,7 +54,7 @@ public class ChallengeResult {
             request.getAttackingCharacter().removeGold(bet);
     }
 
-    private FightCharacter CreateFightCharacterFromCharacter(PlayerCharacter character)
+    private FightCharacter createFightCharacterFromCharacter(PlayerCharacter character)
     {
         return switch (character.getBreed()) {
             case Hunter -> new Hunter(character);
@@ -64,13 +64,13 @@ public class ChallengeResult {
         };
     }
 
-    private void CalculateDuel()
+    private void calculateDuel()
     {
         FightCharacter attacker = attackingCharacter, defender = attackedCharacter;
 
         while (!defender.isDead())
         {
-            CalculateTurn(attacker, defender);
+            calculateTurn(attacker, defender);
 
             FightCharacter aux = attacker;
             attacker = defender;
@@ -82,12 +82,17 @@ public class ChallengeResult {
         winnerAttacking = attacker == attackingCharacter;
     }
 
-    private void CalculateTurn(FightCharacter attacker, FightCharacter defender)
+    private void calculateTurn(FightCharacter attacker, FightCharacter defender)
     {
         int dmg = attacker.calculateDamage();
         int dfs = defender.calculateDefense();
 
         if(dmg >= dfs)
             defender.receiveDamage();
+    }
+
+    private void sendToAttacker()
+    {
+        
     }
 }

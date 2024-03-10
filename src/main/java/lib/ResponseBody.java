@@ -1,7 +1,7 @@
 package lib;
 
+import java.util.HashMap;
 import java.util.Map;
 
-public class ResponseBody {
-    private Map<String, Object> data;
+public class ResponseBody extends Body {
 }

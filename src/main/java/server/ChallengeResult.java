@@ -91,8 +91,4 @@ public class ChallengeResult {
             defender.receiveDamage();
     }
 
-    private void sendToAttacker()
-    {
-        
-    }
 }

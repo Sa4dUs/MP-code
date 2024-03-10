@@ -1,7 +1,7 @@
 package server.characters;
 
 public class Hunter extends FightCharacter{
-    private int maxMana;
+    private final int maxMana = ;
 
     public Hunter(PlayerCharacter character) {
         super(character);

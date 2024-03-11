@@ -10,28 +10,27 @@ public class AuthenticationHandler extends Handler<NFunction<ResponseBody>> {
     AuthenticationHandler() {
         this.service = new AuthenticationService();
         // For base route, might delete later
-        this.operations.put(null, new NFunction<ResponseBody>() {
-            @Override
-            public ResponseBody apply(Object[]... args) {
-                return new ResponseBody();
+        this.operations.put(null, args -> new ResponseBody());
+        this.operations.put("login", args -> {
+            if (!(args[0] instanceof RequestBody)) {
+                return new ResponseBody(false);
             }
+
+            return service.login((String) ((RequestBody) args[0]).getField("username"), (String) ((RequestBody) args[0]).getField("password"));
         });
-        this.operations.put("login", new NFunction<ResponseBody>() {
-            @Override
-            public ResponseBody apply(Object[] ...args) {
-                return service.login("", "");
+        this.operations.put("signup", args -> {
+            if (!(args[0] instanceof RequestBody)) {
+                return new ResponseBody(false);
             }
+
+            return service.signup((String) ((RequestBody) args[0]).getField("username"), (String) ((RequestBody) args[0]).getField("password"));
         });
-        this.operations.put("signup", null);
     }
 
     public ResponseBody request(String endpoint, RequestBody body) {
-        return this.operations.getOrDefault(endpoint, new NFunction<ResponseBody>() {
-            @Override
-            public ResponseBody apply(Object[] ...args) {
-                // Handle invalid route, for now it will return null
-                return null;
-            }
-        }).apply();
+        return this.operations.getOrDefault(endpoint, args -> {
+            // Handle invalid route, for now it will return null
+            return new ResponseBody(false);
+        }).apply(body);
     }
 }

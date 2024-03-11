@@ -6,6 +6,7 @@ import lib.ResponseBody;
 import server.services.AuthenticationService;
 
 public class AuthenticationHandler extends Handler<NFunction<ResponseBody>> {
+    private final AuthenticationService service;
     AuthenticationHandler() {
         this.service = new AuthenticationService();
         // For base route, might delete later
@@ -18,7 +19,7 @@ public class AuthenticationHandler extends Handler<NFunction<ResponseBody>> {
         this.operations.put("login", new NFunction<ResponseBody>() {
             @Override
             public ResponseBody apply(Object[] ...args) {
-                return null;
+                return service.login("", "");
             }
         });
         this.operations.put("signup", null);

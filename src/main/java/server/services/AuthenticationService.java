@@ -7,7 +7,7 @@ public class AuthenticationService implements Service {
         return new ResponseBody();
     }
 
-    public void signup(String username, String password) {
-
+    public ResponseBody signup(String username, String password) {
+        return new ResponseBody();
     }
 }

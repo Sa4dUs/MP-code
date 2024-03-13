@@ -40,4 +40,8 @@ public class Player extends User{
     public void addPending(ChallengeRequest request) {
         pendingDuels.add(request);
     }
+
+    public List<ChallengeRequest> getPendingDuels() {
+        return pendingDuels;
+    }
 }

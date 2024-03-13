@@ -1,6 +1,5 @@
 package server.nosql;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class Schema {

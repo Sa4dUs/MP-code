@@ -16,18 +16,23 @@ public class ChallengeRequest {
     }
 
     public void accept(){
-        ChallengeResult result = new ChallengeResult(this, attackedPlayer.getCharacter());
-        attackedPlayer.addResult(result);
-        attackingPlayer.addResult(result);
+        if (attackedPlayer != null && attackedPlayer.getCharacter() != null) {
+            ChallengeResult result = new ChallengeResult(this, attackedPlayer.getCharacter());
+            attackedPlayer.addResult(result);
+            attackingPlayer.addResult(result);
+        }
+
         attackedPlayer.deletePendingChallenge(this);
         //MARCELO TÓCAMELO X2
     }
 
     public void denyFromPlayer(){
-        ChallengeResult result = new ChallengeResult(this, null);
-        attackedPlayer.addResult(result);
-        attackingPlayer.addResult(result);
-        attackedPlayer.deletePendingChallenge(this);
+        if (attackedPlayer != null && attackedPlayer.getPendingDuels().contains(this)) {
+            ChallengeResult result = new ChallengeResult(this, null);
+            attackedPlayer.addResult(result);
+            attackingPlayer.addResult(result);
+            attackedPlayer.deletePendingChallenge(this);
+        }
         //MARCELO TÓCAMELO X3
     }
 

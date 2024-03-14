@@ -39,25 +39,18 @@ public class ChallengeRequestTest {
 
 
         //Act
+        request.sendToTarget();
         request.accept();
 
         //Asserts
         assertFalse(attacked.getPendingDuels().contains(request));
+        assertTrue(attacker.getResults().size() > 0);
+        assertTrue(attacked.getResults().size() > 0);
     }
 
     @Test
     public void testDuelRequestDenyFromPlayer(){
         Player attacked = new Player();
-
-        Weapon weaponAttacked = new Weapon();
-        weaponAttacked.setAttack(3);
-        weaponAttacked.setDefense(3);
-
-        PlayerCharacter characterAttacked = new PlayerCharacter();
-        characterAttacked.setHealth(20);
-        characterAttacked.setActiveWeaponL(weaponAttacked);
-        characterAttacked.setBreed(CharacterType.Vampire);
-        attacked.setCharacter(characterAttacked);
 
 
         Player attacker = new Player();
@@ -75,10 +68,13 @@ public class ChallengeRequestTest {
         ChallengeRequest request = new ChallengeRequest(attacker, attacked, characterAttacker);
 
         //Act
+        request.sendToTarget();
         request.denyFromPlayer();
 
         //Asserts
         assertFalse(attacked.getPendingDuels().contains(request));
+        assertTrue(attacker.getResults().size() > 0);
+        assertTrue(attacked.getResults().size() > 0);
     }
 
     @Test

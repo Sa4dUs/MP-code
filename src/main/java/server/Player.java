@@ -3,12 +3,13 @@ package server;
 import server.characters.Character;
 import server.characters.PlayerCharacter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Player extends User{
     private String id;
-    private List<ChallengeRequest> pendingDuels;
-    private List<ChallengeResult> results;
+    private List<ChallengeRequest> pendingDuels = new ArrayList<>();
+    private List<ChallengeResult> results = new ArrayList<>();
     private PlayerCharacter character;
     private boolean blocked;
 
@@ -44,4 +45,9 @@ public class Player extends User{
     public List<ChallengeRequest> getPendingDuels() {
         return pendingDuels;
     }
+
+    public List<ChallengeResult> getResults() {
+        return results;
+    }
+
 }

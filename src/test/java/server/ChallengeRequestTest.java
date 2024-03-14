@@ -2,17 +2,41 @@ package server;
 
 import org.junit.Test;
 import server.characters.*;
+import server.items.Weapon;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ChallengeRequestTest {
 
     @Test
     public void testDuelRequestAccept(){
-        Player attacking = new Player();
         Player attacked = new Player();
-        PlayerCharacter character = new PlayerCharacter();
-        attacking.setCharacter(character);
-        ChallengeRequest request = new ChallengeRequest(attacking, attacked, character);
+
+        Weapon weaponAttacked = new Weapon();
+        weaponAttacked.setAttack(3);
+        weaponAttacked.setDefense(3);
+
+        PlayerCharacter characterAttacked = new PlayerCharacter();
+        characterAttacked.setHealth(20);
+        characterAttacked.setActiveWeaponL(weaponAttacked);
+        characterAttacked.setBreed(CharacterType.Vampire);
+        attacked.setCharacter(characterAttacked);
+
+
+        Player attacker = new Player();
+
+        Weapon weaponAttacker = new Weapon();
+        weaponAttacker.setAttack(3);
+        weaponAttacker.setDefense(3);
+
+        PlayerCharacter characterAttacker = new PlayerCharacter();
+        characterAttacker.setHealth(20);
+        characterAttacker.setActiveWeaponL(weaponAttacker);
+        characterAttacker.setBreed(CharacterType.Hunter);
+        attacker.setCharacter(characterAttacker);
+
+        ChallengeRequest request = new ChallengeRequest(attacker, attacked, characterAttacker);
+
 
         //Act
         request.accept();
@@ -23,11 +47,32 @@ public class ChallengeRequestTest {
 
     @Test
     public void testDuelRequestDenyFromPlayer(){
-        Player attacking = new Player();
         Player attacked = new Player();
-        PlayerCharacter character = new PlayerCharacter();
-        attacking.setCharacter(character);
-        ChallengeRequest request = new ChallengeRequest(attacking, attacked, character);
+
+        Weapon weaponAttacked = new Weapon();
+        weaponAttacked.setAttack(3);
+        weaponAttacked.setDefense(3);
+
+        PlayerCharacter characterAttacked = new PlayerCharacter();
+        characterAttacked.setHealth(20);
+        characterAttacked.setActiveWeaponL(weaponAttacked);
+        characterAttacked.setBreed(CharacterType.Vampire);
+        attacked.setCharacter(characterAttacked);
+
+
+        Player attacker = new Player();
+
+        Weapon weaponAttacker = new Weapon();
+        weaponAttacker.setAttack(3);
+        weaponAttacker.setDefense(3);
+
+        PlayerCharacter characterAttacker = new PlayerCharacter();
+        characterAttacker.setHealth(20);
+        characterAttacker.setActiveWeaponL(weaponAttacker);
+        characterAttacker.setBreed(CharacterType.Hunter);
+        attacker.setCharacter(characterAttacker);
+
+        ChallengeRequest request = new ChallengeRequest(attacker, attacked, characterAttacker);
 
         //Act
         request.denyFromPlayer();
@@ -38,11 +83,32 @@ public class ChallengeRequestTest {
 
     @Test
     public void testDuelRequestSendToTarget(){
-        Player attacking = new Player();
         Player attacked = new Player();
-        PlayerCharacter character = new PlayerCharacter();
-        attacking.setCharacter(character);
-        ChallengeRequest request = new ChallengeRequest(attacking, attacked, character);
+
+        Weapon weaponAttacked = new Weapon();
+        weaponAttacked.setAttack(3);
+        weaponAttacked.setDefense(3);
+
+        PlayerCharacter characterAttacked = new PlayerCharacter();
+        characterAttacked.setHealth(20);
+        characterAttacked.setActiveWeaponL(weaponAttacked);
+        characterAttacked.setBreed(CharacterType.Vampire);
+        attacked.setCharacter(characterAttacked);
+
+
+        Player attacker = new Player();
+
+        Weapon weaponAttacker = new Weapon();
+        weaponAttacker.setAttack(3);
+        weaponAttacker.setDefense(3);
+
+        PlayerCharacter characterAttacker = new PlayerCharacter();
+        characterAttacker.setHealth(20);
+        characterAttacker.setActiveWeaponL(weaponAttacker);
+        characterAttacker.setBreed(CharacterType.Hunter);
+        attacker.setCharacter(characterAttacker);
+
+        ChallengeRequest request = new ChallengeRequest(attacker, attacked, characterAttacker);
 
         //Act
         request.sendToTarget();
@@ -53,11 +119,21 @@ public class ChallengeRequestTest {
 
     @Test
     public void testDuelRequestDenyFromOperator(){
-        Player attacking = new Player();
         Player attacked = new Player();
-        PlayerCharacter character = new PlayerCharacter();
-        attacking.setCharacter(character);
-        ChallengeRequest request = new ChallengeRequest(attacking, attacked, character);
+
+        Player attacker = new Player();
+
+        Weapon weaponAttacker = new Weapon();
+        weaponAttacker.setAttack(3);
+        weaponAttacker.setDefense(3);
+
+        PlayerCharacter characterAttacker = new PlayerCharacter();
+        characterAttacker.setHealth(20);
+        characterAttacker.setActiveWeaponL(weaponAttacker);
+        characterAttacker.setBreed(CharacterType.Hunter);
+        attacker.setCharacter(characterAttacker);
+
+        ChallengeRequest request = new ChallengeRequest(attacker, attacked, characterAttacker);
 
         //Act
         request.denyFromOperator();

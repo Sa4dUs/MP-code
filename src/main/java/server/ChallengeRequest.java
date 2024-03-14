@@ -24,7 +24,7 @@ public class ChallengeRequest {
     }
 
     public void denyFromPlayer(){
-        ChallengeResult result = new ChallengeResult(this, null);
+        ChallengeResult result = new ChallengeResult(this, attackedPlayer.getCharacter());
         attackedPlayer.addResult(result);
         attackingPlayer.addResult(result);
         attackedPlayer.deletePendingChallenge(this);
@@ -37,7 +37,11 @@ public class ChallengeRequest {
     }
 
     public void denyFromOperator(){
-        ChallengeResult result = new ChallengeResult(null, null);
+        attackedPlayer.deletePendingChallenge(this);
+        attackingPlayer.deletePendingChallenge(this);
+
+        //podemos notificar al usuario "attacking" de que su solicitud de duelo ha sido denegada
+
         //MARCELO TÓCAMELO Y JORGE TÓCAMELO :)
     }
 

@@ -1,0 +1,83 @@
+package server.nosql;
+
+import org.json.JSONObject;
+import server.nosql.Schema;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class Document {
+    private final Schema schema;
+    private final Map<String, Object> properties;
+
+    public Document() {
+        this.schema = null;
+        this.properties = new HashMap<String, Object>();
+    }
+    public Document(Schema schema) {
+        this.schema = schema;
+        properties = new HashMap<>();
+    }
+
+    public Document(JSONObject jsonObject) {
+        this.schema = new Schema(jsonObject);
+        properties = new HashMap<>();
+        for (String key : jsonObject.keySet()) {
+            Object value = jsonObject.get(key);
+            setProperty(key, value);
+        }
+    }
+
+    public void setProperty(String key, Object value) {
+        Class<?> expectedType = schema.getType(key);
+        if (expectedType == null) {
+            throw new IllegalArgumentException("Field " + key + " is not defined in schema");
+        }
+
+        Object parsedValue;
+        try {
+            parsedValue = parseValue(value, expectedType);
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException("Invalid value for field " + key + ": " + e.getMessage());
+        }
+
+        properties.put(key, parsedValue);
+    }
+
+    public Object getProperty(String key) {
+        return properties.get(key);
+    }
+
+    public void updateFromDocument(Document otherDocument) {
+        for (String key : otherDocument.properties.keySet()) {
+            properties.put(key, otherDocument.getProperty(key));
+        }
+    }
+
+    private Object parseValue(Object value, Class<?> targetType) {
+        if (value == null) {
+            return null;
+        }
+
+        if (targetType.equals(String.class)) {
+            return value.toString();
+        } else if (targetType.equals(Integer.class)) {
+            try {
+                return Integer.parseInt(value.toString());
+            } catch (NumberFormatException e) {
+                throw new IllegalArgumentException("Invalid Integer value: " + value);
+            }
+        } else {
+            throw new IllegalArgumentException("Unsupported data type: " + targetType.getName());
+        }
+    }
+
+    public String toJSON() {
+        JSONObject jsonObject = new JSONObject(properties);
+        return jsonObject.toString();
+    }
+
+    public boolean containsKey(String key) {
+        return properties.containsKey(key);
+    }
+}

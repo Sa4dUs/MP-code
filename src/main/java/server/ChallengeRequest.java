@@ -24,7 +24,7 @@ public class ChallengeRequest {
     }
 
     public void denyFromPlayer(){
-        ChallengeResult result = new ChallengeResult(this, attackedPlayer.getCharacter());
+        ChallengeResult result = new ChallengeResult(this, null);
         attackedPlayer.addResult(result);
         attackingPlayer.addResult(result);
         attackedPlayer.deletePendingChallenge(this);

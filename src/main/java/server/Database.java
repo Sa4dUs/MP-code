@@ -6,13 +6,21 @@ import server.nosql.Document;
 import server.nosql.Query;
 
 import java.io.*;
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+import static lib.JSON.*;
 
 public class Database {
 
     public static Database instance;
     private static final String PATH = "./src/main/resources/";
+    private static final ExecutorService executor = Executors.newFixedThreadPool(5);
+    private static final Map<String, JSONObject> collectionCache = new ConcurrentHashMap<>();
 
     public Database() {
         if (instance != null)
@@ -20,24 +28,14 @@ public class Database {
     }
 
     public static Document findOne(String collection, Query query) {
-        String filePath = PATH + collection + ".json";
+        JSONObject jsonObject = getCachedJSONObject(collection);
+        JSONArray jsonArray = getJSONArrayFromJSONObject(jsonObject, collection);
 
-        try {
-            JSONObject jsonObject = readJSONObjectFromFile(filePath);
-
-            if (jsonObject.has(collection)) {
-                JSONArray jsonArray = jsonObject.getJSONArray(collection);
-                for (int i = 0; i < jsonArray.length(); i++) {
-                    Document existingDoc = new Document(jsonArray.getJSONObject(i));
-                    if (query.matches(existingDoc)) {
-                        return existingDoc;
-                    }
-                }
-            } else {
-                System.out.println("Collection not found: " + collection);
+        for (int i = 0; i < jsonArray.length(); i++) {
+            Document existingDoc = new Document(jsonArray.getJSONObject(i));
+            if (query.matches(existingDoc)) {
+                return existingDoc;
             }
-        } catch (IOException e) {
-            System.err.println("Error reading file: " + e.getMessage());
         }
 
         return null;
@@ -46,24 +44,14 @@ public class Database {
     public static List<Document> findMany(String collection, Query query) {
         List<Document> result = new ArrayList<>();
 
-        String filePath = PATH + collection + ".json";
+        JSONObject jsonObject = getCachedJSONObject(collection);
+        JSONArray jsonArray = getJSONArrayFromJSONObject(jsonObject, collection);
 
-        try {
-            JSONObject jsonObject = readJSONObjectFromFile(filePath);
-
-            if (jsonObject.has(collection)) {
-                JSONArray jsonArray = jsonObject.getJSONArray(collection);
-                for (int i = 0; i < jsonArray.length(); i++) {
-                    Document existingDoc = new Document(jsonArray.getJSONObject(i));
-                    if (query.matches(existingDoc)) {
-                        result.add(existingDoc);
-                    }
-                }
-            } else {
-                System.out.println("Collection not found: " + collection);
+        for (int i = 0; i < jsonArray.length(); i++) {
+            Document existingDoc = new Document(jsonArray.getJSONObject(i));
+            if (query.matches(existingDoc)) {
+                result.add(existingDoc);
             }
-        } catch (IOException e) {
-            System.err.println("Error reading file: " + e.getMessage());
         }
 
         return result;
@@ -71,65 +59,67 @@ public class Database {
 
     public static void insertOne(String collection, Document document) {
         String json = document.toJSON();
-        String filePath = PATH + collection + ".json";
+        JSONObject jsonObject = getCachedJSONObject(collection);
 
-        try {
-            JSONObject jsonObject = readJSONObjectFromFile(filePath);
-
-            JSONArray jsonArray;
-            if (jsonObject.has(collection)) {
-                jsonArray = jsonObject.getJSONArray(collection);
-            } else {
-                jsonArray = new JSONArray();
-            }
-            jsonArray.put(new JSONObject(json));
-            jsonObject.put(collection, jsonArray);
-
-            try (FileWriter writer = new FileWriter(filePath)) {
-                writer.write(jsonObject.toString(4));
-                System.out.println("Document inserted into file: " + filePath);
-            } catch (IOException e) {
-                System.err.println("Error writing to file: " + e.getMessage());
-            }
-        } catch (IOException e) {
-            System.err.println("Error reading file: " + e.getMessage());
-        }
+        JSONArray jsonArray = getJSONArrayFromJSONObject(jsonObject, collection);
+        jsonArray.put(new JSONObject(json));
+        jsonObject.put(collection, jsonArray);
+        updateCache(collection, jsonObject);
+        executeWriteTask(collection, jsonObject);
     }
 
     public static void insertMany(String collection, List<Document> documents) {
-        for (Document doc: documents) {
-            insertOne(collection, doc);
+        JSONObject jsonObject = getCachedJSONObject(collection);
+        JSONArray jsonArray = getJSONArrayFromJSONObject(jsonObject, collection);
+
+        for (Document doc : documents) {
+            jsonArray.put(new JSONObject(doc.toJSON()));
         }
+
+        jsonObject.put(collection, jsonArray);
+        updateCache(collection, jsonObject);
+        executeWriteTask(collection, jsonObject);
     }
 
     public static void updateOne(String collection, Document document, Query query) {
+        JSONObject jsonObject = getCachedJSONObject(collection);
+
+        JSONArray jsonArray = getJSONArrayFromJSONObject(jsonObject, collection);
+
+        for (int i = 0; i < jsonArray.length(); i++) {
+            Document existingDoc = new Document(jsonArray.getJSONObject(i));
+            if (query.matches(existingDoc)) {
+                existingDoc.updateFromDocument(document);
+                jsonArray.put(i, new JSONObject(existingDoc.toJSON()));
+                break;
+            }
+        }
+
+        jsonObject.put(collection, jsonArray);
+        updateCache(collection, jsonObject);
+        executeWriteTask(collection, jsonObject);
+    }
+
+    public static void updateMany(String collection, Document document, Query query) {
         String filePath = PATH + collection + ".json";
 
         try {
             JSONObject jsonObject = readJSONObjectFromFile(filePath);
+            JSONArray jsonArray = getJSONArrayFromJSONObject(jsonObject, collection);
 
-            if (jsonObject.has(collection)) {
-                JSONArray jsonArray = jsonObject.getJSONArray(collection);
-                for (int i = 0; i < jsonArray.length(); i++) {
-                    Document existingDoc = new Document(jsonArray.getJSONObject(i));
-                    if (query.matches(existingDoc)) {
-                        existingDoc.updateFromDocument(document);
-                        jsonArray.put(i, new JSONObject(existingDoc.toJSON()));
-                    }
+            for (int i = 0; i < jsonArray.length(); i++) {
+                Document existingDoc = new Document(jsonArray.getJSONObject(i));
+                if (query.matches(existingDoc)) {
+                    existingDoc.updateFromDocument(document);
+                    jsonArray.put(i, new JSONObject(existingDoc.toJSON()));
                 }
-                jsonObject.put(collection, jsonArray);
-
-                try (FileWriter writer = new FileWriter(filePath)) {
-                    writer.write(jsonObject.toString(4));
-                    System.out.println("Document updated in file: " + filePath);
-                } catch (IOException e) {
-                    System.err.println("Error writing to file: " + e.getMessage());
-                }
-            } else {
-                System.out.println("Collection not found: " + collection);
             }
+
+            jsonObject.put(collection, jsonArray);
+            updateCache(collection, jsonObject);
+            executeWriteTask(collection, jsonObject);
         } catch (IOException e) {
-            System.err.println("Error reading file: " + e.getMessage());
+            System.err.println("Error reading or writing file: " + e.getMessage());
         }
     }
 
@@ -138,30 +128,21 @@ public class Database {
 
         try {
             JSONObject jsonObject = readJSONObjectFromFile(filePath);
+            JSONArray jsonArray = getJSONArrayFromJSONObject(jsonObject, collection);
 
-            if (jsonObject.has(collection)) {
-                JSONArray jsonArray = jsonObject.getJSONArray(collection);
-
-                for (int i = 0; i < jsonArray.length(); i++) {
-                    Document existingDoc = new Document(jsonArray.getJSONObject(i));
-                    if (query.matches(existingDoc)) {
-                        jsonArray.remove(i);
-                        break;
-                    }
+            for (int i = 0; i < jsonArray.length(); i++) {
+                Document existingDoc = new Document(jsonArray.getJSONObject(i));
+                if (query.matches(existingDoc)) {
+                    jsonArray.remove(i);
+                    break;
                 }
-                jsonObject.put(collection, jsonArray);
-
-                try (FileWriter writer = new FileWriter(filePath)) {
-                    writer.write(jsonObject.toString(4));
-                    System.out.println("Document deleted from file: " + filePath);
-                } catch (IOException e) {
-                    System.err.println("Error writing to file: " + e.getMessage());
-                }
-            } else {
-                System.out.println("Collection not found: " + collection);
             }
+
+            jsonObject.put(collection, jsonArray);
+            updateCache(collection, jsonObject);
+            executeWriteTask(collection, jsonObject);
         } catch (IOException e) {
-            System.err.println("Error reading file: " + e.getMessage());
+            System.err.println("Error reading or writing file: " + e.getMessage());
         }
     }
 
@@ -170,48 +151,45 @@ public class Database {
 
         try {
             JSONObject jsonObject = readJSONObjectFromFile(filePath);
+            JSONArray jsonArray = getJSONArrayFromJSONObject(jsonObject, collection);
+            JSONArray updatedArray = new JSONArray();
 
-            if (jsonObject.has(collection)) {
-                JSONArray jsonArray = jsonObject.getJSONArray(collection);
-                JSONArray updatedArray = new JSONArray();
-
-                for (int i = 0; i < jsonArray.length(); i++) {
-                    Document existingDoc = new Document(jsonArray.getJSONObject(i));
-                    if (!query.matches(existingDoc)) {
-                        updatedArray.put(jsonArray.getJSONObject(i));
-                    }
+            for (int i = 0; i < jsonArray.length(); i++) {
+                Document existingDoc = new Document(jsonArray.getJSONObject(i));
+                if (!query.matches(existingDoc)) {
+                    updatedArray.put(jsonArray.getJSONObject(i));
                 }
-                jsonObject.put(collection, updatedArray);
-
-                try (FileWriter writer = new FileWriter(filePath)) {
-                    writer.write(jsonObject.toString(4));
-                    System.out.println("Documents deleted from file: " + filePath);
-                } catch (IOException e) {
-                    System.err.println("Error writing to file: " + e.getMessage());
-                }
-            } else {
-                System.out.println("Collection not found: " + collection);
             }
+
+            jsonObject.put(collection, updatedArray);
+            updateCache(collection, jsonObject);
+            executeWriteTask(collection, jsonObject);
         } catch (IOException e) {
-            System.err.println("Error reading file: " + e.getMessage());
+            System.err.println("Error reading or writing file: " + e.getMessage());
         }
     }
 
-    private static JSONObject readJSONObjectFromFile(String filePath) throws IOException {
-        File file = new File(filePath);
-        JSONObject jsonObject;
-        if (file.exists()) {
-            StringBuilder existingContent = new StringBuilder();
-            try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
-                String line;
-                while ((line = reader.readLine()) != null) {
-                    existingContent.append(line).append("\n");
-                }
-            }
-            jsonObject = new JSONObject(existingContent.toString());
-        } else {
-            jsonObject = new JSONObject();
+
+    private static JSONObject getCachedJSONObject(String collection) {
+        String filePath = PATH + collection + ".json";
+
+        try {
+
+
+            return collectionCache.getOrDefault(collection, readJSONObjectFromFile(filePath));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
-        return jsonObject;
+    }
+
+    private static void updateCache(String collection, JSONObject jsonObject) {
+        collectionCache.put(collection, jsonObject);
+    }
+
+    private static void executeWriteTask(String collection, JSONObject jsonObject) {
+        executor.execute(() -> {
+            String filePath = PATH + collection + ".json";
+            writeJSONObjectToFile(jsonObject, filePath);
+        });
     }
 }

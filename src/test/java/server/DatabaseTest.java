@@ -23,7 +23,6 @@ class DatabaseTest {
 
     @BeforeEach
     void cleanCollection() {
-        // Clean up the collection before each test
         Database.deleteMany(COLLECTION_NAME, new Query());
     }
 
@@ -115,13 +114,12 @@ class DatabaseTest {
     @Test
     void deleteMany() {
         int n = 5;
-        List<Document> documents = new ArrayList<>();
+
         for (int i = 0; i < n; i++) {
             Document doc = new Document(new UserSchema());
             doc.setProperty("username", "user" + i);
             doc.setProperty("password", "password" + i);
             Database.insertOne(COLLECTION_NAME, doc);
-            documents.add(doc);
         }
 
         Query query = new Query();
@@ -137,5 +135,6 @@ class DatabaseTest {
 
     @AfterAll
     static void tearDown() {
+        Database.deleteMany(COLLECTION_NAME, new Query());
     }
 }

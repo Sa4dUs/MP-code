@@ -1,6 +1,5 @@
 package server;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 import server.nosql.Document;
 import server.nosql.Query;
@@ -20,7 +19,7 @@ public class Database {
     public static Database instance;
     private static final String PATH = "./src/main/resources/";
     private static final ExecutorService executor = Executors.newFixedThreadPool(5);
-    private static final Map<String, JSONObject> collectionCache = new ConcurrentHashMap<>();
+    private static final Map<String, Map<String, Document>> collectionCache = new ConcurrentHashMap<>();
 
     public Database() {
         if (instance != null)
@@ -28,167 +27,97 @@ public class Database {
     }
 
     public static Document findOne(String collection, Query query) {
-        JSONObject jsonObject = getCachedJSONObject(collection);
-        JSONArray jsonArray = getJSONArrayFromJSONObject(jsonObject, collection);
-
-        for (int i = 0; i < jsonArray.length(); i++) {
-            Document existingDoc = new Document(jsonArray.getJSONObject(i));
+        Map<String, Document> documents = getCachedDocuments(collection);
+        for (Document existingDoc : documents.values()) {
             if (query.matches(existingDoc)) {
                 return existingDoc;
             }
         }
-
         return null;
     }
 
     public static List<Document> findMany(String collection, Query query) {
         List<Document> result = new ArrayList<>();
-
-        JSONObject jsonObject = getCachedJSONObject(collection);
-        JSONArray jsonArray = getJSONArrayFromJSONObject(jsonObject, collection);
-
-        for (int i = 0; i < jsonArray.length(); i++) {
-            Document existingDoc = new Document(jsonArray.getJSONObject(i));
+        Map<String, Document> documents = getCachedDocuments(collection);
+        for (Document existingDoc : documents.values()) {
             if (query.matches(existingDoc)) {
                 result.add(existingDoc);
             }
         }
-
         return result;
     }
 
     public static void insertOne(String collection, Document document) {
-        String json = document.toJSON();
-        JSONObject jsonObject = getCachedJSONObject(collection);
-
-        JSONArray jsonArray = getJSONArrayFromJSONObject(jsonObject, collection);
-        jsonArray.put(new JSONObject(json));
-        jsonObject.put(collection, jsonArray);
-        updateCache(collection, jsonObject);
-        executeWriteTask(collection, jsonObject);
+        Map<String, Document> documents = getCachedDocuments(collection);
+        documents.put(document.getId(), document);
+        updateCache(collection, documents);
+        executeWriteTask(collection, documents);
     }
 
     public static void insertMany(String collection, List<Document> documents) {
-        JSONObject jsonObject = getCachedJSONObject(collection);
-        JSONArray jsonArray = getJSONArrayFromJSONObject(jsonObject, collection);
-
+        Map<String, Document> docMap = getCachedDocuments(collection);
         for (Document doc : documents) {
-            jsonArray.put(new JSONObject(doc.toJSON()));
+            docMap.put(doc.getId(), doc);
         }
-
-        jsonObject.put(collection, jsonArray);
-        updateCache(collection, jsonObject);
-        executeWriteTask(collection, jsonObject);
+        updateCache(collection, docMap);
+        executeWriteTask(collection, docMap);
     }
 
     public static void updateOne(String collection, Document document, Query query) {
-        JSONObject jsonObject = getCachedJSONObject(collection);
-
-        JSONArray jsonArray = getJSONArrayFromJSONObject(jsonObject, collection);
-
-        for (int i = 0; i < jsonArray.length(); i++) {
-            Document existingDoc = new Document(jsonArray.getJSONObject(i));
+        Map<String, Document> documents = getCachedDocuments(collection);
+        for (Document existingDoc : documents.values()) {
             if (query.matches(existingDoc)) {
                 existingDoc.updateFromDocument(document);
-                jsonArray.put(i, new JSONObject(existingDoc.toJSON()));
                 break;
             }
         }
-
-        jsonObject.put(collection, jsonArray);
-        updateCache(collection, jsonObject);
-        executeWriteTask(collection, jsonObject);
+        updateCache(collection, documents);
+        executeWriteTask(collection, documents);
     }
 
     public static void updateMany(String collection, Document document, Query query) {
-        String filePath = PATH + collection + ".json";
-
-        try {
-            JSONObject jsonObject = readJSONObjectFromFile(filePath);
-            JSONArray jsonArray = getJSONArrayFromJSONObject(jsonObject, collection);
-
-            for (int i = 0; i < jsonArray.length(); i++) {
-                Document existingDoc = new Document(jsonArray.getJSONObject(i));
-                if (query.matches(existingDoc)) {
-                    existingDoc.updateFromDocument(document);
-                    jsonArray.put(i, new JSONObject(existingDoc.toJSON()));
-                }
+        Map<String, Document> documents = getCachedDocuments(collection);
+        for (Document existingDoc : documents.values()) {
+            if (query.matches(existingDoc)) {
+                existingDoc.updateFromDocument(document);
             }
-
-            jsonObject.put(collection, jsonArray);
-            updateCache(collection, jsonObject);
-            executeWriteTask(collection, jsonObject);
-        } catch (IOException e) {
-            System.err.println("Error reading or writing file: " + e.getMessage());
         }
+        updateCache(collection, documents);
+        executeWriteTask(collection, documents);
     }
 
     public static void deleteOne(String collection, Query query) {
-        String filePath = PATH + collection + ".json";
-
-        try {
-            JSONObject jsonObject = readJSONObjectFromFile(filePath);
-            JSONArray jsonArray = getJSONArrayFromJSONObject(jsonObject, collection);
-
-            for (int i = 0; i < jsonArray.length(); i++) {
-                Document existingDoc = new Document(jsonArray.getJSONObject(i));
-                if (query.matches(existingDoc)) {
-                    jsonArray.remove(i);
-                    break;
-                }
+        Map<String, Document> documents = getCachedDocuments(collection);
+        for (Document existingDoc : documents.values()) {
+            if (query.matches(existingDoc)) {
+                documents.remove(existingDoc.getId());
+                break;
             }
-
-            jsonObject.put(collection, jsonArray);
-            updateCache(collection, jsonObject);
-            executeWriteTask(collection, jsonObject);
-        } catch (IOException e) {
-            System.err.println("Error reading or writing file: " + e.getMessage());
         }
+        updateCache(collection, documents);
+        executeWriteTask(collection, documents);
     }
 
     public static void deleteMany(String collection, Query query) {
-        String filePath = PATH + collection + ".json";
-
-        try {
-            JSONObject jsonObject = readJSONObjectFromFile(filePath);
-            JSONArray jsonArray = getJSONArrayFromJSONObject(jsonObject, collection);
-            JSONArray updatedArray = new JSONArray();
-
-            for (int i = 0; i < jsonArray.length(); i++) {
-                Document existingDoc = new Document(jsonArray.getJSONObject(i));
-                if (!query.matches(existingDoc)) {
-                    updatedArray.put(jsonArray.getJSONObject(i));
-                }
-            }
-
-            jsonObject.put(collection, updatedArray);
-            updateCache(collection, jsonObject);
-            executeWriteTask(collection, jsonObject);
-        } catch (IOException e) {
-            System.err.println("Error reading or writing file: " + e.getMessage());
-        }
+        Map<String, Document> documents = getCachedDocuments(collection);
+        documents.values().removeIf(query::matches);
+        updateCache(collection, documents);
+        executeWriteTask(collection, documents);
     }
 
-
-    private static JSONObject getCachedJSONObject(String collection) {
-        String filePath = PATH + collection + ".json";
-
-        try {
-
-
-            return collectionCache.getOrDefault(collection, readJSONObjectFromFile(filePath));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+    private static Map<String, Document> getCachedDocuments(String collection) {
+        return collectionCache.computeIfAbsent(collection, k -> new ConcurrentHashMap<>());
     }
 
-    private static void updateCache(String collection, JSONObject jsonObject) {
-        collectionCache.put(collection, jsonObject);
+    private static void updateCache(String collection, Map<String, Document> documents) {
+        collectionCache.put(collection, documents);
     }
 
-    private static void executeWriteTask(String collection, JSONObject jsonObject) {
+    private static void executeWriteTask(String collection, Map<String, Document> documents) {
         executor.execute(() -> {
             String filePath = PATH + collection + ".json";
+            JSONObject jsonObject = new JSONObject();
+            documents.forEach((key, value) -> jsonObject.put(key, new JSONObject(value.toJSON())));
             writeJSONObjectToFile(jsonObject, filePath);
         });
     }

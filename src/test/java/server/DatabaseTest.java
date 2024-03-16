@@ -135,6 +135,6 @@ class DatabaseTest {
 
     @AfterAll
     static void tearDown() {
-        Database.deleteMany(COLLECTION_NAME, new Query());
+        // Database.deleteMany(COLLECTION_NAME, new Query());
     }
 }

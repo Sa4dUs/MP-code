@@ -1,7 +1,7 @@
 package server.nosql;
 
 import org.json.JSONObject;
-import server.nosql.Schema;
+import server.Crypto;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -17,6 +17,7 @@ public class Document {
     public Document(Schema schema) {
         this.schema = schema;
         properties = new HashMap<>();
+        properties.put("id", Crypto.UUIDv4());
     }
 
     public Document(JSONObject jsonObject) {
@@ -79,5 +80,9 @@ public class Document {
 
     public boolean containsKey(String key) {
         return properties.containsKey(key);
+    }
+
+    public String getId() {
+        return (String) this.properties.get("id");
     }
 }

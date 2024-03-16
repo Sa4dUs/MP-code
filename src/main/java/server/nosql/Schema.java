@@ -14,7 +14,10 @@ public class Schema {
     }
     public Schema(Map<String, Class<?>> schema) {
         this();
-        this.schema = schema;
+        this.schema.put("id", String.class);
+        for (String key: schema.keySet()) {
+            this.schema.put(key, schema.get(key));
+        }
     }
 
     public Schema(JSONObject jsonObject) {

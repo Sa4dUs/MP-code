@@ -1,13 +1,28 @@
 package server.services;
 
 import lib.ResponseBody;
+import server.Database;
+import server.nosql.Collection;
+import server.nosql.Document;
+import server.nosql.Query;
+import server.nosql.UserSchema;
 
 public class AuthenticationService implements Service {
     public ResponseBody login(String username, String password) {
-        return new ResponseBody(true);
+        Query query = new Query();
+        query.addFilter("username", username);
+        query.addFilter("password", password);
+        Document user = Database.findOne(Collection.USER, query);
+
+        return new ResponseBody( user != null );
     }
 
     public ResponseBody signup(String username, String password) {
+        Document doc = new Document(new UserSchema());
+        doc.setProperty("username", username);
+        doc.setProperty("password", password);
+        Database.insertOne(Collection.USER, doc);
+
         return new ResponseBody(true);
     }
 }

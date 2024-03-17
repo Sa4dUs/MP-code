@@ -29,7 +29,7 @@ public class AuthenticationHandler extends Handler<NFunction<ResponseBody>> {
 
     public ResponseBody request(String endpoint, RequestBody body) {
         return this.operations.getOrDefault(endpoint, args -> {
-            // Handle invalid route, for now it will return null
+            // Handle invalid route, for now it will return ok = false
             return new ResponseBody(false);
         }).apply(body);
     }

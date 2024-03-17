@@ -1,22 +1,5 @@
-{
-    "cc97f069-900f-4ee8-8307-c716904b499f": {
-        "password": "password0",
-        "id": "cc97f069-900f-4ee8-8307-c716904b499f",
-        "username": "user0"
-    },
-    "a594f807-0985-4c3b-8d14-6785a4c495a5": {
-        "password": "password1",
-        "id": "a594f807-0985-4c3b-8d14-6785a4c495a5",
-        "username": "user1"
-    },
-    "fcb44b9e-6636-4d9a-bcc9-a7229bf5d858": {
-        "password": "password2",
-        "id": "fcb44b9e-6636-4d9a-bcc9-a7229bf5d858",
-        "username": "user2"
-    },
-    "c2e82814-5110-435c-98c2-2f071eccffbd": {
-        "password": "password3",
-        "id": "c2e82814-5110-435c-98c2-2f071eccffbd",
-        "username": "user3"
-    }
-}
+{"0919400f-f989-4798-96d6-8bf3dd01d313": {
+    "password": "1234",
+    "id": "0919400f-f989-4798-96d6-8bf3dd01d313",
+    "username": "user1"
+}}

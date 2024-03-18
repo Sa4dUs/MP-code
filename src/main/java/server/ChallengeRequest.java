@@ -15,36 +15,34 @@ public class ChallengeRequest {
         this.attackingCharacter = character;
     }
 
-    public void accept(){
-        if (attackedPlayer != null && attackedPlayer.getCharacter() != null) {
-            ChallengeResult result = new ChallengeResult(this, attackedPlayer.getCharacter());
-            attackedPlayer.addResult(result);
-            attackingPlayer.addResult(result);
-        }
-
+    public void accept()
+    {
+        ChallengeResult result = new ChallengeResult(this, attackedPlayer.getCharacter());
+        attackedPlayer.addResult(result);
+        attackingPlayer.addResult(result);
         attackedPlayer.deletePendingChallenge(this);
         //MARCELO TÓCAMELO X2
     }
 
-    public void denyFromPlayer(){
-        if (attackedPlayer != null && attackedPlayer.getPendingDuels().contains(this)) {
-            ChallengeResult result = new ChallengeResult(this, null);
-            attackedPlayer.addResult(result);
-            attackingPlayer.addResult(result);
-            attackedPlayer.deletePendingChallenge(this);
-        }
+    public void denyFromPlayer()
+    {
+        ChallengeResult result = new ChallengeResult(this);
+        attackedPlayer.addResult(result);
+        attackingPlayer.addResult(result);
+        attackedPlayer.deletePendingChallenge(this);
         //MARCELO TÓCAMELO X3
     }
 
-    public void sendToTarget(){
+    public void sendToTarget()
+    {
         attackedPlayer.addPending(this);
         //MARCELO TÓCAMELO X4 -> quítalo de la base de datos o algo ns xd
     }
 
-    public void denyFromOperator(){
+    public void denyFromOperator()
+    {
         attackedPlayer.deletePendingChallenge(this);
         attackingPlayer.deletePendingChallenge(this);
-
         //podemos notificar al usuario "attacking" de que su solicitud de duelo ha sido denegada
 
         //MARCELO TÓCAMELO Y JORGE TÓCAMELO :)

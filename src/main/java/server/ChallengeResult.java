@@ -3,35 +3,6 @@ package server;
 import server.characters.*;
 
 public class ChallengeResult {
-    public Player getAttackingPlayer() {
-        return attackingPlayer;
-    }
-
-    public Player getAttackedPlayer() {
-        return attackedPlayer;
-    }
-
-    public FightCharacter getAttackingCharacter() {
-        return attackingCharacter;
-    }
-
-    public FightCharacter getAttackedCharacter() {
-        return attackedCharacter;
-    }
-
-    public int getBet() {
-        return bet;
-    }
-
-    public int getTurns() {
-        return turns;
-    }
-
-    public boolean isWinnerAttacking() {
-        return winnerAttacking;
-    }
-
-
     private final Player attackingPlayer, attackedPlayer;
     private final FightCharacter attackingCharacter, attackedCharacter;
     private int bet, turns;
@@ -46,12 +17,24 @@ public class ChallengeResult {
         attackingCharacter = createFightCharacterFromCharacter(request.getAttackingCharacter());
         attackedCharacter = createFightCharacterFromCharacter(otherCharacter);
 
-        calculateDuel();
+        if(attackedCharacter != null)
+            calculateDuel();
 
         if(winnerAttacking)
             otherCharacter.removeGold(bet);
         else
             request.getAttackingCharacter().removeGold(bet);
+    }
+
+    public ChallengeResult(ChallengeRequest request)
+    {
+        attackingPlayer = request.getAttackingPlayer();
+        attackedPlayer = request.getAttackedPlayer();
+
+        attackingCharacter = createFightCharacterFromCharacter(request.getAttackingCharacter());
+        attackedCharacter = null;
+
+        request.getAttackingCharacter().removeGold(bet);
     }
 
     private FightCharacter createFightCharacterFromCharacter(PlayerCharacter character)
@@ -89,6 +72,34 @@ public class ChallengeResult {
 
         if(dmg >= dfs)
             defender.receiveDamage();
+    }
+
+    public Player getAttackingPlayer() {
+        return attackingPlayer;
+    }
+
+    public Player getAttackedPlayer() {
+        return attackedPlayer;
+    }
+
+    public FightCharacter getAttackingCharacter() {
+        return attackingCharacter;
+    }
+
+    public FightCharacter getAttackedCharacter() {
+        return attackedCharacter;
+    }
+
+    public int getBet() {
+        return bet;
+    }
+
+    public int getTurns() {
+        return turns;
+    }
+
+    public boolean isWinnerAttacking() {
+        return winnerAttacking;
     }
 
 }

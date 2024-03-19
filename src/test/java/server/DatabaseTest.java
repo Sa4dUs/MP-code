@@ -6,7 +6,7 @@ import org.junit.jupiter.api.*;
 import server.nosql.Document;
 import server.nosql.Query;
 import server.nosql.Schema;
-import server.nosql.UserSchema;
+import server.nosql.Schemas.UserSchema;
 
 import java.util.ArrayList;
 import java.util.List;

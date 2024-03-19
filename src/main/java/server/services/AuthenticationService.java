@@ -5,7 +5,7 @@ import server.Database;
 import server.nosql.Collection;
 import server.nosql.Document;
 import server.nosql.Query;
-import server.nosql.UserSchema;
+import server.nosql.Schemas.UserSchema;
 
 public class AuthenticationService implements Service {
     public ResponseBody login(String username, String password) {
@@ -18,6 +18,13 @@ public class AuthenticationService implements Service {
     }
 
     public ResponseBody signup(String username, String password) {
+        Query query = new Query();
+        query.addFilter("username", username);
+
+        if (Database.findOne(Collection.USER, query) != null) {
+            return new ResponseBody(false);
+        }
+
         Document doc = new Document(new UserSchema());
         doc.setProperty("username", username);
         doc.setProperty("password", password);

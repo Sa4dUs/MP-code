@@ -7,11 +7,12 @@ import java.util.Map;
 public class ChallengeResultSchema extends Schema {
         public ChallengeResultSchema(){
         super(Map.of(
-                "attackerId", String.class,
-                "attackerCharacterId", String.class,
-                "attackedCharacterId", String.class,
-                "attackedId", String.class,
-                "WinnerId", String.class,
+                "attackerPlayerId", String.class,
+                "attackedPlayerId", String.class,
+                "isWinnerAttacking", Boolean.class,
+                "turns", Integer.class,
+                "attackerMinionsLeft", Integer.class,
+                "attackedMinionsLeft", Integer.class,
                 "bet", Integer.class
         ));
     }

@@ -2,9 +2,10 @@ package server.minions;
 
 public abstract class Minion {
     private String name;
+    private int health;
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
@@ -12,12 +13,10 @@ public abstract class Minion {
     }
 
     public int getHealth() {
-        return health;
+        return this.health;
     }
 
     public void setHealth(int health) {
         this.health = health;
     }
-
-    private int health;
 }

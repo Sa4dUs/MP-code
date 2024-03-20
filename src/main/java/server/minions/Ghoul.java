@@ -1,6 +1,8 @@
 package server.minions;
 
 public class Ghoul extends  Minion{
+    private int dependence;
+
     public int getDependence() {
         return dependence;
     }
@@ -8,6 +10,4 @@ public class Ghoul extends  Minion{
     public void setDependence(int dependence) {
         this.dependence = dependence;
     }
-
-    private int dependence;
 }

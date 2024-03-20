@@ -1,9 +1,9 @@
 package server.characters;
 
-public class Licantrope extends FightCharacter{
+public class Lycanthrope extends FightCharacter{
     private int maxMana;
 
-    public Licantrope(PlayerCharacter character) {
+    public Lycanthrope(PlayerCharacter character) {
         super(character);
     }
 

@@ -17,39 +17,39 @@ public class ChallengeRequest {
 
     public void accept()
     {
-        ChallengeResult result = new ChallengeResult(this, attackedPlayer.getCharacter());
-        attackedPlayer.addResult(result);
-        attackingPlayer.addResult(result);
-        attackedPlayer.deletePendingChallenge(this);
+        ChallengeResult result = new ChallengeResult(this, this.attackedPlayer.getCharacter());
+        this.attackedPlayer.addResult(result);
+        this.attackingPlayer.addResult(result);
+        this.attackedPlayer.deletePendingChallenge(this);
         //MARCELO TÓCAMELO X2
     }
 
     public void denyFromPlayer()
     {
         ChallengeResult result = new ChallengeResult(this);
-        attackedPlayer.addResult(result);
-        attackingPlayer.addResult(result);
-        attackedPlayer.deletePendingChallenge(this);
+        this.attackedPlayer.addResult(result);
+        this.attackingPlayer.addResult(result);
+        this.attackedPlayer.deletePendingChallenge(this);
         //MARCELO TÓCAMELO X3
     }
 
     public void sendToTarget()
     {
-        attackedPlayer.addPending(this);
+        this.attackedPlayer.addPending(this);
         //MARCELO TÓCAMELO X4 -> quítalo de la base de datos o algo ns xd
     }
 
     public void denyFromOperator()
     {
-        attackedPlayer.deletePendingChallenge(this);
-        attackingPlayer.deletePendingChallenge(this);
+        this.attackedPlayer.deletePendingChallenge(this);
+        this.attackingPlayer.deletePendingChallenge(this);
         //podemos notificar al usuario "attacking" de que su solicitud de duelo ha sido denegada
 
         //MARCELO TÓCAMELO Y JORGE TÓCAMELO :)
     }
 
     public Player getAttackingPlayer() {
-        return attackingPlayer;
+        return this.attackingPlayer;
     }
 
     public void setAttackingPlayer(Player attackingPlayer) {
@@ -57,7 +57,7 @@ public class ChallengeRequest {
     }
 
     public Player getAttackedPlayer() {
-        return attackedPlayer;
+        return this.attackedPlayer;
     }
 
     public void setAttackedPlayer(Player attackedPlayer) {
@@ -65,7 +65,7 @@ public class ChallengeRequest {
     }
 
     public PlayerCharacter getAttackingCharacter() {
-        return attackingCharacter;
+        return this.attackingCharacter;
     }
 
     public void setAttackingCharacter(PlayerCharacter attackingCharacter) {
@@ -73,7 +73,7 @@ public class ChallengeRequest {
     }
 
     public int getBet() {
-        return bet;
+        return this.bet;
     }
 
     public void setBet(int bet) {

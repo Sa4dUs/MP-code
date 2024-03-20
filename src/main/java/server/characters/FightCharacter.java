@@ -17,22 +17,20 @@ public abstract class FightCharacter {
 
     public FightCharacter(PlayerCharacter character)
     {
-        name = character.getName();
+        this.name = character.getName();
 
-        minionHealth = getMinionHealth(character);
-        health = character.getHealth() + minionHealth;
-        maxHealth = health;
-
-
-        activeWeaponL = character.getActiveWeaponL();
-        activeWeaponR = character.getActiveWeaponR();
+        this.minionHealth = getMinionHealth(character);
+        this.health = character.getHealth() + this.minionHealth;
+        this.maxHealth = this.health;
 
 
+        this.activeWeaponL = character.getActiveWeaponL();
+        this.activeWeaponR = character.getActiveWeaponR();
 
-        activeArmor = character.getActiveArmor();
+        this.activeArmor = character.getActiveArmor();
 
-        activeNormalAbility = character.getActiveNormalAbility();
-        activeSpecialAbility = character.getActiveSpecialAbility();
+        this.activeNormalAbility = character.getActiveNormalAbility();
+        this.activeSpecialAbility = character.getActiveSpecialAbility();
     }
 
     private int getMinionHealth(PlayerCharacter character){
@@ -52,12 +50,12 @@ public abstract class FightCharacter {
 
     public void receiveDamage()
     {
-        health --;
+        this.health--;
     }
 
     public boolean isDead()
     {
-        return  health <= 0;
+        return this.health <= 0;
     }
 
     public abstract void tick();
@@ -66,22 +64,22 @@ public abstract class FightCharacter {
     {
         int totalDamage = 0;
 
-        totalDamage += activeArmor != null ? activeArmor.getAttack() : 0;
+        totalDamage += this.activeArmor != null ? this.activeArmor.getAttack() : 0;
 
-        if(canUseAbility(activeSpecialAbility, mana))
+        if(canUseAbility(this.activeSpecialAbility, this.mana))
         {
-            totalDamage += activeSpecialAbility.getAttack();
+            totalDamage += this.activeSpecialAbility.getAttack();
             useSpecialAbility();
         }
-        else if (canUseAbility(activeNormalAbility, power))
+        else if (canUseAbility(this.activeNormalAbility, this.power))
         {
-            totalDamage += activeNormalAbility.getAttack();
+            totalDamage += this.activeNormalAbility.getAttack();
             useNormalAbility();
         }
         else
         {
-            totalDamage += activeWeaponL != null ? activeWeaponL.getAttack() : 0;
-            totalDamage += activeWeaponR != null ? activeWeaponR.getAttack() : 0;
+            totalDamage += this.activeWeaponL != null ? this.activeWeaponL.getAttack() : 0;
+            totalDamage += this.activeWeaponR != null ? this.activeWeaponR.getAttack() : 0;
         }
 
         return roll(totalDamage, 1, 6, 2);
@@ -91,22 +89,22 @@ public abstract class FightCharacter {
     {
         int totalDefense = 0;
 
-        totalDefense += activeArmor != null ? activeArmor.getDefense() : 0;
+        totalDefense += this.activeArmor != null ? this.activeArmor.getDefense() : 0;
 
-        if(canUseAbility(activeSpecialAbility, mana))
+        if(canUseAbility(this.activeSpecialAbility, this.mana))
         {
-            totalDefense += activeSpecialAbility.getDefense();
+            totalDefense += this.activeSpecialAbility.getDefense();
             useSpecialAbility();
         }
-        else if (canUseAbility(activeNormalAbility, power))
+        else if (canUseAbility(this.activeNormalAbility, this.power))
         {
-            totalDefense += activeNormalAbility.getDefense();
+            totalDefense += this.activeNormalAbility.getDefense();
             useNormalAbility();
         }
         else
         {
-            totalDefense += activeWeaponL != null ? activeWeaponL.getDefense() : 0;
-            totalDefense += activeWeaponR != null ? activeWeaponR.getDefense() : 0;
+            totalDefense += this.activeWeaponL != null ? this.activeWeaponL.getDefense() : 0;
+            totalDefense += this.activeWeaponR != null ? this.activeWeaponR.getDefense() : 0;
         }
 
         return roll(totalDefense, 1, 6, 2);
@@ -114,12 +112,12 @@ public abstract class FightCharacter {
 
     private void useNormalAbility()
     {
-        power -= activeNormalAbility.getCost();
+        this.power -= this.activeNormalAbility.getCost();
     }
 
     private void useSpecialAbility()
     {
-        mana -= activeSpecialAbility.getCost();
+        this.mana -= this.activeSpecialAbility.getCost();
     }
 
     private boolean canUseAbility(Ability ability, int resource) {
@@ -141,5 +139,5 @@ public abstract class FightCharacter {
     }
 
     private int calculateHealth()
-    { return health + minionHealth; }
+    { return this.health + this.minionHealth; }
 }

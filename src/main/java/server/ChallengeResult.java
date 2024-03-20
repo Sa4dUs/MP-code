@@ -1,6 +1,10 @@
 package server;
 
-import server.characters.*;
+import server.characters.FightCharacter;
+import server.characters.Hunter;
+import server.characters.PlayerCharacter;
+import server.characters.Vampire;
+import server.characters.Lycanthrope;
 
 public class ChallengeResult {
     private final Player attackingPlayer, attackedPlayer;
@@ -11,28 +15,31 @@ public class ChallengeResult {
 
     public ChallengeResult(ChallengeRequest request, PlayerCharacter otherCharacter)
     {
-        attackingPlayer = request.getAttackingPlayer();
-        attackedPlayer = request.getAttackedPlayer();
+        this.attackingPlayer = request.getAttackingPlayer();
+        this.attackedPlayer = request.getAttackedPlayer();
 
-        attackingCharacter = createFightCharacterFromCharacter(request.getAttackingCharacter());
-        attackedCharacter = createFightCharacterFromCharacter(otherCharacter);
+        this.attackingCharacter = createFightCharacterFromCharacter(request.getAttackingCharacter());
+        this.attackedCharacter = createFightCharacterFromCharacter(otherCharacter);
 
-        if(attackedCharacter != null)
+        if(this.attackedCharacter != null) {
             calculateDuel();
+        }
 
-        if(winnerAttacking)
-            otherCharacter.removeGold(bet);
-        else
-            request.getAttackingCharacter().removeGold(bet);
+        if(this.winnerAttacking) {
+            otherCharacter.removeGold(this.bet);
+            return;
+        }
+
+        request.getAttackingCharacter().removeGold(this.bet);
     }
 
     public ChallengeResult(ChallengeRequest request)
     {
-        attackingPlayer = request.getAttackingPlayer();
-        attackedPlayer = request.getAttackedPlayer();
+        this.attackingPlayer = request.getAttackingPlayer();
+        this.attackedPlayer = request.getAttackedPlayer();
 
-        attackingCharacter = createFightCharacterFromCharacter(request.getAttackingCharacter());
-        attackedCharacter = null;
+        this.attackingCharacter = createFightCharacterFromCharacter(request.getAttackingCharacter());
+        this.attackedCharacter = null;
 
         request.getAttackingCharacter().removeGold(bet);
     }
@@ -42,14 +49,15 @@ public class ChallengeResult {
         return switch (character.getBreed()) {
             case Hunter -> new Hunter(character);
             case Vampire -> new Vampire(character);
-            case Licantrope -> new Licantrope(character);
+            case Lycanthrope -> new Lycanthrope(character);
             default -> null;
         };
     }
 
     private void calculateDuel()
     {
-        FightCharacter attacker = attackingCharacter, defender = attackedCharacter;
+        FightCharacter attacker = this.attackingCharacter;
+        FightCharacter defender = this.attackedCharacter;
 
         while (!defender.isDead())
         {
@@ -59,10 +67,10 @@ public class ChallengeResult {
             attacker = defender;
             defender = aux;
 
-            turns ++;
+            this.turns++;
         }
 
-        winnerAttacking = attacker == attackingCharacter;
+        this.winnerAttacking = attacker == this.attackingCharacter;
     }
 
     private void calculateTurn(FightCharacter attacker, FightCharacter defender)
@@ -75,31 +83,31 @@ public class ChallengeResult {
     }
 
     public Player getAttackingPlayer() {
-        return attackingPlayer;
+        return this.attackingPlayer;
     }
 
     public Player getAttackedPlayer() {
-        return attackedPlayer;
+        return this.attackedPlayer;
     }
 
     public FightCharacter getAttackingCharacter() {
-        return attackingCharacter;
+        return this.attackingCharacter;
     }
 
     public FightCharacter getAttackedCharacter() {
-        return attackedCharacter;
+        return this.attackedCharacter;
     }
 
     public int getBet() {
-        return bet;
+        return this.bet;
     }
 
     public int getTurns() {
-        return turns;
+        return this.turns;
     }
 
     public boolean isWinnerAttacking() {
-        return winnerAttacking;
+        return this.winnerAttacking;
     }
 
 }

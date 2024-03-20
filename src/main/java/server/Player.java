@@ -23,7 +23,7 @@ public class Player extends User{
     }
 
     public PlayerCharacter getCharacter() {
-        return character;
+        return this.character;
     }
 
     public void setCharacter(PlayerCharacter character) {
@@ -31,23 +31,23 @@ public class Player extends User{
     }
 
     public void addResult(ChallengeResult result) {
-        results.add(result);
+        this.results.add(result);
     }
 
     public void deletePendingChallenge(ChallengeRequest pending){
-        pendingDuels.remove(pending);
+        this.pendingDuels.remove(pending);
     }
 
     public void addPending(ChallengeRequest request) {
-        pendingDuels.add(request);
+        this.pendingDuels.add(request);
     }
 
     public List<ChallengeRequest> getPendingDuels() {
-        return pendingDuels;
+        return this.pendingDuels;
     }
 
     public List<ChallengeResult> getResults() {
-        return results;
+        return this.results;
     }
 
 }

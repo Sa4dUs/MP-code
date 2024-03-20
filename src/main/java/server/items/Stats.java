@@ -1,8 +1,12 @@
 package server.items;
 
 public abstract class Stats {
+    private String name;
+    private int attack;
+    private int defense;
+
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
@@ -10,7 +14,7 @@ public abstract class Stats {
     }
 
     public int getAttack() {
-        return attack;
+        return this.attack;
     }
 
     public void setAttack(int attack) {
@@ -18,14 +22,11 @@ public abstract class Stats {
     }
 
     public int getDefense() {
-        return defense;
+        return this.defense;
     }
 
     public void setDefense(int defense) {
         this.defense = defense;
     }
 
-    private String name;
-    private int attack;
-    private int defense;
 }

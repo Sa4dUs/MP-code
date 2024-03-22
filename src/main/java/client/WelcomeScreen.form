@@ -3,7 +3,7 @@
   <grid id="27dc6" layout-manager="GridLayoutManager" row-count="5" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="3" left="3" bottom="3" right="3"/>
     <constraints>
-      <xy x="20" y="20" width="500" height="400"/>
+      <xy x="20" y="20" width="584" height="391"/>
     </constraints>
     <properties>
       <background color="-1708289"/>
@@ -20,7 +20,7 @@
         <properties>
           <enabled value="true"/>
           <foreground color="-16777216"/>
-          <text value="Game tittle"/>
+          <text value="Game title"/>
         </properties>
       </component>
       <component id="a8590" class="javax.swing.JButton" binding="SignUp">
@@ -29,6 +29,7 @@
         </constraints>
         <properties>
           <enabled value="true"/>
+          <foreground color="-1"/>
           <text value="SignUp"/>
         </properties>
       </component>
@@ -38,6 +39,7 @@
         </constraints>
         <properties>
           <enabled value="true"/>
+          <foreground color="-1"/>
           <text value="Log In"/>
         </properties>
       </component>

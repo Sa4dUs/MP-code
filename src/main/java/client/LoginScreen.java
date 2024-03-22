@@ -4,7 +4,9 @@ import javax.swing.*;
 
 public class LoginScreen implements Screen{
     private JButton logInButton;
-    private JTextField Username;
-    private JPasswordField Password;
+    private JTextField username;
+    private JPasswordField password;
+    private JTextArea donTHaveAnTextArea;
+    private JButton signUp;
 
 }

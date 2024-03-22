@@ -257,8 +257,10 @@
         </constraints>
         <properties>
           <background color="-1708289"/>
+          <enabled value="false"/>
+          <opaque value="true"/>
         </properties>
-        <border type="none"/>
+        <border type="empty"/>
         <children>
           <component id="8525" class="javax.swing.JButton" default-binding="true">
             <constraints>

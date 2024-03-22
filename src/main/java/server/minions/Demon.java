@@ -19,6 +19,10 @@ public class Demon extends Minion{
         return this.minions;
     }
 
+    public void addMinions(Minion minion){
+        this.minions.add(minion);
+    }
+
     public void setMinions(List<Minion> minions) {
         this.minions = minions;
     }

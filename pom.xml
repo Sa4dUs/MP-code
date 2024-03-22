@@ -31,5 +31,10 @@
             <artifactId>json</artifactId>
             <version>20231013</version>
         </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-util-ajax</artifactId>
+            <version>9.4.46.v20220331</version>
+        </dependency>
     </dependencies>
 </project>

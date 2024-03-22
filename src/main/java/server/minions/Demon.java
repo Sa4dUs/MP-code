@@ -23,11 +23,16 @@ public class Demon extends Minion{
         this.minions = minions;
     }
 
-    public int getMinionsHealth() {
+    private int getMinionsHealth() {
         int totalHealth = 0;
         for (Minion m: this.minions) {
             totalHealth += m.getHealth();
         }
         return totalHealth;
+    }
+
+    @Override
+    public int getHealth(){
+        return super.getHealth() + getMinionsHealth();
     }
 }

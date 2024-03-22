@@ -36,8 +36,9 @@ public abstract class FightCharacter {
     private int getMinionHealth(PlayerCharacter character){
         List<Minion> minionList = character.getMinionList();
 
-        if(minionList == null)
-            return  0;
+        if(minionList == null) {
+            return 0;
+        }
 
         int mHealth = 0;
 

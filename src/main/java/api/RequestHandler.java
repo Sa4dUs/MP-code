@@ -5,9 +5,14 @@ import lib.RequestBody;
 import lib.ResponseBody;
 import lib.Route;
 
-public class RequestHandler extends Handler<Handler<NFunction<ResponseBody>>> {
+import java.util.HashMap;
+import java.util.Map;
 
+public class RequestHandler {
+
+    private final Map<String, Handler> operations;
     public RequestHandler() {
+        this.operations = new HashMap<>();
         this.operations.put(Endpoint.AUTH, new AuthenticationHandler());
         this.operations.put(Endpoint.CHARACTER, new CharacterHandler());
         this.operations.put(Endpoint.CHALLENGE, new ChallengeHandler());
@@ -18,7 +23,7 @@ public class RequestHandler extends Handler<Handler<NFunction<ResponseBody>>> {
 
         Route route = new Route(endpoint);
 
-        Handler<NFunction<ResponseBody>> handler = this.operations.getOrDefault(route.pop(), null);
+        Handler handler = this.operations.getOrDefault(route.pop(), null);
 
         return handler == null ? null : handler.request(route.pop(), body);
     }

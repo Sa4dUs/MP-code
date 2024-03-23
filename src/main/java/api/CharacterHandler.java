@@ -3,13 +3,18 @@ package api;
 import lib.NFunction;
 import lib.RequestBody;
 import lib.ResponseBody;
-import api.Handler;
+import server.characters.Character;
+import server.services.AuthenticationService;
+import server.services.CharacterService;
 
-import java.util.function.Function;
+public class CharacterHandler extends Handler {
+    private CharacterService service = null;
 
-public class CharacterHandler extends Handler<NFunction<ResponseBody>> {
-    public ResponseBody request(String endpoint, RequestBody body) {
-
-        return new ResponseBody();
+    public CharacterHandler() {
+        this.service = new CharacterService();
+        this.operations.put(null, req -> new ResponseBody());
+        this.operations.put("create", req -> this.service.createCharacter((Character) req.getField("character")));
+        this.operations.put("update", req -> this.service.updateCharacter((String) req.getField("id"), (Character) req.getField("character")));
+        this.operations.put("delete", req -> this.service.deleteCharacter((String) req.getField("id")));
     }
 }

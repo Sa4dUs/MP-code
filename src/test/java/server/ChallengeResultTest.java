@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class ChallengeResultTest {
 
     @Test
-    public void testDuelResult()
+    public void testDuelBattle()
     {
         Player p1 = new Player();
         Player p2 = new Player();
@@ -37,7 +37,7 @@ public class ChallengeResultTest {
         defCharacter.setActiveWeaponL(wp2);
 
         ChallengeRequest request = new ChallengeRequest(p1, p2, attCharacter);
-        ChallengeResult res = new ChallengeResult(request, defCharacter);
+        ChallengeResult res = new ChallengeResult(request, defCharacter, 100);
 
         assertTrue(res.isWinnerAttacking());
     }

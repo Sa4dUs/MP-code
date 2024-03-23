@@ -17,7 +17,7 @@ public class ChallengeRequest {
 
     public void accept()
     {
-        ChallengeResult result = new ChallengeResult(this, this.attackedPlayer.getCharacter());
+        ChallengeResult result = new ChallengeResult(this, this.attackedPlayer.getCharacter(), bet);
         this.attackedPlayer.addResult(result);
         this.attackingPlayer.addResult(result);
         this.attackedPlayer.deletePendingChallenge(this);

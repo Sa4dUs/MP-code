@@ -49,6 +49,8 @@ public abstract class FightCharacter {
         return mHealth;
     }
 
+    public int getReceivedDamage(){return maxHealth - health;}
+
     public void receiveDamage()
     {
         this.health--;

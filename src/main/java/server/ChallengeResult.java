@@ -8,21 +8,31 @@ import server.characters.Lycanthrope;
 
 public class ChallengeResult {
     private final Player attackingPlayer, attackedPlayer;
-    private final FightCharacter attackingCharacter, attackedCharacter;
     private int bet, turns;
-
+    private int attackerMinionsLeft, attackedMinionsLeft;
     private boolean winnerAttacking = true;
 
-    public ChallengeResult(ChallengeRequest request, PlayerCharacter otherCharacter)
+    public ChallengeResult(ChallengeRequest request, PlayerCharacter otherCharacter, int bet)
     {
+        this.bet = bet;
+
         this.attackingPlayer = request.getAttackingPlayer();
         this.attackedPlayer = request.getAttackedPlayer();
 
-        this.attackingCharacter = createFightCharacterFromCharacter(request.getAttackingCharacter());
-        this.attackedCharacter = createFightCharacterFromCharacter(otherCharacter);
+        PlayerCharacter attackingPlayerCharacter = request.getAttackingCharacter();
 
-        if(this.attackedCharacter != null) {
-            calculateDuel();
+
+        FightCharacter attackingCharacter = createFightCharacterFromCharacter(attackingPlayerCharacter);
+        FightCharacter attackedCharacter = createFightCharacterFromCharacter(otherCharacter);
+
+        attackerMinionsLeft = attackingPlayerCharacter.getMinionCount();
+        attackedMinionsLeft = otherCharacter.getMinionCount();
+
+
+        if(attackedCharacter != null) {
+            calculateDuel(attackingCharacter, attackedCharacter);
+            attackerMinionsLeft -= attackingPlayerCharacter.calculateMinionsKilledAfterDamage(attackingCharacter.getReceivedDamage());
+            attackedMinionsLeft -= otherCharacter.calculateMinionsKilledAfterDamage(attackedCharacter.getReceivedDamage());
         }
 
         if(this.winnerAttacking) {
@@ -38,8 +48,8 @@ public class ChallengeResult {
         this.attackingPlayer = request.getAttackingPlayer();
         this.attackedPlayer = request.getAttackedPlayer();
 
-        this.attackingCharacter = createFightCharacterFromCharacter(request.getAttackingCharacter());
-        this.attackedCharacter = null;
+        FightCharacter attackingCharacter = createFightCharacterFromCharacter(request.getAttackingCharacter());
+        FightCharacter attackedCharacter = null;
 
         request.getAttackingCharacter().removeGold(bet);
     }
@@ -54,10 +64,10 @@ public class ChallengeResult {
         };
     }
 
-    private void calculateDuel()
+    private void calculateDuel(FightCharacter attackingCharacter, FightCharacter attackedCharacter)
     {
-        FightCharacter attacker = this.attackingCharacter;
-        FightCharacter defender = this.attackedCharacter;
+        FightCharacter attacker = attackingCharacter;
+        FightCharacter defender = attackedCharacter;
 
         while (!defender.isDead())
         {
@@ -70,7 +80,7 @@ public class ChallengeResult {
             this.turns++;
         }
 
-        this.winnerAttacking = attacker == this.attackingCharacter;
+        this.winnerAttacking = attacker == attackingCharacter;
     }
 
     private void calculateTurn(FightCharacter attacker, FightCharacter defender)
@@ -88,14 +98,6 @@ public class ChallengeResult {
 
     public Player getAttackedPlayer() {
         return this.attackedPlayer;
-    }
-
-    public FightCharacter getAttackingCharacter() {
-        return this.attackingCharacter;
-    }
-
-    public FightCharacter getAttackedCharacter() {
-        return this.attackedCharacter;
     }
 
     public int getBet() {

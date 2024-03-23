@@ -1,14 +1,12 @@
 package server.nosql.Schemas;
 
-import server.nosql.Schema;
-
 import java.util.Map;
 
-public class PlayerSchema extends Schema {
+public class PlayerSchema extends UserSchema {
     public PlayerSchema() {
-        super(Map.of(
-                "username", String.class,
-                "password", String.class
-        ));
+        super();
+        this.schema.put("playerCharacterId", String.class);
+        this.schema.put("pendingDuelId", String[].class);
+        this.schema.put("duelResultID", String[].class);
     }
 }

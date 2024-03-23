@@ -4,12 +4,11 @@ import server.nosql.Schema;
 
 import java.util.Map;
 
-public class UserSchema extends Schema {
-    public UserSchema() {
+public class MinionSchema extends Schema {
+    public MinionSchema() {
         super(Map.of(
                 "name", String.class,
-                "nick", String.class,
-                "password", String.class
+                "hp", Integer.class
         ));
     }
 }

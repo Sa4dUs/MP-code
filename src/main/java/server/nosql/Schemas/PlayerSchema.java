@@ -8,5 +8,6 @@ public class PlayerSchema extends UserSchema {
         this.schema.put("playerCharacterId", String.class);
         this.schema.put("pendingDuelId", String[].class);
         this.schema.put("duelResultID", String[].class);
+        this.schema.put("isBlocked", Boolean.class);
     }
 }

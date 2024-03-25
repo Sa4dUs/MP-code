@@ -14,6 +14,8 @@ public class CharacterSchema extends Schema {
                 "armorId", String[].class,
                 "abilityId(N)", String[].class,
                 "abilityId(S)", String[].class,
+                "characteristicId(D)", String[].class,
+                "characteristicId(S)", String[].class,
                 "minionId", String[].class
         ));
     }

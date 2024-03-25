@@ -37,7 +37,7 @@ public class Demon extends Minion{
     }
 
     public void setPact(String pact) {
-        this.pact = pact;
+        this.pact = pact != null ? pact: "Undefined";
     }
 
     public int getMinionCount()

@@ -8,7 +8,8 @@ public class StatsSchema extends Schema {
     public StatsSchema() {
         super(Map.of(
                 "atk", Integer.class,
-                "dfs", Integer.class
+                "dfs", Integer.class,
+                "name", String.class
         ));
     }
 }

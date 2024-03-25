@@ -19,7 +19,7 @@
         </constraints>
         <properties>
           <enabled value="true"/>
-          <font size="20" style="1"/>
+          <font size="24" style="1"/>
           <foreground color="-16777216"/>
           <text value="Game Title"/>
         </properties>
@@ -33,7 +33,7 @@
           <borderPainted value="false"/>
           <enabled value="true"/>
           <foreground color="-1"/>
-          <text value="SignUp"/>
+          <text value="Sign Up"/>
         </properties>
       </component>
       <component id="68b7" class="javax.swing.JButton" binding="LogIn">

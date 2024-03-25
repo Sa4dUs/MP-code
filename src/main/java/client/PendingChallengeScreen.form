@@ -69,6 +69,7 @@
                 </constraints>
                 <properties>
                   <background color="-1708289"/>
+                  <borderPainted value="false"/>
                   <enabled value="true"/>
                   <foreground color="-1"/>
                   <text value="Accept"/>
@@ -137,6 +138,7 @@
             </constraints>
             <properties>
               <background color="-1708289"/>
+              <borderPainted value="false"/>
               <enabled value="true"/>
               <foreground color="-1"/>
               <text value="Accept"/>
@@ -193,6 +195,7 @@
             </constraints>
             <properties>
               <background color="-1708289"/>
+              <borderPainted value="false"/>
               <enabled value="true"/>
               <foreground color="-1"/>
               <text value="Accept"/>
@@ -249,6 +252,7 @@
             </constraints>
             <properties>
               <background color="-1708289"/>
+              <borderPainted value="false"/>
               <enabled value="true"/>
               <foreground color="-1"/>
               <text value="Accept"/>
@@ -305,6 +309,7 @@
             </constraints>
             <properties>
               <background color="-1708289"/>
+              <borderPainted value="false"/>
               <enabled value="true"/>
               <foreground color="-1"/>
               <text value="Accept"/>

@@ -6,7 +6,6 @@ public abstract class User {
 
     private String name, nick, password;
 
-<<<<<<< Updated upstream
     public String getName() {
         return name;
     }
@@ -21,7 +20,8 @@ public abstract class User {
 
     public void setNick(String nick) {
         this.nick = nick;
-=======
+    }
+
     public User() {}
 
     public User(String name, String nick, String password) {
@@ -34,6 +34,5 @@ public abstract class User {
         this.name = (String) doc.getProperty("name");
         this.nick = (String) doc.getProperty("nick");
         this.password = (String) doc.getProperty("password");
->>>>>>> Stashed changes
     }
 }

@@ -6,20 +6,13 @@ import server.characters.PlayerCharacter;
 import java.util.ArrayList;
 import java.util.List;
 
-<<<<<<< Updated upstream
-public class Player extends User{
-=======
 public class Player extends User {
     private String id;
->>>>>>> Stashed changes
     private List<ChallengeRequest> pendingDuels = new ArrayList<>();
     private List<ChallengeResult> results = new ArrayList<>();
     private PlayerCharacter character;
     private boolean blocked;
 
-<<<<<<< Updated upstream
-    public void sendChallenge (Player target, int bet){
-=======
     public Player() {
         super();
     }
@@ -28,7 +21,6 @@ public class Player extends User {
     }
 
     private void sendChallenge (Player target, int bet){
->>>>>>> Stashed changes
         if (target.getCharacter().getGold() >= bet) {
             ChallengeRequest request = new ChallengeRequest(this, target, this.character);
             //MARCELO TÓCAMELO añade request a la database

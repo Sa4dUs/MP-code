@@ -1,6 +1,8 @@
 package server.items;
 
 public abstract class Stats {
+
+    private String id;
     private String name;
     private int attack;
     private final int maxAttack = 3;

@@ -7,16 +7,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Player extends User{
-    private String id;
     private List<ChallengeRequest> pendingDuels = new ArrayList<>();
     private List<ChallengeResult> results = new ArrayList<>();
     private PlayerCharacter character;
     private boolean blocked;
 
-    private void sendChallenge (Player target, int bet){
+    public void sendChallenge (Player target, int bet){
         if (target.getCharacter().getGold() >= bet) {
             ChallengeRequest request = new ChallengeRequest(this, target, this.character);
-            //MARCELO TÓCAMELO
+            //MARCELO TÓCAMELO añade request a la database
             return;
         }
         //no bro

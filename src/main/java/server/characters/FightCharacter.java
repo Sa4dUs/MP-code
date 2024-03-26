@@ -9,6 +9,8 @@ import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 public abstract class FightCharacter {
+
+    private String id;
     private String name;
     private int maxHealth, health, minionHealth, power, mana;
     private Weapon activeWeaponL, activeWeaponR;

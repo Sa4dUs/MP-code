@@ -1,6 +1,7 @@
 package server.minions;
 
 public abstract class Minion {
+    private String id;
     private String name = "Undefined";
     private int health = 1;
     private final int maxHealth = 3;

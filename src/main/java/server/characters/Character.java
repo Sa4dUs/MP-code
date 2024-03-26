@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Character {
+
+    private String id;
     private String name;
     private int health;
     private int gold;

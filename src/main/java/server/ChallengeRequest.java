@@ -4,9 +4,16 @@ import server.characters.Character;
 import server.characters.PlayerCharacter;
 
 public class ChallengeRequest {
+
+    private String id;
     private Player attackingPlayer, attackedPlayer;
     private PlayerCharacter attackingCharacter;
     private int bet;
+
+    public String getId()
+    {
+        return id;
+    }
 
     public ChallengeRequest(Player attackingPlayer, Player attackedPlayer, PlayerCharacter character)
     {

@@ -1,6 +1,9 @@
 package client.ui;
 
+import client.Client;
 import client.ScreenManager;
+import lib.RequestBody;
+import lib.ResponseBody;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -17,7 +20,26 @@ public class SignupScreen extends Screen {
         signUpButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // TODO!
+                String user = username.getText();
+                String pwd = new String(password.getPassword());
+
+                if (user == null) {
+                    // TODO! Add visual feedback
+                    return;
+                }
+
+                RequestBody body = new RequestBody();
+                body.addField("username", user);
+                body.addField("password", pwd);
+
+                ResponseBody response = Client.request("auth/signup", body);
+
+                if (!response.ok) {
+                    // TODO! Add visual feedback
+                    return;
+                }
+
+                ScreenManager.render(Dashboard.class);
             }
         });
         alreadyHaveAnAccountButton.addActionListener(new ActionListener() {

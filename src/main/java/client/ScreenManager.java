@@ -9,7 +9,7 @@ import java.lang.reflect.InvocationTargetException;
 
 public class ScreenManager {
     private static JFrame frame;
-    public static void start() {
+    public static void start(Object[] ...args) {
         frame = new JFrame();
         ScreenManager.render(WelcomeScreen.class);
     }

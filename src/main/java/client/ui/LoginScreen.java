@@ -37,11 +37,9 @@ public class LoginScreen extends Screen {
 
                 if (!response.ok) {
                     // TODO! Add visual feedback
-                    System.out.println("Login failed");
                     return;
                 }
 
-                System.out.println("Login successful");
                 ScreenManager.render(Dashboard.class);
             }
         });

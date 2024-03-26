@@ -1,10 +1,10 @@
-package client;
+package client.ui;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class SendChallengeScreen implements Screen{
+public class SendChallengeScreen extends Screen {
     private JTextField textField1;
     private JTextField textField2;
     private JButton challengeButton;

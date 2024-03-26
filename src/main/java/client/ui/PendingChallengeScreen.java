@@ -1,8 +1,9 @@
-package client;
+package client.ui;
 
 import javax.swing.*;
 
-public class HistoryScreen implements Screen{
+public class PendingChallengeScreen extends Screen {
+    private JButton denyButton;
     private JPanel frame;
 
     public JPanel getPanel() {

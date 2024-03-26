@@ -1,11 +1,9 @@
-package client;
+package client.ui;
 
 import javax.swing.*;
 
-public class PlayerDashboardScreen implements Screen{
-
-
-    private JTextArea a1ºTextArea;
+public class CharacterScreen extends Screen {
+    private JComboBox comboBox1;
     private JPanel frame;
 
     public JPanel getPanel() {

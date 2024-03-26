@@ -8,15 +8,18 @@ public class Client {
     private static Client instance;
     private final RequestHandler handler;
 
-    public Client() {
+    private Client() {
         handler = new RequestHandler();
+    }
 
+    public static Client getInstance() {
         if (instance == null) {
-            instance = this;
+            instance = new Client();
         }
+        return instance;
     }
 
     public static ResponseBody request(String endpoint, RequestBody body) {
-        return instance.handler.request(endpoint, body);
+        return getInstance().handler.request(endpoint, body);
     }
 }

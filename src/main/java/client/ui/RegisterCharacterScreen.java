@@ -1,8 +1,8 @@
-package client;
+package client.ui;
 
 import javax.swing.*;
 
-public class RegisterCharacterScreen implements Screen{
+public class RegisterCharacterScreen extends Screen {
     private JButton placeholderButton;
     private JScrollBar scrollBar1;
     private JPanel frame;

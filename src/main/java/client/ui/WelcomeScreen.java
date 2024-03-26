@@ -1,24 +1,26 @@
-package client;
+package client.ui;
+
+import client.ScreenManager;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class SignupScreen implements Screen{
-    private JButton signUpButton;
-    private JTextField username;
-    private JPasswordField password;
+public class WelcomeScreen extends Screen {
+    private JButton SignUp;
+    private JButton LogIn;
+    private JLabel GameTittle;
     private JPanel frame;
-    private JButton alreadyHaveAnAccountButton;
 
-    public SignupScreen() {
-        signUpButton.addActionListener(new ActionListener() {
+    public WelcomeScreen()  {
+        SignUp.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // TODO!
+                ScreenManager.render(SignupScreen.class);
             }
         });
-        alreadyHaveAnAccountButton.addActionListener(new ActionListener() {
+
+        LogIn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ScreenManager.render(LoginScreen.class);

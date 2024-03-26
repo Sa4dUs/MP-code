@@ -1,10 +1,8 @@
-package client;
+package client.ui;
 
 import javax.swing.*;
-import java.awt.*;
 
-public class CharacterScreen implements Screen {
-    private JComboBox comboBox1;
+public class RankingScreen extends Screen {
     private JPanel frame;
 
     public JPanel getPanel() {

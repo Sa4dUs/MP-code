@@ -15,7 +15,6 @@ import java.util.concurrent.Executors;
 import static lib.JSON.*;
 
 public class Database {
-
     public static Database instance;
     private static final String PATH = "./src/main/resources/";
     private static final ExecutorService executor = Executors.newFixedThreadPool(5);
@@ -24,6 +23,10 @@ public class Database {
     public Database() {
         if (instance != null)
             instance = this;
+    }
+
+    public static void start() {
+
     }
 
     public static Document findOne(String collection, Query query) {

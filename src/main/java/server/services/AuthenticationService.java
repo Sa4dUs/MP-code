@@ -13,7 +13,6 @@ public class AuthenticationService implements Service {
         query.addFilter("username", username);
         query.addFilter("password", password);
         Document user = Database.findOne(Collection.USER, query);
-
         return new ResponseBody( user != null );
     }
 

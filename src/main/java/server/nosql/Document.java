@@ -14,6 +14,7 @@ public class Document {
         this.schema = null;
         this.properties = new HashMap<String, Object>();
     }
+
     public Document(Schema schema) {
         this.schema = schema;
         properties = new HashMap<>();
@@ -84,5 +85,10 @@ public class Document {
 
     public String getId() {
         return (String) this.properties.get("id");
+    }
+
+    public static Document fromJSON(String jsonString) {
+        JSONObject jsonObject = new JSONObject(jsonString);
+        return new Document(jsonObject);
     }
 }

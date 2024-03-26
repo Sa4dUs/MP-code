@@ -36,6 +36,20 @@ public class Database {
                 return existingDoc;
             }
         }
+
+        JSONObject jsonObject = null;
+        try {
+            jsonObject = readJSONObjectFromFile(PATH + collection + ".json");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        for (String key : jsonObject.keySet()) {
+            JSONObject docObject = jsonObject.getJSONObject(key);
+            Document document = Document.fromJSON(docObject.toString());
+            if (query.matches(document)) {
+                return document;
+            }
+        }
         return null;
     }
 
@@ -45,6 +59,19 @@ public class Database {
         for (Document existingDoc : documents.values()) {
             if (query.matches(existingDoc)) {
                 result.add(existingDoc);
+            }
+        }
+        JSONObject jsonObject = null;
+        try {
+            jsonObject = readJSONObjectFromFile(PATH + collection + ".json");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        for (String key : jsonObject.keySet()) {
+            JSONObject docObject = jsonObject.getJSONObject(key);
+            Document document = Document.fromJSON(docObject.toString());
+            if (query.matches(document) && !result.contains(document)) {
+                result.add(document);
             }
         }
         return result;

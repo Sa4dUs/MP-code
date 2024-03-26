@@ -8,5 +8,9 @@ public class LoginScreen implements Screen{
     private JPasswordField password;
     private JTextArea donTHaveAnTextArea;
     private JButton signUp;
+    private JPanel frame;
 
+    public JPanel getPanel() {
+        return this.frame;
+    }
 }

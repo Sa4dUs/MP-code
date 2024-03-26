@@ -9,7 +9,7 @@ public class ScreenManager {
 
     private static JFrame frame;
     public static void start() {
-        JFrame frame = new JFrame();
+        frame = new JFrame();
         Screen screen = new WelcomeScreen();
         ScreenManager.render(screen);
     }

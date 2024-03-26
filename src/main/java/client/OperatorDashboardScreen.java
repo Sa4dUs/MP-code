@@ -9,5 +9,10 @@ public class OperatorDashboardScreen implements Screen{
     private JTextField textField2;
     private JTextField textField1;
     private JButton deleteButton;
+    private JPanel frame;
+
+    public JPanel getPanel() {
+        return this.frame;
+    }
 
 }

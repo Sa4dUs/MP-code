@@ -135,4 +135,6 @@ public class Character {
     public List<Characteristic> getResistancesList() {
         return resistancesList;
     }
+
+    public String getId(){return id;}
 }

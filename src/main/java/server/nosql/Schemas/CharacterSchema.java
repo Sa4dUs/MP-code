@@ -18,5 +18,7 @@ public class CharacterSchema extends Schema {
                 "characteristicId(S)", String[].class,
                 "minionId", String[].class
         ));
+        super.schema.put("id", String.class);
+        super.schema.put("gold", Integer.class);
     }
 }

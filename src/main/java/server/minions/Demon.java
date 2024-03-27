@@ -82,4 +82,9 @@ public class Demon extends Minion{
     public int getHealth(){
         return super.getHealth() + getMinionsHealth();
     }
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }

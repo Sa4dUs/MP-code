@@ -6,6 +6,12 @@ public abstract class Minion {
     private int health = 1;
     private final int maxHealth = 3;
 
+    @Override
+    public String toString()
+    {
+        return id;
+    }
+
     public String getName() {
         return this.name;
     }

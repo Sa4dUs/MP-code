@@ -3,6 +3,10 @@ package server.items;
 public class Ability extends Stats{
     private int cost;
 
+    @Override
+    public String toString() {
+        return super.toString();
+    }
     public int getCost() {
         return cost;
     }

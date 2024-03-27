@@ -23,9 +23,9 @@ public class ChallengeService implements Service {
     {
         Document doc = new Document(new ChallengeRequestSchema());
         doc.setProperty("bet", challenge.getBet());
-        doc.setProperty("attackerId", challenge.getAttackingPlayer());
-        doc.setProperty("attackedId", challenge.getAttackedPlayer());
-        Database.insertOne(Collection.CHALLENGE, doc);
+        doc.setProperty("attackerId", challenge.getAttackingPlayer().getNick());
+        doc.setProperty("attackedId", challenge.getAttackedPlayer().getNick());
+        Database.insertOne(Collection.CHALLENGE_OPERATORS, doc);
         return new ResponseBody(true);
     }
 
@@ -33,10 +33,15 @@ public class ChallengeService implements Service {
     {
         Query query = new Query();
         query.addFilter("id", id);
-        Document doc = Database.findOne(Collection.CHALLENGE, query);
+        Document doc = new Document();
+        doc = Database.findOne(Collection.CHALLENGE, query);
 
         if(doc == null)
-            return new ResponseBody(false);
+        {
+            doc = Database.findOne(Collection.CHALLENGE_OPERATORS, query);
+            if(doc == null)
+                return new ResponseBody(false);
+        }
 
         ResponseBody res = new ResponseBody(true);
         res.addField("data", doc);
@@ -80,16 +85,20 @@ public class ChallengeService implements Service {
 
     public ResponseBody acceptChallengeFromOperator(ChallengeRequest challenge, String nick)
     {
+        Query query = new Query();
+        query.addFilter("id", challenge.getId());
+        Database.deleteOne(Collection.CHALLENGE_OPERATORS, query);
+
         return addIdToPlayer(challenge.getId(), nick, "pendingDuelId");
     }
 
     public ResponseBody denyChallengeFromOperator(ChallengeRequest challenge)
     {
         ChallengeResult result = new ChallengeResult();
+
         Query query = new Query();
         query.addFilter("id", challenge.getId());
-
-        Database.deleteOne(Collection.CHALLENGE, query);
+        Database.deleteOne(Collection.CHALLENGE_OPERATORS, query);
 
         Document resDoc = createResultDocument(result);
 

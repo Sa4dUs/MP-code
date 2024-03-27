@@ -4,6 +4,11 @@ public class Human extends Minion{
     private int loyalty = 1;
     private final int maxLoyalty = 3;
 
+    @Override
+    public String toString() {
+        return super.toString();
+    }
+
     public int getLoyalty() {
         return this.loyalty;
     }

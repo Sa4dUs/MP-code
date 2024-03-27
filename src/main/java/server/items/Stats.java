@@ -9,6 +9,11 @@ public abstract class Stats {
     private int defense;
     private final int maxDefense = 3;
 
+    @Override
+    public String toString()
+    {
+        return id;
+    }
     public String getName() {
         return this.name;
     }

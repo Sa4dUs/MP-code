@@ -4,6 +4,10 @@ public class Ghoul extends  Minion{
     private int dependence;
     private final int maxDependence = 5;
 
+    @Override
+    public String toString() {
+        return super.toString();
+    }
     public int getDependence() {
         return dependence;
     }

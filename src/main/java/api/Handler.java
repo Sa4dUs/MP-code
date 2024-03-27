@@ -18,6 +18,7 @@ public abstract class Handler {
                 return new ResponseBody(false);
             }).apply(body);
         } catch (Exception e) {
+            e.printStackTrace();
             return new ResponseBody(false);
         }
 

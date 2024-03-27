@@ -2,9 +2,27 @@ package server;
 
 import server.nosql.Document;
 
-public abstract class User {
+public class User {
 
     private String name, nick, password;
+
+    private Boolean isOperator;
+
+    public User() {}
+
+    public User(String name, String nick, String password, Boolean isOperator) {
+        this.name = name;
+        this.nick = nick;
+        this.password = password;
+        this.isOperator = isOperator;
+    }
+
+    public User(Document doc) {
+        this.name = (String) doc.getProperty("name");
+        this.nick = (String) doc.getProperty("nick");
+        this.password = (String) doc.getProperty("password");
+        this.isOperator = doc.getProperty("isOperator").equals("true");
+    }
 
     public String getName() {
         return name;
@@ -22,17 +40,11 @@ public abstract class User {
         this.nick = nick;
     }
 
-    public User() {}
-
-    public User(String name, String nick, String password) {
-        this.name = name;
-        this.nick = nick;
-        this.password = password;
+    public Boolean getOperator() {
+        return isOperator;
     }
 
-    public User(Document doc) {
-        this.name = (String) doc.getProperty("name");
-        this.nick = (String) doc.getProperty("nick");
-        this.password = (String) doc.getProperty("password");
+    public void setOperator(Boolean operator) {
+        isOperator = operator;
     }
 }

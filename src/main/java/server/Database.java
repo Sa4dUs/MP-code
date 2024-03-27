@@ -145,10 +145,15 @@ public class Database {
 
     private static void executeWriteTask(String collection, Map<String, Document> documents) {
         executor.execute(() -> {
-            String filePath = PATH + collection + ".json";
-            JSONObject jsonObject = new JSONObject();
-            documents.forEach((key, value) -> jsonObject.put(key, new JSONObject(value.toJSON())));
-            writeJSONObjectToFile(jsonObject, filePath);
+            JSONObject jsonObject;
+            try {
+                String filePath = PATH + collection + ".json";
+                jsonObject = readJSONObjectFromFile(filePath);
+                JSONObject finalJsonObject = jsonObject;
+                documents.forEach((key, value) -> finalJsonObject.put(key, new JSONObject(value.toJSON())));
+                writeJSONObjectToFile(jsonObject, filePath);
+            } catch (IOException ignored) {
+            }
         });
     }
 }

@@ -42,7 +42,7 @@ public class SignupScreen extends Screen {
                 }
 
                 Session.setCurrentUser((User) response.getField("user"));
-                
+
                 if (Session.getCurrentUser().getOperator()) {
                     ScreenManager.render(OperatorDashboardScreen.class);
                     return;

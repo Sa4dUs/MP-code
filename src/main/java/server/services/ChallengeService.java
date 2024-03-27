@@ -19,6 +19,8 @@ import java.util.Objects;
 
 public class ChallengeService implements Service {
 
+    //Habra que mover cosas al user service, pero de momento se queda asi, moverlo sera facil
+
     public ResponseBody createChallenge(ChallengeRequest challenge)
     {
         Document doc = new Document(new ChallengeRequestSchema());

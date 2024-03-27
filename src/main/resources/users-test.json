@@ -1,1 +1,16 @@
-{}
+{
+    "e99334b7-eaf1-4b12-ab7f-99c4be226cd1": {
+        "nick": "",
+        "password": "1234",
+        "name": "jorge",
+        "id": "e99334b7-eaf1-4b12-ab7f-99c4be226cd1",
+        "isOperator": "false"
+    },
+    "6204a96b-cc82-4040-b94d-64dc7b37a096": {
+        "nick": "",
+        "password": "1234",
+        "name": "sa4dus",
+        "id": "6204a96b-cc82-4040-b94d-64dc7b37a096",
+        "isOperator": "true"
+    }
+}

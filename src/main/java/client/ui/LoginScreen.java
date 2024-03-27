@@ -2,8 +2,10 @@ package client.ui;
 
 import client.Client;
 import client.ScreenManager;
+import client.Session;
 import lib.RequestBody;
 import lib.ResponseBody;
+import server.User;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -40,7 +42,14 @@ public class LoginScreen extends Screen {
                     return;
                 }
 
-                ScreenManager.render(Dashboard.class);
+                Session.setCurrentUser((User) response.getField("user"));
+
+                if (Session.getCurrentUser().getOperator()) {
+                    ScreenManager.render(OperatorDashboardScreen.class);
+                    return;
+                }
+
+                ScreenManager.render(PlayerDashboardScreen.class);
             }
         });
         donTHaveAnButton.addActionListener(new ActionListener() {

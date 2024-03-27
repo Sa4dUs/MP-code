@@ -16,8 +16,8 @@ public class Player extends User {
     public Player() {
         super();
     }
-    public Player(String name, String nick, String password) {
-        super(name, nick, password);
+    public Player(String name, String nick, String password, Boolean isOperator) {
+        super(name, nick, password, isOperator);
     }
 
     private void sendChallenge (Player target, int bet){

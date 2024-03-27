@@ -9,7 +9,8 @@ public class UserSchema extends Schema {
         super(Map.of(
                 "name", String.class,
                 "nick", String.class,
-                "password", String.class
+                "password", String.class,
+                "isOperator", String.class
         ));
     }
 }

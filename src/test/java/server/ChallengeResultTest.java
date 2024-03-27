@@ -37,7 +37,8 @@ public class ChallengeResultTest {
         defCharacter.setActiveWeaponL(wp2);
 
         ChallengeRequest request = new ChallengeRequest(p1, p2, attCharacter);
-        ChallengeResult res = new ChallengeResult(request, defCharacter, 100);
+        request.setBet(100);
+        ChallengeResult res = new ChallengeResult(request, defCharacter);
 
         assertTrue(res.isWinnerAttacking());
     }

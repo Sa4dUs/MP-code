@@ -10,4 +10,8 @@ public class ResponseBody extends Body {
     public ResponseBody(Boolean ok) {
         this.ok = ok;
     }
+
+    public void setOk(Boolean ok) {
+        this.ok = ok;
+    }
 }

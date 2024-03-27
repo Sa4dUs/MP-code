@@ -51,6 +51,13 @@ public abstract class FightCharacter {
         return mHealth;
     }
 
+    public void setMana(int mana) {
+        this.mana = mana;
+    }
+
+    public int getMana(){
+        return mana;
+    }
     public int getReceivedDamage(){return maxHealth - health;}
 
     public void receiveDamage()

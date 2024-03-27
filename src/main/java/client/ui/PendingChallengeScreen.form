@@ -48,7 +48,8 @@
                 </constraints>
                 <properties>
                   <background color="-1708289"/>
-                  <enabled value="false"/>
+                  <contentAreaFilled value="false"/>
+                  <enabled value="true"/>
                   <foreground color="-14013908"/>
                   <text value="Deny"/>
                 </properties>
@@ -117,7 +118,8 @@
             </constraints>
             <properties>
               <background color="-1708289"/>
-              <enabled value="false"/>
+              <contentAreaFilled value="false"/>
+              <enabled value="true"/>
               <foreground color="-14013908"/>
               <text value="Deny"/>
             </properties>
@@ -174,7 +176,8 @@
             </constraints>
             <properties>
               <background color="-1708289"/>
-              <enabled value="false"/>
+              <contentAreaFilled value="false"/>
+              <enabled value="true"/>
               <foreground color="-14013908"/>
               <text value="Deny"/>
             </properties>
@@ -231,7 +234,8 @@
             </constraints>
             <properties>
               <background color="-1708289"/>
-              <enabled value="false"/>
+              <contentAreaFilled value="false"/>
+              <enabled value="true"/>
               <foreground color="-14013908"/>
               <text value="Deny"/>
             </properties>
@@ -288,7 +292,8 @@
             </constraints>
             <properties>
               <background color="-1708289"/>
-              <enabled value="false"/>
+              <contentAreaFilled value="false"/>
+              <enabled value="true"/>
               <foreground color="-14013908"/>
               <text value="Deny"/>
             </properties>

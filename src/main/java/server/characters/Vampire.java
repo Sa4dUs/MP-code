@@ -6,7 +6,7 @@ public class Vampire extends FightCharacter{
     public Vampire(PlayerCharacter character) {
         super(character);
         this.maxMana = 10;
-        setMana(maxMana);
+        setMana(0);
     }
 
     @Override

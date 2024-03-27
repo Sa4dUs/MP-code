@@ -6,9 +6,15 @@ public class Lycanthrope extends FightCharacter{
     public Lycanthrope(PlayerCharacter character) {
         super(character);
         this.maxMana = 3;
-        setMana(maxMana);
+        setMana(0);
     }
 
     @Override
-    public void tick() {this.setMana(Math.min(this.getMana() + 1, maxMana)); }
+    public void tick() {}
+
+    @Override
+    public void receiveDamage(){
+        super.receiveDamage();
+        this.setMana(Math.min(this.getMana() + 1, maxMana));
+    }
 }

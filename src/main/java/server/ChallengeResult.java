@@ -7,14 +7,20 @@ import server.characters.Vampire;
 import server.characters.Lycanthrope;
 
 public class ChallengeResult {
+    private String id;
     private final Player attackingPlayer, attackedPlayer;
     private int bet, turns;
     private int attackerMinionsLeft, attackedMinionsLeft;
     private boolean winnerAttacking = true;
 
-    public ChallengeResult(ChallengeRequest request, PlayerCharacter otherCharacter, int bet)
+    public  ChallengeResult()
     {
-        this.bet = bet;
+        this.attackingPlayer = null;
+        this.attackedPlayer = null;
+    }
+    public ChallengeResult(ChallengeRequest request, PlayerCharacter otherCharacter)
+    {
+        this.bet = request.getBet();
 
         this.attackingPlayer = request.getAttackingPlayer();
         this.attackedPlayer = request.getAttackedPlayer();
@@ -112,4 +118,21 @@ public class ChallengeResult {
         return this.winnerAttacking;
     }
 
+    public int getAttackerMinionsLeft() {
+        return attackerMinionsLeft;
+    }
+
+    public void setAttackerMinionsLeft(int attackerMinionsLeft) {
+        this.attackerMinionsLeft = attackerMinionsLeft;
+    }
+
+    public int getAttackedMinionsLeft() {
+        return attackedMinionsLeft;
+    }
+
+    public void setAttackedMinionsLeft(int attackedMinionsLeft) {
+        this.attackedMinionsLeft = attackedMinionsLeft;
+    }
+
+    public String getId(){return id;}
 }

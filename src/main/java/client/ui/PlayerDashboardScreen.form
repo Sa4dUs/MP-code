@@ -294,6 +294,7 @@
             <properties>
               <background color="-1708289"/>
               <contentAreaFilled value="false"/>
+              <defaultCapable value="true"/>
               <enabled value="true"/>
               <foreground color="-14013908"/>
               <text value="Edit Character"/>

@@ -68,8 +68,8 @@
                 <properties>
                   <background color="-1708289"/>
                   <borderPainted value="true"/>
-                  <contentAreaFilled value="true"/>
-                  <enabled value="false"/>
+                  <contentAreaFilled value="false"/>
+                  <enabled value="true"/>
                   <foreground color="-14013908"/>
                   <hideActionText value="false"/>
                   <text value="Placeholder"/>
@@ -82,8 +82,8 @@
                 <properties>
                   <background color="-1708289"/>
                   <borderPainted value="true"/>
-                  <contentAreaFilled value="true"/>
-                  <enabled value="false"/>
+                  <contentAreaFilled value="false"/>
+                  <enabled value="true"/>
                   <foreground color="-14013908"/>
                   <hideActionText value="false"/>
                   <text value="Placeholder"/>
@@ -96,8 +96,8 @@
                 <properties>
                   <background color="-1708289"/>
                   <borderPainted value="true"/>
-                  <contentAreaFilled value="true"/>
-                  <enabled value="false"/>
+                  <contentAreaFilled value="false"/>
+                  <enabled value="true"/>
                   <foreground color="-14013908"/>
                   <hideActionText value="false"/>
                   <text value="Placeholder"/>
@@ -110,8 +110,8 @@
                 <properties>
                   <background color="-1708289"/>
                   <borderPainted value="true"/>
-                  <contentAreaFilled value="true"/>
-                  <enabled value="false"/>
+                  <contentAreaFilled value="false"/>
+                  <enabled value="true"/>
                   <foreground color="-14013908"/>
                   <hideActionText value="false"/>
                   <text value="Placeholder"/>

@@ -1,5 +1,6 @@
 package server.services;
 
+import lib.ResponseBody;
 import org.junit.jupiter.api.Test;
 import server.ChallengeRequest;
 import server.Player;
@@ -16,7 +17,8 @@ class ChallengeServiceTest {
         PlayerCharacter character = new PlayerCharacter();
         ChallengeRequest request = new ChallengeRequest(p1, p2, character);
         ChallengeService service = new ChallengeService();
-        service.createChallenge(request);
+        ResponseBody responseBody = service.createChallenge(request);
+        request.setId((String) responseBody.getField("id"));
     }
 
 }

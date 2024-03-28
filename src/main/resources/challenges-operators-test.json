@@ -1,6 +1,20 @@
-{"6bdcc073-7235-4e6b-a83a-86c228d9aeb1": {
-    "bet": 0,
-    "id": "6bdcc073-7235-4e6b-a83a-86c228d9aeb1",
-    "attackerId": "12415gs",
-    "attackedId": "y8g68"
-}}
+{
+    "6bdcc073-7235-4e6b-a83a-86c228d9aeb1": {
+        "bet": 0,
+        "id": "6bdcc073-7235-4e6b-a83a-86c228d9aeb1",
+        "attackerId": "12415gs",
+        "attackedId": "y8g68"
+    },
+    "8dbf5930-1acf-4cd9-b7b0-a8fd76c4cc88": {
+        "bet": 0,
+        "id": "8dbf5930-1acf-4cd9-b7b0-a8fd76c4cc88",
+        "attackerId": "12415gs",
+        "attackedId": "y8g68"
+    },
+    "6babb0e2-8bb5-44ab-b166-429aa6ca9d7f": {
+        "bet": 0,
+        "id": "6babb0e2-8bb5-44ab-b166-429aa6ca9d7f",
+        "attackerId": "12415gs",
+        "attackedId": "y8g68"
+    }
+}

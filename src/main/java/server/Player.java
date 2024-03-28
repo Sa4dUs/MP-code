@@ -1,13 +1,16 @@
 package server;
 
+import org.json.Property;
 import server.characters.Character;
 import server.characters.PlayerCharacter;
+import server.nosql.Document;
 
+import javax.print.Doc;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Player extends User {
-    private String id;
     private List<ChallengeRequest> pendingDuels = new ArrayList<>();
     private List<ChallengeResult> results = new ArrayList<>();
     private PlayerCharacter character;
@@ -16,6 +19,16 @@ public class Player extends User {
     public Player() {
         super();
     }
+
+    public Player(Document document)
+    {
+        super(document);
+        this.pendingDuels = List.of((ChallengeRequest) document.getProperty("pendingDuels"));
+        this.results = List.of((ChallengeResult) document.getProperty("results"));
+        this.character = (PlayerCharacter) document.getProperty("character");
+
+    }
+
     public Player(String name, String nick, String password, Boolean isOperator) {
         super(name, nick, password, isOperator);
     }

@@ -15,6 +15,18 @@ public class ChallengeRequest {
         return id;
     }
 
+    public void setId(String id)
+    {
+        this.id = id;
+    }
+
+    public ChallengeRequest(Player attackingPlayer, Player attackedPlayer)
+    {
+        this.attackingPlayer = attackingPlayer;
+        this.attackedPlayer = attackedPlayer;
+        this.attackingCharacter = attackingPlayer.getCharacter();
+    }
+
     public ChallengeRequest(Player attackingPlayer, Player attackedPlayer, PlayerCharacter character)
     {
         this.attackingPlayer = attackingPlayer;

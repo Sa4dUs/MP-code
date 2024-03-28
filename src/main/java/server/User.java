@@ -4,7 +4,7 @@ import server.nosql.Document;
 
 public class User {
 
-    private String name, nick, password;
+    private String name, nick, password, id;
 
     private Boolean isOperator;
 
@@ -46,5 +46,13 @@ public class User {
 
     public void setOperator(Boolean operator) {
         isOperator = operator;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

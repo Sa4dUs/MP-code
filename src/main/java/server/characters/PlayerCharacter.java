@@ -3,11 +3,22 @@ package server.characters;
 import server.items.Ability;
 import server.items.Armor;
 import server.items.Weapon;
+import server.nosql.Document;
 
 public class PlayerCharacter extends Character{
     private Weapon activeWeaponL, activeWeaponR;
     private Armor activeArmor;
     private Ability activeNormalAbility, activeSpecialAbility;
+
+    public PlayerCharacter(Document document)
+    {
+        super(document);
+        this.activeWeaponL = (Weapon) document.getProperty("activeWeaponL");
+        this.activeWeaponR = (Weapon) document.getProperty("activeWeaponR");
+        this.activeArmor = (Armor) document.getProperty("activeArmor");
+        this.activeNormalAbility = (Ability) document.getProperty("activeNormalAbility");
+        this.activeSpecialAbility = (Ability) document.getProperty("activeSpecialAbility");
+    }
 
     public Weapon getActiveWeaponL() {
         return activeWeaponL;

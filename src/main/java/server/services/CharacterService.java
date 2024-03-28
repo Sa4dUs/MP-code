@@ -16,8 +16,9 @@ public class CharacterService implements Service {
         characterToDocument(character, doc);
 
         Database.insertOne(Collection.DEFAULT_CHARACTER, doc);
-
-        return new ResponseBody(true);
+        ResponseBody responseBody = new ResponseBody(true);
+        responseBody.addField("id", doc.getProperty("id"));
+        return responseBody;
     }
 
 

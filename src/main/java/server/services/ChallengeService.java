@@ -23,8 +23,8 @@ public class ChallengeService implements Service {
     {
         Document doc = new Document(new ChallengeRequestSchema());
         doc.setProperty("bet", challenge.getBet());
-        doc.setProperty("attackerId", challenge.getAttackingPlayer().getNick());
-        doc.setProperty("attackedId", challenge.getAttackedPlayer().getNick());
+        doc.setProperty("attackerId", challenge.getAttackingPlayerId());
+        doc.setProperty("attackedId", challenge.getAttackedPlayerId());
         Database.insertOne(Collection.CHALLENGE_OPERATORS, doc);
         challenge.setId(doc.getId());
 
@@ -45,13 +45,14 @@ public class ChallengeService implements Service {
                 return new ResponseBody(false);
         }
 
-        Player attackingPlayer = getPlayer((String) doc.getProperty("attackerId"));
-        Player attackedPlayer = getPlayer((String) doc.getProperty("attackedId"));
+        String attackingPlayer = (String) doc.getProperty("attackerId");
+        String attackedPlayer = (String) doc.getProperty("attackedId");
+        int bet = (int) doc.getProperty("bet");
 
         if(attackingPlayer == null || attackedPlayer == null)
             return new ResponseBody(false);
 
-        ChallengeRequest request = new ChallengeRequest(attackingPlayer, attackedPlayer);
+        ChallengeRequest request = new ChallengeRequest(attackingPlayer, attackedPlayer, bet);
 
         ResponseBody res = new ResponseBody(true);
         res.addField("data", doc);
@@ -70,14 +71,6 @@ public class ChallengeService implements Service {
             return null;
 
         PlayerCharacter character = getPlayerCharacter((String) doc.getProperty("playerCharacterId"));
-
-
-        List<ChallengeRequest> requestList = new ArrayList<>();
-        for(String s: (String[]) doc.getProperty("PendingDuelId"))
-        {
-            requestList.add((ChallengeRequest) getChallenge(s).getField("data"));
-        }
-        doc.setProperty("pendingDuels", requestList.toArray());
 
         return new Player(doc);
     }
@@ -117,8 +110,8 @@ public class ChallengeService implements Service {
     private Document createResultDocument(ChallengeResult result)
     {
         Document resDoc = new Document(new ChallengeResultSchema());
-        resDoc.setProperty("attackerPlayerId", result.getAttackingPlayer().getNick());
-        resDoc.setProperty("attackedPlayerId", result.getAttackedPlayer().getNick());
+        resDoc.setProperty("attackerPlayerId", result.getAttackingPlayerId());
+        resDoc.setProperty("attackedPlayerId", result.getAttackedPlayerId());
         resDoc.setProperty("isWinnerAttacking", result.isWinnerAttacking());
         resDoc.setProperty("turns", result.getTurns());
         resDoc.setProperty("attackerMinionsLeft", result.getAttackerMinionsLeft());
@@ -128,76 +121,94 @@ public class ChallengeService implements Service {
         return  resDoc;
     }
 
+    //Terminado
     public ResponseBody acceptChallengeFromPlayer(ChallengeRequest challenge)
     {
-        PlayerCharacter character = challenge.getAttackedPlayer().getCharacter();
+        Player attackingPlayer = getPlayer(challenge.getAttackingPlayerId());
+        Player attackedPlayer = getPlayer(challenge.getAttackedPlayerId());
+        int bet = challenge.getBet();
 
+        if(attackingPlayer == null || attackedPlayer == null)
+            return new ResponseBody(false);
 
-        ChallengeResult result = new ChallengeResult(challenge, character);
+        ChallengeResult challengeResult = new ChallengeResult(attackingPlayer, attackedPlayer, bet);
+        Document resultDoc = createResultDocument(challengeResult);
+
+        Database.insertOne(Collection.CHALLENGE, resultDoc);
+
+        addIdToPlayer(resultDoc.getId(), attackingPlayer.getId(), "duelResultID");
+        addIdToPlayer(resultDoc.getId(), attackedPlayer.getId(), "duelResultID");
+
         Query query = new Query();
         query.addFilter("id", challenge.getId());
 
         Database.deleteOne(Collection.CHALLENGE, query);
 
-        Document resDoc = createResultDocument(result);
+        ResponseBody res = new ResponseBody(true);
+        res.addField("data", challengeResult);
 
-        Database.insertOne(Collection.CHALLENGE, resDoc);
-
-        result.setId(resDoc.getId());
-
-        addIdToPlayer(result.getId(), result.getAttackingPlayer().getNick(), "duelResultID");
-        addIdToPlayer(result.getId(), result.getAttackedPlayer().getNick(), "duelResultID");
-
-        removeIdFromPlayer(challenge.getId(), result.getAttackedPlayer().getNick(), "pendingDuelId");
-
-        ResponseBody responseBody = new ResponseBody(true);
-        responseBody.addField("result", result);
-
-        return new ResponseBody(true);
+        return res;
     }
 
-    public ResponseBody acceptChallengeFromOperator(ChallengeRequest challenge, String nick)
+    public ResponseBody acceptChallengeFromOperator(ChallengeRequest challenge)
     {
         Query query = new Query();
         query.addFilter("id", challenge.getId());
-        Database.deleteOne(Collection.CHALLENGE_OPERATORS, query);
+        Document doc = Database.findOne(Collection.CHALLENGE_OPERATORS, query);
 
-        return addIdToPlayer(challenge.getId(), nick, "pendingDuelId");
+        if(doc == null)
+            return  new ResponseBody(false);
+
+        Database.deleteOne(Collection.CHALLENGE_OPERATORS, query);
+        Database.insertOne(Collection.CHALLENGE, doc);
+
+        return addIdToPlayer(challenge.getAttackedPlayerId(), doc.getId(), "pendingDuelId");
     }
 
     public ResponseBody denyChallengeFromOperator(ChallengeRequest challenge)
     {
-        ChallengeResult result = new ChallengeResult();
+        Player attackingPlayer = getPlayer(challenge.getAttackingPlayerId());
+        Player attackedPlayer = getPlayer(challenge.getAttackedPlayerId());
+        int bet = challenge.getBet();
+
+        if(attackingPlayer == null || attackedPlayer == null)
+            return new ResponseBody(false);
+
+        ChallengeResult challengeResult = new ChallengeResult(attackingPlayer, attackedPlayer, bet, true);
+        Document resultDoc = createResultDocument(challengeResult);
+
+        Database.insertOne(Collection.CHALLENGE, resultDoc);
+
+        addIdToPlayer(resultDoc.getId(), attackingPlayer.getId(), "duelResultID");
 
         Query query = new Query();
         query.addFilter("id", challenge.getId());
+
         Database.deleteOne(Collection.CHALLENGE_OPERATORS, query);
-
-        Document resDoc = createResultDocument(result);
-
-        Database.insertOne(Collection.CHALLENGE, resDoc);
-        addIdToPlayer(result.getId(), challenge.getAttackingPlayer().getNick(), "duelResultID");
 
         return new ResponseBody(true);
     }
 
     public ResponseBody denyChallengeFromPlayer(ChallengeRequest challenge)
     {
-        ChallengeResult result = new ChallengeResult(challenge);
+        Player attackingPlayer = getPlayer(challenge.getAttackingPlayerId());
+        Player attackedPlayer = getPlayer(challenge.getAttackedPlayerId());
+        int bet = challenge.getBet();
+
+        if(attackingPlayer == null || attackedPlayer == null)
+            return new ResponseBody(false);
+
+        ChallengeResult challengeResult = new ChallengeResult(attackingPlayer, attackedPlayer, bet, false);
+        Document resultDoc = createResultDocument(challengeResult);
+
+        Database.insertOne(Collection.CHALLENGE, resultDoc);
+
+        addIdToPlayer(resultDoc.getId(), attackingPlayer.getId(), "duelResultID");
 
         Query query = new Query();
         query.addFilter("id", challenge.getId());
 
         Database.deleteOne(Collection.CHALLENGE, query);
-
-        Document resDoc = createResultDocument(result);
-
-        Database.insertOne(Collection.CHALLENGE, resDoc);
-
-        addIdToPlayer(result.getId(), result.getAttackingPlayer().getNick(), "duelResultID");
-        addIdToPlayer(result.getId(), result.getAttackedPlayer().getNick(), "duelResultID");
-
-        removeIdFromPlayer(challenge.getId(), result.getAttackedPlayer().getNick(), "pendingDuelId");
 
         return new ResponseBody(true);
     }

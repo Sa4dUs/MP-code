@@ -2,12 +2,12 @@ package server;
 
 import server.characters.Character;
 import server.characters.PlayerCharacter;
+import server.nosql.Document;
 
 public class ChallengeRequest {
 
     private String id;
-    private Player attackingPlayer, attackedPlayer;
-    private PlayerCharacter attackingCharacter;
+    private String attackingPlayerId, attackedPlayerId;
     private int bet;
 
     public String getId()
@@ -20,75 +20,54 @@ public class ChallengeRequest {
         this.id = id;
     }
 
-    public ChallengeRequest(Player attackingPlayer, Player attackedPlayer)
+    public ChallengeRequest(String attackingPlayerId, String attackedPlayerId, int bet)
     {
-        this.attackingPlayer = attackingPlayer;
-        this.attackedPlayer = attackedPlayer;
-        this.attackingCharacter = attackingPlayer.getCharacter();
+        this.attackingPlayerId = attackingPlayerId;
+        this.attackedPlayerId = attackedPlayerId;
+        this.bet = bet;
     }
 
-    public ChallengeRequest(Player attackingPlayer, Player attackedPlayer, PlayerCharacter character)
+    public ChallengeRequest(Document doc)
     {
-        this.attackingPlayer = attackingPlayer;
-        this.attackedPlayer = attackedPlayer;
-        this.attackingCharacter = character;
+        this.attackingPlayerId = (String) doc.getProperty("attackingPlayerId");
+        this.attackedPlayerId = (String) doc.getProperty("attackedPlayerId");
+        this.bet = (int) doc.getProperty("bet");
     }
 
     public void accept()
     {
-        ChallengeResult result = new ChallengeResult(this, this.attackedPlayer.getCharacter());
-        this.attackedPlayer.addResult(result);
-        this.attackingPlayer.addResult(result);
-        this.attackedPlayer.deletePendingChallenge(this);
-        //MARCELO TÓCAMELO X2
+
     }
 
     public void denyFromPlayer()
     {
-        ChallengeResult result = new ChallengeResult(this);
-        this.attackedPlayer.addResult(result);
-        this.attackingPlayer.addResult(result);
-        this.attackedPlayer.deletePendingChallenge(this);
-        //MARCELO TÓCAMELO X3
+
     }
 
     public void sendToTarget()
     {
-        this.attackedPlayer.addPending(this);
-        //MARCELO TÓCAMELO X4 -> quítalo de la base de datos o algo ns xd
+
     }
 
     public void denyFromOperator()
     {
-        this.attackedPlayer.deletePendingChallenge(this);
-        this.attackingPlayer.deletePendingChallenge(this);
-        //podemos notificar al usuario "attacking" de que su solicitud de duelo ha sido denegada
 
-        //MARCELO TÓCAMELO Y JORGE TÓCAMELO :)
     }
 
-    public Player getAttackingPlayer() {
-        return this.attackingPlayer;
+    public String getAttackingPlayerId() {
+        return this.attackingPlayerId;
     }
 
-    public void setAttackingPlayer(Player attackingPlayer) {
-        this.attackingPlayer = attackingPlayer;
+    public void setAttackingPlayerId(String attackingPlayerId) {
+        this.attackingPlayerId = attackingPlayerId;
     }
 
-    public Player getAttackedPlayer() {
-        return this.attackedPlayer;
+    public String getAttackedPlayerId() {
+        return this.attackedPlayerId;
     }
 
-    public void setAttackedPlayer(Player attackedPlayer) {
-        this.attackedPlayer = attackedPlayer;
-    }
-
-    public PlayerCharacter getAttackingCharacter() {
-        return this.attackingCharacter;
-    }
-
-    public void setAttackingCharacter(PlayerCharacter attackingCharacter) {
-        this.attackingCharacter = attackingCharacter;
+    public void setAttackedPlayerId(String attackedPlayerId) {
+        this.attackedPlayerId = attackedPlayerId;
     }
 
     public int getBet() {

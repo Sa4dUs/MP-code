@@ -15,7 +15,7 @@ public class ChallengeHandler extends Handler {
         this.operations.put(null, req -> new ResponseBody());
         this.operations.put("create", req -> this.service.createChallenge((ChallengeRequest) req.getField("challenge")));
 
-        this.operations.put("acceptChallengeFromOperator", req -> this.service.acceptChallengeFromOperator((ChallengeRequest) req.getField("challenge"), (String) req.getField("nick")));
+        this.operations.put("acceptChallengeFromOperator", req -> this.service.acceptChallengeFromOperator((ChallengeRequest) req.getField("challenge")));
         this.operations.put("denyChallengeFromOperator", req -> this.service.denyChallengeFromOperator((ChallengeRequest) req.getField("challenge")));
 
         this.operations.put("acceptChallengeFromPlayer", req -> this.service.acceptChallengeFromPlayer((ChallengeRequest) req.getField("challenge")));

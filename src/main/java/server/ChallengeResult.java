@@ -8,59 +8,48 @@ import server.characters.Lycanthrope;
 
 public class ChallengeResult {
     private String id;
-    private final Player attackingPlayer, attackedPlayer;
+    private final String attackingPlayerId, attackedPlayerId;
     private int bet, turns;
     private int attackerMinionsLeft, attackedMinionsLeft;
     private boolean winnerAttacking = true;
 
-    public  ChallengeResult()
+    public ChallengeResult(Player attackingPlayer, Player attackedPlayer, int bet)
     {
-        this.attackingPlayer = null;
-        this.attackedPlayer = null;
-    }
-    public ChallengeResult(ChallengeRequest request, PlayerCharacter otherCharacter)
-    {
-        this.bet = request.getBet();
+        this.bet = bet;
+        this.attackingPlayerId = attackingPlayer.getId();
+        this.attackedPlayerId = attackedPlayer.getId();
 
-        this.attackingPlayer = request.getAttackingPlayer();
-        this.attackedPlayer = request.getAttackedPlayer();
-
-        PlayerCharacter attackingPlayerCharacter = request.getAttackingCharacter();
-
+        PlayerCharacter attackingPlayerCharacter = attackingPlayer.getCharacter();
+        PlayerCharacter attackedPlayerCharacter = attackedPlayer.getCharacter();
 
         FightCharacter attackingCharacter = createFightCharacterFromCharacter(attackingPlayerCharacter);
-        FightCharacter attackedCharacter = createFightCharacterFromCharacter(otherCharacter);
+        FightCharacter attackedCharacter = createFightCharacterFromCharacter(attackedPlayerCharacter);
 
         attackerMinionsLeft = attackingPlayerCharacter.getMinionCount();
-        attackedMinionsLeft = otherCharacter.getMinionCount();
+        attackedMinionsLeft = attackedPlayerCharacter.getMinionCount();
 
 
         if(attackedCharacter != null) {
             calculateDuel(attackingCharacter, attackedCharacter);
             attackerMinionsLeft -= attackingPlayerCharacter.calculateMinionsKilledAfterDamage(attackingCharacter.getReceivedDamage());
-            attackedMinionsLeft -= otherCharacter.calculateMinionsKilledAfterDamage(attackedCharacter.getReceivedDamage());
+            attackedMinionsLeft -= attackedPlayerCharacter.calculateMinionsKilledAfterDamage(attackedCharacter.getReceivedDamage());
         }
 
-        if(this.winnerAttacking) {
-            otherCharacter.removeGold(this.bet);
-            return;
-        }
-
-        request.getAttackingCharacter().removeGold(this.bet);
+        //Quitar oro
     }
 
-    public ChallengeResult(ChallengeRequest request)
+    public ChallengeResult(Player attackingPlayer, Player attackedPlayer, int bet, boolean deniedFromOperator)
     {
-        this.attackingPlayer = request.getAttackingPlayer();
-        this.attackedPlayer = request.getAttackedPlayer();
+        this.attackingPlayerId = attackingPlayer.getId();
+        this.attackedPlayerId = attackedPlayer.getId();
+        this.winnerAttacking = !deniedFromOperator;
+        this.turns = -1;
+        this.bet = bet;
 
-        FightCharacter attackingCharacter = createFightCharacterFromCharacter(request.getAttackingCharacter());
-        FightCharacter attackedCharacter = null;
-
-        request.getAttackingCharacter().removeGold(bet);
+        //quitar oro
     }
 
-    private FightCharacter createFightCharacterFromCharacter(PlayerCharacter character)
+    public FightCharacter createFightCharacterFromCharacter(PlayerCharacter character)
     {
         return switch (character.getBreed()) {
             case Hunter -> new Hunter(character);
@@ -98,12 +87,12 @@ public class ChallengeResult {
             defender.receiveDamage();
     }
 
-    public Player getAttackingPlayer() {
-        return this.attackingPlayer;
+    public String getAttackingPlayerId() {
+        return this.attackingPlayerId;
     }
 
-    public Player getAttackedPlayer() {
-        return this.attackedPlayer;
+    public String getAttackedPlayerId() {
+        return this.attackedPlayerId;
     }
 
     public int getBet() {

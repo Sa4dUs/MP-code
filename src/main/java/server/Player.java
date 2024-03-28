@@ -4,6 +4,7 @@ import org.json.Property;
 import server.characters.Character;
 import server.characters.PlayerCharacter;
 import server.nosql.Document;
+import server.services.ChallengeService;
 
 import javax.print.Doc;
 import java.lang.reflect.Field;
@@ -14,7 +15,7 @@ public class Player extends User {
     private List<ChallengeRequest> pendingDuels = new ArrayList<>();
     private List<ChallengeResult> results = new ArrayList<>();
     private PlayerCharacter character;
-    private boolean blocked;
+    private boolean blocked, pending;
 
     public Player() {
         super();
@@ -33,13 +34,12 @@ public class Player extends User {
         super(name, nick, password, isOperator);
     }
 
-    private void sendChallenge (Player target, int bet){
-        if (target.getCharacter().getGold() >= bet) {
-            ChallengeRequest request = new ChallengeRequest(this, target, this.character);
-            //MARCELO TÓCAMELO añade request a la database
-            return;
-        }
-        //no bro
+    private void sendChallenge (String targetId, int bet)
+    {
+        ChallengeService service = new ChallengeService();
+        ChallengeRequest request = new ChallengeRequest(getId(), targetId, bet);
+
+        pending = service.createChallenge(request).ok;
     }
 
     public PlayerCharacter getCharacter() {

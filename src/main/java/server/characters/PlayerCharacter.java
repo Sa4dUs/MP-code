@@ -10,6 +10,8 @@ public class PlayerCharacter extends Character{
     private Armor activeArmor;
     private Ability activeNormalAbility, activeSpecialAbility;
 
+    public PlayerCharacter(){}
+
     public PlayerCharacter(Document document)
     {
         super(document);

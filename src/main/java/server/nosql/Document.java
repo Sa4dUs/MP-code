@@ -1,14 +1,13 @@
 package server.nosql;
 
+import lib.ResponseBody;
 import org.json.JSONObject;
 import server.Crypto;
+import server.Database;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Document {
     private final Schema schema;
@@ -94,5 +93,70 @@ public class Document {
     public static Document fromJSON(String jsonString) {
         JSONObject jsonObject = new JSONObject(jsonString);
         return new Document(jsonObject);
+    }
+
+    public static Object deJSONDocument(Document document, Class<?> clazz)
+    {
+        try {
+            Object object = clazz.getDeclaredConstructor().newInstance();
+
+            for(Field field: clazz.getDeclaredFields())
+            {
+                if(field.getType().isPrimitive())
+                {
+                    if(field.getType().equals(Boolean.class) || field.getType().equals(boolean.class))
+                        field.set(object, Boolean.valueOf((String) document.getProperty(field.getName())));
+                    else
+                        field.set(object, document.getProperty(field.getName()));
+                }
+                else if(field.getType().isArray())
+                {
+                    field.set(object, getObjectArrayFromDoc((String[]) document.getProperty(field.getName()), field.getClass()));
+                }
+                else if(List.class.isAssignableFrom(field.getType()))
+                {
+                    field.set(object, List.of((Object[]) getObjectArrayFromDoc((String[]) document.getProperty(field.getName()), field.getClass())));
+                }
+                else
+                {
+                    field.set(object, List.of(getObjectFromDoc((String) document.getProperty(field.getName()), field.getClass())));
+                }
+            }
+
+            return object;
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static Object[] getObjectArrayFromDoc(String[] ids, Class<?> clazz){
+        List<Object> list = new ArrayList<>();
+
+        for (String id: ids)
+        {
+            Document document = getDocument(id, clazz);
+            if(document == null)
+                continue;
+
+            list.add(deJSONDocument(document, clazz));
+        }
+        return list.toArray(new Object[0]);
+    }
+
+    public static Object getObjectFromDoc(String id, Class<?> clazz) {
+
+        Document document = getDocument(id, clazz);
+        ResponseBody responseBody = new ResponseBody(true);
+        responseBody.addField(id, deJSONDocument(document, clazz));
+        return responseBody;
+    }
+
+    public static Document getDocument(String id, Class<?> clazz)
+    {
+        Query query = new Query();
+        query.addFilter("id", id);
+
+        return Database.findOne(clazz.getName(), query);
     }
 }

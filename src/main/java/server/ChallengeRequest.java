@@ -3,7 +3,6 @@ package server;
 import server.nosql.Document;
 
 public class ChallengeRequest {
-
     private String id;
     private String attackerId, attackedId;
     private int bet;

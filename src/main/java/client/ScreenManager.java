@@ -6,9 +6,12 @@ import client.ui.WelcomeScreen;
 import javax.swing.JFrame;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.util.Stack;
 
 public class ScreenManager {
     private static JFrame frame;
+    private static final Stack<Class<?extends Screen>> visited = new Stack<>();
+
     public static void start(Object[] ...args) {
         frame = new JFrame();
         ScreenManager.render(WelcomeScreen.class);
@@ -21,8 +24,14 @@ public class ScreenManager {
             frame.setContentPane(screen.getPanel());
             frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
             frame.setVisible(true);
+
+            visited.add(screenClass);
         } catch (NoSuchMethodException | InvocationTargetException | InstantiationException | IllegalAccessException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public static void goBack() {
+        render(visited.pop());
     }
 }

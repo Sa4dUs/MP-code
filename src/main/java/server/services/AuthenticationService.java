@@ -50,4 +50,16 @@ public class AuthenticationService implements Service {
         response.addField("user", new User(doc));
         return response;
     }
+
+    public ResponseBody delete(String id) {
+        ResponseBody response = new ResponseBody();
+
+        Query query = new Query();
+        query.addFilter("id", id);
+        Database.deleteOne(Collection.USER, query);
+
+        response.setOk(true);
+
+        return response;
+    }
 }

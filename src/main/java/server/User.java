@@ -8,7 +8,9 @@ public class User {
 
     private Boolean isOperator;
 
-    public User() {}
+    public User() {
+        isOperator = false;
+    }
 
     public User(String name, String nick, String password, Boolean isOperator) {
         this.name = name;
@@ -18,6 +20,7 @@ public class User {
     }
 
     public User(Document document) {
+        super();
         //Document.setFieldsFromDocument(this, document);
     }
 

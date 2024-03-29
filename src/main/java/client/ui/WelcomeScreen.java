@@ -11,6 +11,7 @@ public class WelcomeScreen extends Screen {
     private JButton LogIn;
     private JLabel GameTittle;
     private JPanel frame;
+    private JButton exitButton;
 
     public WelcomeScreen()  {
         SignUp.addActionListener(new ActionListener() {
@@ -24,6 +25,12 @@ public class WelcomeScreen extends Screen {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ScreenManager.render(LoginScreen.class);
+            }
+        });
+        exitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ScreenManager.exit();
             }
         });
     }

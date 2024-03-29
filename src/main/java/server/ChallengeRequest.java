@@ -5,7 +5,6 @@ import server.characters.PlayerCharacter;
 import server.nosql.Document;
 
 public class ChallengeRequest {
-
     private String id;
     private String attackingPlayerId, attackedPlayerId;
     private int bet;

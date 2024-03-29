@@ -34,4 +34,8 @@ public class ScreenManager {
     public static void goBack() {
         render(visited.pop());
     }
+
+    public static void exit(){
+        System.exit(0);
+    }
 }

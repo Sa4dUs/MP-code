@@ -17,6 +17,7 @@ public class SignupScreen extends Screen {
     private JPasswordField password;
     private JPanel frame;
     private JButton alreadyHaveAnAccountButton;
+    private JButton exitButton;
 
     public SignupScreen() {
         signUpButton.addActionListener(new ActionListener() {
@@ -55,6 +56,12 @@ public class SignupScreen extends Screen {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ScreenManager.render(LoginScreen.class);
+            }
+        });
+        exitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ScreenManager.exit();
             }
         });
     }

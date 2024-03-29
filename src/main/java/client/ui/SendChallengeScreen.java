@@ -18,6 +18,7 @@ public class SendChallengeScreen extends Screen {
     private JPanel frame;
     private JLabel success;
     private JLabel error;
+    private JButton backButton;
 
     public SendChallengeScreen() {
         challengeButton.addActionListener(new ActionListener() {
@@ -46,6 +47,13 @@ public class SendChallengeScreen extends Screen {
 
                 // TODO! Handle challenge successfully sent
                 success.setVisible(true);
+            }
+        });
+
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ScreenManager.goBack();
             }
         });
     }

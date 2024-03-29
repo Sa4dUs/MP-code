@@ -9,7 +9,7 @@ public class User {
     private Boolean isOperator;
 
     public User() {}
-
+    
     public User(String name, String nick, String password, Boolean isOperator) {
         this.name = name;
         this.nick = nick;
@@ -18,11 +18,12 @@ public class User {
     }
 
     public User(Document document) {
+        this.isOperator = false;
         //Document.setFieldsFromDocument(this, document);
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
@@ -30,7 +31,7 @@ public class User {
     }
 
     public String getNick() {
-        return nick;
+        return this.nick;
     }
 
     public void setNick(String nick) {
@@ -38,15 +39,15 @@ public class User {
     }
 
     public Boolean getOperator() {
-        return isOperator;
+        return this.isOperator;
     }
 
     public void setOperator(Boolean operator) {
-        isOperator = operator;
+        this.isOperator = operator;
     }
 
     public String getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(String id) {

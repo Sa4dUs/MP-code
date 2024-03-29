@@ -24,11 +24,6 @@ public class ChallengeRequest {
         this.bet = bet;
     }
 
-    public ChallengeRequest(Document document)
-    {
-        Document.setFieldsFromDocument(this, document);
-    }
-
     public void accept()
     {
 

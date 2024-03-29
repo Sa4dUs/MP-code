@@ -21,13 +21,6 @@ public class Player extends User {
         super();
     }
 
-    public Player(Document document)
-    {
-        super(document);
-        Document.setFieldsFromDocument(this, document);
-
-    }
-
     public Player(String name, String nick, String password, Boolean isOperator) {
         super(name, nick, password, isOperator);
     }

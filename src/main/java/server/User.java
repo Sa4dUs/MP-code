@@ -18,7 +18,7 @@ public class User {
     }
 
     public User(Document document) {
-        Document.setFieldsFromDocument(this, document);
+        //Document.setFieldsFromDocument(this, document);
     }
 
     public String getName() {

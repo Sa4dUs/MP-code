@@ -8,12 +8,6 @@ public class Human extends Minion{
 
     public Human(){}
 
-    public Human(Document doc)
-    {
-        super(doc);
-        Document.setFieldsFromDocument(this, doc);
-    }
-
     @Override
     public String toString() {
         return super.toString();

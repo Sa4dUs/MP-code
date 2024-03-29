@@ -11,10 +11,6 @@ public abstract class Minion {
     private final int maxHealth = 3;
 
     public Minion(){}
-    public Minion(Document doc)
-    {
-        Document.setFieldsFromDocument(this, doc);
-    }
     @Override
     public String toString()
     {

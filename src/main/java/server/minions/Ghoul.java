@@ -8,12 +8,6 @@ public class Ghoul extends  Minion{
 
     public Ghoul(){}
 
-    public Ghoul(Document doc)
-    {
-        super(doc);
-        Document.setFieldsFromDocument(this, doc);
-    }
-
     @Override
     public String toString() {
         return super.toString();

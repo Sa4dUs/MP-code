@@ -12,16 +12,6 @@ public class PlayerCharacter extends Character{
 
     public PlayerCharacter(){}
 
-    public PlayerCharacter(Document document)
-    {
-        super(document);
-        this.activeWeaponL = (Weapon) document.getProperty("activeWeaponL");
-        this.activeWeaponR = (Weapon) document.getProperty("activeWeaponR");
-        this.activeArmor = (Armor) document.getProperty("activeArmor");
-        this.activeNormalAbility = (Ability) document.getProperty("activeNormalAbility");
-        this.activeSpecialAbility = (Ability) document.getProperty("activeSpecialAbility");
-    }
-
     public Weapon getActiveWeaponL() {
         return activeWeaponL;
     }

@@ -11,12 +11,6 @@ public class Demon extends Minion{
 
     public Demon(){}
 
-    public Demon(Document doc)
-    {
-        super(doc);
-        Document.setFieldsFromDocument(this, doc);
-    }
-
 
     public int calculateMinionsKilledAfterDamage(int damage)
     {

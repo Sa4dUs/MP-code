@@ -9,10 +9,6 @@ public class Characteristic {
     private int value;
     private final int maxValue = 3;
 
-    public Characteristic(Document document)
-    {
-        Document.setFieldsFromDocument(this, document);
-    }
     @Override
     public String toString() {
         return id;

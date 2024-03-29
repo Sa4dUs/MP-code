@@ -7,11 +7,13 @@ import server.items.Weapon;
 import server.minions.Demon;
 import server.minions.Minion;
 import server.nosql.Document;
+import server.nosql.JSONable;
+import server.services.ChallengeService;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Character {
+public class Character implements JSONable {
 
     private String id;
     private String name;
@@ -33,10 +35,6 @@ public class Character {
     private List<Characteristic> resistancesList = new ArrayList<>();
 
     public Character(){}
-    public Character(Document document)
-    {
-        Document.setFieldsFromDocument(this, document);
-    }
 
     public int calculateMinionsKilledAfterDamage(int damage)
     {
@@ -144,4 +142,9 @@ public class Character {
     }
 
     public String getId(){return id;}
+
+    @Override
+    public Document getDocument() {
+        return null;
+    }
 }

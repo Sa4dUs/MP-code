@@ -95,24 +95,4 @@ public class Document {
         JSONObject jsonObject = new JSONObject(jsonString);
         return new Document(jsonObject);
     }
-
-    public static void setFieldsFromDocument(Object object, Document document)
-    {
-        for(Field field: object.getClass().getDeclaredFields())
-        {
-            try
-            {
-                if(field.getType().equals(List.class))
-                    field.set(object, List.of(document.getProperty(field.getName())));
-                else
-                    field.set(object, document.getProperty(field.getName()));
-            } catch (Exception e)
-            {
-                if ((field.getModifiers() & Modifier.FINAL) == Modifier.FINAL)
-                    continue;
-
-                throw new RuntimeException("Document " + document + "cannot be casted into " + object);
-            }
-        }
-    }
 }

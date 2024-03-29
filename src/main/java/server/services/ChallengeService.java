@@ -15,10 +15,8 @@ import javax.print.Doc;
 import javax.swing.*;
 import javax.xml.crypto.Data;
 import java.beans.PropertyDescriptor;
-import java.lang.reflect.Array;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-import java.lang.reflect.Type;
+import java.lang.reflect.*;
+import java.sql.Array;
 import java.util.*;
 
 public class ChallengeService implements Service {
@@ -39,8 +37,7 @@ public class ChallengeService implements Service {
     {
         Query query = new Query();
         query.addFilter("id", id);
-        Document doc = new Document();
-        doc = Database.findOne(Collection.CHALLENGE, query);
+        Document doc = Database.findOne(Collection.CHALLENGE, query);
 
         if(doc == null)
         {
@@ -59,11 +56,11 @@ public class ChallengeService implements Service {
         ChallengeRequest request = new ChallengeRequest(attackingPlayer, attackedPlayer, bet);
 
         ResponseBody res = new ResponseBody(true);
-        res.addField("data", doc);
+        res.addField("data", request);
 
         return res;
     }
-    
+
     public ResponseBody getDocument(String id, Class<?> clazz)
     {
         Query query = new Query();
@@ -75,29 +72,49 @@ public class ChallengeService implements Service {
             return new ResponseBody(false);
 
         ResponseBody responseBody = new ResponseBody(true);
-        responseBody.addField("id", document);
+        responseBody.addField(id, document);
 
         return responseBody;
     }
 
-    private void deJSONDocument(Document document, Class<?> clazz)
+    public ResponseBody deJSONDocument(Document document, Class<?> clazz)
     {
-        for(Field field: clazz.getDeclaredFields())
-        {
-            if(field.getType().isPrimitive())
-                continue;
+        try {
+            Object object = clazz.getDeclaredConstructor().newInstance();
 
-            if(field.getType().isArray())
-                document.setProperty(field.getName(), getObjectArrayFromDoc((String[]) document.getProperty(field.getName()), field.getClass()));
-            else if(List.class.isAssignableFrom(field.getType()))
-                document.setProperty(field.getName(), List.of(getObjectArrayFromDoc((String[]) document.getProperty(field.getName()), field.getClass())));
-            else
-                document.setProperty(field.getName(), getObjectFromDoc((String) document.getProperty(field.getName()), field.getClass()));
+            for(Field field: clazz.getDeclaredFields())
+            {
+                if(field.getType().isPrimitive())
+                {
+                    if(field.getType().equals(Boolean.class) || field.getType().equals(boolean.class))
+                        field.set(object, Boolean.valueOf((String) document.getProperty(field.getName())));
+                    else
+                        field.set(object, document.getProperty(field.getName()));
+                }
+                else if(field.getType().isArray())
+                {
+                    field.set(object, getObjectArrayFromDoc((String[]) document.getProperty(field.getName()), field.getClass()).getField("data"));
+                }
+                else if(List.class.isAssignableFrom(field.getType()))
+                {
+                    field.set(object, List.of((Object[]) getObjectArrayFromDoc((String[]) document.getProperty(field.getName()), field.getClass()).getField("data")));
+                }
+                else
+                {
+                    field.set(object, List.of(getObjectFromDoc((String) document.getProperty(field.getName()), field.getClass()).getField((String) document.getProperty(field.getName()))));
+                }
+            }
+
+            ResponseBody responseBody = new ResponseBody(true);
+            responseBody.addField(document.getId(), object);
+            return responseBody;
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 
-
-    public Object[] getObjectArrayFromDoc(String[] ids, Class<?> clazz){
+    public ResponseBody getObjectArrayFromDoc(String[] ids, Class<?> clazz){
         List<Object> list = new ArrayList<>();
 
         for (String id: ids)
@@ -107,37 +124,22 @@ public class ChallengeService implements Service {
                 continue;
 
             Document document = (Document) responseBody.getField(id);
-            deJSONDocument(document, clazz);
-            try
-            {
-                list.add(clazz.getDeclaredConstructor(Document.class).newInstance(document));
-            }
-            catch (Exception e)
-            {
-                continue;
-            }
+            list.add(deJSONDocument(document, clazz).getField(document.getId()));
         }
-        return list.toArray(new Object[0]);
+        ResponseBody responseBody = new ResponseBody(true);
+        responseBody.addField("data", list.toArray(new Object[0]));
+        return responseBody;
     }
 
-    public Object getObjectFromDoc(String id, Class<?> clazz) {
+    public ResponseBody getObjectFromDoc(String id, Class<?> clazz) {
         ResponseBody responseBody = getDocument(id, clazz);
         if(!responseBody.ok)
             return new ResponseBody(false);
 
         Document document = (Document) responseBody.getField(id);
-
-        deJSONDocument(document, clazz);
-        try
-        {
-            return clazz.getDeclaredConstructor(Document.class).newInstance(document);
-        } catch (NoSuchMethodException e)
-        {
-            throw new RuntimeException("No constructor with document in " + clazz);
-        } catch (Exception e)
-        {
-            return null;
-        }
+        responseBody = new ResponseBody(true);
+        responseBody.addField(id, deJSONDocument(document, clazz).getField(document.getId()));
+        return responseBody;
     }
 
 
@@ -159,8 +161,8 @@ public class ChallengeService implements Service {
     //Terminado
     public ResponseBody acceptChallengeFromPlayer(ChallengeRequest challenge)
     {
-        Player attackingPlayer = (Player) getObjectFromDoc(challenge.getAttackerId(), Player.class);
-        Player attackedPlayer = (Player) getObjectFromDoc(challenge.getAttackedId(), Player.class);
+        Player attackingPlayer = (Player) getObjectFromDoc(challenge.getAttackerId(), Player.class).getField(challenge.getAttackerId());
+        Player attackedPlayer = (Player) getObjectFromDoc(challenge.getAttackedId(), Player.class).getField(challenge.getAttackedId());
         int bet = challenge.getBet();
 
         if(attackingPlayer == null || attackedPlayer == null)
@@ -204,8 +206,8 @@ public class ChallengeService implements Service {
     //Terminado
     public ResponseBody denyChallengeFromOperator(ChallengeRequest challenge)
     {
-        Player attackingPlayer = (Player) getObjectFromDoc(challenge.getAttackerId(), Player.class);
-        Player attackedPlayer = (Player) getObjectFromDoc(challenge.getAttackedId(), Player.class);
+        Player attackingPlayer = (Player) getObjectFromDoc(challenge.getAttackerId(), Player.class).getField(challenge.getAttackerId());
+        Player attackedPlayer = (Player) getObjectFromDoc(challenge.getAttackedId(), Player.class).getField(challenge.getAttackedId());
         int bet = challenge.getBet();
 
         if(attackingPlayer == null || attackedPlayer == null)
@@ -229,8 +231,8 @@ public class ChallengeService implements Service {
     //Terminado
     public ResponseBody denyChallengeFromPlayer(ChallengeRequest challenge)
     {
-        Player attackingPlayer = (Player) getObjectFromDoc(challenge.getAttackerId(), Player.class);
-        Player attackedPlayer = (Player) getObjectFromDoc(challenge.getAttackedId(), Player.class);
+        Player attackingPlayer = (Player) getObjectFromDoc(challenge.getAttackerId(), Player.class).getField(challenge.getAttackerId());
+        Player attackedPlayer = (Player) getObjectFromDoc(challenge.getAttackedId(), Player.class).getField(challenge.getAttackedId());
         int bet = challenge.getBet();
 
         if(attackingPlayer == null || attackedPlayer == null)

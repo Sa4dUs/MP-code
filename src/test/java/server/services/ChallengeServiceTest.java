@@ -11,10 +11,12 @@ class ChallengeServiceTest {
     @Test
     public void testGeneral()
     {
-        ChallengeService service = new ChallengeService();
+        ChallengeService challengeService = new ChallengeService();
+        AuthenticationService authenticationService = new AuthenticationService();
 
-        Player p1 = new Player("Pepe", "f3rfqf", "123456", false);
-        ResponseBody responseBody = service.createObject(p1, Player.class);
+        Player p1;
+        ResponseBody responseBody = authenticationService.login("Pepe", "123456");
+        p1 = (Player) responseBody.getField("user");
     }
 
 }

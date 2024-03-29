@@ -7,8 +7,8 @@ import java.util.Map;
 public class StatsSchema extends Schema {
     public StatsSchema() {
         super(Map.of(
-                "atk", Integer.class,
-                "dfs", Integer.class,
+                "attack", Integer.class,
+                "defense", Integer.class,
                 "name", String.class
         ));
     }

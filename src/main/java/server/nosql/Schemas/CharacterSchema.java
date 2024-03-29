@@ -9,16 +9,15 @@ public class CharacterSchema extends Schema {
         super(Map.of(
                 "name", String.class,
                 "breed", Integer.class,
-                "hp", Integer.class,
-                "weaponId", String[].class,
-                "armorId", String[].class,
-                "abilityId(N)", String[].class,
-                "abilityId(S)", String[].class,
-                "characteristicId(D)", String[].class,
-                "characteristicId(S)", String[].class,
-                "minionId", String[].class
+                "health", Integer.class,
+                "weaponsList", String[].class,
+                "armorList", String[].class,
+                "abilityList", String[].class,
+                "specialAbilityList", String[].class,
+                "debilitiesList", String[].class,
+                "resistancesList", String[].class,
+                "minionList", String[].class
         ));
-        super.schema.put("id", String.class);
         super.schema.put("gold", Integer.class);
     }
 }

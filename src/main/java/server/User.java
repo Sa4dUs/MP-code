@@ -17,11 +17,8 @@ public class User {
         this.isOperator = isOperator;
     }
 
-    public User(Document doc) {
-        this.name = (String) doc.getProperty("name");
-        this.nick = (String) doc.getProperty("nick");
-        this.password = (String) doc.getProperty("password");
-        this.isOperator = doc.getProperty("isOperator").equals("true");
+    public User(Document document) {
+        Document.setFieldsFromDocument(this, document);
     }
 
     public String getName() {

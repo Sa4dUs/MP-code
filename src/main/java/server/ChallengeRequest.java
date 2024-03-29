@@ -1,13 +1,11 @@
 package server;
 
-import server.characters.Character;
-import server.characters.PlayerCharacter;
 import server.nosql.Document;
 
 public class ChallengeRequest {
 
     private String id;
-    private String attackingPlayerId, attackedPlayerId;
+    private String attackerId, attackedId;
     private int bet;
 
     public String getId()
@@ -22,16 +20,14 @@ public class ChallengeRequest {
 
     public ChallengeRequest(String attackingPlayerId, String attackedPlayerId, int bet)
     {
-        this.attackingPlayerId = attackingPlayerId;
-        this.attackedPlayerId = attackedPlayerId;
+        this.attackerId = attackingPlayerId;
+        this.attackedId = attackedPlayerId;
         this.bet = bet;
     }
 
-    public ChallengeRequest(Document doc)
+    public ChallengeRequest(Document document)
     {
-        this.attackingPlayerId = (String) doc.getProperty("attackingPlayerId");
-        this.attackedPlayerId = (String) doc.getProperty("attackedPlayerId");
-        this.bet = (int) doc.getProperty("bet");
+        Document.setFieldsFromDocument(this, document);
     }
 
     public void accept()
@@ -54,20 +50,20 @@ public class ChallengeRequest {
 
     }
 
-    public String getAttackingPlayerId() {
-        return this.attackingPlayerId;
+    public String getAttackerId() {
+        return this.attackerId;
     }
 
-    public void setAttackingPlayerId(String attackingPlayerId) {
-        this.attackingPlayerId = attackingPlayerId;
+    public void setAttackerId(String attackerId) {
+        this.attackerId = attackerId;
     }
 
-    public String getAttackedPlayerId() {
-        return this.attackedPlayerId;
+    public String getAttackedId() {
+        return this.attackedId;
     }
 
-    public void setAttackedPlayerId(String attackedPlayerId) {
-        this.attackedPlayerId = attackedPlayerId;
+    public void setAttackedId(String attackedId) {
+        this.attackedId = attackedId;
     }
 
     public int getBet() {

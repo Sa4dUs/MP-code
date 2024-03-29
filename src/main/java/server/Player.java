@@ -24,9 +24,7 @@ public class Player extends User {
     public Player(Document document)
     {
         super(document);
-        this.pendingDuels = List.of((ChallengeRequest) document.getProperty("pendingDuels"));
-        this.results = List.of((ChallengeResult) document.getProperty("results"));
-        this.character = (PlayerCharacter) document.getProperty("character");
+        Document.setFieldsFromDocument(this, document);
 
     }
 
@@ -70,4 +68,19 @@ public class Player extends User {
         return this.results;
     }
 
+    public boolean isPending() {
+        return pending;
+    }
+
+    public void setPending(boolean pending) {
+        this.pending = pending;
+    }
+
+    public boolean isBlocked() {
+        return blocked;
+    }
+
+    public void setBlocked(boolean blocked) {
+        this.blocked = blocked;
+    }
 }

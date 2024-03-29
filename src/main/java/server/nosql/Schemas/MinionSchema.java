@@ -8,7 +8,7 @@ public class MinionSchema extends Schema {
     public MinionSchema() {
         super(Map.of(
                 "name", String.class,
-                "hp", Integer.class
+                "health", Integer.class
         ));
     }
 }

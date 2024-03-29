@@ -5,6 +5,6 @@ import java.util.Map;
 public class WeaponSchema extends StatsSchema {
     public WeaponSchema() {
         super();
-        this.schema.put("isTwoHanded", Boolean.class);
+        this.schema.put("twoHanded", Boolean.class);
     }
 }

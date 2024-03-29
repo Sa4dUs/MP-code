@@ -35,17 +35,7 @@ public class Character {
     public Character(){}
     public Character(Document document)
     {
-        this.name = (String) document.getProperty("name");
-        this.breed = CharacterType.values()[(Integer) document.getProperty("breed")];
-        this.health = (Integer) document.getProperty("hp");
-        this.weaponsList = List.of((Weapon[]) document.getProperty("weaponsList"));
-        this.armorList = List.of((Armor[]) document.getProperty("armorList"));
-        this.abilityList = List.of((Ability[]) document.getProperty("abilityList"));
-        this.specialAbilityList = List.of((Ability[]) document.getProperty("specialAbilityList"));
-        this.debilitiesList = List.of((Characteristic[]) document.getProperty("debilitiesList"));
-        this.resistancesList = List.of((Characteristic[]) document.getProperty("resistancesList"));
-        this.minionList = List.of((Minion[]) document.getProperty("minionList"));
-        this.id = document.getId();
+        Document.setFieldsFromDocument(this, document);
     }
 
     public int calculateMinionsKilledAfterDamage(int damage)

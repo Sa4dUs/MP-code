@@ -1,8 +1,18 @@
 package server.minions;
 
+import server.nosql.Document;
+
 public class Ghoul extends  Minion{
     private int dependence;
     private final int maxDependence = 5;
+
+    public Ghoul(){}
+
+    public Ghoul(Document doc)
+    {
+        super(doc);
+        Document.setFieldsFromDocument(this, doc);
+    }
 
     @Override
     public String toString() {

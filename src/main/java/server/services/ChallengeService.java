@@ -1,25 +1,16 @@
 package server.services;
 
-import jdk.javadoc.doclet.Reporter;
 import lib.ResponseBody;
 import server.*;
-import server.characters.Character;
 import server.characters.PlayerCharacter;
-import server.items.Ability;
-import server.items.Armor;
 import server.items.Stats;
-import server.items.Weapon;
-import server.minions.Minion;
 import server.nosql.Collection;
 import server.nosql.Document;
 import server.nosql.Query;
 import server.nosql.Schemas.ChallengeRequestSchema;
 import server.nosql.Schemas.ChallengeResultSchema;
 
-import javax.xml.crypto.Data;
-import java.lang.reflect.Array;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Type;
+import java.lang.reflect.Field;
 import java.util.*;
 
 public class ChallengeService implements Service {
@@ -28,8 +19,8 @@ public class ChallengeService implements Service {
     {
         Document doc = new Document(new ChallengeRequestSchema());
         doc.setProperty("bet", challenge.getBet());
-        doc.setProperty("attackerId", challenge.getAttackingPlayerId());
-        doc.setProperty("attackedId", challenge.getAttackedPlayerId());
+        doc.setProperty("attackerId", challenge.getAttackerId());
+        doc.setProperty("attackedId", challenge.getAttackedId());
         Database.insertOne(Collection.CHALLENGE_OPERATORS, doc);
         challenge.setId(doc.getId());
 
@@ -94,48 +85,52 @@ public class ChallengeService implements Service {
         if(doc == null)
             return null;
 
-        try {
-            doc.setProperty("weaponsList", getItemArray((String[]) doc.getProperty("weaponId"), Weapon.class));
-            doc.setProperty("armorList", getItemArray((String[]) doc.getProperty("armorId"), Armor.class));
-            doc.setProperty("abilityList", getItemArray((String[]) doc.getProperty("abilityId(N)"), Ability.class));
-            doc.setProperty("specialAbilityList", getItemArray((String[]) doc.getProperty("abilityId(S)"), Ability.class));
-            doc.setProperty("debilitiesList", getItemArray((String[]) doc.getProperty("characteristicId(D)"), Characteristic.class));
-            doc.setProperty("resistancesList", getItemArray((String[]) doc.getProperty("characteristicId(S)"), Characteristic.class));
-            //doc.setProperty("armorList", getItemArray((String[]) doc.getProperty("minionId"), Minion.class));
+        deJSONDocument(doc, PlayerCharacter.class);
 
-            doc.setProperty("activeWeaponL", getItem((String) doc.getProperty("weaponId(LWeapon)"), Weapon.class));
-            doc.setProperty("activeWeaponR", getItem((String) doc.getProperty("weaponId(RWeapon)"), Weapon.class));
-            doc.setProperty("activeArmor", getItem((String) doc.getProperty("armorId(Active)"), Armor.class));
-            doc.setProperty("activeNormalAbility", getItem((String) doc.getProperty("abilityId(ActiveN)"), Ability.class));
-            doc.setProperty("activeSpecialAbility", getItem((String) doc.getProperty("abilityId(ActiveS)"), Ability.class));
-        } catch (Exception e) {
-            return null;
-        }
         return new PlayerCharacter(doc);
     }
 
+    private void deJSONDocument(Document document, Class<?> clazz)
+    {
+        for(Field field: clazz.getDeclaredFields())
+        {
+            if(field.getType().isPrimitive())
+                continue;
 
-    private Stats[] getItemArray(String[] ids, Class<?> clazz){
-        List<Stats> list = new ArrayList<>();
+            if(field.getType().isArray())
+                document.setProperty(field.getName(), getObjectArrayFromDoc((String[]) document.getProperty(field.getName()), field.getClass()));
+            else
+                document.setProperty(field.getName(), getObjectFromDoc((String) document.getProperty(field.getName()), field.getClass()));
+        }
+    }
+
+
+    private Object[] getObjectArrayFromDoc(String[] ids, Class<?> clazz){
+        List<Object> list = new ArrayList<>();
 
         for (String id: ids)
         {
             Query query = new Query();
             query.addFilter("id", id);
             Document doc = Database.findOne(Collection.ITEMS, query);
-            try {
-                list.add((Stats) clazz.getDeclaredConstructor(Document.class).newInstance(doc));
-            } catch (Exception e) {
+            deJSONDocument(doc, clazz);
+            try
+            {
+                list.add(clazz.getDeclaredConstructor(Document.class).newInstance(doc));
+            }
+            catch (Exception e)
+            {
                 continue;
             }
         }
-        return list.toArray(new Stats[0]);
+        return list.toArray(new Object[0]);
     }
 
-    private Stats getItem(String id, Class<?> clazz) {
+    private Stats getObjectFromDoc(String id, Class<?> clazz) {
         Query query = new Query();
         query.addFilter("id", id);
         Document doc = Database.findOne(Collection.ITEMS, query);
+        deJSONDocument(doc, clazz);
         try {
             return (Stats) clazz.getDeclaredConstructor(Document.class).newInstance(doc);
         } catch (Exception e) {
@@ -148,7 +143,7 @@ public class ChallengeService implements Service {
     private Document createResultDocument(ChallengeResult result)
     {
         Document resDoc = new Document(new ChallengeResultSchema());
-        resDoc.setProperty("attackerPlayerId", result.getAttackingPlayerId());
+        resDoc.setProperty("attackerPlayerId", result.getAttackerPlayerId());
         resDoc.setProperty("attackedPlayerId", result.getAttackedPlayerId());
         resDoc.setProperty("isWinnerAttacking", result.isWinnerAttacking());
         resDoc.setProperty("turns", result.getTurns());
@@ -162,8 +157,8 @@ public class ChallengeService implements Service {
     //Terminado
     public ResponseBody acceptChallengeFromPlayer(ChallengeRequest challenge)
     {
-        Player attackingPlayer = getPlayer(challenge.getAttackingPlayerId());
-        Player attackedPlayer = getPlayer(challenge.getAttackedPlayerId());
+        Player attackingPlayer = getPlayer(challenge.getAttackerId());
+        Player attackedPlayer = getPlayer(challenge.getAttackedId());
         int bet = challenge.getBet();
 
         if(attackingPlayer == null || attackedPlayer == null)
@@ -188,6 +183,7 @@ public class ChallengeService implements Service {
         return res;
     }
 
+    //Terminado
     public ResponseBody acceptChallengeFromOperator(ChallengeRequest challenge)
     {
         Query query = new Query();
@@ -200,13 +196,14 @@ public class ChallengeService implements Service {
         Database.deleteOne(Collection.CHALLENGE_OPERATORS, query);
         Database.insertOne(Collection.CHALLENGE, doc);
 
-        return addIdToPlayer(challenge.getAttackedPlayerId(), doc.getId(), "pendingDuelId");
+        return addIdToPlayer(challenge.getAttackedId(), doc.getId(), "pendingDuelId");
     }
 
+    //Terminado
     public ResponseBody denyChallengeFromOperator(ChallengeRequest challenge)
     {
-        Player attackingPlayer = getPlayer(challenge.getAttackingPlayerId());
-        Player attackedPlayer = getPlayer(challenge.getAttackedPlayerId());
+        Player attackingPlayer = getPlayer(challenge.getAttackerId());
+        Player attackedPlayer = getPlayer(challenge.getAttackedId());
         int bet = challenge.getBet();
 
         if(attackingPlayer == null || attackedPlayer == null)
@@ -227,10 +224,11 @@ public class ChallengeService implements Service {
         return new ResponseBody(true);
     }
 
+    //Terminado
     public ResponseBody denyChallengeFromPlayer(ChallengeRequest challenge)
     {
-        Player attackingPlayer = getPlayer(challenge.getAttackingPlayerId());
-        Player attackedPlayer = getPlayer(challenge.getAttackedPlayerId());
+        Player attackingPlayer = getPlayer(challenge.getAttackerId());
+        Player attackedPlayer = getPlayer(challenge.getAttackedId());
         int bet = challenge.getBet();
 
         if(attackingPlayer == null || attackedPlayer == null)

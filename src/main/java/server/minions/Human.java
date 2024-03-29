@@ -1,8 +1,18 @@
 package server.minions;
 
+import server.nosql.Document;
+
 public class Human extends Minion{
-    private int loyalty = 1;
+    private int loyalty;
     private final int maxLoyalty = 3;
+
+    public Human(){}
+
+    public Human(Document doc)
+    {
+        super(doc);
+        Document.setFieldsFromDocument(this, doc);
+    }
 
     @Override
     public String toString() {

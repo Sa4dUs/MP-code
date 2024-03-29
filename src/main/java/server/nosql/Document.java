@@ -3,7 +3,11 @@ package server.nosql;
 import org.json.JSONObject;
 import server.Crypto;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Document {
@@ -90,5 +94,25 @@ public class Document {
     public static Document fromJSON(String jsonString) {
         JSONObject jsonObject = new JSONObject(jsonString);
         return new Document(jsonObject);
+    }
+
+    public static void setFieldsFromDocument(Object object, Document document)
+    {
+        for(Field field: object.getClass().getDeclaredFields())
+        {
+            try
+            {
+                if(field.getType().equals(List.class))
+                    field.set(object, List.of(document.getProperty(field.getName())));
+                else
+                    field.set(object, document.getProperty(field.getName()));
+            } catch (Exception e)
+            {
+                if ((field.getModifiers() & Modifier.FINAL) == Modifier.FINAL)
+                    continue;
+
+                throw new RuntimeException("Document " + document + "cannot be casted into " + object);
+            }
+        }
     }
 }

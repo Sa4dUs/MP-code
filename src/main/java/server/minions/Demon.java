@@ -1,11 +1,22 @@
 package server.minions;
 
+import server.nosql.Document;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Demon extends Minion{
     private String pact;
     private List<Minion> minions = new ArrayList<>();
+
+    public Demon(){}
+
+    public Demon(Document doc)
+    {
+        super(doc);
+        Document.setFieldsFromDocument(this, doc);
+    }
+
 
     public int calculateMinionsKilledAfterDamage(int damage)
     {

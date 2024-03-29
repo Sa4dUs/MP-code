@@ -8,15 +8,16 @@ import server.characters.Lycanthrope;
 
 public class ChallengeResult {
     private String id;
-    private final String attackingPlayerId, attackedPlayerId;
-    private int bet, turns;
+    private final String attackerPlayerId, attackedPlayerId;
+    private final int bet;
+    private int turns;
     private int attackerMinionsLeft, attackedMinionsLeft;
     private boolean winnerAttacking = true;
 
     public ChallengeResult(Player attackingPlayer, Player attackedPlayer, int bet)
     {
         this.bet = bet;
-        this.attackingPlayerId = attackingPlayer.getId();
+        this.attackerPlayerId = attackingPlayer.getId();
         this.attackedPlayerId = attackedPlayer.getId();
 
         PlayerCharacter attackingPlayerCharacter = attackingPlayer.getCharacter();
@@ -40,7 +41,7 @@ public class ChallengeResult {
 
     public ChallengeResult(Player attackingPlayer, Player attackedPlayer, int bet, boolean deniedFromOperator)
     {
-        this.attackingPlayerId = attackingPlayer.getId();
+        this.attackerPlayerId = attackingPlayer.getId();
         this.attackedPlayerId = attackedPlayer.getId();
         this.winnerAttacking = !deniedFromOperator;
         this.turns = -1;
@@ -87,8 +88,8 @@ public class ChallengeResult {
             defender.receiveDamage();
     }
 
-    public String getAttackingPlayerId() {
-        return this.attackingPlayerId;
+    public String getAttackerPlayerId() {
+        return this.attackerPlayerId;
     }
 
     public String getAttackedPlayerId() {

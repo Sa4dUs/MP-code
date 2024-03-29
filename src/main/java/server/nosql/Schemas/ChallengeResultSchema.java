@@ -9,7 +9,7 @@ public class ChallengeResultSchema extends Schema {
         super(Map.of(
                 "attackerPlayerId", String.class,
                 "attackedPlayerId", String.class,
-                "isWinnerAttacking", Boolean.class,
+                "winnerAttacking", Boolean.class,
                 "turns", Integer.class,
                 "attackerMinionsLeft", Integer.class,
                 "attackedMinionsLeft", Integer.class,

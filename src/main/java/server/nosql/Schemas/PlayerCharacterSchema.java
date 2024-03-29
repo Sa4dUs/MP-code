@@ -6,10 +6,10 @@ public class PlayerCharacterSchema extends CharacterSchema {
     public PlayerCharacterSchema() {
         super();
         this.schema.put("gold", Integer.class);
-        this.schema.put("weaponId(LWeapon)", String.class);
-        this.schema.put("weaponId(RWeapon)", String.class);
-        this.schema.put("armorId(Active)", String.class);
-        this.schema.put("abilityId(ActiveN)", String.class);
-        this.schema.put("abilityId(ActiveS)", String.class);
+        this.schema.put("activeWeaponL", String.class);
+        this.schema.put("activeWeaponR", String.class);
+        this.schema.put("activeArmor", String.class);
+        this.schema.put("activeNormalAbility", String.class);
+        this.schema.put("activeSpecialAbility", String.class);
     }
 }

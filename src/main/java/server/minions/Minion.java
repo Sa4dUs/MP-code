@@ -1,11 +1,20 @@
 package server.minions;
 
+import server.nosql.Document;
+
+import java.lang.reflect.Field;
+
 public abstract class Minion {
     private String id;
     private String name = "Undefined";
     private int health = 1;
     private final int maxHealth = 3;
 
+    public Minion(){}
+    public Minion(Document doc)
+    {
+        Document.setFieldsFromDocument(this, doc);
+    }
     @Override
     public String toString()
     {

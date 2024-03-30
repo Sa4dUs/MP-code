@@ -1,26 +1,30 @@
 {
-    "3ef3ba6d-1cd4-42cd-831a-6f70819cee44": {
-        "pact": "Chupa chupa",
-        "name": "Marxelo",
-        "health": 2,
-        "id": "3ef3ba6d-1cd4-42cd-831a-6f70819cee44"
+    "ecc6ab56-25e9-4fab-87b7-bcfdafcc9113": {
+        "pact": "Chupa chupa chupa chupa",
+        "name": "Marxelo malvado",
+        "health": 3,
+        "id": "ecc6ab56-25e9-4fab-87b7-bcfdafcc9113",
+        "minions": ["f40e32a9-9f8e-45f6-bca7-2097d9b1f47f"]
     },
-    "c85f9fc7-048f-45a1-97c4-dcad1cf8c058": {
+    "0f7e6544-c441-4291-8c81-7073a83615e5": {
         "pact": "Chupa chupa",
         "name": "Marxelo",
         "health": 2,
-        "id": "c85f9fc7-048f-45a1-97c4-dcad1cf8c058"
+        "id": "0f7e6544-c441-4291-8c81-7073a83615e5",
+        "minions": ["ecc6ab56-25e9-4fab-87b7-bcfdafcc9113"]
     },
-    "f7945c39-51ff-4708-a50b-7e12d39bcffc": {
-        "pact": "Chupa chupa",
-        "name": "Marxelo",
-        "health": 2,
-        "id": "f7945c39-51ff-4708-a50b-7e12d39bcffc"
+    "62d4f1c5-a213-49b0-9471-69389ede8104": {
+        "pact": "Chupa chupa chupa chupa",
+        "name": "Marxelo malvado",
+        "health": 3,
+        "id": "62d4f1c5-a213-49b0-9471-69389ede8104",
+        "minions": ["87336a64-ed3a-4448-ab17-b496b17f1a68"]
     },
-    "8f74534e-79d7-4114-8c1f-9969a6a96a52": {
+    "c0d0313f-9ed8-4e37-b48b-5af543d95542": {
         "pact": "Chupa chupa",
         "name": "Marxelo",
         "health": 2,
-        "id": "8f74534e-79d7-4114-8c1f-9969a6a96a52"
+        "id": "c0d0313f-9ed8-4e37-b48b-5af543d95542",
+        "minions": ["62d4f1c5-a213-49b0-9471-69389ede8104"]
     }
 }

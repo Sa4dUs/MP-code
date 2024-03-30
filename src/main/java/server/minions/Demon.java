@@ -1,6 +1,7 @@
 package server.minions;
 
 import server.nosql.Document;
+import server.nosql.JSONable;
 import server.nosql.Schemas.DemonSchema;
 
 import java.util.ArrayList;
@@ -99,7 +100,21 @@ public class Demon extends Minion{
     {
         Document document = new Document(new DemonSchema());
         document.setProperty("pact", this.pact);
+        document.setProperty("minions", getIdArrayFromArray(minions.toArray(new Minion[0])));
         document.updateFromDocument(super.getDocument());
         return document;
+    }
+
+    private String[] getIdArrayFromArray(JSONable[] objects)
+    {
+        List<String> res = new ArrayList<>();
+        for(JSONable object: objects)
+        {
+            Document objectDoc = object.getDocument();
+            objectDoc.saveToDatabase(object.getClass());
+            res.add(objectDoc.getId());
+        }
+
+        return res.toArray(new String[0]);
     }
 }

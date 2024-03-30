@@ -6,10 +6,7 @@ import org.json.JSONObject;
 import server.Crypto;
 import server.Database;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
+import java.lang.reflect.*;
 import java.util.*;
 
 public class Document {
@@ -160,13 +157,27 @@ public class Document {
     public static Object[] getObjectArrayFromDoc(String[] ids, Class<?> clazz){
         List<Object> list = new ArrayList<>();
 
+        Class<?> currentClass = clazz;
         for (String id: ids)
         {
-            Document document = getDocument(id, clazz);
+            Document document = getDocument(id, currentClass);
             if(document == null)
-                continue;
-
-            list.add(deJSONDocument(document, clazz));
+                try {
+                    Method method = clazz.getMethod("getSubClasses");
+                    List<Class<?>> subclasses =(List<Class<?>>) method.invoke(null);
+                    for (Class<?> subClass : subclasses) {
+                        Document subDocument = getDocument(id, subClass);
+                        if (subDocument != null) {
+                            list.add(deJSONDocument(subDocument, subClass));
+                            break;
+                        }
+                    }
+                }catch (Exception e)
+                {
+                    continue;
+                }
+            else
+                list.add(deJSONDocument(document, currentClass));
         }
         return list.toArray(new Object[0]);
     }
@@ -174,6 +185,21 @@ public class Document {
     public static Object getObjectFromDoc(String id, Class<?> clazz) {
 
         Document document = getDocument(id, clazz);
+        if(document == null)
+            try {
+                Method method = clazz.getMethod("getSubClasses");
+                List<Class<?>> subclasses =(List<Class<?>>) method.invoke(null);
+                for (Class<?> subClass : subclasses) {
+                    Document subDocument = getDocument(id, subClass);
+                    if (subDocument != null) {
+                        return deJSONDocument(subDocument, subClass);
+                    }
+                }
+            }catch (Exception e)
+            {
+                return null;
+            }
+
         return deJSONDocument(document, clazz);
     }
 

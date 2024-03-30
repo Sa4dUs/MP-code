@@ -43,6 +43,20 @@ class ChallengeServiceTest {
         demon.setHealth(2);
         demon.setPact("Chupa chupa");
 
+        Demon demon1 = new Demon();
+        demon1.setName("Marxelo malvado");
+        demon1.setHealth(3);
+        demon1.setPact("Chupa chupa chupa chupa");
+
+        demon.addMinion(demon1);
+
+        Human human = new Human();
+        human.setName("Shania");
+        human.setLoyalty(0);
+        human.setHealth(1);
+
+        demon1.addMinion(human);
+
         Character c1 = new Character();
         c1.setName("Franco");
         c1.setBreed(CharacterType.Hunter);

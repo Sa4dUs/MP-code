@@ -6,6 +6,8 @@ import server.nosql.JSONable;
 import server.nosql.Schemas.MinionSchema;
 
 import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class Minion implements JSONable {
     private String id;
@@ -13,6 +15,17 @@ public abstract class Minion implements JSONable {
     private int health = 1;
     private final int maxHealth = 3;
 
+    private static final List<Class<? extends Minion>> subClasses = new ArrayList<>();
+
+    static {
+        subClasses.add(Human.class);
+        subClasses.add(Demon.class);
+        subClasses.add(Ghoul.class);
+    }
+
+    public static List<Class<? extends Minion>> getSubClasses() {
+        return subClasses;
+    }
     public Minion(){}
     @Override
     public String toString()

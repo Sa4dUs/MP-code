@@ -1,54 +1,28 @@
 {
-    "ac593a27-9ad1-4080-90e9-278773ff6251": {
+    "3fc36a50-f301-4786-8d19-7e059259d8ff": {
         "twoHanded": "false",
         "defense": 0,
         "attack": 0,
-        "id": "ac593a27-9ad1-4080-90e9-278773ff6251"
+        "id": "3fc36a50-f301-4786-8d19-7e059259d8ff"
     },
-    "adf8a886-e592-41ce-93c3-b1a54532315f": {
+    "0228a1b9-3920-4c8a-ab56-78dadd37d5f4": {
+        "twoHanded": "false",
+        "defense": 0,
+        "attack": 0,
+        "id": "0228a1b9-3920-4c8a-ab56-78dadd37d5f4"
+    },
+    "4a53f124-f318-42cf-adc8-5afcdab65635": {
         "twoHanded": "true",
         "defense": 3,
         "attack": 3,
         "name": "Tu madre",
-        "id": "adf8a886-e592-41ce-93c3-b1a54532315f"
+        "id": "4a53f124-f318-42cf-adc8-5afcdab65635"
     },
-    "8768ca25-1967-4db4-9a5b-ba1173b9cf99": {
+    "ff8269e6-d95b-4c9f-832b-e8d5e64b53b7": {
         "twoHanded": "true",
         "defense": 3,
         "attack": 3,
         "name": "Tu madre",
-        "id": "8768ca25-1967-4db4-9a5b-ba1173b9cf99"
-    },
-    "a8b32cd7-6574-4568-8724-d08f44ad18b2": {
-        "twoHanded": "false",
-        "defense": 0,
-        "attack": 0,
-        "id": "a8b32cd7-6574-4568-8724-d08f44ad18b2"
-    },
-    "8bec7959-8b4c-442e-8c3b-6f7be3a3d20a": {
-        "twoHanded": "true",
-        "defense": 3,
-        "attack": 3,
-        "name": "Tu madre",
-        "id": "8bec7959-8b4c-442e-8c3b-6f7be3a3d20a"
-    },
-    "cd0a16b5-6f44-4a67-825e-04e58d97c1c8": {
-        "twoHanded": "true",
-        "defense": 3,
-        "attack": 3,
-        "name": "Tu madre",
-        "id": "cd0a16b5-6f44-4a67-825e-04e58d97c1c8"
-    },
-    "922eb9f5-16ae-4428-9b35-6c44c992474c": {
-        "twoHanded": "false",
-        "defense": 0,
-        "attack": 0,
-        "id": "922eb9f5-16ae-4428-9b35-6c44c992474c"
-    },
-    "bc8cc34c-0c67-4fce-83e0-78e21123e952": {
-        "twoHanded": "false",
-        "defense": 0,
-        "attack": 0,
-        "id": "bc8cc34c-0c67-4fce-83e0-78e21123e952"
+        "id": "ff8269e6-d95b-4c9f-832b-e8d5e64b53b7"
     }
 }

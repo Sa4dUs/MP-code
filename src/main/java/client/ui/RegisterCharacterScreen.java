@@ -8,7 +8,6 @@ import java.awt.event.ActionListener;
 
 public class RegisterCharacterScreen extends Screen {
     private JButton placeholderButton;
-    private JScrollBar scrollBar1;
     private JPanel frame;
     private JButton backButton;
 

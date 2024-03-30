@@ -8,7 +8,6 @@ import java.awt.event.ActionListener;
 
 public class OperatorDashboardScreen extends Screen {
     private JButton placeholderButton;
-    private JScrollBar scrollBar1;
     private JTextField textField3;
     private JTextField textField2;
     private JTextField textField1;

@@ -32,7 +32,9 @@ public class ScreenManager {
     }
 
     public static void goBack() {
-        render(visited.pop());
+        if (visited.pop() != null) {
+            render(visited.pop());
+        }
     }
 
     public static void exit(){

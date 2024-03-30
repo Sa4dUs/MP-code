@@ -18,7 +18,7 @@ public class PlayerDashboardScreen extends Screen {
     private JButton sendChallengeBtn;
     private JButton editCharacterBtn;
     private JButton checkRankBtn;
-    private JButton exitButton;
+    private JButton exitBtn;
 
     public PlayerDashboardScreen() {
         deleteAccountBtn.addActionListener(new ActionListener() {
@@ -74,7 +74,7 @@ public class PlayerDashboardScreen extends Screen {
                 ScreenManager.render(RankingScreen.class);
             }
         });
-        exitButton.addActionListener(new ActionListener() {
+        exitBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ScreenManager.exit();

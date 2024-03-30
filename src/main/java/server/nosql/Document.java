@@ -147,9 +147,7 @@ public class Document {
     public static Object getObjectFromDoc(String id, Class<?> clazz) {
 
         Document document = getDocument(id, clazz);
-        ResponseBody responseBody = new ResponseBody(true);
-        responseBody.addField(id, deJSONDocument(document, clazz));
-        return responseBody;
+        return deJSONDocument(document, clazz);
     }
 
     public static Document getDocument(String id, Class<?> clazz)

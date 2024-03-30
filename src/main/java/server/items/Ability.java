@@ -1,5 +1,8 @@
 package server.items;
 
+import server.nosql.Document;
+import server.nosql.Schemas.AbilitySchema;
+
 public class Ability extends Stats{
     private int cost;
 
@@ -14,4 +17,11 @@ public class Ability extends Stats{
         this.cost = cost;
     }
 
+    @Override
+    public Document getDocument() {
+        Document document = new Document(new AbilitySchema());
+        document.setProperty("cost", this.cost);
+        document.updateFromDocument(super.getDocument());
+        return document;
+    }
 }

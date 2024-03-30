@@ -12,12 +12,20 @@ public class Ghoul extends  Minion{
     public String toString() {
         return super.toString();
     }
+
     public int getDependence() {
         return dependence;
     }
+
     public void setDependence(int dependence) {
         this.dependence = (dependence > maxDependence) ? maxDependence : Math.max(dependence, 1);;
     }
 
     public  int getMaxDependence(){return maxDependence;}
+
+    @Override
+    public Document getDocument()
+    {
+        return null;
+    }
 }

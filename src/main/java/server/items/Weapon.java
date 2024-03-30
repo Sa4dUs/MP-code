@@ -1,6 +1,11 @@
 package server.items;
 
-public class Weapon extends Stats{
+import server.nosql.Document;
+import server.nosql.JSONable;
+import server.nosql.Schemas.AbilitySchema;
+import server.nosql.Schemas.WeaponSchema;
+
+public class Weapon extends Stats {
     private boolean twoHanded;
 
     @Override
@@ -16,4 +21,11 @@ public class Weapon extends Stats{
         this.twoHanded = twoHanded;
     }
 
+    @Override
+    public Document getDocument() {
+        Document document = new Document(new WeaponSchema());
+        document.setProperty("twoHanded", Boolean.toString(this.twoHanded));
+        document.updateFromDocument(super.getDocument());
+        return document;
+    }
 }

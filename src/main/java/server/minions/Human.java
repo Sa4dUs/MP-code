@@ -1,6 +1,7 @@
 package server.minions;
 
 import server.nosql.Document;
+import server.nosql.Schemas.HumanSchema;
 
 public class Human extends Minion{
     private int loyalty;
@@ -26,6 +27,9 @@ public class Human extends Minion{
     @Override
     public Document getDocument()
     {
-        return null;
+        Document document = new Document(new HumanSchema());
+        document.setProperty("loyalty", this.loyalty);
+        document.updateFromDocument(super.getDocument());
+        return document;
     }
 }

@@ -121,6 +121,11 @@ public class Character implements JSONable {
         return armorList;
     }
 
+    public void addArmorToList(Armor armor)
+    {
+        this.armorList.add(armor);
+    }
+
     public List<Ability> getAbilityList() {
         return abilityList;
     }
@@ -151,7 +156,6 @@ public class Character implements JSONable {
         document.setProperty("name", this.name);
         document.setProperty("breed", this.breed.ordinal());
         document.setProperty("health", this.health);
-        document.setProperty("id", this.id);
         document.setProperty("weaponsList", getIdArrayFromArray(weaponsList.toArray(new JSONable[0])));
         document.setProperty("armorList", getIdArrayFromArray(armorList.toArray(new JSONable[0])));
         document.setProperty("abilityList", getIdArrayFromArray(abilityList.toArray(new JSONable[0])));
@@ -159,6 +163,11 @@ public class Character implements JSONable {
         document.setProperty("debilitiesList", getIdArrayFromArray(debilitiesList.toArray(new JSONable[0])));
         document.setProperty("resistancesList", getIdArrayFromArray(resistancesList.toArray(new JSONable[0])));
         document.setProperty("minionList", getIdArrayFromArray(minionList.toArray(new JSONable[0])));
+
+        if(this.id != null)
+            document.setProperty("id", this.id);
+        else
+            this.id = document.getId();
 
         return document;
     }
@@ -168,7 +177,9 @@ public class Character implements JSONable {
         List<String> res = new ArrayList<>();
         for(JSONable object: objects)
         {
-            res.add(object.getDocument().getId());
+            Document objectDoc = object.getDocument();
+            objectDoc.saveToDatabase(object.getClass());
+            res.add(objectDoc.getId());
         }
 
         return res.toArray(new String[0]);

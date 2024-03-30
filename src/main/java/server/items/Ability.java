@@ -6,6 +6,7 @@ import server.nosql.Schemas.AbilitySchema;
 public class Ability extends Stats{
     private int cost;
 
+    public Ability(){}
     @Override
     public String toString() {
         return super.toString();

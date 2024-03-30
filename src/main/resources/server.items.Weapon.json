@@ -1,0 +1,54 @@
+{
+    "ac593a27-9ad1-4080-90e9-278773ff6251": {
+        "twoHanded": "false",
+        "defense": 0,
+        "attack": 0,
+        "id": "ac593a27-9ad1-4080-90e9-278773ff6251"
+    },
+    "adf8a886-e592-41ce-93c3-b1a54532315f": {
+        "twoHanded": "true",
+        "defense": 3,
+        "attack": 3,
+        "name": "Tu madre",
+        "id": "adf8a886-e592-41ce-93c3-b1a54532315f"
+    },
+    "8768ca25-1967-4db4-9a5b-ba1173b9cf99": {
+        "twoHanded": "true",
+        "defense": 3,
+        "attack": 3,
+        "name": "Tu madre",
+        "id": "8768ca25-1967-4db4-9a5b-ba1173b9cf99"
+    },
+    "a8b32cd7-6574-4568-8724-d08f44ad18b2": {
+        "twoHanded": "false",
+        "defense": 0,
+        "attack": 0,
+        "id": "a8b32cd7-6574-4568-8724-d08f44ad18b2"
+    },
+    "8bec7959-8b4c-442e-8c3b-6f7be3a3d20a": {
+        "twoHanded": "true",
+        "defense": 3,
+        "attack": 3,
+        "name": "Tu madre",
+        "id": "8bec7959-8b4c-442e-8c3b-6f7be3a3d20a"
+    },
+    "cd0a16b5-6f44-4a67-825e-04e58d97c1c8": {
+        "twoHanded": "true",
+        "defense": 3,
+        "attack": 3,
+        "name": "Tu madre",
+        "id": "cd0a16b5-6f44-4a67-825e-04e58d97c1c8"
+    },
+    "922eb9f5-16ae-4428-9b35-6c44c992474c": {
+        "twoHanded": "false",
+        "defense": 0,
+        "attack": 0,
+        "id": "922eb9f5-16ae-4428-9b35-6c44c992474c"
+    },
+    "bc8cc34c-0c67-4fce-83e0-78e21123e952": {
+        "twoHanded": "false",
+        "defense": 0,
+        "attack": 0,
+        "id": "bc8cc34c-0c67-4fce-83e0-78e21123e952"
+    }
+}

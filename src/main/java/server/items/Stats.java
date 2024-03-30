@@ -13,6 +13,8 @@ public abstract class Stats implements JSONable {
     private int defense;
     private final int maxDefense = 3;
 
+
+    public Stats(){}
     @Override
     public String toString()
     {
@@ -46,7 +48,10 @@ public abstract class Stats implements JSONable {
     public Document getDocument()
     {
         Document document = new Document(new StatsSchema());
-        document.setProperty("id", this.id);
+        if(this.id != null)
+            document.setProperty("id", this.id);
+        else
+            this.id = document.getId();
         document.setProperty("attack", this.attack);
         document.setProperty("defense", this.defense);
         document.setProperty("name", this.name);

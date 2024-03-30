@@ -1,0 +1,16 @@
+{"0d0ff28d-503b-4fa7-8143-2ebc6317fd72": {
+    "armorList": ["a488496b-f019-476a-a0d6-ab0e209dc7d6"],
+    "specialAbilityList": [],
+    "resistancesList": [],
+    "minionList": ["8f74534e-79d7-4114-8c1f-9969a6a96a52"],
+    "name": "Franco",
+    "health": 0,
+    "id": "0d0ff28d-503b-4fa7-8143-2ebc6317fd72",
+    "abilityList": [],
+    "breed": 0,
+    "weaponsList": [
+        "cd0a16b5-6f44-4a67-825e-04e58d97c1c8",
+        "922eb9f5-16ae-4428-9b35-6c44c992474c"
+    ],
+    "debilitiesList": []
+}}

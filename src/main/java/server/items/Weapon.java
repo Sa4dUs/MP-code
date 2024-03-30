@@ -6,8 +6,9 @@ import server.nosql.Schemas.AbilitySchema;
 import server.nosql.Schemas.WeaponSchema;
 
 public class Weapon extends Stats {
-    private boolean twoHanded;
 
+    public Weapon(){}
+    private boolean twoHanded;
     @Override
     public String toString() {
         return super.toString();
@@ -24,7 +25,7 @@ public class Weapon extends Stats {
     @Override
     public Document getDocument() {
         Document document = new Document(new WeaponSchema());
-        document.setProperty("twoHanded", Boolean.toString(this.twoHanded));
+        document.setProperty("twoHanded", this.twoHanded);
         document.updateFromDocument(super.getDocument());
         return document;
     }

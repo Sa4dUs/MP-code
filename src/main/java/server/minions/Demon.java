@@ -1,6 +1,7 @@
 package server.minions;
 
 import server.nosql.Document;
+import server.nosql.Schemas.DemonSchema;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -96,6 +97,9 @@ public class Demon extends Minion{
     @Override
     public Document getDocument()
     {
-        return null;
+        Document document = new Document(new DemonSchema());
+        document.setProperty("pact", this.pact);
+        document.updateFromDocument(super.getDocument());
+        return document;
     }
 }

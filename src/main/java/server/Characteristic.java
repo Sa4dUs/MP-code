@@ -2,6 +2,7 @@ package server;
 
 import server.nosql.Document;
 import server.nosql.JSONable;
+import server.nosql.Schemas.CharacteristicSchema;
 
 public class Characteristic implements JSONable {
 
@@ -23,6 +24,14 @@ public class Characteristic implements JSONable {
 
     @Override
     public Document getDocument() {
-        return null;
+        Document document = new Document(new CharacteristicSchema());
+        if(this.id != null)
+            document.setProperty("id", this.id);
+        else
+            this.id = document.getId();
+        document.setProperty("name", this.name);
+        document.setProperty("value", this.value);
+
+        return document;
     }
 }

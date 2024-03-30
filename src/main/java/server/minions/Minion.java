@@ -40,7 +40,13 @@ public abstract class Minion implements JSONable {
     public Document getDocument()
     {
         Document document = new Document(new MinionSchema());
-        document.setProperty("id", this.id);
+
+        document.setProperty("health", this.health);
+        document.setProperty("name", this.name);
+        if(this.id != null)
+            document.setProperty("id", this.id);
+        else
+            this.id = document.getId();
         return document;
     }
 }

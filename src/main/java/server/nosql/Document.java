@@ -1,12 +1,15 @@
 package server.nosql;
 
 import lib.ResponseBody;
+import org.json.JSONArray;
 import org.json.JSONObject;
 import server.Crypto;
 import server.Database;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 import java.util.*;
 
 public class Document {
@@ -72,7 +75,26 @@ public class Document {
             } catch (NumberFormatException e) {
                 throw new IllegalArgumentException("Invalid Integer value: " + value);
             }
-        } else {
+        } else if (targetType.equals(Boolean.class))
+        {
+            return Boolean.toString((Boolean) value);
+        }else if ((targetType.isArray()  && targetType.getComponentType().equals(String.class)))
+        {
+            return value;
+        }else if (targetType.equals(JSONArray.class))
+        {
+            try {
+                JSONArray jsonArray = (JSONArray) value;
+                List<String> list = new ArrayList<>();
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    String id = jsonArray.getString(i);
+                    list.add(id);
+                }
+                return list.toArray(new String[0]);
+            } catch (Exception e) {
+                throw new IllegalArgumentException("Invalid JSONArray value: " + value);
+            }
+        }else {
             throw new IllegalArgumentException("Unsupported data type: " + targetType.getName());
         }
     }
@@ -99,34 +121,39 @@ public class Document {
     {
         try {
             Object object = clazz.getDeclaredConstructor().newInstance();
+            if(object == "null")
+                throw new RuntimeException("Class: " + clazz.getName() + "does not have an empty constructor");
+            Class<?> currentClass = clazz;
+            while (currentClass != Object.class) {
+                for (Field field : currentClass.getDeclaredFields()) {
+                    if (document.getProperty(field.getName()) == null)
+                        continue;
 
-            for(Field field: clazz.getDeclaredFields())
-            {
-                if(field.getType().isPrimitive())
-                {
-                    if(field.getType().equals(Boolean.class) || field.getType().equals(boolean.class))
-                        field.set(object, Boolean.valueOf((String) document.getProperty(field.getName())));
-                    else
-                        field.set(object, document.getProperty(field.getName()));
+                    field.setAccessible(true);
+                    if (field.getType().isPrimitive() || field.getType() == String.class) {
+                        if (field.getType().equals(Boolean.class) || field.getType().equals(boolean.class))
+                            field.set(object, Boolean.valueOf((String) document.getProperty(field.getName())));
+                        else
+                            field.set(object, document.getProperty(field.getName()));
+                    } else if (field.getType().isArray()) {
+                        field.set(object, getObjectArrayFromDoc((String[]) document.getProperty(field.getName()), field.getType().getComponentType()));
+                    } else if (List.class.isAssignableFrom(field.getType())) {
+                        ParameterizedType parameterizedType = (ParameterizedType) field.getGenericType();
+                        Class<?> elementType = (Class<?>) parameterizedType.getActualTypeArguments()[0];
+                        field.set(object, List.of((Object[]) getObjectArrayFromDoc((String[]) document.getProperty(field.getName()), elementType)));
+                    } else if (field.getType().isEnum()) {
+                        Enum<?>[] enumValues = (Enum<?>[]) field.getType().getEnumConstants();
+                        field.set(object, (enumValues[(Integer) document.getProperty(field.getName())]));
+                    } else {
+                        field.set(object, getObjectFromDoc((String) document.getProperty(field.getName()), field.getType()));
+                    }
                 }
-                else if(field.getType().isArray())
-                {
-                    field.set(object, getObjectArrayFromDoc((String[]) document.getProperty(field.getName()), field.getClass()));
-                }
-                else if(List.class.isAssignableFrom(field.getType()))
-                {
-                    field.set(object, List.of((Object[]) getObjectArrayFromDoc((String[]) document.getProperty(field.getName()), field.getClass())));
-                }
-                else
-                {
-                    field.set(object, List.of(getObjectFromDoc((String) document.getProperty(field.getName()), field.getClass())));
-                }
+                currentClass = currentClass.getSuperclass();
             }
-
             return object;
 
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Error creating object: " + clazz.getName() + e);
         }
     }
 
@@ -156,5 +183,10 @@ public class Document {
         query.addFilter("id", id);
 
         return Database.findOne(clazz.getName(), query);
+    }
+
+    public void saveToDatabase(Class<?> clazz)
+    {
+        Database.insertOne(clazz.getName(), this);
     }
 }

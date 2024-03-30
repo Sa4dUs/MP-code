@@ -1,0 +1,26 @@
+{
+    "e148b6d0-de34-4dc2-bd8d-ce4c814cb225": {
+        "defense": 3,
+        "attack": 1,
+        "name": "Pechera de espinas",
+        "id": "e148b6d0-de34-4dc2-bd8d-ce4c814cb225"
+    },
+    "a488496b-f019-476a-a0d6-ab0e209dc7d6": {
+        "defense": 3,
+        "attack": 1,
+        "name": "Pechera de espinas",
+        "id": "a488496b-f019-476a-a0d6-ab0e209dc7d6"
+    },
+    "d5d27316-0487-4e2b-9ca2-2df5d9377ac0": {
+        "defense": 3,
+        "attack": 1,
+        "name": "Pechera de espinas",
+        "id": "d5d27316-0487-4e2b-9ca2-2df5d9377ac0"
+    },
+    "f6417501-c82d-44e5-8fd3-1a7af971e2a9": {
+        "defense": 3,
+        "attack": 1,
+        "name": "Pechera de espinas",
+        "id": "f6417501-c82d-44e5-8fd3-1a7af971e2a9"
+    }
+}

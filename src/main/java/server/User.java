@@ -10,20 +10,12 @@ public class User implements JSONable {
 
     private String name, nick, password, id;
 
-    private Boolean isOperator;
-
     public User() {}
 
-    public User(String name, String nick, String password, Boolean isOperator) {
+    public User(String name, String nick, String password) {
         this.name = name;
         this.nick = nick;
         this.password = password;
-        this.isOperator = isOperator;
-    }
-
-    public User(Document document) {
-        this.isOperator = false;
-        //Document.setFieldsFromDocument(this, document);
     }
 
     public String getName() {
@@ -40,14 +32,6 @@ public class User implements JSONable {
 
     public void setNick(String nick) {
         this.nick = nick;
-    }
-
-    public Boolean getOperator() {
-        return this.isOperator;
-    }
-
-    public void setOperator(Boolean operator) {
-        this.isOperator = operator;
     }
 
     public String getId() {

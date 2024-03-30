@@ -25,8 +25,9 @@ public class PlayerDashboardScreen extends Screen {
             @Override
             public void actionPerformed(ActionEvent e) {
                 RequestBody req = new RequestBody();
-                req.addField("user", Session.getCurrentUser().getId());
+                req.addField("id", Session.getCurrentUser().getId());
 
+                // TODO! Add confirmation dialogue
                 ScreenManager.render(LoginScreen.class);
                 Session.setCurrentUser(null);
 

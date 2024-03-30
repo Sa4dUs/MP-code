@@ -5,6 +5,7 @@ import client.ScreenManager;
 import client.Session;
 import lib.RequestBody;
 import lib.ResponseBody;
+import server.Operator;
 import server.User;
 
 import javax.swing.*;
@@ -44,8 +45,7 @@ public class LoginScreen extends Screen {
 
                 Session.setCurrentUser((User) response.getField("user"));
 
-                System.out.println(Session.getCurrentUser().getOperator());
-                if (Session.getCurrentUser().getOperator()) {
+                if ((Boolean) response.getField("isOperator")) {
                     ScreenManager.render(OperatorDashboardScreen.class);
                     return;
                 }

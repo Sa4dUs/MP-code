@@ -23,8 +23,8 @@ public class Player extends User {
         super();
     }
 
-    public Player(String name, String nick, String password, Boolean isOperator) {
-        super(name, nick, password, isOperator);
+    public Player(String name, String nick, String password) {
+        super(name, nick, password);
     }
 
     private void sendChallenge (String targetId, int bet)
@@ -86,11 +86,15 @@ public class Player extends User {
 
         document.setProperty("pendingDuels", getIdArrayFromArray(pendingDuels.toArray(new JSONable[0])));
         document.setProperty("results", getIdArrayFromArray(results.toArray(new JSONable[0])));
-        if(this.character.getId() == null)
-            this.character.getDocument().saveToDatabase(PlayerCharacter.class);
-        document.setProperty("character", this.character.getId());
-        document.setProperty("blocked", Boolean.toString(this.blocked));
-        document.setProperty("pending", Boolean.toString(this.pending));
+
+        if(this.character != null) {
+            if(this.character.getId() == null)
+                this.character.getDocument().saveToDatabase(PlayerCharacter.class);
+            document.setProperty("character", this.character.getId());
+        }
+
+        document.setProperty("blocked", this.blocked);
+        document.setProperty("pending", this.pending);
 
         return document;
     }

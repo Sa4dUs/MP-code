@@ -118,19 +118,70 @@ public class Database {
 
     public static void deleteOne(String collection, Query query) {
         Map<String, Document> documents = getCachedDocuments(collection);
+        Document documentToRemove = null;
+
         for (Document existingDoc : documents.values()) {
             if (query.matches(existingDoc)) {
-                documents.remove(existingDoc.getId());
+                documentToRemove = existingDoc;
                 break;
             }
         }
+
+        if (documentToRemove != null) {
+            documents.remove(documentToRemove.getId());
+        } else {
+            JSONObject jsonObject;
+            try {
+                jsonObject = readJSONObjectFromFile(PATH + collection + ".json");
+                for (String key : jsonObject.keySet()) {
+                    JSONObject docObject = jsonObject.getJSONObject(key);
+                    Document document = Document.fromJSON(docObject.toString());
+                    if (query.matches(document)) {
+                        jsonObject.remove(key);
+                        break;
+                    }
+                }
+                writeJSONObjectToFile(jsonObject, PATH + collection + ".json");
+            } catch (IOException ignored) {
+            }
+        }
+
         updateCache(collection, documents);
         executeWriteTask(collection, documents);
     }
 
     public static void deleteMany(String collection, Query query) {
         Map<String, Document> documents = getCachedDocuments(collection);
-        documents.values().removeIf(query::matches);
+
+        // Track documents to remove directly from file
+        List<String> docIdsToRemove = new ArrayList<>();
+
+        for (Document existingDoc : documents.values()) {
+            if (query.matches(existingDoc)) {
+                docIdsToRemove.add(existingDoc.getId());
+            }
+        }
+
+        if (docIdsToRemove.isEmpty()) {
+            // Remove directly from file
+            JSONObject jsonObject;
+            try {
+                jsonObject = readJSONObjectFromFile(PATH + collection + ".json");
+                for (String key : jsonObject.keySet()) {
+                    JSONObject docObject = jsonObject.getJSONObject(key);
+                    Document document = Document.fromJSON(docObject.toString());
+                    if (query.matches(document)) {
+                        jsonObject.remove(key);
+                    }
+                }
+                writeJSONObjectToFile(jsonObject, PATH + collection + ".json");
+            } catch (IOException ignored) {
+            }
+        } else {
+            // Remove from cache
+            documents.values().removeIf(doc -> docIdsToRemove.contains(doc.getId()));
+        }
+
         updateCache(collection, documents);
         executeWriteTask(collection, documents);
     }

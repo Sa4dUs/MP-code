@@ -1,8 +1,9 @@
 package server.services;
 
-import client.Session;
 import lib.ResponseBody;
 import server.Database;
+import server.Operator;
+import server.Player;
 import server.User;
 import server.nosql.Collection;
 import server.nosql.Document;
@@ -16,15 +17,24 @@ public class AuthenticationService implements Service {
         Query query = new Query();
         query.addFilter("name", name);
         query.addFilter("password", password);
-        Document user = Database.findOne(Collection.USER, query);
+        Document doc = Database.findOne(Player.class.getName(), query);
 
-        if (user == null) {
+        if (doc != null) {
+            response.setOk(true);
+            response.addField("user", doc.deJSONDocument(User.class));
+            response.addField("isOperator", false);
+            return response;
+        }
+
+        doc = Database.findOne(Operator.class.getName(), query);
+
+        if (doc == null) {
             response.setOk(false);
             return response;
         }
 
         response.setOk(true);
-        response.addField("user", new User(user));
+        response.addField("isOperator", true);
         return response;
     }
 
@@ -34,20 +44,16 @@ public class AuthenticationService implements Service {
         Query query = new Query();
         query.addFilter("name", name);
 
-        if (Database.findOne(Collection.USER, query) != null) {
+        if (Database.findOne(Player.class.getName(), query) != null) {
             response.setOk(false);
             return response;
         }
 
-        Document doc = new Document(new UserSchema());
-        doc.setProperty("name", name);
-        doc.setProperty("password", password);
-        doc.setProperty("isOperator", "false");
-        doc.setProperty("nick", ""); // TODO! make a propper nick function
-        Database.insertOne(Collection.USER, doc);
+        Player player = new Player(name, "jorgenicktales", password); // TODO! Make a proper nick function
+        player.getDocument().saveToDatabase(Player.class);
 
         response.setOk(true);
-        response.addField("user", new User(doc));
+        response.addField("user", player);
         return response;
     }
 

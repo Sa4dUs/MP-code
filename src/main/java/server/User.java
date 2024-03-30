@@ -18,7 +18,7 @@ public class User {
     }
 
     public User(Document document) {
-        this.isOperator = true;
+        this.isOperator = false;
         //Document.setFieldsFromDocument(this, document);
     }
 

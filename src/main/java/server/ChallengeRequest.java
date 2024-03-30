@@ -1,8 +1,10 @@
 package server;
 
 import server.nosql.Document;
+import server.nosql.JSONable;
+import server.nosql.Schemas.ChallengeRequestSchema;
 
-public class ChallengeRequest {
+public class ChallengeRequest implements JSONable {
     private String id;
     private String attackerId, attackedId;
     private int bet;
@@ -68,4 +70,17 @@ public class ChallengeRequest {
         this.bet = bet;
     }
 
+    @Override
+    public Document getDocument() {
+        Document document = new Document(new ChallengeRequestSchema());
+        if(this.id != null)
+            document.setProperty("id", this.id);
+        else
+            this.id = document.getId();
+        document.setProperty("bet", this.bet);
+        document.setProperty("attackerId", this.attackerId);
+        document.setProperty("attackerId", this.attackedId);
+
+        return document;
+    }
 }

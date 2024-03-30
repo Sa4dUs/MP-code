@@ -114,7 +114,7 @@ public class Document {
         return new Document(jsonObject);
     }
 
-    public static Object deJSONDocument(Document document, Class<?> clazz)
+    public Object deJSONDocument(Class<?> clazz)
     {
         try {
             Object object = clazz.getDeclaredConstructor().newInstance();
@@ -123,26 +123,26 @@ public class Document {
             Class<?> currentClass = clazz;
             while (currentClass != Object.class) {
                 for (Field field : currentClass.getDeclaredFields()) {
-                    if (document.getProperty(field.getName()) == null)
+                    if (this.getProperty(field.getName()) == null)
                         continue;
 
                     field.setAccessible(true);
                     if (field.getType().isPrimitive() || field.getType() == String.class) {
                         if (field.getType().equals(Boolean.class) || field.getType().equals(boolean.class))
-                            field.set(object, Boolean.valueOf((String) document.getProperty(field.getName())));
+                            field.set(object, Boolean.valueOf((String) this.getProperty(field.getName())));
                         else
-                            field.set(object, document.getProperty(field.getName()));
+                            field.set(object, this.getProperty(field.getName()));
                     } else if (field.getType().isArray()) {
-                        field.set(object, getObjectArrayFromDoc((String[]) document.getProperty(field.getName()), field.getType().getComponentType()));
+                        field.set(object, getObjectArrayFromDoc((String[]) this.getProperty(field.getName()), field.getType().getComponentType()));
                     } else if (List.class.isAssignableFrom(field.getType())) {
                         ParameterizedType parameterizedType = (ParameterizedType) field.getGenericType();
                         Class<?> elementType = (Class<?>) parameterizedType.getActualTypeArguments()[0];
-                        field.set(object, List.of((Object[]) getObjectArrayFromDoc((String[]) document.getProperty(field.getName()), elementType)));
+                        field.set(object, List.of((Object[]) getObjectArrayFromDoc((String[]) this.getProperty(field.getName()), elementType)));
                     } else if (field.getType().isEnum()) {
                         Enum<?>[] enumValues = (Enum<?>[]) field.getType().getEnumConstants();
-                        field.set(object, (enumValues[(Integer) document.getProperty(field.getName())]));
+                        field.set(object, (enumValues[(Integer) this.getProperty(field.getName())]));
                     } else {
-                        field.set(object, getObjectFromDoc((String) document.getProperty(field.getName()), field.getType()));
+                        field.set(object, getObjectFromDoc((String) this.getProperty(field.getName()), field.getType()));
                     }
                 }
                 currentClass = currentClass.getSuperclass();
@@ -168,7 +168,7 @@ public class Document {
                     for (Class<?> subClass : subclasses) {
                         Document subDocument = getDocument(id, subClass);
                         if (subDocument != null) {
-                            list.add(deJSONDocument(subDocument, subClass));
+                            list.add(subDocument.deJSONDocument(subClass));
                             break;
                         }
                     }
@@ -177,7 +177,7 @@ public class Document {
                     continue;
                 }
             else
-                list.add(deJSONDocument(document, currentClass));
+                list.add(document.deJSONDocument(currentClass));
         }
         return list.toArray(new Object[0]);
     }
@@ -192,7 +192,7 @@ public class Document {
                 for (Class<?> subClass : subclasses) {
                     Document subDocument = getDocument(id, subClass);
                     if (subDocument != null) {
-                        return deJSONDocument(subDocument, subClass);
+                        return subDocument.deJSONDocument(subClass);
                     }
                 }
             }catch (Exception e)
@@ -200,7 +200,9 @@ public class Document {
                 return null;
             }
 
-        return deJSONDocument(document, clazz);
+        if(document == null)
+            return null;
+        return document.deJSONDocument(clazz);
     }
 
     public static Document getDocument(String id, Class<?> clazz)

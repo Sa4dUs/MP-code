@@ -7,10 +7,12 @@ import server.Player;
 import server.User;
 import server.characters.Character;
 import server.characters.CharacterType;
+import server.characters.PlayerCharacter;
 import server.items.Armor;
 import server.items.Weapon;
 import server.minions.Demon;
 import server.minions.Human;
+import server.minions.Minion;
 import server.nosql.Document;
 import server.nosql.Query;
 
@@ -57,7 +59,7 @@ class ChallengeServiceTest {
 
         demon1.addMinion(human);
 
-        Character c1 = new Character();
+        Character c1 = new PlayerCharacter();
         c1.setName("Franco");
         c1.setBreed(CharacterType.Hunter);
         c1.addWeaponToList(weapon);
@@ -65,7 +67,7 @@ class ChallengeServiceTest {
         c1.addMinion(demon);
         c1.addArmorToList(armor);
         Document doc = c1.getDocument();
-        doc.saveToDatabase(Character.class);
+        doc.saveToDatabase(PlayerCharacter.class);
     }
 
     @Test
@@ -73,8 +75,13 @@ class ChallengeServiceTest {
     {
         Query query = new Query();
         query.addFilter("name", "Franco");
-        Document doc = Database.findOne(Character.class.getName(), query);
-        Character character = (Character) Document.deJSONDocument(doc, Character.class);
+        Document doc = Database.findOne(PlayerCharacter.class.getName(), query);
+        PlayerCharacter character = (PlayerCharacter) doc.deJSONDocument(PlayerCharacter.class);
+
+        query = new Query();
+        query.addFilter("name", "Shania");
+        doc = Database.findOne(Human.class.getName(), query);
+        Minion minion = (Minion) doc.deJSONDocument(Human.class);
     }
 
 }

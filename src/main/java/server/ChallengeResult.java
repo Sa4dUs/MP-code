@@ -5,8 +5,11 @@ import server.characters.Hunter;
 import server.characters.PlayerCharacter;
 import server.characters.Vampire;
 import server.characters.Lycanthrope;
+import server.nosql.Document;
+import server.nosql.JSONable;
+import server.nosql.Schemas.ChallengeResultSchema;
 
-public class ChallengeResult {
+public class ChallengeResult implements JSONable {
     private String id;
     private final String attackerPlayerId, attackedPlayerId;
     private final int bet;
@@ -127,4 +130,21 @@ public class ChallengeResult {
     public String getId(){return id;}
 
     public void setId(String id){this.id = id;}
+
+    @Override
+    public Document getDocument() {
+        Document document = new Document(new ChallengeResultSchema());
+        if (this.id != null)
+            document.setProperty("id", this.id);
+        else
+            this.id = document.getId();
+        document.setProperty("bet", this.bet);
+        document.setProperty("attackerId", this.attackerPlayerId);
+        document.setProperty("attackedId", this.attackedPlayerId);
+        document.setProperty("turns", this.turns);
+        document.setProperty("attackerMinionsLeft", this.attackerMinionsLeft);
+        document.setProperty("attackedMinionsLeft", this.attackedMinionsLeft);
+        document.setProperty("winnerAttacking", Boolean.toString(this.winnerAttacking));
+        return document;
+    }
 }

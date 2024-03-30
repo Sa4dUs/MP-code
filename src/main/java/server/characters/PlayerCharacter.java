@@ -4,6 +4,9 @@ import server.items.Ability;
 import server.items.Armor;
 import server.items.Weapon;
 import server.nosql.Document;
+import server.nosql.Schemas.PlayerCharacterSchema;
+
+import javax.print.Doc;
 
 public class PlayerCharacter extends Character{
     private Weapon activeWeaponL, activeWeaponR;
@@ -50,5 +53,19 @@ public class PlayerCharacter extends Character{
 
     public void setActiveSpecialAbility(Ability activeSpecialAbility) {
         this.activeSpecialAbility = activeSpecialAbility;
+    }
+
+    @Override
+    public Document getDocument()
+    {
+        Document document = new Document(new PlayerCharacterSchema());
+        document.updateFromDocument(super.getDocument());
+        document.setProperty("activeWeaponL", this.activeWeaponL != null ? this.activeWeaponL.getDocument(): "");
+        document.setProperty("activeWeaponR", this.activeWeaponR != null ? this.activeWeaponR.getDocument(): "");
+        document.setProperty("activeArmor", this.activeArmor != null ? this.activeArmor.getDocument(): "");
+        document.setProperty("activeNormalAbility", this.activeNormalAbility != null ? this.activeNormalAbility.getDocument(): "");
+        document.setProperty("activeNormalAbility", this.activeSpecialAbility != null ? this.activeSpecialAbility.getDocument(): "");
+
+        return document;
     }
 }

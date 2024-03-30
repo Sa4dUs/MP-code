@@ -1,28 +1,15 @@
 {
-    "3fc36a50-f301-4786-8d19-7e059259d8ff": {
+    "ea58228a-786b-49c3-b7cf-ad1f66e1076d": {
         "twoHanded": "false",
         "defense": 0,
         "attack": 0,
-        "id": "3fc36a50-f301-4786-8d19-7e059259d8ff"
+        "id": "ea58228a-786b-49c3-b7cf-ad1f66e1076d"
     },
-    "0228a1b9-3920-4c8a-ab56-78dadd37d5f4": {
-        "twoHanded": "false",
-        "defense": 0,
-        "attack": 0,
-        "id": "0228a1b9-3920-4c8a-ab56-78dadd37d5f4"
-    },
-    "4a53f124-f318-42cf-adc8-5afcdab65635": {
+    "29e9c8bf-2b59-4a6c-a7c4-3b266fdd087a": {
         "twoHanded": "true",
         "defense": 3,
         "attack": 3,
         "name": "Tu madre",
-        "id": "4a53f124-f318-42cf-adc8-5afcdab65635"
-    },
-    "ff8269e6-d95b-4c9f-832b-e8d5e64b53b7": {
-        "twoHanded": "true",
-        "defense": 3,
-        "attack": 3,
-        "name": "Tu madre",
-        "id": "ff8269e6-d95b-4c9f-832b-e8d5e64b53b7"
+        "id": "29e9c8bf-2b59-4a6c-a7c4-3b266fdd087a"
     }
 }

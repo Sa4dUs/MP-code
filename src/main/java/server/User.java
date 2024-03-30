@@ -1,8 +1,12 @@
 package server;
 
 import server.nosql.Document;
+import server.nosql.JSONable;
+import server.nosql.Schemas.UserSchema;
 
-public class User {
+import javax.print.Doc;
+
+public class User implements JSONable {
 
     private String name, nick, password, id;
 
@@ -52,5 +56,18 @@ public class User {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    @Override
+    public Document getDocument() {
+        Document document = new Document(new UserSchema());
+        if(id != null)
+            document.setProperty("id", this.id);
+        else
+            this.setId(document.getId());
+        document.setProperty("name", this.name);
+        document.setProperty("nick", this.nick);
+        document.setProperty("password", this.password);
+        return document;
     }
 }

@@ -8,4 +8,9 @@ public class Operator extends User{
         super(name, nick, password, isOperator);
     }
 
+    @Override
+    public Document getDocument() {
+        return super.getDocument();
+    }
+
 }

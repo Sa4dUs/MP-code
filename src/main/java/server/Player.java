@@ -4,6 +4,8 @@ import org.json.Property;
 import server.characters.Character;
 import server.characters.PlayerCharacter;
 import server.nosql.Document;
+import server.nosql.JSONable;
+import server.nosql.Schemas.PlayerSchema;
 import server.services.ChallengeService;
 
 import javax.print.Doc;
@@ -75,5 +77,34 @@ public class Player extends User {
 
     public void setBlocked(boolean blocked) {
         this.blocked = blocked;
+    }
+
+    @Override
+    public Document getDocument() {
+        Document document = new Document(new PlayerSchema());
+        document.updateFromDocument(super.getDocument());
+
+        document.setProperty("pendingDuels", getIdArrayFromArray(pendingDuels.toArray(new JSONable[0])));
+        document.setProperty("results", getIdArrayFromArray(results.toArray(new JSONable[0])));
+        if(this.character.getId() == null)
+            this.character.getDocument().saveToDatabase(PlayerCharacter.class);
+        document.setProperty("character", this.character.getId());
+        document.setProperty("blocked", Boolean.toString(this.blocked));
+        document.setProperty("pending", Boolean.toString(this.pending));
+
+        return document;
+    }
+
+    private String[] getIdArrayFromArray(JSONable[] objects)
+    {
+        List<String> res = new ArrayList<>();
+        for(JSONable object: objects)
+        {
+            Document objectDoc = object.getDocument();
+            objectDoc.saveToDatabase(object.getClass());
+            res.add(objectDoc.getId());
+        }
+
+        return res.toArray(new String[0]);
     }
 }

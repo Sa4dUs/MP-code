@@ -215,6 +215,11 @@ public class Document {
 
     public void saveToDatabase(Class<?> clazz)
     {
-        Database.insertOne(clazz.getName(), this);
+        Query query = new Query();
+        query.addFilter("id", this.getId());
+        if(Database.findOne(clazz.getName(), query) == null)
+            Database.insertOne(clazz.getName(), this);
+        else
+            Database.updateOne(clazz.getName(), this, query);
     }
 }

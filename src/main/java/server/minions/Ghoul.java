@@ -1,6 +1,7 @@
 package server.minions;
 
 import server.nosql.Document;
+import server.nosql.Schemas.GhoulSchema;
 
 public class Ghoul extends  Minion{
     private int dependence;
@@ -26,6 +27,9 @@ public class Ghoul extends  Minion{
     @Override
     public Document getDocument()
     {
-        return null;
+        Document document = new Document(new GhoulSchema());
+        document.updateFromDocument(super.getDocument());
+        document.setProperty("dependence", this.dependence);
+        return document;
     }
 }

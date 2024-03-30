@@ -24,30 +24,6 @@
           <text value="Game Title"/>
         </properties>
       </component>
-      <component id="a8590" class="javax.swing.JButton" binding="SignUp">
-        <constraints>
-          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <background color="-1708289"/>
-          <borderPainted value="false"/>
-          <enabled value="true"/>
-          <foreground color="-1"/>
-          <text value="Sign Up"/>
-        </properties>
-      </component>
-      <component id="68b7" class="javax.swing.JButton" binding="LogIn">
-        <constraints>
-          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="2" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <background color="-1708289"/>
-          <borderPainted value="false"/>
-          <enabled value="true"/>
-          <foreground color="-1"/>
-          <text value="Log In"/>
-        </properties>
-      </component>
       <vspacer id="7a32c">
         <constraints>
           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
@@ -69,6 +45,38 @@
           <foreground color="-14869472"/>
           <label value="↩ Exit"/>
           <text value="↩ Exit"/>
+        </properties>
+      </component>
+      <component id="a8590" class="javax.swing.JButton" binding="SignUp">
+        <constraints>
+          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="89" height="-1"/>
+            <preferred-size width="89" height="-1"/>
+            <maximum-size width="89" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-14869472"/>
+          <borderPainted value="false"/>
+          <enabled value="true"/>
+          <foreground color="-1"/>
+          <text value="Sign Up"/>
+        </properties>
+      </component>
+      <component id="68b7" class="javax.swing.JButton" binding="LogIn">
+        <constraints>
+          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="2" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="89" height="-1"/>
+            <preferred-size width="89" height="-1"/>
+            <maximum-size width="89" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-14869472"/>
+          <borderPainted value="false"/>
+          <enabled value="true"/>
+          <foreground color="-1"/>
+          <text value="Log In"/>
         </properties>
       </component>
     </children>

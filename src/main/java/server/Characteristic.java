@@ -1,8 +1,9 @@
 package server;
 
 import server.nosql.Document;
+import server.nosql.JSONable;
 
-public class Characteristic {
+public class Characteristic implements JSONable {
 
     private String id;
     private String name;
@@ -18,5 +19,10 @@ public class Characteristic {
 
     public int getValue() {
         return value;
+    }
+
+    @Override
+    public Document getDocument() {
+        return null;
     }
 }

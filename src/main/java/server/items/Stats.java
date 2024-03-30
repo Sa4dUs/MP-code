@@ -1,6 +1,10 @@
 package server.items;
 
-public abstract class Stats {
+import server.nosql.Document;
+import server.nosql.JSONable;
+import server.nosql.Schemas.StatsSchema;
+
+public abstract class Stats implements JSONable {
 
     private String id;
     private String name;
@@ -36,6 +40,18 @@ public abstract class Stats {
 
     public void setDefense(int defense) {
         this.defense = (defense > maxDefense) ? maxDefense : Math.max(defense, 1);;
+    }
+
+    @Override
+    public Document getDocument()
+    {
+        Document document = new Document(new StatsSchema());
+        document.setProperty("id", this.id);
+        document.setProperty("attack", this.attack);
+        document.setProperty("defense", this.defense);
+        document.setProperty("name", this.name);
+
+        return document;
     }
 
 }

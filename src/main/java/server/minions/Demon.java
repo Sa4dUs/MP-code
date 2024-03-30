@@ -92,4 +92,10 @@ public class Demon extends Minion{
     public String toString() {
         return super.toString();
     }
+
+    @Override
+    public Document getDocument()
+    {
+        return null;
+    }
 }

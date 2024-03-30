@@ -10,8 +10,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class PlayerDashboardScreen extends Screen {
-
-
     private JPanel frame;
     private JButton deleteAccountBtn;
     private JButton LogOutBtn;

@@ -10,7 +10,6 @@ import server.User;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Arrays;
 
 public class LoginScreen extends Screen {
     private JButton logInButton;
@@ -45,6 +44,7 @@ public class LoginScreen extends Screen {
 
                 Session.setCurrentUser((User) response.getField("user"));
 
+                System.out.println(Session.getCurrentUser().getOperator());
                 if (Session.getCurrentUser().getOperator()) {
                     ScreenManager.render(OperatorDashboardScreen.class);
                     return;

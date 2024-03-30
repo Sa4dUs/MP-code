@@ -27,7 +27,7 @@ public class ScreenManager {
 
             visited.add(screenClass);
         } catch (NoSuchMethodException | InvocationTargetException | InstantiationException | IllegalAccessException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
     }
 

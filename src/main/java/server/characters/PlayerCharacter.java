@@ -1,5 +1,6 @@
 package server.characters;
 
+import server.Player;
 import server.items.Ability;
 import server.items.Armor;
 import server.items.Weapon;
@@ -14,6 +15,10 @@ public class PlayerCharacter extends Character{
     private Ability activeNormalAbility, activeSpecialAbility;
 
     public PlayerCharacter(){}
+
+    public PlayerCharacter(Character character) {
+        super(character);
+    }
 
     public Weapon getActiveWeaponL() {
         return activeWeaponL;

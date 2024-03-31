@@ -38,6 +38,21 @@ public class Character implements JSONable {
 
     public Character(){}
 
+    public Character(Character character) {
+        this.id = character.getId();
+        this.name = character.getName();
+        this.health = character.getHealth();
+        this.gold = character.getGold();
+        this.breed = character.getBreed();
+        this.weaponsList = character.getWeaponsList();
+        this.armorList = character.getArmorList();
+        this.abilityList = character.getAbilityList();
+        this.specialAbilityList = character.getSpecialAbilityList();
+        this.minionList = character.getMinionList();
+        this.debilitiesList = character.getDebilitiesList();
+        this.resistancesList = character.getResistancesList();
+    }
+
     public int calculateMinionsKilledAfterDamage(int damage)
     {
         int damageLeft = damage;

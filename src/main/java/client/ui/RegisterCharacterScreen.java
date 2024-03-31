@@ -7,6 +7,7 @@ import com.intellij.uiDesigner.core.GridConstraints;
 import lib.RequestBody;
 import lib.ResponseBody;
 import server.Characteristic;
+import server.Player;
 import server.characters.Character;
 import server.characters.PlayerCharacter;
 import server.items.Ability;
@@ -68,8 +69,12 @@ public class RegisterCharacterScreen extends Screen {
                 // TODO! Call API to create new PlayerChara
                 RequestBody request = new RequestBody();
 
+                PlayerCharacter playerCharacter = new PlayerCharacter();
+
                 request.addField("nick", Session.getCurrentUser().getNick());
                 request.addField("character", new PlayerCharacter());
+
+
 
 
 

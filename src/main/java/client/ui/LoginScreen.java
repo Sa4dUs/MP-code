@@ -5,7 +5,6 @@ import client.ScreenManager;
 import client.Session;
 import lib.RequestBody;
 import lib.ResponseBody;
-import server.Operator;
 import server.User;
 
 import javax.swing.*;

@@ -2,11 +2,13 @@ package client.ui;
 
 import client.Client;
 import client.ScreenManager;
+import client.Session;
 import com.intellij.uiDesigner.core.GridConstraints;
 import lib.RequestBody;
 import lib.ResponseBody;
 import server.Characteristic;
 import server.characters.Character;
+import server.characters.PlayerCharacter;
 import server.items.Ability;
 import server.items.Armor;
 import server.items.Weapon;
@@ -65,7 +67,13 @@ public class RegisterCharacterScreen extends Screen {
             public void actionPerformed(ActionEvent e) {
                 // TODO! Call API to create new PlayerChara
                 RequestBody request = new RequestBody();
-                // Client.request()
+
+                request.addField("nick", Session.getCurrentUser().getNick());
+                request.addField("character", new PlayerCharacter());
+
+
+
+                Client.request("character/setCharacterOfPlayer", request);
             }
         });
     }

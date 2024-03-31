@@ -23,6 +23,9 @@ public class PlayerDashboardScreen extends Screen {
     private JButton checkRankBtn;
     private JButton exitBtn;
     private JButton createCharacter;
+    private JLabel first;
+    private JLabel second;
+    private JLabel third;
 
     @Override
     public void start() {
@@ -30,6 +33,20 @@ public class PlayerDashboardScreen extends Screen {
 
         ResponseBody response = Client.request("challenge/ranking", new RequestBody());
         List<Player> ranking = (List<Player>) response.getField("ranking");
+
+        for (int i = 0; i < ranking.size(); i++) {
+            switch (i + 1) {
+                case 1:
+                    first.setText("1º " + ranking.get(i).getName());
+                    break;
+                case 2:
+                    second.setText("2º " + ranking.get(i).getName());
+                    break;
+                case 3:
+                    third.setText("3º " + ranking.get(i).getName());
+                    break;
+            }
+        }
     }
 
     public PlayerDashboardScreen() {

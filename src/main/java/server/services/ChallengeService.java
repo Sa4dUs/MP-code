@@ -2,21 +2,11 @@ package server.services;
 
 import lib.ResponseBody;
 import server.*;
-import server.characters.PlayerCharacter;
-import server.items.Stats;
 import server.nosql.Collection;
 import server.nosql.Document;
 import server.nosql.Query;
-import server.nosql.Schema;
 import server.nosql.Schemas.ChallengeRequestSchema;
-import server.nosql.Schemas.ChallengeResultSchema;
 
-import javax.print.Doc;
-import javax.swing.*;
-import javax.xml.crypto.Data;
-import java.beans.PropertyDescriptor;
-import java.lang.reflect.*;
-import java.sql.Array;
 import java.util.*;
 
 public class ChallengeService implements Service {
@@ -61,7 +51,6 @@ public class ChallengeService implements Service {
         return res;
     }
 
-    //Terminado
     public ResponseBody acceptChallengeFromPlayer(ChallengeRequest challenge)
     {
         Player attackingPlayer = (Player) Document.getObjectFromDoc(challenge.getAttackerId(), Player.class);

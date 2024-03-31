@@ -75,7 +75,7 @@ public class RegisterCharacterScreen extends Screen {
                 {
                     RequestBody request = new RequestBody();
                     request.addField("character", playerCharacter);
-                    Client.request("character/create", request);
+                    Client.request("character/createPlayerCharacter", request);
                 }
 
                 {

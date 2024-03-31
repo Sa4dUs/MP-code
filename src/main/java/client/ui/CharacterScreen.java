@@ -144,7 +144,7 @@ public class CharacterScreen extends Screen {
         leftWeaponSelect.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String item = (String) armorSelect.getSelectedItem();
+                String item = (String) leftWeaponSelect.getSelectedItem();
 
                 character.setActiveWeaponL(null);
                 for (Weapon weapon : character.getWeaponsList()) {
@@ -164,7 +164,21 @@ public class CharacterScreen extends Screen {
         rightWeaponSelect.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                String item = (String) rightWeaponSelect.getSelectedItem();
 
+                character.setActiveWeaponR(null);
+                for (Weapon weapon : character.getWeaponsList()) {
+                    if (weapon.getName().equals(item)) {
+                        character.setActiveWeaponR(weapon);
+                        break;
+                    }
+                }
+
+                // TODO! Update Player
+                RequestBody request = new RequestBody();
+                request.addField("character", character);
+
+                ResponseBody response = Client.request("character/updatePlayerCharacter", request);
             }
         });
     }

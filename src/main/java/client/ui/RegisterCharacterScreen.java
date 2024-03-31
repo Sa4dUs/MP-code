@@ -70,19 +70,24 @@ public class RegisterCharacterScreen extends Screen {
                     return;
                 }
 
-                RequestBody request = new RequestBody();
-
                 PlayerCharacter playerCharacter = new PlayerCharacter(current);
 
-                request.addField("nick", Session.getCurrentUser().getNick());
-                request.addField("character", playerCharacter);
+                {
+                    RequestBody request = new RequestBody();
+                    request.addField("character", playerCharacter);
+                    Client.request("character/create", request);
+                }
 
-                ResponseBody response = Client.request("character/setCharacterOfPlayer", request);
+                {
+                    RequestBody request = new RequestBody();
+                    request.addField("nick", Session.getCurrentUser().getNick());
+                    request.addField("character", playerCharacter);
+                    ResponseBody response = Client.request("character/setCharacterOfPlayer", request);
 
-
-                // TODO! Add visual feedback
-                if (response.ok) {
-                    ScreenManager.render(PlayerDashboardScreen.class);
+                    // TODO! Add visual feedback
+                    if (response.ok) {
+                        ScreenManager.render(PlayerDashboardScreen.class);
+                    }
                 }
             }
         });

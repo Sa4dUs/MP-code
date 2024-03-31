@@ -65,11 +65,11 @@ public class PlayerCharacter extends Character{
     {
         Document document = new Document(new PlayerCharacterSchema());
         document.updateFromDocument(super.getDocument());
-        document.setProperty("activeWeaponL", this.activeWeaponL != null ? this.activeWeaponL.getDocument(): "");
-        document.setProperty("activeWeaponR", this.activeWeaponR != null ? this.activeWeaponR.getDocument(): "");
-        document.setProperty("activeArmor", this.activeArmor != null ? this.activeArmor.getDocument(): "");
-        document.setProperty("activeNormalAbility", this.activeNormalAbility != null ? this.activeNormalAbility.getDocument(): "");
-        document.setProperty("activeNormalAbility", this.activeSpecialAbility != null ? this.activeSpecialAbility.getDocument(): "");
+        document.setProperty("activeWeaponL", null);
+        document.setProperty("activeWeaponR", null);
+        document.setProperty("activeArmor", null);
+        document.setProperty("activeNormalAbility", null);
+        document.setProperty("activeSpecialAbility", null);
 
         return document;
     }

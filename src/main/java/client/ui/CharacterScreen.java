@@ -138,7 +138,7 @@ public class CharacterScreen extends Screen {
                 RequestBody request = new RequestBody();
                 request.addField("character", character);
 
-                ResponseBody response = Client.request("character/update", request);
+                ResponseBody response = Client.request("character/updatePlayerCharacter", request);
             }
         });
         leftWeaponSelect.addActionListener(new ActionListener() {

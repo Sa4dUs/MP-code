@@ -50,7 +50,7 @@
         "activeSpecialAbility": "",
         "minionList": ["792d5a66-bf10-4330-8026-22dbefacd045"],
         "activeWeaponL": "",
-        "activeArmor": "",
+        "activeArmor": "server.nosql.Document@2e601c3c",
         "name": "Franco",
         "id": "5c43c919-09ba-4605-9f17-b33971831b6a",
         "debilitiesList": []

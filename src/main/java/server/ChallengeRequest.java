@@ -59,7 +59,7 @@ public class ChallengeRequest implements JSONable {
             this.id = document.getId();
         document.setProperty("bet", this.bet);
         document.setProperty("attackerId", this.attackerId);
-        document.setProperty("attackerId", this.attackedId);
+        document.setProperty("attackedId", this.attackedId);
 
         return document;
     }

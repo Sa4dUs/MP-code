@@ -47,7 +47,7 @@ public class User implements JSONable {
     }
 
     public String getId() {
-        return this.id;
+        return this.nick;
     }
 
     public void setId(String id) {

@@ -1,19 +1,71 @@
 {
-  "5c43c919-09ba-4605-9f17-b33971831b6a": {
-    "id": "5c43c919-09ba-4605-9f17-b33971831b6a",
-    "name": "Franco",
-    "health": 0,
-    "gold": 500,
-    "breed": 0,
-    "abilityList": [],
-    "weaponsList": [
-      "29e9c8bf-2b59-4a6c-a7c4-3b266fdd087a",
-      "ea58228a-786b-49c3-b7cf-ad1f66e1076d"
-    ],
-    "armorList": ["bb3bc38c-1662-4748-94f4-ed251ae60309"],
-    "minionList": ["792d5a66-bf10-4330-8026-22dbefacd045"],
-    "specialAbilityList": [],
-    "debilitiesList": [],
-    "resistancesList": []
-  }
+    "8803e4ab-a44a-4b8b-939e-6fc78248e15d": {
+        "armorList": [],
+        "specialAbilityList": [],
+        "resistancesList": [],
+        "minionList": [],
+        "name": "Vayne",
+        "health": 3,
+        "id": "8803e4ab-a44a-4b8b-939e-6fc78248e15d",
+        "abilityList": [],
+        "breed": 0,
+        "weaponsList": [],
+        "debilitiesList": []
+    },
+    "c19744ff-f382-4d55-b3aa-03b92792aa60": {
+        "armorList": [],
+        "specialAbilityList": [],
+        "resistancesList": [],
+        "minionList": [],
+        "name": "Vayne",
+        "health": 3,
+        "id": "c19744ff-f382-4d55-b3aa-03b92792aa60",
+        "abilityList": [],
+        "breed": 0,
+        "weaponsList": [],
+        "debilitiesList": []
+    },
+    "5c43c919-09ba-4605-9f17-b33971831b6a": {
+        "gold": 500,
+        "armorList": ["bb3bc38c-1662-4748-94f4-ed251ae60309"],
+        "specialAbilityList": [],
+        "resistancesList": [],
+        "minionList": ["792d5a66-bf10-4330-8026-22dbefacd045"],
+        "name": "Franco",
+        "health": 0,
+        "id": "5c43c919-09ba-4605-9f17-b33971831b6a",
+        "abilityList": [],
+        "breed": 0,
+        "weaponsList": [
+            "29e9c8bf-2b59-4a6c-a7c4-3b266fdd087a",
+            "ea58228a-786b-49c3-b7cf-ad1f66e1076d"
+        ],
+        "debilitiesList": []
+    },
+    "65fb066f-5ace-48d3-a568-2ff8ff8c26d5": {
+        "armorList": [],
+        "specialAbilityList": [],
+        "resistancesList": [],
+        "minionList": [],
+        "name": "Vayne",
+        "health": 3,
+        "id": "65fb066f-5ace-48d3-a568-2ff8ff8c26d5",
+        "abilityList": [],
+        "breed": 0,
+        "weaponsList": [],
+        "debilitiesList": []
+    },
+    "fda5961a-7a35-4ad1-b5ef-c054b6509cb3": {
+        "armorList": [],
+        "specialAbilityList": [],
+        "resistancesList": [],
+        "minionList": [],
+        "name": "Vayne",
+        "health": 3,
+        "id": "fda5961a-7a35-4ad1-b5ef-c054b6509cb3",
+        "abilityList": [],
+        "breed": 0,
+        "weaponsList": [],
+        "debilitiesList": []
+    }
 }

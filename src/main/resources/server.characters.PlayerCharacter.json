@@ -1,20 +1,56 @@
-{"5c43c919-09ba-4605-9f17-b33971831b6a": {
-    "resistancesList": [],
-    "health": 0,
-    "abilityList": [],
-    "activeWeaponR": "",
-    "activeNormalAbility": "",
-    "breed": 0,
-    "weaponsList": [
-        "29e9c8bf-2b59-4a6c-a7c4-3b266fdd087a",
-        "ea58228a-786b-49c3-b7cf-ad1f66e1076d"
-    ],
-    "armorList": ["bb3bc38c-1662-4748-94f4-ed251ae60309"],
-    "specialAbilityList": [],
-    "minionList": ["792d5a66-bf10-4330-8026-22dbefacd045"],
-    "activeWeaponL": "",
-    "activeArmor": "",
-    "name": "Franco",
-    "id": "5c43c919-09ba-4605-9f17-b33971831b6a",
-    "debilitiesList": []
-}}
+{
+    "5a0c143d-0734-4606-8212-c5e92f63306a": {
+        "resistancesList": [],
+        "health": 3,
+        "abilityList": [],
+        "activeWeaponR": "",
+        "activeNormalAbility": "",
+        "breed": 0,
+        "weaponsList": [],
+        "armorList": [],
+        "specialAbilityList": [],
+        "minionList": [],
+        "activeWeaponL": "",
+        "activeArmor": "",
+        "name": "Juan",
+        "id": "5a0c143d-0734-4606-8212-c5e92f63306a",
+        "debilitiesList": []
+    },
+    "7209964e-0ef4-49d3-93f7-b00f53bc5951": {
+        "resistancesList": [],
+        "health": 3,
+        "abilityList": [],
+        "activeWeaponR": "",
+        "activeNormalAbility": "",
+        "breed": 0,
+        "weaponsList": [],
+        "armorList": [],
+        "specialAbilityList": [],
+        "minionList": [],
+        "activeWeaponL": "",
+        "activeArmor": "",
+        "name": "Vayne",
+        "id": "7209964e-0ef4-49d3-93f7-b00f53bc5951",
+        "debilitiesList": []
+    },
+    "5c43c919-09ba-4605-9f17-b33971831b6a": {
+        "resistancesList": [],
+        "health": 0,
+        "abilityList": [],
+        "activeWeaponR": "",
+        "activeNormalAbility": "",
+        "breed": 0,
+        "weaponsList": [
+            "29e9c8bf-2b59-4a6c-a7c4-3b266fdd087a",
+            "ea58228a-786b-49c3-b7cf-ad1f66e1076d"
+        ],
+        "armorList": ["bb3bc38c-1662-4748-94f4-ed251ae60309"],
+        "specialAbilityList": [],
+        "minionList": ["792d5a66-bf10-4330-8026-22dbefacd045"],
+        "activeWeaponL": "",
+        "activeArmor": "",
+        "name": "Franco",
+        "id": "5c43c919-09ba-4605-9f17-b33971831b6a",
+        "debilitiesList": []
+    }
+}

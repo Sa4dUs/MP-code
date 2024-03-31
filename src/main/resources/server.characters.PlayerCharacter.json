@@ -47,10 +47,9 @@
         "gold": 500,
         "armorList": ["bb3bc38c-1662-4748-94f4-ed251ae60309"],
         "specialAbilityList": [],
-        "activeSpecialAbility": "",
         "minionList": ["792d5a66-bf10-4330-8026-22dbefacd045"],
         "activeWeaponL": "",
-        "activeArmor": "server.nosql.Document@2e601c3c",
+        "activeArmor": "server.nosql.Document@d45ff61",
         "name": "Franco",
         "id": "5c43c919-09ba-4605-9f17-b33971831b6a",
         "debilitiesList": []

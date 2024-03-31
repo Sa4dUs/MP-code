@@ -146,10 +146,10 @@ public class CharacterScreen extends Screen {
             public void actionPerformed(ActionEvent e) {
                 String item = (String) armorSelect.getSelectedItem();
 
-                character.setActiveArmor(null);
-                for (Armor armor : character.getArmorList()) {
-                    if (armor.getName().equals(item)) {
-                        character.setActiveArmor(armor);
+                character.setActiveWeaponL(null);
+                for (Weapon weapon : character.getWeaponsList()) {
+                    if (weapon.getName().equals(item)) {
+                        character.setActiveWeaponL(weapon);
                         break;
                     }
                 }
@@ -158,7 +158,7 @@ public class CharacterScreen extends Screen {
                 RequestBody request = new RequestBody();
                 request.addField("character", character);
 
-                ResponseBody response = Client.request("character/update", request);
+                ResponseBody response = Client.request("character/updatePlayerCharacter", request);
             }
         });
         rightWeaponSelect.addActionListener(new ActionListener() {

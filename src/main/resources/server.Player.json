@@ -1,16 +1,26 @@
 {
-    "2b3ac120-d3fa-4ca3-8d5c-775bb568122f": {
+    "L60YY": {
         "nick": "L60YY",
         "password": "1234",
+        "character": "5c43c919-09ba-4605-9f17-b33971831b6a",
         "blocked": "false",
         "pending": "false",
         "name": "sa4dus",
         "pendingDuels": [],
         "id": "2b3ac120-d3fa-4ca3-8d5c-775bb568122f",
-        "results": [],
-        "character": "5c43c919-09ba-4605-9f17-b33971831b6a"
+        "results": []
     },
-    "b0451735-8c16-46c1-a878-02705560df6a": {
+    "L28SS": {
+        "nick": "L28SS",
+        "password": "1234",
+        "blocked": "false",
+        "pending": "false",
+        "name": "shania",
+        "pendingDuels": [],
+        "id": "L28SS",
+        "results": []
+    },
+    "C15PJ": {
         "nick": "C15PJ",
         "password": "1234",
         "blocked": "false",

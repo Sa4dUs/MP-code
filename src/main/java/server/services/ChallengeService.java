@@ -13,8 +13,12 @@ public class ChallengeService implements Service {
 
     public ResponseBody createChallenge(ChallengeRequest challenge)
     {
-        Document document = challenge.getDocument();
-        return new ResponseBody(true);
+        ResponseBody response = new ResponseBody();
+
+        Database.insertOne(Collection.CHALLENGE_OPERATORS, challenge.getDocument());
+
+        response.setOk(true);
+        return response;
     }
 
     public ResponseBody getChallenge(String id)

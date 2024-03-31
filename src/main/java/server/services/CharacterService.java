@@ -22,6 +22,13 @@ public class CharacterService implements Service {
 
     public ResponseBody setCharacterOfPlayer(String nick, PlayerCharacter character)
     {
+        Player player = (Player) Document.getDocument(nick, Player.class).deJSONDocument(Player.class);
+        if(player.getCharacter() != null)
+        {
+            Query query = new Query();
+            query.addFilter("id", player.getCharacter().getId());
+            Database.deleteOne(PlayerCharacter.class.getName(), query);
+        }
         Document document = character.getDocument();
         return setIdToPlayer(document.getId(), nick, "character");
     }

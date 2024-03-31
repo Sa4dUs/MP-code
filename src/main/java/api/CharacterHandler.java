@@ -4,6 +4,7 @@ import lib.NFunction;
 import lib.RequestBody;
 import lib.ResponseBody;
 import server.characters.Character;
+import server.characters.PlayerCharacter;
 import server.services.AuthenticationService;
 import server.services.CharacterService;
 
@@ -18,5 +19,6 @@ public class CharacterHandler extends Handler {
         this.operations.put("delete", req -> this.service.deleteCharacter((String) req.getField("id"), (Class<?>) req.getField("clazz")));
         this.operations.put("default", req -> this.service.getDefaultCharacters());
         this.operations.put("player", req -> this.service.getPlayerCharacters());
+        this.operations.put("setCharacterOfPlayer", req -> this.service.setCharacterOfPlayer((String) req.getField("nick"), (PlayerCharacter) req.getField("character")));
     }
 }

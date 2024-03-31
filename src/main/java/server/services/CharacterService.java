@@ -2,6 +2,7 @@ package server.services;
 
 import lib.ResponseBody;
 import server.Database;
+import server.Player;
 import server.characters.Character;
 import server.characters.PlayerCharacter;
 import server.nosql.Collection;
@@ -17,6 +18,12 @@ public class CharacterService implements Service {
     {
         character.getDocument().saveToDatabase(character.getClass());
         return new ResponseBody(true);
+    }
+
+    public ResponseBody setCharacterOfPlayer(String nick, PlayerCharacter character)
+    {
+        Document document = character.getDocument();
+        return setIdToPlayer(document.getId(), nick, "character");
     }
 
 
@@ -76,4 +83,50 @@ public class CharacterService implements Service {
         return res;
     }
 
+    public ResponseBody setIdToPlayer(String id, String nick, String property)
+    {
+        Query query = new Query();
+        query.addFilter("id", nick);
+        Document playerDoc = Database.findOne(Player.class.getName(), query);
+        if (playerDoc == null)
+            return new ResponseBody(false);
+
+        playerDoc.setProperty(property, id);
+
+        Database.updateOne(Player.class.getName(), playerDoc, query);
+
+        return new ResponseBody(true);
+    }
+
+    public ResponseBody removeIdFromPlayer(String id, String nick, String property)
+    {
+        Query query = new Query();
+        query.addFilter("id", nick);
+        Document playerDoc = Database.findOne(Player.class.getName(), query);
+
+        if (playerDoc == null)
+            return new ResponseBody(false);
+
+        String[] array;
+        array = (String[]) playerDoc.getProperty(property);
+        String[] newArray = new String[array.length - 1];
+
+        int j = 0;
+        for(int i = 0; i < array.length; i++)
+        {
+            if(array[i].equals(id))
+            {
+                j++;
+                continue;
+            }
+            newArray[i - j] = array[i];
+
+        }
+
+        playerDoc.setProperty(property, newArray);
+
+        Database.updateOne(Player.class.getName(), playerDoc, query);
+
+        return new ResponseBody(true);
+    }
 }

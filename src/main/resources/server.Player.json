@@ -1,10 +1,22 @@
-{"fdbabb8d-2fd6-48f8-a03c-f4131045700a": {
-    "nick": "jorgenicktales",
-    "password": "1234",
-    "blocked": "false",
-    "pending": "false",
-    "name": "sa4dus",
-    "pendingDuels": [],
-    "id": "fdbabb8d-2fd6-48f8-a03c-f4131045700a",
-    "results": []
-}}
+{
+    "2b3ac120-d3fa-4ca3-8d5c-775bb568122f": {
+        "nick": "L60YY",
+        "password": "1234",
+        "blocked": "false",
+        "pending": "false",
+        "name": "sa4dus",
+        "pendingDuels": [],
+        "id": "2b3ac120-d3fa-4ca3-8d5c-775bb568122f",
+        "results": []
+    },
+    "b0451735-8c16-46c1-a878-02705560df6a": {
+        "nick": "C15PJ",
+        "password": "1234",
+        "blocked": "false",
+        "pending": "false",
+        "name": "jorgenitales",
+        "pendingDuels": [],
+        "id": "b0451735-8c16-46c1-a878-02705560df6a",
+        "results": []
+    }
+}

@@ -276,11 +276,6 @@
                   <text value="Send Challenge"/>
                 </properties>
               </component>
-              <vspacer id="f1dfa">
-                <constraints>
-                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-                </constraints>
-              </vspacer>
               <component id="8aeeb" class="javax.swing.JButton" binding="editCharacterBtn">
                 <constraints>
                   <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
@@ -298,6 +293,25 @@
                   <foreground color="-14013908"/>
                   <hideActionText value="false"/>
                   <text value="Edit Character"/>
+                </properties>
+              </component>
+              <component id="96861" class="javax.swing.JButton" binding="createCharacter">
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="130" height="-1"/>
+                    <preferred-size width="130" height="-1"/>
+                    <maximum-size width="130" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-1708289"/>
+                  <borderPainted value="true"/>
+                  <contentAreaFilled value="false"/>
+                  <enabled value="true"/>
+                  <font style="1"/>
+                  <foreground color="-14013908"/>
+                  <hideActionText value="false"/>
+                  <text value="Create character"/>
                 </properties>
               </component>
             </children>

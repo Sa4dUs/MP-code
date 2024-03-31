@@ -6,8 +6,9 @@ import java.util.Map;
 public class ResponseBody extends Body {
     public Boolean ok;
 
-    public ResponseBody() {}
+    public ResponseBody() {this.ok = false;}
     public ResponseBody(Boolean ok) {
+        super();
         this.ok = ok;
     }
 

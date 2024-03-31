@@ -4,8 +4,8 @@ import server.nosql.Document;
 
 public class Operator extends User{
     public Operator(){}
-    public Operator(String name, String nick, String password) {
-        super(name, nick, password);
+    public Operator(String name, String password) {
+        super(name, password);
     }
 
     @Override

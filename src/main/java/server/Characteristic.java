@@ -21,6 +21,7 @@ public class Characteristic implements JSONable {
     public int getValue() {
         return value;
     }
+    public String getName() {return this.name;}
 
     @Override
     public Document getDocument() {

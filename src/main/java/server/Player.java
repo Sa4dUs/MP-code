@@ -24,7 +24,7 @@ public class Player extends User {
     }
 
     public Player(String name, String nick, String password) {
-        super(name, nick, password);
+        super(name, password);
     }
 
     private void sendChallenge (String targetId, int bet)

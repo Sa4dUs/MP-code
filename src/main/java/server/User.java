@@ -5,6 +5,9 @@ import server.nosql.JSONable;
 import server.nosql.Schemas.UserSchema;
 
 import javax.print.Doc;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 public class User implements JSONable {
 
@@ -12,9 +15,9 @@ public class User implements JSONable {
 
     public User() {}
 
-    public User(String name, String nick, String password) {
+    public User(String name, String password) {
         this.name = name;
-        this.nick = nick;
+        this.nick = this.genNick();
         this.password = password;
     }
 
@@ -26,12 +29,21 @@ public class User implements JSONable {
         this.name = name;
     }
 
-    public String getNick() {
-        return this.nick;
+    private String genNick() {
+        StringBuilder output = new StringBuilder();
+
+        int hash = this.name.hashCode();
+
+        output.append((char) (65 + ((int) this.name.charAt(0))%26)); // Add L
+        output.append(10 + Math.abs(hash%90)); // Add NN
+        output.append((char) (65 + Math.abs(hash%26))); // Add LL
+        output.append((char) (65 + Math.abs((2147483647*hash)%26))); // Add LL
+
+        return output.toString();
     }
 
-    public void setNick(String nick) {
-        this.nick = nick;
+    public String getNick() {
+        return this.nick;
     }
 
     public String getId() {

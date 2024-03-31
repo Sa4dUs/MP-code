@@ -9,6 +9,9 @@ import server.nosql.Document;
 import server.nosql.Query;
 import server.nosql.Schemas.CharacterSchema;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CharacterService implements Service {
     public ResponseBody createCharacter(Character character)
     {
@@ -43,6 +46,20 @@ public class CharacterService implements Service {
         Database.deleteOne(Collection.DEFAULT_CHARACTER, query);
 
         return new ResponseBody(true);
+    }
+
+    public ResponseBody getDefaultCharacters() {
+        ResponseBody response = new ResponseBody();
+
+        List<Document> docs = Database.findMany(Character.class.getName(), new Query());
+        List<Character> characters = new ArrayList<>();
+
+        docs.forEach(e -> characters.add((Character) e.deJSONDocument(Character.class)));
+
+        response.addField("characterList", characters);
+
+        response.setOk(true);
+        return response;
     }
 
     private void characterToDocument(Character character, Document doc)

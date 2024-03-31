@@ -1,7 +1,47 @@
-{"792d5a66-bf10-4330-8026-22dbefacd045": {
-    "pact": "Chupa chupa",
-    "name": "Marxelo",
-    "health": 2,
-    "id": "792d5a66-bf10-4330-8026-22dbefacd045",
-    "minions": []
-}}
+{
+    "6d51a1ce-00ef-4842-8141-c1b0881de0db": {
+        "pact": "Sabiduría suprema",
+        "name": "Thoth",
+        "health": 3,
+        "id": "6d51a1ce-00ef-4842-8141-c1b0881de0db",
+        "minions": ["b848fc58-5247-4bc3-88c1-e9db4fc6f460"]
+    },
+    "2e127eab-90bf-4d66-8dab-ed71f8cadd9a": {
+        "pact": "Riquezas infinitas",
+        "name": "Mammon",
+        "health": 3,
+        "id": "2e127eab-90bf-4d66-8dab-ed71f8cadd9a",
+        "minions": ["7beb28aa-9ffe-4063-8179-33938be9f344"]
+    },
+    "2db7bceb-0371-436c-a883-0499db8929ba": {
+        "pact": "Amor eterno",
+        "name": "Introducir nombre de demonio que tenga algo que ver con amor",
+        "health": 3,
+        "id": "2db7bceb-0371-436c-a883-0499db8929ba",
+        "minions": [
+            "7a36de6a-cff1-490f-a261-38f7e6e8e585",
+            "2e127eab-90bf-4d66-8dab-ed71f8cadd9a",
+            "6d51a1ce-00ef-4842-8141-c1b0881de0db",
+            "4c2d414b-2c5f-4bdc-b20a-f7f42ce55ddb",
+            "38c39fe3-bacb-4a47-b122-e94715ca07b5"
+        ]
+    },
+    "792d5a66-bf10-4330-8026-22dbefacd045": {
+        "pact": "Chupa chupa",
+        "name": "Marxelo",
+        "health": 2,
+        "id": "792d5a66-bf10-4330-8026-22dbefacd045",
+        "minions": []
+    },
+    "fac2d99a-f8c9-460b-b1e9-67cf50d47d34": {
+        "pact": "Contrato de alma",
+        "name": "Satan",
+        "health": 3,
+        "id": "fac2d99a-f8c9-460b-b1e9-67cf50d47d34",
+        "minions": [
+            "21cdc825-67cb-4b64-bb05-bf79b3b20df0",
+            "95bc860f-ed5e-4d51-869b-a88b60428aaa",
+            "2e127eab-90bf-4d66-8dab-ed71f8cadd9a"
+        ]
+    }
+}

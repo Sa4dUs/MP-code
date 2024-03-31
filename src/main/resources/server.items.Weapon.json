@@ -1,4 +1,11 @@
 {
+    "1a455343-ead2-4510-90a1-7e7e0b6771a2": {
+        "twoHanded": "false",
+        "defense": 1,
+        "attack": 2,
+        "name": "Daga",
+        "id": "1a455343-ead2-4510-90a1-7e7e0b6771a2"
+    },
     "ea58228a-786b-49c3-b7cf-ad1f66e1076d": {
         "twoHanded": "false",
         "defense": 0,
@@ -6,11 +13,25 @@
         "name": "Pincelín",
         "id": "ea58228a-786b-49c3-b7cf-ad1f66e1076d"
     },
+    "a2e56cb8-1efe-48a3-941a-21c134fabd68": {
+        "twoHanded": "true",
+        "defense": 3,
+        "attack": 3,
+        "name": "Mandoble",
+        "id": "a2e56cb8-1efe-48a3-941a-21c134fabd68"
+    },
     "29e9c8bf-2b59-4a6c-a7c4-3b266fdd087a": {
         "twoHanded": "true",
         "defense": 3,
         "attack": 3,
         "name": "Mandoble",
         "id": "29e9c8bf-2b59-4a6c-a7c4-3b266fdd087a"
+    },
+    "9f613bf6-7210-491a-a828-10f9b56c73d2": {
+        "twoHanded": "false",
+        "defense": 1,
+        "attack": 3,
+        "name": "Daga de cristal",
+        "id": "9f613bf6-7210-491a-a828-10f9b56c73d2"
     }
 }

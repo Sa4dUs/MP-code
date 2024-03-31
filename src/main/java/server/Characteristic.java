@@ -35,4 +35,8 @@ public class Characteristic implements JSONable {
 
         return document;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

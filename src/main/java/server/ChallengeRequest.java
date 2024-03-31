@@ -26,26 +26,6 @@ public class ChallengeRequest implements JSONable {
         this.bet = bet;
     }
 
-    public void accept()
-    {
-
-    }
-
-    public void denyFromPlayer()
-    {
-
-    }
-
-    public void sendToTarget()
-    {
-
-    }
-
-    public void denyFromOperator()
-    {
-
-    }
-
     public String getAttackerId() {
         return this.attackerId;
     }

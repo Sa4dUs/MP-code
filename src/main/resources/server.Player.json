@@ -1,4 +1,15 @@
 {
+    "L28SS": {
+        "nick": "L28SS",
+        "password": "1234",
+        "character": "65fb066f-5ace-48d3-a568-2ff8ff8c26d5",
+        "blocked": "false",
+        "pending": "false",
+        "name": "shania",
+        "pendingDuels": [],
+        "id": "L28SS",
+        "results": []
+    },
     "L60YY": {
         "nick": "L60YY",
         "password": "1234",
@@ -8,26 +19,6 @@
         "name": "sa4dus",
         "pendingDuels": [],
         "id": "L60YY",
-        "results": []
-    },
-    "L28SS": {
-        "nick": "L28SS",
-        "password": "1234",
-        "blocked": "false",
-        "pending": "false",
-        "name": "shania",
-        "pendingDuels": [],
-        "id": "L28SS",
-        "results": []
-    },
-    "C15PJ": {
-        "nick": "C15PJ",
-        "password": "1234",
-        "blocked": "false",
-        "pending": "false",
-        "name": "jorgenitales",
-        "pendingDuels": [],
-        "id": "C15PJ",
         "results": []
     }
 }

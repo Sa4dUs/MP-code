@@ -46,7 +46,7 @@ public class RankingScreen extends Screen {
                     third.setText("3. " + player + " " + Integer.toString(gold) + " g");
                     break;
                 default:
-                    list.addElement(Integer.toString(i) + ". " + player + " " + Integer.toString(gold) + " g");
+                    list.addElement(Integer.toString(i+1) + ". " + player + " " + Integer.toString(gold) + " g");
             }
         }
 

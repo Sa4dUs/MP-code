@@ -66,19 +66,24 @@ public class RegisterCharacterScreen extends Screen {
         submit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // TODO! Call API to create new PlayerChara
+                if (current == null) {
+                    return;
+                }
+
                 RequestBody request = new RequestBody();
 
-                PlayerCharacter playerCharacter = new PlayerCharacter();
+                PlayerCharacter playerCharacter = new PlayerCharacter(current);
 
                 request.addField("nick", Session.getCurrentUser().getNick());
-                request.addField("character", new PlayerCharacter());
+                request.addField("character", playerCharacter);
+
+                ResponseBody response = Client.request("character/setCharacterOfPlayer", request);
 
 
-
-
-
-                Client.request("character/setCharacterOfPlayer", request);
+                // TODO! Add visual feedback
+                if (response.ok) {
+                    ScreenManager.render(PlayerDashboardScreen.class);
+                }
             }
         });
     }

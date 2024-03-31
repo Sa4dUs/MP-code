@@ -10,6 +10,7 @@ import server.nosql.Document;
 import server.nosql.Query;
 import server.nosql.Schemas.CharacterSchema;
 
+import javax.xml.crypto.Data;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -135,5 +136,30 @@ public class CharacterService implements Service {
         Database.updateOne(Player.class.getName(), playerDoc, query);
 
         return new ResponseBody(true);
+    }
+
+    public ResponseBody getCharacterFromPlayerNick(String nick) {
+        ResponseBody response = new ResponseBody();
+        Query query = new Query();
+        query.addFilter("nick", nick);
+
+        Player player = (Player) Database.findOne(Player.class.getName(), query).deJSONDocument(Player.class);
+
+        if (player == null) {
+            response.setOk(false);
+            return response;
+        }
+
+        Character character = player.getCharacter();
+
+        if (character == null) {
+            response.setOk(false);
+            return response;
+        }
+
+        response.addField("character", character);
+
+        response.setOk(true);
+        return response;
     }
 }

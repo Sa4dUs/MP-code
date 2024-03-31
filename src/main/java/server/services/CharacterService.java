@@ -21,6 +21,12 @@ public class CharacterService implements Service {
         return new ResponseBody(true);
     }
 
+    public ResponseBody createPlayerCharacter(PlayerCharacter character)
+    {
+        character.getDocument().saveToDatabase(character.getClass());
+        return new ResponseBody(true);
+    }
+
     public ResponseBody setCharacterOfPlayer(String nick, PlayerCharacter character)
     {
         Player player = (Player) Document.getDocument(nick, Player.class).deJSONDocument(Player.class);
@@ -36,6 +42,12 @@ public class CharacterService implements Service {
 
 
     public ResponseBody updateCharacter(Character character)
+    {
+        character.getDocument().saveToDatabase(character.getClass());
+        return new ResponseBody(true);
+    }
+
+    public ResponseBody updatePlayerCharacter(PlayerCharacter character)
     {
         character.getDocument().saveToDatabase(character.getClass());
         return new ResponseBody(true);

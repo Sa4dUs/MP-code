@@ -50,6 +50,20 @@ public class CharacterService implements Service {
         return response;
     }
 
+    public ResponseBody getPlayerCharacters() {
+        ResponseBody response = new ResponseBody();
+
+        List<Document> docs = Database.findMany(Character.class.getName(), new Query());
+        List<Character> characters = new ArrayList<>();
+
+        docs.forEach(e -> characters.add((Character) e.deJSONDocument(PlayerCharacter.class)));
+
+        response.addField("characterList", characters);
+
+        response.setOk(true);
+        return response;
+    }
+
     private String[] arrayToStringArray(Object[] array)
     {
         String[] res = new String[array.length];
@@ -61,4 +75,5 @@ public class CharacterService implements Service {
 
         return res;
     }
+
 }

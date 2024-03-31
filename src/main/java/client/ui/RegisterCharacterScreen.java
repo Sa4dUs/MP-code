@@ -51,7 +51,6 @@ public class RegisterCharacterScreen extends Screen {
             });
             charaContainer.add(button, new GridConstraints());
         });
-
     }
 
     public RegisterCharacterScreen() {

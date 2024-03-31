@@ -98,7 +98,6 @@ public class CharacterScreen extends Screen {
         character.getArmorList().forEach(e -> {
             armorSelect.addItem(e.getName());
         });
-        System.out.println(character.getActiveArmor());
         armorSelect.addItem("");
         armorSelect.setSelectedItem(character.getActiveArmor() == null ? "" : character.getActiveArmor().getName());
 
@@ -144,7 +143,12 @@ public class CharacterScreen extends Screen {
         leftWeaponSelect.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String item = (String) armorSelect.getSelectedItem();
+                String item = (String) leftWeaponSelect.getSelectedItem();
+
+                if (item == leftWeaponSelect.getSelectedItem()) {
+                    rightWeaponSelect.setSelectedItem("");
+                    character.setActiveWeaponR(null);
+                }
 
                 character.setActiveWeaponL(null);
                 for (Weapon weapon : character.getWeaponsList()) {
@@ -158,13 +162,42 @@ public class CharacterScreen extends Screen {
                 RequestBody request = new RequestBody();
                 request.addField("character", character);
 
+                if (character.getActiveWeaponL() != null && character.getActiveWeaponL().isTwoHanded()) {
+                    rightWeaponSelect.setSelectedItem("");
+                    character.setActiveWeaponR(null);
+                }
+
                 ResponseBody response = Client.request("character/updatePlayerCharacter", request);
             }
         });
         rightWeaponSelect.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                String item = (String) rightWeaponSelect.getSelectedItem();
 
+                if (item == leftWeaponSelect.getSelectedItem()) {
+                    leftWeaponSelect.setSelectedItem("");
+                    character.setActiveWeaponL(null);
+                }
+
+                character.setActiveWeaponR(null);
+                for (Weapon weapon : character.getWeaponsList()) {
+                    if (weapon.getName().equals(item)) {
+                        character.setActiveWeaponR(weapon);
+                        break;
+                    }
+                }
+
+                // TODO! Update Player
+                RequestBody request = new RequestBody();
+                request.addField("character", character);
+
+                if (character.getActiveWeaponR() != null && character.getActiveWeaponR().isTwoHanded()) {
+                    leftWeaponSelect.setSelectedItem("");
+                    character.setActiveWeaponL(null);
+                }
+
+                ResponseBody response = Client.request("character/updatePlayerCharacter", request);
             }
         });
     }

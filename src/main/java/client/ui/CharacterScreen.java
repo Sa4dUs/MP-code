@@ -98,7 +98,6 @@ public class CharacterScreen extends Screen {
         character.getArmorList().forEach(e -> {
             armorSelect.addItem(e.getName());
         });
-        System.out.println(character.getActiveArmor());
         armorSelect.addItem("");
         armorSelect.setSelectedItem(character.getActiveArmor() == null ? "" : character.getActiveArmor().getName());
 
@@ -146,6 +145,11 @@ public class CharacterScreen extends Screen {
             public void actionPerformed(ActionEvent e) {
                 String item = (String) leftWeaponSelect.getSelectedItem();
 
+                if (item == leftWeaponSelect.getSelectedItem()) {
+                    rightWeaponSelect.setSelectedItem("");
+                    character.setActiveWeaponR(null);
+                }
+
                 character.setActiveWeaponL(null);
                 for (Weapon weapon : character.getWeaponsList()) {
                     if (weapon.getName().equals(item)) {
@@ -158,6 +162,11 @@ public class CharacterScreen extends Screen {
                 RequestBody request = new RequestBody();
                 request.addField("character", character);
 
+                if (character.getActiveWeaponL() != null && character.getActiveWeaponL().isTwoHanded()) {
+                    rightWeaponSelect.setSelectedItem("");
+                    character.setActiveWeaponR(null);
+                }
+
                 ResponseBody response = Client.request("character/updatePlayerCharacter", request);
             }
         });
@@ -165,6 +174,11 @@ public class CharacterScreen extends Screen {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String item = (String) rightWeaponSelect.getSelectedItem();
+
+                if (item == leftWeaponSelect.getSelectedItem()) {
+                    leftWeaponSelect.setSelectedItem("");
+                    character.setActiveWeaponL(null);
+                }
 
                 character.setActiveWeaponR(null);
                 for (Weapon weapon : character.getWeaponsList()) {
@@ -177,6 +191,11 @@ public class CharacterScreen extends Screen {
                 // TODO! Update Player
                 RequestBody request = new RequestBody();
                 request.addField("character", character);
+
+                if (character.getActiveWeaponR() != null && character.getActiveWeaponR().isTwoHanded()) {
+                    leftWeaponSelect.setSelectedItem("");
+                    character.setActiveWeaponL(null);
+                }
 
                 ResponseBody response = Client.request("character/updatePlayerCharacter", request);
             }

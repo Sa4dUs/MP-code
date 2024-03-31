@@ -4,10 +4,13 @@ import client.Client;
 import client.ScreenManager;
 import client.Session;
 import lib.RequestBody;
+import lib.ResponseBody;
+import server.Player;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 public class PlayerDashboardScreen extends Screen {
     private JPanel frame;
@@ -25,7 +28,8 @@ public class PlayerDashboardScreen extends Screen {
     public void start() {
         super.start();
 
-
+        ResponseBody response = Client.request("challenge/ranking", new RequestBody());
+        List<Player> ranking = (List<Player>) response.getField("ranking");
     }
 
     public PlayerDashboardScreen() {

@@ -198,7 +198,7 @@
                 </constraints>
                 <properties>
                   <foreground color="-14013908"/>
-                  <text value="1º"/>
+                  <text value="1º --"/>
                 </properties>
               </component>
               <vspacer id="5c484">
@@ -214,7 +214,7 @@
                 </constraints>
                 <properties>
                   <foreground color="-14013908"/>
-                  <text value="2º"/>
+                  <text value="2º --"/>
                 </properties>
               </component>
               <component id="11018" class="javax.swing.JLabel">
@@ -223,7 +223,7 @@
                 </constraints>
                 <properties>
                   <foreground color="-14013908"/>
-                  <text value="3º"/>
+                  <text value="3º --"/>
                 </properties>
               </component>
               <component id="ead86" class="javax.swing.JButton" binding="checkRankBtn">

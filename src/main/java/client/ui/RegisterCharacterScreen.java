@@ -64,6 +64,8 @@ public class RegisterCharacterScreen extends Screen {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // TODO! Call API to create new PlayerChara
+                RequestBody request = new RequestBody();
+                // Client.request()
             }
         });
     }

@@ -16,6 +16,7 @@ public class RequestHandler {
         this.operations.put(Endpoint.AUTH, new AuthenticationHandler());
         this.operations.put(Endpoint.CHARACTER, new CharacterHandler());
         this.operations.put(Endpoint.CHALLENGE, new ChallengeHandler());
+        this.operations.put(Endpoint.ITEM, new ItemHandler());
     }
 
     public ResponseBody request(String endpoint, RequestBody body) {

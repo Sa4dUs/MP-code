@@ -4,7 +4,9 @@ import lib.RandomGenerator;
 import org.junit.jupiter.api.Test;
 import server.ChallengeRequest;
 import server.ChallengeResult;
+import server.Database;
 import server.Player;
+import server.nosql.Collection;
 import server.nosql.Document;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -45,14 +47,14 @@ class ChallengeServiceTest {
         //result2.getDocument().saveToDatabase(ChallengeResult.class);
         //result3.getDocument().saveToDatabase(ChallengeResult.class);
 
-        request.getDocument().saveToDatabase(ChallengeRequest.class);
         request1.getDocument().saveToDatabase(ChallengeRequest.class);
-        request2.getDocument().saveToDatabase(ChallengeRequest.class);
         request3.getDocument().saveToDatabase(ChallengeRequest.class);
-        request4.getDocument().saveToDatabase(ChallengeRequest.class);
         request5.getDocument().saveToDatabase(ChallengeRequest.class);
-        request6.getDocument().saveToDatabase(ChallengeRequest.class);
 
+        Database.insertOne(Collection.CHALLENGE_OPERATORS, request.getDocument());
+        Database.insertOne(Collection.CHALLENGE_OPERATORS, request2.getDocument());
+        Database.insertOne(Collection.CHALLENGE_OPERATORS, request4.getDocument());
+        Database.insertOne(Collection.CHALLENGE_OPERATORS, request6.getDocument());
 
 
     }

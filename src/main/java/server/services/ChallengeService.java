@@ -61,22 +61,6 @@ public class ChallengeService implements Service {
         return res;
     }
 
-
-
-    private Document createResultDocument(ChallengeResult result)
-    {
-        Document resDoc = new Document(new ChallengeResultSchema());
-        resDoc.setProperty("attackerPlayerId", result.getAttackerPlayerId());
-        resDoc.setProperty("attackedPlayerId", result.getAttackedPlayerId());
-        resDoc.setProperty("isWinnerAttacking", result.isWinnerAttacking());
-        resDoc.setProperty("turns", result.getTurns());
-        resDoc.setProperty("attackerMinionsLeft", result.getAttackerMinionsLeft());
-        resDoc.setProperty("attackerMinionsLeft", result.getAttackerMinionsLeft());
-        resDoc.setProperty("bet", result.getBet());
-
-        return  resDoc;
-    }
-
     //Terminado
     public ResponseBody acceptChallengeFromPlayer(ChallengeRequest challenge)
     {
@@ -88,7 +72,7 @@ public class ChallengeService implements Service {
             return new ResponseBody(false);
 
         ChallengeResult challengeResult = new ChallengeResult(attackingPlayer, attackedPlayer, bet);
-        Document resultDoc = createResultDocument(challengeResult);
+        Document resultDoc = challengeResult.getDocument();
 
         Database.insertOne(Collection.CHALLENGE, resultDoc);
 
@@ -133,7 +117,7 @@ public class ChallengeService implements Service {
             return new ResponseBody(false);
 
         ChallengeResult challengeResult = new ChallengeResult(attackingPlayer, attackedPlayer, bet, true);
-        Document resultDoc = createResultDocument(challengeResult);
+        Document resultDoc = challengeResult.getDocument();
 
         Database.insertOne(Collection.CHALLENGE, resultDoc);
 
@@ -158,7 +142,7 @@ public class ChallengeService implements Service {
             return new ResponseBody(false);
 
         ChallengeResult challengeResult = new ChallengeResult(attackingPlayer, attackedPlayer, bet, false);
-        Document resultDoc = createResultDocument(challengeResult);
+        Document resultDoc = challengeResult.getDocument();
 
         Database.insertOne(Collection.CHALLENGE, resultDoc);
 

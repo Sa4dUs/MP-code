@@ -25,7 +25,6 @@ public class RegisterCharacterScreen extends Screen {
     private JLabel name;
     private JLabel health;
     private JLabel gold;
-    private JLabel ability;
     private JList abilities;
     private JList weaknesses;
     private JList strengths;

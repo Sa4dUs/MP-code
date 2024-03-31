@@ -25,5 +25,7 @@ public class ChallengeHandler extends Handler {
         this.operations.put("removeIdFromPlayer", req -> this.service.removeIdFromPlayer((String) req.getField("id"), (String) req.getField("nick"), (String) req.getField("property")));
 
         this.operations.put("getChallenge", req -> this.service.getChallenge((String) req.getField("id")));
+
+        this.operations.put("ranking", req -> this.service.getRanking());
     }
 }

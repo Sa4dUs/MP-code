@@ -213,4 +213,18 @@ public class ChallengeService implements Service {
 
         return new ResponseBody(true);
     }
+
+    public ResponseBody getRanking() {
+        ResponseBody response = new ResponseBody();
+
+        List<Player> ranking = Database.findMany(Player.class.getName(), new Query()).stream()
+                .map(e -> (Player) e.deJSONDocument(Player.class))
+                .sorted(Comparator.comparing(u -> u.getCharacter() != null ? u.getCharacter().getGold() : 0, Comparator.reverseOrder()))
+                .toList();
+
+        response.addField("ranking", ranking);
+
+        response.setOk(true);
+        return response;
+    }
 }

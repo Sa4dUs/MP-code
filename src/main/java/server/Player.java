@@ -27,14 +27,6 @@ public class Player extends User {
         super(name, password);
     }
 
-    private void sendChallenge (String targetId, int bet)
-    {
-        ChallengeService service = new ChallengeService();
-        ChallengeRequest request = new ChallengeRequest(getId(), targetId, bet);
-
-        pending = service.createChallenge(request).ok;
-    }
-
     public PlayerCharacter getCharacter() {
         return this.character;
     }

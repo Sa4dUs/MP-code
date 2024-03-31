@@ -1,0 +1,23 @@
+{
+    "a69b4cb8-c32e-45ba-8937-f1f5d0ee3145": {
+        "cost": 1,
+        "defense": 1,
+        "attack": 3,
+        "name": "Talento de cazador",
+        "id": "a69b4cb8-c32e-45ba-8937-f1f5d0ee3145"
+    },
+    "bfeda1ba-9aa8-4c54-9cf2-3e2ee08b760d": {
+        "cost": 3,
+        "defense": 3,
+        "attack": 1,
+        "name": "Pared de hielo",
+        "id": "bfeda1ba-9aa8-4c54-9cf2-3e2ee08b760d"
+    },
+    "064159eb-c55b-4f69-a9d9-262f67492c98": {
+        "cost": 2,
+        "defense": 1,
+        "attack": 3,
+        "name": "Bola de fuego",
+        "id": "064159eb-c55b-4f69-a9d9-262f67492c98"
+    }
+}

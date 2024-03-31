@@ -123,26 +123,41 @@ public class Document {
             Class<?> currentClass = clazz;
             while (currentClass != Object.class) {
                 for (Field field : currentClass.getDeclaredFields()) {
-                    if (this.getProperty(field.getName()) == null)
+
+                    Class<?> fieldType = field.getType();
+                    String fieldName = field.getName();
+                    Object property = this.getProperty(fieldName);
+
+                    if (property == null)
                         continue;
 
                     field.setAccessible(true);
-                    if (field.getType().isPrimitive() || field.getType() == String.class) {
-                        if (field.getType().equals(Boolean.class) || field.getType().equals(boolean.class))
-                            field.set(object, Boolean.valueOf((String) this.getProperty(field.getName())));
+                    if (fieldType.isPrimitive() || fieldType == String.class)
+                    {
+                        if (fieldType.equals(Boolean.class) || fieldType.equals(boolean.class))
+                            field.set(object, Boolean.valueOf((String) property));
                         else
-                            field.set(object, this.getProperty(field.getName()));
-                    } else if (field.getType().isArray()) {
-                        field.set(object, getObjectArrayFromDoc((String[]) this.getProperty(field.getName()), field.getType().getComponentType()));
-                    } else if (List.class.isAssignableFrom(field.getType())) {
+                            field.set(object, property);
+                    }
+                    else if (fieldType.isArray())
+                    {
+                        field.set(object, getObjectArrayFromDoc((String[]) property, fieldType.getComponentType()));
+                    }
+                    else if (List.class.isAssignableFrom(fieldType))
+                    {
                         ParameterizedType parameterizedType = (ParameterizedType) field.getGenericType();
                         Class<?> elementType = (Class<?>) parameterizedType.getActualTypeArguments()[0];
-                        field.set(object, List.of((Object[]) getObjectArrayFromDoc((String[]) this.getProperty(field.getName()), elementType)));
-                    } else if (field.getType().isEnum()) {
-                        Enum<?>[] enumValues = (Enum<?>[]) field.getType().getEnumConstants();
-                        field.set(object, (enumValues[(Integer) this.getProperty(field.getName())]));
-                    } else {
-                        field.set(object, getObjectFromDoc((String) this.getProperty(field.getName()), field.getType()));
+
+                        field.set(object, List.of(getObjectArrayFromDoc((String[]) property, elementType)));
+                    }
+                    else if (fieldType.isEnum())
+                    {
+                        Enum<?>[] enumValues = (Enum<?>[]) fieldType.getEnumConstants();
+                        field.set(object, (enumValues[(Integer) property]));
+                    }
+                    else
+                    {
+                        field.set(object, getObjectFromDoc((String) property, fieldType));
                     }
                 }
                 currentClass = currentClass.getSuperclass();

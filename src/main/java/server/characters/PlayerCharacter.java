@@ -64,19 +64,11 @@ public class PlayerCharacter extends Character{
     {
         Document document = new Document(new PlayerCharacterSchema());
         document.updateFromDocument(super.getDocument());
-<<<<<<< Updated upstream
-        document.setProperty("activeWeaponL", "");
-        document.setProperty("activeWeaponR", "");
-        document.setProperty("activeArmor", "");
-        document.setProperty("activeNormalAbility", "");
-        document.setProperty("activeSpecialAbility", "");
-=======
         document.setProperty("activeWeaponL", this.activeWeaponL != null ? this.activeWeaponL.getDocument(): "");
         document.setProperty("activeWeaponR", this.activeWeaponR != null ? this.activeWeaponR.getDocument(): "");
         document.setProperty("activeArmor", this.activeArmor != null ? this.activeArmor.getDocument(): "");
         document.setProperty("activeNormalAbility", this.activeNormalAbility != null ? this.activeNormalAbility.getDocument(): "");
         document.setProperty("activeNormalAbility", this.activeSpecialAbility != null ? this.activeSpecialAbility.getDocument(): "");
->>>>>>> Stashed changes
 
         return document;
     }

@@ -40,7 +40,6 @@ public class CharacterService implements Service {
         return setIdToPlayer(document.getId(), nick, "character");
     }
 
-
     public ResponseBody updateCharacter(Character character)
     {
         character.getDocument().saveToDatabase(character.getClass());

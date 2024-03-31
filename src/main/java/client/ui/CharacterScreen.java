@@ -98,12 +98,20 @@ public class CharacterScreen extends Screen {
         character.getArmorList().forEach(e -> {
             armorSelect.addItem(e.getName());
         });
+        System.out.println(character.getActiveArmor());
+        armorSelect.addItem("");
+        armorSelect.setSelectedItem(character.getActiveArmor() == null ? "" : character.getActiveArmor().getName());
 
         character.getWeaponsList().forEach(e -> {
             leftWeaponSelect.addItem(e.getName());
             rightWeaponSelect.addItem(e.getName());
         });
 
+        leftWeaponSelect.addItem("");
+        leftWeaponSelect.setSelectedItem(character.getActiveWeaponL() == null ? "" : character.getActiveWeaponL().getName());
+
+        rightWeaponSelect.addItem("");
+        rightWeaponSelect.setSelectedItem(character.getActiveWeaponR() == null ? "" : character.getActiveWeaponR().getName());
     }
 
     public CharacterScreen() {
@@ -116,13 +124,41 @@ public class CharacterScreen extends Screen {
         armorSelect.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                String item = (String) armorSelect.getSelectedItem();
 
+                character.setActiveArmor(null);
+                for (Armor armor : character.getArmorList()) {
+                    if (armor.getName().equals(item)) {
+                        character.setActiveArmor(armor);
+                        break;
+                    }
+                }
+
+                // TODO! Update Player
+                RequestBody request = new RequestBody();
+                request.addField("character", character);
+
+                ResponseBody response = Client.request("character/update", request);
             }
         });
         leftWeaponSelect.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                String item = (String) armorSelect.getSelectedItem();
 
+                character.setActiveArmor(null);
+                for (Armor armor : character.getArmorList()) {
+                    if (armor.getName().equals(item)) {
+                        character.setActiveArmor(armor);
+                        break;
+                    }
+                }
+
+                // TODO! Update Player
+                RequestBody request = new RequestBody();
+                request.addField("character", character);
+
+                ResponseBody response = Client.request("character/update", request);
             }
         });
         rightWeaponSelect.addActionListener(new ActionListener() {

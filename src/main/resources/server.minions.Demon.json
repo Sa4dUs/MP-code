@@ -1,9 +1,7 @@
-{
-    "792d5a66-bf10-4330-8026-22dbefacd045": {
-        "pact": "Chupa chupa",
-        "name": "Marxelo",
-        "health": 2,
-        "id": "792d5a66-bf10-4330-8026-22dbefacd045",
-        "minions": ["ac41c16b-178f-4938-9e94-ae7cc8a672c2"]
-    }
-}
+{"792d5a66-bf10-4330-8026-22dbefacd045": {
+    "pact": "Chupa chupa",
+    "name": "Marxelo",
+    "health": 2,
+    "id": "792d5a66-bf10-4330-8026-22dbefacd045",
+    "minions": []
+}}

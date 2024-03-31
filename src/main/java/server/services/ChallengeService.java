@@ -13,13 +13,7 @@ public class ChallengeService implements Service {
 
     public ResponseBody createChallenge(ChallengeRequest challenge)
     {
-        Document doc = new Document(new ChallengeRequestSchema());
-        doc.setProperty("bet", challenge.getBet());
-        doc.setProperty("attackerId", challenge.getAttackerId());
-        doc.setProperty("attackedId", challenge.getAttackedId());
-        Database.insertOne(Collection.CHALLENGE_OPERATORS, doc);
-        challenge.setId(doc.getId());
-
+        Document document = challenge.getDocument();
         return new ResponseBody(true);
     }
 
@@ -27,7 +21,7 @@ public class ChallengeService implements Service {
     {
         Query query = new Query();
         query.addFilter("id", id);
-        Document doc = Database.findOne(Collection.CHALLENGE, query);
+        Document doc = Database.findOne(ChallengeRequest.class.getName(), query);
 
         if(doc == null)
         {
@@ -36,14 +30,10 @@ public class ChallengeService implements Service {
                 return new ResponseBody(false);
         }
 
-        String attackingPlayer = (String) doc.getProperty("attackerId");
-        String attackedPlayer = (String) doc.getProperty("attackedId");
-        int bet = (int) doc.getProperty("bet");
+        ChallengeRequest request = (ChallengeRequest) doc.deJSONDocument(ChallengeRequest.class);
 
-        if(attackingPlayer == null || attackedPlayer == null)
+        if(request.getAttackedId() == null || request.getAttackerId() == null)
             return new ResponseBody(false);
-
-        ChallengeRequest request = new ChallengeRequest(attackingPlayer, attackedPlayer, bet);
 
         ResponseBody res = new ResponseBody(true);
         res.addField("data", request);
@@ -63,15 +53,15 @@ public class ChallengeService implements Service {
         ChallengeResult challengeResult = new ChallengeResult(attackingPlayer, attackedPlayer, bet);
         Document resultDoc = challengeResult.getDocument();
 
-        Database.insertOne(Collection.CHALLENGE, resultDoc);
+        resultDoc.saveToDatabase(ChallengeResult.class);
 
-        addIdToPlayer(resultDoc.getId(), attackingPlayer.getId(), "duelResultID");
-        addIdToPlayer(resultDoc.getId(), attackedPlayer.getId(), "duelResultID");
+        addIdToPlayer(resultDoc.getId(), attackingPlayer.getId(), "results");
+        addIdToPlayer(resultDoc.getId(), attackedPlayer.getId(), "results");
 
         Query query = new Query();
         query.addFilter("id", challenge.getId());
 
-        Database.deleteOne(Collection.CHALLENGE, query);
+        Database.deleteOne(ChallengeRequest.class.getName(), query);
 
         ResponseBody res = new ResponseBody(true);
         res.addField("data", challengeResult);
@@ -90,9 +80,9 @@ public class ChallengeService implements Service {
             return  new ResponseBody(false);
 
         Database.deleteOne(Collection.CHALLENGE_OPERATORS, query);
-        Database.insertOne(Collection.CHALLENGE, doc);
+        Database.insertOne(ChallengeRequest.class.getName(), doc);
 
-        return addIdToPlayer(challenge.getAttackedId(), doc.getId(), "pendingDuelId");
+        return addIdToPlayer(challenge.getAttackedId(), doc.getId(), "pendingDuels");
     }
 
     //Terminado
@@ -108,7 +98,7 @@ public class ChallengeService implements Service {
         ChallengeResult challengeResult = new ChallengeResult(attackingPlayer, attackedPlayer, bet, true);
         Document resultDoc = challengeResult.getDocument();
 
-        Database.insertOne(Collection.CHALLENGE, resultDoc);
+        Database.insertOne(ChallengeResult.class.getName(), resultDoc);
 
         addIdToPlayer(resultDoc.getId(), attackingPlayer.getId(), "duelResultID");
 
@@ -133,14 +123,15 @@ public class ChallengeService implements Service {
         ChallengeResult challengeResult = new ChallengeResult(attackingPlayer, attackedPlayer, bet, false);
         Document resultDoc = challengeResult.getDocument();
 
-        Database.insertOne(Collection.CHALLENGE, resultDoc);
+        Database.insertOne(ChallengeResult.class.getName(), resultDoc);
 
         addIdToPlayer(resultDoc.getId(), attackingPlayer.getId(), "duelResultID");
+        addIdToPlayer(resultDoc.getId(), attackedPlayer.getId(), "duelResultID");
 
         Query query = new Query();
         query.addFilter("id", challenge.getId());
 
-        Database.deleteOne(Collection.CHALLENGE, query);
+        Database.deleteOne(ChallengeRequest.class.getName(), query);
 
         return new ResponseBody(true);
     }
@@ -148,8 +139,8 @@ public class ChallengeService implements Service {
     public ResponseBody addIdToPlayer(String id, String nick, String property)
     {
         Query query = new Query();
-        query.addFilter("nick", nick);
-        Document playerDoc = Database.findOne(Collection.USER, query);
+        query.addFilter("id", nick);
+        Document playerDoc = Database.findOne(Player.class.getName(), query);
         if (playerDoc == null)
             return new ResponseBody(false);
 
@@ -166,7 +157,7 @@ public class ChallengeService implements Service {
 
         playerDoc.setProperty(property, newArray);
 
-        Database.updateOne(Collection.USER, playerDoc, query);
+        Database.updateOne(Player.class.getName(), playerDoc, query);
 
         return new ResponseBody(true);
     }
@@ -174,8 +165,8 @@ public class ChallengeService implements Service {
     public ResponseBody removeIdFromPlayer(String id, String nick, String property)
     {
         Query query = new Query();
-        query.addFilter("nick", nick);
-        Document playerDoc = Database.findOne(Collection.USER, query);
+        query.addFilter("id", nick);
+        Document playerDoc = Database.findOne(Player.class.getName(), query);
 
         if (playerDoc == null)
             return new ResponseBody(false);
@@ -198,7 +189,7 @@ public class ChallengeService implements Service {
 
         playerDoc.setProperty(property, newArray);
 
-        Database.updateOne(Collection.USER, playerDoc, query);
+        Database.updateOne(Player.class.getName(), playerDoc, query);
 
         return new ResponseBody(true);
     }

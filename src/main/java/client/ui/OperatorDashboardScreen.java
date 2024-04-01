@@ -18,8 +18,7 @@ public class OperatorDashboardScreen extends Screen {
     private JButton editPlayerCharactersButton;
     private JButton editArmorsButton;
     private JButton editAbilitiesButton;
-    private JButton editSpecialAbilitiesButton;
-    private JButton editWeaknessesButton;
+    private JButton editCharacteristicsButton;
     private JButton editStrenghtsButton;
     private JButton editMinionsButton;
 
@@ -62,7 +61,7 @@ public class OperatorDashboardScreen extends Screen {
         editPlayerCharactersButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ScreenManager.render(EditPlayerCharactersButton.class);
+                ScreenManager.render(EditPlayerCharactersScreen.class);
             }
         });
         editWeaponsButton.addActionListener(new ActionListener() {
@@ -83,23 +82,11 @@ public class OperatorDashboardScreen extends Screen {
                 ScreenManager.render(EditAbilitiesScreen.class);
             }
         });
-        editSpecialAbilitiesButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                ScreenManager.render(EditSpecialAbilitiesScreen.class);
-            }
-        });
 
-        editWeaknessesButton.addActionListener(new ActionListener() {
+        editCharacteristicsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ScreenManager.render(EditWeaknessesScreen.class);
-            }
-        });
-        editStrenghtsButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                ScreenManager.render(EditStrengthsScreen.class);
+                ScreenManager.render(EditCharacteristicsScreen.class);
             }
         });
         editMinionsButton.addActionListener(new ActionListener() {

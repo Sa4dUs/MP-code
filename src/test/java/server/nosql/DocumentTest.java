@@ -1,7 +1,9 @@
 package server.nosql;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import server.Characteristic;
+import server.Database;
 import server.items.Ability;
 import server.items.Armor;
 import server.items.Weapon;
@@ -13,6 +15,16 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class DocumentTest {
 
+    @BeforeAll
+    public static void cleanUp() {
+        Database.deleteMany(Weapon.class.getName(), new Query());
+        Database.deleteMany(Armor.class.getName(), new Query());
+        Database.deleteMany(Ability.class.getName(), new Query());
+        Database.deleteMany(Characteristic.class.getName(), new Query());
+        Database.deleteMany(Human.class.getName(), new Query());
+        Database.deleteMany(Demon.class.getName(), new Query());
+        Database.deleteMany(Ghoul.class.getName(), new Query());
+    }
     @Test
     public void createItems()
     {

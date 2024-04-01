@@ -45,6 +45,7 @@ public class LoginScreen extends Screen {
                 Session.setCurrentUser((User) response.getField("user"));
 
                 if ((Boolean) response.getField("isOperator")) {
+                    Session.sudo();
                     ScreenManager.render(OperatorDashboardScreen.class);
                     return;
                 }

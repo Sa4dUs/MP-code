@@ -27,5 +27,7 @@ public class ChallengeHandler extends Handler {
         this.operations.put("getChallenge", req -> this.service.getChallenge((String) req.getField("id")));
 
         this.operations.put("ranking", req -> this.service.getRanking());
+
+        this.operations.put("getOperatorChallenges", req -> this.service.getOperatorChallenges());
     }
 }

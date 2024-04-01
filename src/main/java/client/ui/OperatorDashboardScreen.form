@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="client.ui.OperatorDashboardScreen">
-  <grid id="27dc6" binding="frame" layout-manager="GridLayoutManager" row-count="15" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" binding="frame" layout-manager="GridLayoutManager" row-count="16" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="512" height="477"/>
+      <xy x="20" y="20" width="509" height="477"/>
     </constraints>
     <properties>
       <background color="-1708289"/>
@@ -13,7 +13,7 @@
     <children>
       <vspacer id="fc0ab">
         <constraints>
-          <grid row="1" column="1" row-span="13" col-span="2" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+          <grid row="1" column="1" row-span="15" col-span="2" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
         </constraints>
       </vspacer>
       <component id="e11fd" class="javax.swing.JButton" binding="editArmorsButton">
@@ -22,78 +22,6 @@
         </constraints>
         <properties>
           <text value="Edit Armors"/>
-        </properties>
-      </component>
-      <component id="27f19" class="javax.swing.JButton" binding="editAbilitiesButton">
-        <constraints>
-          <grid row="4" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Edit Abilities"/>
-        </properties>
-      </component>
-      <component id="c3831" class="javax.swing.JButton" binding="editMinionsButton">
-        <constraints>
-          <grid row="14" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Edit Minions"/>
-        </properties>
-      </component>
-      <component id="e626e" class="javax.swing.JButton" binding="editStrenghtsButton">
-        <constraints>
-          <grid row="13" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Edit Strengths"/>
-        </properties>
-      </component>
-      <component id="4106c" class="javax.swing.JButton" binding="editDefaultCharactersButton">
-        <constraints>
-          <grid row="9" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Edit Default Characters"/>
-        </properties>
-      </component>
-      <component id="56805" class="javax.swing.JButton" binding="editPlayerCharactersButton">
-        <constraints>
-          <grid row="10" column="0" row-span="2" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Edit Player Character"/>
-        </properties>
-      </component>
-      <component id="76ded" class="javax.swing.JButton" binding="editSpecialAbilitiesButton">
-        <constraints>
-          <grid row="5" column="4" row-span="6" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Edit Special Abilities"/>
-        </properties>
-      </component>
-      <component id="248a7" class="javax.swing.JButton" binding="editWeaknessesButton">
-        <constraints>
-          <grid row="11" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Edit Weaknesses"/>
-        </properties>
-      </component>
-      <component id="62d5" class="javax.swing.JButton" binding="viewRankingButton">
-        <constraints>
-          <grid row="2" column="0" row-span="3" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="View Ranking"/>
-        </properties>
-      </component>
-      <component id="258b" class="javax.swing.JButton" binding="manageChallengesButton">
-        <constraints>
-          <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Manage Challenges"/>
         </properties>
       </component>
       <component id="ddf11" class="javax.swing.JButton" binding="viewHistoryButton" default-binding="true">
@@ -133,6 +61,62 @@
           <font size="22" style="1"/>
           <foreground color="-14869472"/>
           <text value="Game Title"/>
+        </properties>
+      </component>
+      <component id="27f19" class="javax.swing.JButton" binding="editAbilitiesButton">
+        <constraints>
+          <grid row="3" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Edit Abilities"/>
+        </properties>
+      </component>
+      <component id="248a7" class="javax.swing.JButton" binding="editCharacteristicsButton">
+        <constraints>
+          <grid row="4" column="4" row-span="2" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Edit Characteristics"/>
+        </properties>
+      </component>
+      <component id="258b" class="javax.swing.JButton" binding="manageChallengesButton">
+        <constraints>
+          <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Manage Challenges"/>
+        </properties>
+      </component>
+      <component id="4106c" class="javax.swing.JButton" binding="editDefaultCharactersButton">
+        <constraints>
+          <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Edit Default Characters"/>
+        </properties>
+      </component>
+      <component id="56805" class="javax.swing.JButton" binding="editPlayerCharactersButton">
+        <constraints>
+          <grid row="7" column="0" row-span="2" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Edit Player Character"/>
+        </properties>
+      </component>
+      <component id="62d5" class="javax.swing.JButton" binding="viewRankingButton">
+        <constraints>
+          <grid row="2" column="0" row-span="3" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="View Ranking"/>
+        </properties>
+      </component>
+      <component id="c3831" class="javax.swing.JButton" binding="editMinionsButton">
+        <constraints>
+          <grid row="6" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Edit Minions"/>
         </properties>
       </component>
     </children>

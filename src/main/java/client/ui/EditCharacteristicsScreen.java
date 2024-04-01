@@ -5,29 +5,26 @@ import client.ScreenManager;
 import com.intellij.uiDesigner.core.GridConstraints;
 import lib.RequestBody;
 import lib.ResponseBody;
-import server.items.Ability;
-import server.items.Stats;
+import server.Characteristic;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
-public class EditAbilitiesScreen extends Screen {
+public class EditCharacteristicsScreen extends Screen {
     private JPanel frame;
     private JButton backButton;
-    private JTextField cost;
     private JTextField name;
-    private JTextField attack;
     private JPanel charaContainer;
     private JButton saveButton;
-    private JTextField defense;
+    private JTextField value;
 
     @Override
     public void start() {
         // CHANGE HERE!
-        Class<? extends Stats> clazz = Ability.class;
-        List<Ability> items;
+        Class<Characteristic> clazz = Characteristic.class;
+        List<Characteristic> items;
 
         super.start();
         RequestBody request = new RequestBody();
@@ -36,10 +33,9 @@ public class EditAbilitiesScreen extends Screen {
         ResponseBody response = Client.request("item/getAll", request);
 
         // CHANGE HERE!
-        items = (List<Ability>) response.getField("data");
+        items = (List<Characteristic>) response.getField("data");
 
         items.forEach(el -> {
-            System.out.println(charaContainer);
             JButton button = new JButton();
             button.setText(el.getName());
             button.addActionListener(new ActionListener() {
@@ -52,7 +48,7 @@ public class EditAbilitiesScreen extends Screen {
         });
     }
 
-    public EditAbilitiesScreen() {
+    public EditCharacteristicsScreen() {
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -64,11 +60,9 @@ public class EditAbilitiesScreen extends Screen {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // CHANGE HERE!
-                Ability item = new Ability();
+                Characteristic item = new Characteristic();
                 item.setName(name.getText());
-                item.setCost(Integer.parseInt(cost.getText()));
-                item.setAttack(Integer.parseInt(attack.getText()));
-                item.setDefense(Integer.parseInt(defense.getText()));
+                item.setValue(Integer.parseInt(value.getText()));
 
                 RequestBody request = new RequestBody();
                 request.addField("object", item);
@@ -83,10 +77,8 @@ public class EditAbilitiesScreen extends Screen {
     }
 
     // CHANGE HERE!
-    public void setPanelData(Ability item) {
+    public void setPanelData(Characteristic item) {
         name.setText(item.getName());
-        cost.setText(Integer.toString(item.getCost()));
-        attack.setText(Integer.toString(item.getAttack()));
-        defense.setText(Integer.toString(item.getDefense()));
+        value.setText(Integer.toString(item.getValue()));
     }
 }

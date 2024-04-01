@@ -211,4 +211,14 @@ public class ChallengeService implements Service {
         response.setOk(true);
         return response;
     }
+
+    public ResponseBody getOperatorChallenges() {
+        ResponseBody response = new ResponseBody();
+
+        List<ChallengeRequest> challengeList = Database.findMany(Collection.CHALLENGE_OPERATORS, new Query()).stream().map(e -> (ChallengeRequest) e.deJSONDocument(ChallengeRequest.class)).toList();
+
+        response.addField("list", challengeList);
+        response.setOk(true);
+        return response;
+    }
 }

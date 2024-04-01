@@ -5,7 +5,6 @@ import server.nosql.JSONable;
 import server.nosql.Schemas.StatsSchema;
 
 public abstract class Stats implements JSONable {
-
     private String id;
     private String name;
     private int attack;

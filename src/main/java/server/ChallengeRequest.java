@@ -19,6 +19,7 @@ public class ChallengeRequest implements JSONable {
         this.id = id;
     }
 
+    public ChallengeRequest() {}
     public ChallengeRequest(String attackingPlayerId, String attackedPlayerId, int bet)
     {
         this.attackerId = attackingPlayerId;

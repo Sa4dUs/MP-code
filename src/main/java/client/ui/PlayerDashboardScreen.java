@@ -34,6 +34,10 @@ public class PlayerDashboardScreen extends Screen {
         ResponseBody response = Client.request("challenge/ranking", new RequestBody());
         List<Player> ranking = (List<Player>) response.getField("ranking");
 
+        if (ranking == null) {
+            return;
+        }
+
         for (int i = 0; i < ranking.size(); i++) {
             switch (i + 1) {
                 case 1:

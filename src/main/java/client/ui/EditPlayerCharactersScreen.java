@@ -6,8 +6,9 @@ import com.intellij.uiDesigner.core.GridConstraints;
 import lib.RequestBody;
 import lib.ResponseBody;
 import server.Characteristic;
-import server.characters.Character;
+import server.characters.PlayerCharacter;
 import server.characters.CharacterType;
+import server.characters.PlayerCharacter;
 import server.items.Ability;
 import server.items.Armor;
 import server.items.Weapon;
@@ -23,7 +24,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EditDefaultCharactersScreen extends Screen {
+public class EditPlayerCharactersScreen extends Screen {
     private JPanel frame;
     private JButton backButton;
     private JTextField name;
@@ -49,14 +50,14 @@ public class EditDefaultCharactersScreen extends Screen {
     private JPanel strengths;
     private JButton strengthsAdd;
 
-    private Character current;
+    private PlayerCharacter current;
 
     private List<Armor> armorList = new ArrayList<>();
     private List<Weapon> weaponList = new ArrayList<>();
     private List<Ability> abilityList = new ArrayList<>();
     private List<Characteristic> characteristicList = new ArrayList<>();
     private List<Minion> minionList = new ArrayList<>();
-    private List<Character> characterList = new ArrayList<>();
+    private List<PlayerCharacter> characterList = new ArrayList<>();
 
     @Override
     public void start() {
@@ -95,7 +96,7 @@ public class EditDefaultCharactersScreen extends Screen {
         strengthsAdd.addActionListener(e -> displayStrengthPopup());
     }
 
-    public EditDefaultCharactersScreen() {
+    public EditPlayerCharactersScreen() {
         backButton.addActionListener(e -> ScreenManager.goBack());
         saveButton.addActionListener(new ActionListener() {
             @Override
@@ -164,9 +165,9 @@ public class EditDefaultCharactersScreen extends Screen {
 
     private void fetchCharacter() {
         RequestBody request = new RequestBody();
-        request.addField("clazz", Character.class);
+        request.addField("clazz", PlayerCharacter.class);
         ResponseBody response = Client.request("item/getAll", request);
-        characterList.addAll((List<Character>) response.getField("data"));
+        characterList.addAll((List<PlayerCharacter>) response.getField("data"));
     }
 
     private void displayArmorPopup() {
@@ -562,7 +563,7 @@ public class EditDefaultCharactersScreen extends Screen {
         popupFrame.setVisible(true);
     }
 
-    public void setPanelData(Character item) {
+    public void setPanelData(PlayerCharacter item) {
         minions.setEnabled(false);
 
         name.setText(item.getName());

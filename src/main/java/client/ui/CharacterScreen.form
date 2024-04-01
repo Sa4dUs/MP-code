@@ -78,7 +78,7 @@
                       <text value="Name:"/>
                     </properties>
                   </component>
-                  <component id="eb96" class="javax.swing.JTextField" binding="name">
+                  <component id="eb96" class="javax.swing.JTextField" binding="nameField">
                     <constraints>
                       <grid row="0" column="3" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
@@ -109,7 +109,7 @@
                       <text value="Breed"/>
                     </properties>
                   </component>
-                  <component id="bb95e" class="javax.swing.JTextField" binding="breed">
+                  <component id="bb95e" class="javax.swing.JTextField" binding="breedField">
                     <constraints>
                       <grid row="3" column="3" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
@@ -131,7 +131,7 @@
                       <text value="Health"/>
                     </properties>
                   </component>
-                  <component id="d9d2d" class="javax.swing.JTextField" binding="health">
+                  <component id="d9d2d" class="javax.swing.JTextField" binding="healthField">
                     <constraints>
                       <grid row="1" column="3" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
@@ -153,7 +153,7 @@
                       <text value="Gold"/>
                     </properties>
                   </component>
-                  <component id="f2399" class="javax.swing.JTextField" binding="gold">
+                  <component id="f2399" class="javax.swing.JTextField" binding="goldField">
                     <constraints>
                       <grid row="2" column="3" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
@@ -201,7 +201,7 @@
                       <text value="Minions"/>
                     </properties>
                   </component>
-                  <component id="a8a1" class="javax.swing.JList" binding="strengths">
+                  <component id="a8a1" class="javax.swing.JList" binding="strengthsList">
                     <constraints>
                       <grid row="4" column="3" row-span="1" col-span="2" vsize-policy="6" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="50"/>
@@ -213,7 +213,7 @@
                       <model/>
                     </properties>
                   </component>
-                  <component id="15e4c" class="javax.swing.JList" binding="weaknesses">
+                  <component id="15e4c" class="javax.swing.JList" binding="weaknessesList">
                     <constraints>
                       <grid row="5" column="3" row-span="1" col-span="2" vsize-policy="6" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="50"/>
@@ -224,7 +224,7 @@
                       <foreground color="-13947600"/>
                     </properties>
                   </component>
-                  <component id="7c4b2" class="javax.swing.JList" binding="weapons">
+                  <component id="7c4b2" class="javax.swing.JList" binding="weaponsList">
                     <constraints>
                       <grid row="6" column="3" row-span="1" col-span="2" vsize-policy="6" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="50"/>
@@ -235,7 +235,7 @@
                       <foreground color="-13947600"/>
                     </properties>
                   </component>
-                  <component id="20767" class="javax.swing.JList" binding="armors">
+                  <component id="20767" class="javax.swing.JList" binding="armorsList">
                     <constraints>
                       <grid row="7" column="3" row-span="1" col-span="2" vsize-policy="6" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="50"/>
@@ -246,7 +246,7 @@
                       <foreground color="-13947600"/>
                     </properties>
                   </component>
-                  <component id="1dd8b" class="javax.swing.JList" binding="abilities">
+                  <component id="1dd8b" class="javax.swing.JList" binding="abilitiesList">
                     <constraints>
                       <grid row="8" column="3" row-span="1" col-span="2" vsize-policy="6" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="50"/>
@@ -257,7 +257,7 @@
                       <foreground color="-13947600"/>
                     </properties>
                   </component>
-                  <component id="13205" class="javax.swing.JList" binding="specialAbilities">
+                  <component id="13205" class="javax.swing.JList" binding="specialAbilitiesList">
                     <constraints>
                       <grid row="9" column="3" row-span="1" col-span="2" vsize-policy="6" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="50"/>
@@ -268,7 +268,7 @@
                       <foreground color="-13947600"/>
                     </properties>
                   </component>
-                  <component id="99c90" class="javax.swing.JList" binding="minions">
+                  <component id="99c90" class="javax.swing.JList" binding="minionsList">
                     <constraints>
                       <grid row="10" column="3" row-span="1" col-span="2" vsize-policy="6" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="50"/>

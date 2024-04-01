@@ -34,17 +34,6 @@ public class CharacterScreen extends Screen {
     private JList<String> minionsList;
     private JComboBox<String> armorSelect;
     private JComboBox<String> leftWeaponSelect;
-    private JTextField name;
-    private JTextField health;
-    private JTextField breed;
-    private JTextField gold;
-    private JList strengths;
-    private JList weaknesses;
-    private JList weapons;
-    private JList armors;
-    private JList abilities;
-    private JList specialAbilities;
-    private JList minions;
     private PlayerCharacter character;
 
     @Override
@@ -56,13 +45,6 @@ public class CharacterScreen extends Screen {
     }
 
     private void initializeUI() {
-        frame = new JPanel();
-        // Initialize UI components
-        // Example:
-        // frame.setLayout(new BorderLayout());
-        // nameField = new JTextField();
-        // frame.add(nameField, BorderLayout.NORTH);
-        // Add other UI components similarly
     }
 
     private void loadCharacterData() {

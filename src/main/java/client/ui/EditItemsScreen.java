@@ -27,6 +27,7 @@ public abstract class EditItemsScreen<T> extends Screen {
             container.add(button);
         });
 
+        container.updateUI();
         container.revalidate();
         container.repaint();
     }

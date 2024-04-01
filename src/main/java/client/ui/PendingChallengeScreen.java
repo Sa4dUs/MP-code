@@ -62,11 +62,11 @@ public class PendingChallengeScreen extends Screen {
             response = Client.request("item/getAll", request);
         }
 
-        if (response == null || response.getField("data") == null) {
+        if (response == null || response.getField("list") == null) {
             return null;
         }
 
-        challengeList = (List<ChallengeRequest>) response.getField("data");
+        challengeList = (List<ChallengeRequest>) response.getField("list");
         if (!Session.isOperator()) {
             challengeList = challengeList.stream()
                     .filter(e -> Objects.equals(e.getAttackedId(), Session.getCurrentUser().getId()))

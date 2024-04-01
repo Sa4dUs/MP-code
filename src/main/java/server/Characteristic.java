@@ -26,10 +26,11 @@ public class Characteristic implements JSONable {
     @Override
     public Document getDocument() {
         Document document = new Document(new CharacteristicSchema());
-        if(this.id != null)
+        if (this.id != null) {
             document.setProperty("id", this.id);
-        else
+        } else {
             this.id = document.getId();
+        }
         document.setProperty("name", this.name);
         document.setProperty("value", this.value);
 

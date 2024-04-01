@@ -13,7 +13,7 @@ public class Characteristic implements JSONable {
 
     @Override
     public String toString() {
-        return id;
+        return this.name;
     }
 
     public void setValue(int value){ this.value = (value > maxValue) ? maxValue : Math.max(value, 1);}

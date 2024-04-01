@@ -17,7 +17,7 @@ public abstract class Stats implements JSONable {
     @Override
     public String toString()
     {
-        return id;
+        return this.name;
     }
     public String getName() {
         return this.name;

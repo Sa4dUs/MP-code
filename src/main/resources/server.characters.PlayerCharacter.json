@@ -35,21 +35,27 @@
     },
     "5c43c919-09ba-4605-9f17-b33971831b6a": {
         "resistancesList": [],
-        "health": 0,
-        "abilityList": [],
-        "activeWeaponR": "",
+        "health": 2,
+        "abilityList": ["aa8134e6-742b-4697-a6fb-5cde0176004f"],
+        "activeWeaponR": "9a32e148-9753-454c-94a4-09ca520e707a",
         "activeNormalAbility": "",
         "breed": 0,
-        "weaponsList": [],
+        "weaponsList": [
+            "7991799e-17b6-46eb-8f1e-88bc0fb21ee8",
+            "9a32e148-9753-454c-94a4-09ca520e707a"
+        ],
         "gold": 500,
-        "armorList": [],
-        "specialAbilityList": [],
+        "armorList": [
+            "ac072b4c-4edc-4185-8698-828e47cf983c",
+            "e12077fd-4c2d-4424-841e-f0c2b8315c86"
+        ],
+        "specialAbilityList": ["62f36381-5f45-4fbc-9ae4-1384da1458a9"],
         "minionList": [],
-        "activeWeaponL": "",
-        "activeArmor": "",
+        "activeWeaponL": "7991799e-17b6-46eb-8f1e-88bc0fb21ee8",
+        "activeArmor": "ac072b4c-4edc-4185-8698-828e47cf983c",
         "name": "Franco",
         "id": "5c43c919-09ba-4605-9f17-b33971831b6a",
-        "debilitiesList": []
+        "debilitiesList": ["238c04b0-6152-4009-b38d-2b219d7ed895"]
     },
     "65fb066f-5ace-48d3-a568-2ff8ff8c26d5": {
         "resistancesList": [],

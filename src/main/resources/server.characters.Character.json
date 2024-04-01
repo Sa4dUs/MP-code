@@ -1,17 +1,23 @@
 {
     "5c43c919-09ba-4605-9f17-b33971831b6a": {
         "gold": 500,
-        "armorList": [],
-        "specialAbilityList": [],
+        "armorList": [
+            "ac072b4c-4edc-4185-8698-828e47cf983c",
+            "e12077fd-4c2d-4424-841e-f0c2b8315c86"
+        ],
+        "specialAbilityList": ["62f36381-5f45-4fbc-9ae4-1384da1458a9"],
         "resistancesList": [],
         "minionList": [],
         "name": "Franco",
         "health": 2,
         "id": "5c43c919-09ba-4605-9f17-b33971831b6a",
-        "abilityList": [],
-        "breed": 1,
-        "weaponsList": [],
-        "debilitiesList": []
+        "abilityList": ["aa8134e6-742b-4697-a6fb-5cde0176004f"],
+        "breed": 0,
+        "weaponsList": [
+            "7991799e-17b6-46eb-8f1e-88bc0fb21ee8",
+            "9a32e148-9753-454c-94a4-09ca520e707a"
+        ],
+        "debilitiesList": ["238c04b0-6152-4009-b38d-2b219d7ed895"]
     },
     "65fb066f-5ace-48d3-a568-2ff8ff8c26d5": {
         "armorList": [],
@@ -22,7 +28,7 @@
         "health": 3,
         "id": "65fb066f-5ace-48d3-a568-2ff8ff8c26d5",
         "abilityList": [],
-        "breed": 1,
+        "breed": 0,
         "weaponsList": [],
         "debilitiesList": []
     }

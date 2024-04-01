@@ -6,6 +6,7 @@ import client.Session;
 import lib.RequestBody;
 import lib.ResponseBody;
 import server.Characteristic;
+import server.characters.CharacterType;
 import server.characters.PlayerCharacter;
 import server.items.Ability;
 import server.items.Armor;
@@ -64,6 +65,7 @@ public class CharacterScreen extends Screen {
         nameField.setText(character.getName());
         healthField.setText(Integer.toString(character.getHealth()));
         goldField.setText(Integer.toString(character.getGold()));
+        breedField.setText(character.getBreed().toString());
 
         populateListFromModel(abilitiesList, character.getAbilityList());
         populateListFromModel(weaknessesList, character.getDebilitiesList());

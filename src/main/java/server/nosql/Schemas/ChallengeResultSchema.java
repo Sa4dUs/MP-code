@@ -7,8 +7,8 @@ import java.util.Map;
 public class ChallengeResultSchema extends Schema {
         public ChallengeResultSchema(){
         super(Map.of(
-                "attackerPlayerId", String.class,
-                "attackedPlayerId", String.class,
+                "attackerId", String.class,
+                "attackedId", String.class,
                 "winnerAttacking", Boolean.class,
                 "turns", Integer.class,
                 "attackerMinionsLeft", Integer.class,

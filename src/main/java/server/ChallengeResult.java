@@ -144,7 +144,7 @@ public class ChallengeResult implements JSONable {
         document.setProperty("turns", this.turns);
         document.setProperty("attackerMinionsLeft", this.attackerMinionsLeft);
         document.setProperty("attackedMinionsLeft", this.attackedMinionsLeft);
-        document.setProperty("winnerAttacking", Boolean.toString(this.winnerAttacking));
+        document.setProperty("winnerAttacking",this.winnerAttacking);
         return document;
     }
 }

@@ -13,7 +13,7 @@
     "Y95ZZ": {
         "nick": "Y95ZZ",
         "password": "1234",
-        "character": "",
+        "character": "5c43c919-09ba-4605-9f17-b33971831b6a",
         "blocked": "false",
         "pending": "false",
         "name": "Lamoara",
@@ -44,7 +44,7 @@
         "name": "Jaime",
         "pendingDuels": ["a9f4bba6-482e-4401-81f9-03e1cb99b514"],
         "id": "W46AA",
-        "results": []
+        "results": ["a6885e29-8259-4cb4-846b-641f8b2e17ce"]
     },
     "L60YY": {
         "nick": "L60YY",
@@ -55,6 +55,6 @@
         "name": "sa4dus",
         "pendingDuels": ["32c87ce7-db96-49ac-bc32-6c7d80f71698"],
         "id": "L60YY",
-        "results": []
+        "results": ["a6885e29-8259-4cb4-846b-641f8b2e17ce"]
     }
 }

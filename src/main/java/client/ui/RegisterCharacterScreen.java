@@ -3,7 +3,6 @@ package client.ui;
 import client.Client;
 import client.ScreenManager;
 import client.Session;
-import com.intellij.uiDesigner.core.GridConstraints;
 import lib.RequestBody;
 import lib.ResponseBody;
 import server.Characteristic;
@@ -28,116 +27,80 @@ public class RegisterCharacterScreen extends Screen {
     private JLabel name;
     private JLabel health;
     private JLabel gold;
-    private JList abilities;
-    private JList weaknesses;
-    private JList strengths;
-    private JList minions;
-    private JList armors;
-    private JList weapons;
+    private JList<String> abilities;
+    private JList<String> weaknesses;
+    private JList<String> strengths;
+    private JList<String> minions;
+    private JList<String> armors;
+    private JList<String> weapons;
     private JButton submit;
 
     @Override
     public void start() {
         super.start();
+        loadDefaultCharacters();
+    }
+
+    private void loadDefaultCharacters() {
         ResponseBody response = Client.request("character/default", new RequestBody());
         List<Character> defaultCharacters = (List<Character>) response.getField("characterList");
 
-        defaultCharacters.forEach(chara -> {
-            System.out.println(charaContainer);
-            JButton button = new JButton();
-            button.setText(chara.getName());
-            button.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    setPanelData(chara);
-                }
-            });
-            charaContainer.add(button, new GridConstraints());
-        });
+        for (Character character : defaultCharacters) {
+            JButton button = new JButton(character.getName());
+            button.addActionListener(e -> setPanelData(character));
+            charaContainer.add(button);
+        }
     }
 
     public RegisterCharacterScreen() {
-        backButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                ScreenManager.goBack();
-            }
-        });
-        submit.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (current == null) {
-                    return;
-                }
+        backButton.addActionListener(e -> ScreenManager.goBack());
+        submit.addActionListener(e -> createCharacter());
+    }
 
-                PlayerCharacter playerCharacter = new PlayerCharacter(current);
+    private void createCharacter() {
+        if (current == null) {
+            return;
+        }
 
-                {
-                    RequestBody request = new RequestBody();
-                    request.addField("character", playerCharacter);
-                    Client.request("character/createPlayerCharacter", request);
-                }
+        PlayerCharacter playerCharacter = new PlayerCharacter(current);
 
-                {
-                    RequestBody request = new RequestBody();
-                    request.addField("nick", Session.getCurrentUser().getNick());
-                    request.addField("character", playerCharacter);
-                    ResponseBody response = Client.request("character/setCharacterOfPlayer", request);
+        RequestBody createRequest = new RequestBody();
+        createRequest.addField("character", playerCharacter);
+        Client.request("character/createPlayerCharacter", createRequest);
 
-                    // TODO! Add visual feedback
-                    if (response.ok) {
-                        ScreenManager.render(PlayerDashboardScreen.class);
-                    }
-                }
-            }
-        });
+        RequestBody setCharacterRequest = new RequestBody();
+        setCharacterRequest.addField("nick", Session.getCurrentUser().getNick());
+        setCharacterRequest.addField("character", playerCharacter);
+        ResponseBody response = Client.request("character/setCharacterOfPlayer", setCharacterRequest);
+
+        // TODO: Add visual feedback
+        if (response.ok) {
+            ScreenManager.render(PlayerDashboardScreen.class);
+        }
     }
 
     public JPanel getPanel() {
-        return this.frame;
+        return frame;
     }
 
     public void setPanelData(Character character) {
-        this.current = character;
+        current = character;
 
         name.setText(character.getName());
         health.setText(Integer.toString(character.getHealth()));
         gold.setText(Integer.toString(character.getGold()));
 
-        DefaultListModel<String> abilityModel = new DefaultListModel<>();
-        for (Ability a: character.getAbilityList()) {
-            abilityModel.addElement(a.getName());
-        }
-        abilities.setModel(abilityModel);
+        setListData(abilities, character.getAbilityList());
+        setListData(weaknesses, character.getDebilitiesList());
+        setListData(strengths, character.getResistancesList());
+        setListData(minions, character.getMinionList());
+        setListData(weapons, character.getWeaponsList());
+        setListData(armors, character.getArmorList());
+    }
 
-        DefaultListModel<String> weaknessesModel = new DefaultListModel<>();
-        for (Characteristic c: character.getDebilitiesList()) {
-            weaknessesModel.addElement(c.getName());
-        }
-        weaknesses.setModel(weaknessesModel);
-
-        DefaultListModel<String> strengthsModel = new DefaultListModel<>();
-        for (Characteristic c: character.getResistancesList()) {
-            strengthsModel.addElement(c.getName());
-        }
-        strengths.setModel(strengthsModel);
-
-        DefaultListModel<String> minionsModel = new DefaultListModel<>();
-        for (Minion m: character.getMinionList()) {
-            minionsModel.addElement(m.getName());
-        }
-        minions.setModel(minionsModel);
-
-        DefaultListModel<String> weaponsModel = new DefaultListModel<>();
-        for (Weapon w: character.getWeaponsList()) {
-            weaponsModel.addElement(w.getName());
-        }
-        weapons.setModel(weaponsModel);
-
-        DefaultListModel<String> armorModel = new DefaultListModel<>();
-        for (Armor a: character.getArmorList()) {
-            armorModel.addElement(a.getName());
-        }
-        armors.setModel(armorModel);
+    private void setListData(JList<String> list, List<? extends Object> dataList) {
+        DefaultListModel<String> model = new DefaultListModel<>();
+        dataList.forEach(entity -> model.addElement(entity.toString())); // Assuming toString() gives name or appropriate representation
+        list.setModel(model);
     }
 }

@@ -4,27 +4,22 @@ import client.Client;
 import client.ScreenManager;
 import lib.RequestBody;
 import lib.ResponseBody;
-import server.Characteristic;
 import server.characters.Character;
-import server.items.Ability;
-import server.items.Armor;
-import server.items.Weapon;
-import server.minions.Minion;
 
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.List;
 import java.util.stream.Stream;
 
 public class OperatorCharacterScreen extends Screen {
-    private JTextField name;
+    private JTextField nameField;
     private JButton deleteButton;
-    private JPanel frame;
     private JButton exitButton;
-    private JPanel charaContainer; // TODO! Fix IntelIJ
+    private JPanel characterContainer;
     private JButton updateButton;
+    private JPanel frame;
+    private JTextField breed;
+    private JTextField health;
+    private JTextField gold;
     private JList strengths;
     private JList weaknesses;
     private JList weapons;
@@ -32,15 +27,31 @@ public class OperatorCharacterScreen extends Screen {
     private JList abilities;
     private JList specialAbilities;
     private JList minions;
-    private JTextField health;
-    private JTextField gold;
-    private JTextField breed;
+    private JPanel container;
+    private JTextField name;
+    private JList<String> strengthsList;
+    private JList<String> weaknessesList;
+    private JList<String> weaponsList;
+    private JList<String> armorsList;
+    private JList<String> abilitiesList;
+    private JList<String> specialAbilitiesList;
+    private JList<String> minionsList;
+    private JTextField healthField;
+    private JTextField goldField;
+    private JTextField breedField;
 
-    private Character current;
+    private Character currentCharacter;
 
-    @Override
-    public void start() {
-        super.start();
+    public OperatorCharacterScreen() {
+        initializeComponents();
+        loadCharacterButtons();
+    }
+
+    private void initializeComponents() {
+        exitButton.addActionListener(e -> ScreenManager.goBack());
+    }
+
+    private void loadCharacterButtons() {
         ResponseBody response1 = Client.request("character/default", new RequestBody());
         List<Character> defaultCharacters = (List<Character>) response1.getField("characterList");
         ResponseBody response2 = Client.request("character/player", new RequestBody());
@@ -48,75 +59,39 @@ public class OperatorCharacterScreen extends Screen {
 
         List<Character> characters = Stream.concat(defaultCharacters.stream(), playerCharacters.stream()).toList();
 
-        characters.forEach(chara -> {
-            JButton button = new JButton();
-            button.setText(chara.getName());
-            button.setSize(button.getPreferredSize());
-            button.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    setPanelData(chara);
-                }
-            });
-            charaContainer.add(button, new GridBagConstraints());
-        });
-    }
-
-    public OperatorCharacterScreen() {
-        exitButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                ScreenManager.goBack();
-            }
+        characters.forEach(character -> {
+            JButton button = new JButton(character.getName());
+            button.addActionListener(e -> setPanelData(character));
+            characterContainer.add(button);
         });
     }
 
     public void setPanelData(Character character) {
-        this.current = character;
+        this.currentCharacter = character;
 
-        name.setText(character.getName());
-        health.setText(Integer.toString(character.getHealth()));
-        gold.setText(Integer.toString(character.getGold()));
+        nameField.setText(character.getName());
+        healthField.setText(String.valueOf(character.getHealth()));
+        goldField.setText(String.valueOf(character.getGold()));
+        breedField.setText(String.valueOf(character.getBreed()));
 
-        DefaultListModel<String> abilityModel = new DefaultListModel<>();
-        for (Ability a: character.getAbilityList()) {
-            abilityModel.addElement(a.getName());
-        }
-        abilities.setModel(abilityModel);
-
-        DefaultListModel<String> weaknessesModel = new DefaultListModel<>();
-        for (Characteristic c: character.getDebilitiesList()) {
-            weaknessesModel.addElement(c.getName());
-        }
-        weaknesses.setModel(weaknessesModel);
-
-        DefaultListModel<String> strengthsModel = new DefaultListModel<>();
-        for (Characteristic c: character.getResistancesList()) {
-            strengthsModel.addElement(c.getName());
-        }
-        strengths.setModel(strengthsModel);
-
-        DefaultListModel<String> minionsModel = new DefaultListModel<>();
-        for (Minion m: character.getMinionList()) {
-            minionsModel.addElement(m.getName());
-        }
-        minions.setModel(minionsModel);
-
-        DefaultListModel<String> weaponsModel = new DefaultListModel<>();
-        for (Weapon w: character.getWeaponsList()) {
-            weaponsModel.addElement(w.getName());
-        }
-        weapons.setModel(weaponsModel);
-
-        DefaultListModel<String> armorModel = new DefaultListModel<>();
-        for (Armor a: character.getArmorList()) {
-            armorModel.addElement(a.getName());
-        }
-        armors.setModel(armorModel);
+        setListData(abilitiesList, character.getAbilityList());
+        setListData(weaknessesList, character.getDebilitiesList());
+        setListData(strengthsList, character.getResistancesList());
+        setListData(minionsList, character.getMinionList());
+        setListData(weaponsList, character.getWeaponsList());
+        setListData(armorsList, character.getArmorList());
     }
 
+    private void setListData(JList<String> list, List<? extends Object> dataList) {
+        DefaultListModel<String> model = new DefaultListModel<>();
+        for (Object item : dataList) {
+            model.addElement(item.toString());
+        }
+        list.setModel(model);
+    }
+
+    @Override
     public JPanel getPanel() {
-        return this.frame;
+        return characterContainer;
     }
-
 }

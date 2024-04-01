@@ -18,10 +18,15 @@ public class RankingScreen extends Screen {
     private JLabel second;
     private JLabel third;
     private JList ranking;
+    private JList<String> rankingList;
 
     @Override
     public void start() {
         super.start();
+        displayRanking();
+    }
+
+    private void displayRanking() {
         ResponseBody response = Client.request("challenge/ranking", new RequestBody());
 
         if (!response.ok) {
@@ -30,43 +35,33 @@ public class RankingScreen extends Screen {
 
         List<Player> ranking = (List<Player>) response.getField("ranking");
 
-        DefaultListModel<String> list =  new DefaultListModel<>();
+        DefaultListModel<String> listModel = new DefaultListModel<>();
 
         for (int i = 0; i < ranking.size(); i++) {
-            String player = ranking.get(i).getName();
-            int gold = ranking.get(i).getCharacter() != null ? ranking.get(i).getCharacter().getGold() : 0;
-            switch (i + 1) {
-                case 1:
-                    first.setText("1. " + player + " " + Integer.toString(gold) + " g");
-                    break;
-                case 2:
-                    second.setText("2. " + player + " " + Integer.toString(gold) + " g");
-                    break;
-                case 3:
-                    third.setText("3. " + player + " " + Integer.toString(gold) + " g");
-                    break;
-                default:
-                    list.addElement(Integer.toString(i+1) + ". " + player + " " + Integer.toString(gold) + " g");
+            Player player = ranking.get(i);
+            String playerName = player.getName();
+            int gold = (player.getCharacter() != null) ? player.getCharacter().getGold() : 0;
+            String rankInfo = (i + 1) + ". " + playerName + " " + gold + " g";
+
+            if (i == 0) {
+                first.setText(rankInfo);
+            } else if (i == 1) {
+                second.setText(rankInfo);
+            } else if (i == 2) {
+                third.setText(rankInfo);
+            } else {
+                listModel.addElement(rankInfo);
             }
         }
 
-        this.ranking.setModel(list);
+        rankingList.setModel(listModel);
     }
 
     public RankingScreen() {
-        backButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                ScreenManager.goBack();
-            }
-        });
+        backButton.addActionListener(e -> ScreenManager.goBack());
     }
 
     public JPanel getPanel() {
-        return this.frame;
-    }
-
-    private void createUIComponents() {
-        // TODO: place custom component creation code here
+        return frame;
     }
 }

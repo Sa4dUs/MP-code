@@ -37,16 +37,9 @@ public class EditMinionsScreen extends Screen {
         super.start();
 
         // Fetch items from server
-        List<Minion> items = new ArrayList<>();
-
-        // Fetch Humans
-        fetchMinions(Human.class, items);
-
-        // Fetch Demons
-        fetchMinions(Demon.class, items);
-
-        // Fetch Ghouls
-        fetchMinions(Ghoul.class, items);
+        List<Minion> items = fetchMinions(Human.class);
+        items.addAll(fetchMinions(Demon.class));
+        items.addAll(fetchMinions(Ghoul.class));
 
         // Set container layout
         container.setLayout(new GridLayout(items.size(), 1));
@@ -62,11 +55,11 @@ public class EditMinionsScreen extends Screen {
         });
     }
 
-    private void fetchMinions(Class<? extends Minion> clazz, List<Minion> items) {
+    private List<Minion> fetchMinions(Class<? extends Minion> clazz) {
         RequestBody request = new RequestBody();
         request.addField("clazz", clazz);
         ResponseBody response = Client.request("item/getAll", request);
-        items.addAll((Collection<? extends Minion>) response.getField("data"));
+        return (List<Minion>) response.getField("data");
     }
 
     public EditMinionsScreen() {
@@ -92,10 +85,7 @@ public class EditMinionsScreen extends Screen {
             Client.request("item/set", request);
         });
 
-        add.addActionListener(e -> {
-            createPopup();
-            // No need to call setPanelData() here as it's already called inside createPopup()
-        });
+        add.addActionListener(e -> createPopup());
         deleteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -115,32 +105,8 @@ public class EditMinionsScreen extends Screen {
         health.setText(Integer.toString(item.getHealth()));
 
         if (item instanceof Demon) {
-            minions.setEnabled(true);
-
             extraLabel.setText("Pact:");
             extraField.setText(((Demon) item).getPact());
-
-            // Set layout for minions panel
-            minions.setLayout(new GridLayout(((Demon) item).getMinions().size(), 3));
-            for (Minion minion : ((Demon) item).getMinions()) {
-                Label label = new Label(minion.getName());
-                Button remove = new Button();
-
-                remove.setLabel("-");
-
-                remove.addActionListener(e -> {
-                    List<Minion> list = ((Demon) current).getMinions();
-                    list.remove(minion);
-                    ((Demon) current).setMinions(list);
-                    setPanelData(current);
-                    minions.remove(label);
-                    minions.remove(remove);
-                });
-
-                minions.add(label);
-                minions.add(add); // Fixed add button here
-                minions.add(remove);
-            }
         } else if (item instanceof Human) {
             extraLabel.setText("Loyalty:");
             extraField.setText(Integer.toString(((Human) item).getLoyalty()));
@@ -152,12 +118,8 @@ public class EditMinionsScreen extends Screen {
 
     private void createPopup() {
         // Create a new JFrame
-        JFrame frame = new JFrame("Character Details");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        // Create a panel
-        JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(4, 2));
+        JFrame popupFrame = new JFrame("Create Minion");
+        JPanel popupPanel = new JPanel(new GridLayout(5, 2));
 
         // Create components
         JLabel typeLabel = new JLabel("Type:");
@@ -166,23 +128,29 @@ public class EditMinionsScreen extends Screen {
         JTextField nameField = new JTextField();
         JLabel healthLabel = new JLabel("Health:");
         JTextField healthField = new JTextField();
-        JLabel extraLabel = new JLabel("Extra:");
+        JLabel extraLabel = new JLabel();
         JTextField extraField = new JTextField();
+        JButton saveButton = new JButton("Save");
+        JButton cancelButton = new JButton("Cancel");
 
         // Add components to the panel
-        panel.add(typeLabel);
-        panel.add(typeComboBox);
-        panel.add(nameLabel);
-        panel.add(nameField);
-        panel.add(healthLabel);
-        panel.add(healthField);
-        panel.add(extraLabel);
-        panel.add(extraField);
+        popupPanel.add(typeLabel);
+        popupPanel.add(typeComboBox);
+        popupPanel.add(nameLabel);
+        popupPanel.add(nameField);
+        popupPanel.add(healthLabel);
+        popupPanel.add(healthField);
+        popupPanel.add(extraLabel);
+        popupPanel.add(extraField);
+        popupPanel.add(saveButton);
+        popupPanel.add(cancelButton);
 
+        // Set default state of fields
         nameField.setEnabled(false);
         healthField.setEnabled(false);
         extraField.setEnabled(false);
 
+        // Update extraLabel and enable fields based on selected type
         typeComboBox.addActionListener(e -> {
             String selectedType = (String) typeComboBox.getSelectedItem();
             switch (selectedType) {
@@ -201,17 +169,15 @@ public class EditMinionsScreen extends Screen {
             extraField.setEnabled(true);
         });
 
-        JButton saveButton = new JButton("Save");
-        JButton cancelButton = new JButton("Cancel");
-
+        // Handle save button click
         saveButton.addActionListener(e -> {
             String name = nameField.getText();
             int health = Integer.parseInt(healthField.getText());
             String extra = extraField.getText();
 
-            String selectedType = (String) typeComboBox.getSelectedItem();
-
+            // Create minion based on selected type
             Minion minion = null;
+            String selectedType = (String) typeComboBox.getSelectedItem();
             switch (selectedType) {
                 case "Demon":
                     minion = new Demon();
@@ -230,53 +196,31 @@ public class EditMinionsScreen extends Screen {
             minion.setName(name);
             minion.setHealth(health);
 
+            // Save minion to the server
             RequestBody request = new RequestBody();
             request.addField("object", minion);
             Client.request("item/set", request);
 
-            // Add new minion to current Demon
-            List<Minion> list = ((Demon) current).getMinions();
-            list.add(minion);
-            ((Demon) current).setMinions(list);
-
+            // Add new minion to the container
             JButton button = new JButton(minion.getName());
-            Minion finalMinion1 = minion;
+            Minion finalMinion = minion;
             button.addActionListener(ev -> {
-                current = finalMinion1;
-                setPanelData(finalMinion1);
+                current = finalMinion;
+                setPanelData(finalMinion);
             });
             container.add(button, new GridConstraints());
 
-            Label label = new Label(minion.getName());
-            Button remove = new Button();
-
-            remove.setLabel("-");
-
-            Minion finalMinion = minion;
-            remove.addActionListener(ev -> {
-                List<Minion> minionList = ((Demon) current).getMinions();
-                minionList.remove(finalMinion);
-                ((Demon) current).setMinions(minionList);
-                setPanelData(current);
-                minions.remove(label);
-                minions.remove(remove);
-            });
-
-            minions.add(label);
-            minions.add(add); // Fixed add button here
-            minions.add(remove);
-
-            frame.dispose();
+            // Close the popup
+            popupFrame.dispose();
         });
 
-        cancelButton.addActionListener(e -> frame.dispose());
+        // Handle cancel button click
+        cancelButton.addActionListener(e -> popupFrame.dispose());
 
-        panel.add(saveButton);
-        panel.add(cancelButton);
-
-        frame.getContentPane().add(panel);
-
-        frame.setSize(300, 200);
-        frame.setVisible(true);
+        // Add panel to the frame
+        popupFrame.getContentPane().add(popupPanel);
+        popupFrame.pack();
+        popupFrame.setLocationRelativeTo(null); // Center the popup
+        popupFrame.setVisible(true);
     }
 }

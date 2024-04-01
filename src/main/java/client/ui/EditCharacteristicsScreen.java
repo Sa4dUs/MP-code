@@ -1,89 +1,56 @@
 package client.ui;
 
-import client.Client;
 import client.ScreenManager;
-import com.intellij.uiDesigner.core.GridConstraints;
-import lib.RequestBody;
-import lib.ResponseBody;
 import server.Characteristic;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.List;
 
-public class EditCharacteristicsScreen extends Screen {
+public class EditCharacteristicsScreen extends EditItemsScreen<Characteristic> {
     private JPanel frame;
     private JButton backButton;
-    private JTextField name;
-    private JPanel charaContainer;
+    private JTextField nameField;
+    private JPanel characteristicsPanel;
     private JButton saveButton;
+    private JPanel containe;
+    private JTextField name;
     private JTextField value;
-
+    private JTextField valueField;
     private Characteristic currentItem;
 
     @Override
-    public void start() {
-        // CHANGE HERE!
-        Class<Characteristic> clazz = Characteristic.class;
-        List<Characteristic> items;
+    protected JPanel getContainerPanel() {
+        return characteristicsPanel;
+    }
 
-        super.start();
-        RequestBody request = new RequestBody();
-        request.addField("clazz", clazz);
+    @Override
+    protected String getItemName(Characteristic characteristic) {
+        return characteristic.getName();
+    }
 
-        ResponseBody response = Client.request("item/getAll", request);
-
-        // CHANGE HERE!
-        items = (List<Characteristic>) response.getField("data");
-
-        items.forEach(el -> {
-            JButton button = new JButton();
-            button.setText(el.getName());
-            button.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    setPanelData(el);
-                }
-            });
-            charaContainer.add(button, new GridConstraints());
-        });
+    @Override
+    protected void setPanelData(Characteristic characteristic) {
+        nameField.setText(characteristic.getName());
+        valueField.setText(Integer.toString(characteristic.getValue()));
+        currentItem = characteristic;
     }
 
     public EditCharacteristicsScreen() {
-        backButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                ScreenManager.goBack();
-            }
-        });
+        backButton.addActionListener(e -> ScreenManager.goBack());
 
-        saveButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // CHANGE HERE!
-                Characteristic item = new Characteristic();
-                item.setName(name.getText());
-                item.setValue(Integer.parseInt(value.getText()));
-                if (currentItem != null)
-                    item.setId(currentItem.getId());
+        saveButton.addActionListener(e -> saveCharacteristic());
+    }
 
-                RequestBody request = new RequestBody();
-                request.addField("object", item);
+    private void saveCharacteristic() {
+        Characteristic characteristic = new Characteristic();
+        characteristic.setName(nameField.getText());
+        characteristic.setValue(Integer.parseInt(valueField.getText()));
+        if (currentItem != null)
+            characteristic.setId(currentItem.getId());
 
-                ResponseBody response = Client.request("item/set", request);
-            }
-        });
+        saveItem(characteristic);
     }
 
     public JPanel getPanel() {
-        return this.frame;
-    }
-
-    // CHANGE HERE!
-    public void setPanelData(Characteristic item) {
-        name.setText(item.getName());
-        value.setText(Integer.toString(item.getValue()));
-        this.currentItem = item;
+        return frame;
     }
 }

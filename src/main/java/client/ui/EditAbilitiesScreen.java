@@ -1,96 +1,64 @@
 package client.ui;
 
-import client.Client;
 import client.ScreenManager;
-import com.intellij.uiDesigner.core.GridConstraints;
-import lib.RequestBody;
-import lib.ResponseBody;
 import server.items.Ability;
-import server.items.Stats;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.List;
 
-public class EditAbilitiesScreen extends Screen {
+public class EditAbilitiesScreen extends EditItemsScreen<Ability> {
     private JPanel frame;
     private JButton backButton;
+    private JTextField costField;
+    private JTextField nameField;
+    private JTextField attackField;
+    private JPanel abilitiesPanel;
+    private JButton saveButton;
+    private JPanel container;
     private JTextField cost;
     private JTextField name;
     private JTextField attack;
-    private JPanel charaContainer;
-    private JButton saveButton;
     private JTextField defense;
-    private Stats currentItem;
+    private JTextField defenseField;
+    private Ability currentItem;
 
     @Override
-    public void start() {
-        // CHANGE HERE!
-        Class<? extends Stats> clazz = Ability.class;
-        List<Ability> items;
+    protected JPanel getContainerPanel() {
+        return abilitiesPanel;
+    }
 
-        super.start();
-        RequestBody request = new RequestBody();
-        request.addField("clazz", clazz);
+    @Override
+    protected String getItemName(Ability ability) {
+        return ability.getName();
+    }
 
-        ResponseBody response = Client.request("item/getAll", request);
-
-        // CHANGE HERE!
-        items = (List<Ability>) response.getField("data");
-
-        items.forEach(el -> {
-            System.out.println(charaContainer);
-            JButton button = new JButton();
-            button.setText(el.getName());
-            button.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    setPanelData(el);
-                }
-            });
-            charaContainer.add(button, new GridConstraints());
-        });
+    @Override
+    protected void setPanelData(Ability ability) {
+        nameField.setText(ability.getName());
+        costField.setText(Integer.toString(ability.getCost()));
+        attackField.setText(Integer.toString(ability.getAttack()));
+        defenseField.setText(Integer.toString(ability.getDefense()));
+        currentItem = ability;
     }
 
     public EditAbilitiesScreen() {
-        backButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                ScreenManager.goBack();
-            }
-        });
+        backButton.addActionListener(e -> ScreenManager.goBack());
 
-        saveButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // CHANGE HERE!
-                Ability item = new Ability();
-                item.setName(name.getText());
-                item.setCost(Integer.parseInt(cost.getText()));
-                item.setAttack(Integer.parseInt(attack.getText()));
-                item.setDefense(Integer.parseInt(defense.getText()));
-                if (currentItem != null)
-                    item.setId(currentItem.getId());
+        saveButton.addActionListener(e -> saveItem());
+    }
 
-                RequestBody request = new RequestBody();
-                request.addField("object", item);
+    private void saveItem() {
+        Ability ability = new Ability();
+        ability.setName(nameField.getText());
+        ability.setCost(Integer.parseInt(costField.getText()));
+        ability.setAttack(Integer.parseInt(attackField.getText()));
+        ability.setDefense(Integer.parseInt(defenseField.getText()));
+        if (currentItem != null)
+            ability.setId(currentItem.getId());
 
-                ResponseBody response = Client.request("item/set", request);
-            }
-        });
+        saveItem(ability);
     }
 
     public JPanel getPanel() {
-        return this.frame;
-    }
-
-    // CHANGE HERE!
-    public void setPanelData(Ability item) {
-        name.setText(item.getName());
-        cost.setText(Integer.toString(item.getCost()));
-        attack.setText(Integer.toString(item.getAttack()));
-        defense.setText(Integer.toString(item.getDefense()));
-        currentItem = item;
+        return frame;
     }
 }

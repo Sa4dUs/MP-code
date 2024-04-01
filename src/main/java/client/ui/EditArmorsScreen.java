@@ -1,94 +1,60 @@
 package client.ui;
 
-import client.Client;
 import client.ScreenManager;
-import com.intellij.uiDesigner.core.GridConstraints;
-import lib.RequestBody;
-import lib.ResponseBody;
 import server.items.Armor;
-import server.items.Armor;
-import server.items.Stats;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.List;
 
-public class EditArmorsScreen extends Screen {
+public class EditArmorsScreen extends EditItemsScreen<Armor> {
     private JPanel frame;
     private JButton backButton;
+    private JTextField nameField;
+    private JTextField attackField;
+    private JPanel armorsPanel;
+    private JButton saveButton;
     private JTextField name;
     private JTextField attack;
-    private JPanel charaContainer;
-    private JButton saveButton;
+    private JPanel container;
     private JTextField defense;
-    private Stats currentItem;
+    private JTextField defenseField;
+    private Armor currentItem;
 
     @Override
-    public void start() {
-        // CHANGE HERE!
-        Class<? extends Stats> clazz = Armor.class;
-        List<Armor> items;
+    protected JPanel getContainerPanel() {
+        return armorsPanel;
+    }
 
-        super.start();
-        RequestBody request = new RequestBody();
-        request.addField("clazz", clazz);
+    @Override
+    protected String getItemName(Armor armor) {
+        return armor.getName();
+    }
 
-        ResponseBody response = Client.request("item/getAll", request);
-
-        // CHANGE HERE!
-        items = (List<Armor>) response.getField("data");
-
-        items.forEach(el -> {
-            System.out.println(charaContainer);
-            JButton button = new JButton();
-            button.setText(el.getName());
-            button.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    setPanelData(el);
-                }
-            });
-            charaContainer.add(button, new GridConstraints());
-        });
+    @Override
+    protected void setPanelData(Armor armor) {
+        nameField.setText(armor.getName());
+        attackField.setText(Integer.toString(armor.getAttack()));
+        defenseField.setText(Integer.toString(armor.getDefense()));
+        currentItem = armor;
     }
 
     public EditArmorsScreen() {
-        backButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                ScreenManager.goBack();
-            }
-        });
+        backButton.addActionListener(e -> ScreenManager.goBack());
 
-        saveButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // CHANGE HERE!
-                Armor item = new Armor();
-                item.setName(name.getText());
-                item.setAttack(Integer.parseInt(attack.getText()));
-                item.setDefense(Integer.parseInt(defense.getText()));
-                if (currentItem != null)
-                    item.setId(currentItem.getId());
+        saveButton.addActionListener(e -> saveItem());
+    }
 
-                RequestBody request = new RequestBody();
-                request.addField("object", item);
+    private void saveItem() {
+        Armor armor = new Armor();
+        armor.setName(nameField.getText());
+        armor.setAttack(Integer.parseInt(attackField.getText()));
+        armor.setDefense(Integer.parseInt(defenseField.getText()));
+        if (currentItem != null)
+            armor.setId(currentItem.getId());
 
-                ResponseBody response = Client.request("item/set", request);
-            }
-        });
+        saveItem(armor);
     }
 
     public JPanel getPanel() {
-        return this.frame;
-    }
-
-    // CHANGE HERE!
-    public void setPanelData(Armor item) {
-        name.setText(item.getName());
-        attack.setText(Integer.toString(item.getAttack()));
-        defense.setText(Integer.toString(item.getDefense()));
-        this.currentItem = item;
+        return frame;
     }
 }

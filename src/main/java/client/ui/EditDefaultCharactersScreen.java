@@ -62,18 +62,10 @@ public class EditDefaultCharactersScreen extends Screen {
     public void start() {
         super.start();
 
-        DefaultComboBoxModel model = new DefaultComboBoxModel();
-        model.addElement(CharacterType.Hunter);
-        model.addElement(CharacterType.Lycanthrope);
-        model.addElement(CharacterType.Vampire);
+        DefaultComboBoxModel<CharacterType> model = new DefaultComboBoxModel<>(CharacterType.values());
         breed.setModel(model);
 
-        fetchAbility();
-        fetchArmor();
-        fetchCharacteristic();
-        fetchMinion();
-        fetchWeapon();
-        fetchCharacter();
+        fetchItems();
 
         container.setLayout(new GridLayout(characterList.size(), 1));
 
@@ -86,13 +78,13 @@ public class EditDefaultCharactersScreen extends Screen {
             container.add(button, new GridConstraints());
         });
 
-        minionAdd.addActionListener(e -> displayMinionPopup());
-        armorAdd.addActionListener(e -> displayArmorPopup());
-        weaponsAdd.addActionListener(e -> displayWeaponPopup());
-        abilitiesAdd.addActionListener(e -> displayAbilityPopup());
-        specialAbilitiesAdd.addActionListener(e -> displaySpecialAbilityPopup());
-        resistancesAdd.addActionListener(e -> displayWeaknessPopup());
-        strengthsAdd.addActionListener(e -> displayStrengthPopup());
+        minionAdd.addActionListener(e -> displayPopup("Minion", minionList, minions, current.getMinionList()));
+        armorAdd.addActionListener(e -> displayPopup("Armor", armorList, armors, current.getArmorList()));
+        weaponsAdd.addActionListener(e -> displayPopup("Weapon", weaponList, weapons, current.getWeaponsList()));
+        abilitiesAdd.addActionListener(e -> displayPopup("Ability", abilityList, abilities, current.getAbilityList()));
+        specialAbilitiesAdd.addActionListener(e -> displayPopup("Special Ability", abilityList, specialAbilities, current.getSpecialAbilityList()));
+        resistancesAdd.addActionListener(e -> displayPopup("Strength", characteristicList, strengths, current.getResistancesList()));
+        strengthsAdd.addActionListener(e -> displayPopup("Weakness", characteristicList, weaknesses, current.getDebilitiesList()));
     }
 
     public EditDefaultCharactersScreen() {
@@ -113,36 +105,25 @@ public class EditDefaultCharactersScreen extends Screen {
         });
     }
 
-    private void fetchArmor() {
-        RequestBody request = new RequestBody();
-        request.addField("clazz", Armor.class);
-        ResponseBody response = Client.request("item/getAll", request);
-        armorList.addAll((List<Armor>) response.getField("data"));
+    private void fetchItems() {
+        fetchItemsOfType(Armor.class, armorList);
+        fetchItemsOfType(Weapon.class, weaponList);
+        fetchItemsOfType(Ability.class, abilityList);
+        fetchItemsOfType(Characteristic.class, characteristicList);
+        fetchMinions();
+        fetchCharacters();
     }
 
-    private void fetchWeapon() {
+    private <T> void fetchItemsOfType(Class<T> clazz, List<T> itemList) {
         RequestBody request = new RequestBody();
-        request.addField("clazz", Weapon.class);
+        request.addField("clazz", clazz);
         ResponseBody response = Client.request("item/getAll", request);
-        weaponList.addAll((List<Weapon>) response.getField("data"));
+        itemList.addAll((List<T>) response.getField("data"));
     }
 
-    private void fetchAbility() {
+    private void fetchMinions() {
         RequestBody request = new RequestBody();
-        request.addField("clazz", Ability.class);
-        ResponseBody response = Client.request("item/getAll", request);
-        abilityList.addAll((List<Ability>) response.getField("data"));
-    }
 
-    private void fetchCharacteristic() {
-        RequestBody request = new RequestBody();
-        request.addField("clazz", Characteristic.class);
-        ResponseBody response = Client.request("item/getAll", request);
-        characteristicList.addAll((List<Characteristic>) response.getField("data"));
-    }
-
-    private void fetchMinion() {
-        RequestBody request = new RequestBody();
         {
             request.addField("clazz", Demon.class);
             ResponseBody response = Client.request("item/getAll", request);
@@ -162,389 +143,47 @@ public class EditDefaultCharactersScreen extends Screen {
         }
     }
 
-    private void fetchCharacter() {
-        RequestBody request = new RequestBody();
-        request.addField("clazz", Character.class);
-        ResponseBody response = Client.request("item/getAll", request);
-        characterList.addAll((List<Character>) response.getField("data"));
+    private void fetchCharacters() {
+        fetchItemsOfType(Character.class, characterList);
     }
 
-    private void displayArmorPopup() {
-        JFrame popupFrame = new JFrame("Select " + "Armor");
+    private <T> void displayPopup(String title, List<T> itemList, JPanel panelToUpdate, List<T> listToUpdate) {
+        JFrame popupFrame = new JFrame("Select " + title);
         JPanel popupPanel = new JPanel(new BorderLayout());
 
-        JComboBox<Armor> selectInput = new JComboBox<Armor>();
-        DefaultComboBoxModel model = new DefaultComboBoxModel();
-        model.addAll(armorList);
+        JComboBox<T> selectInput = new JComboBox<>();
+        DefaultComboBoxModel<T> model = new DefaultComboBoxModel<>();
+        model.addAll(itemList);
         selectInput.setModel(model);
 
         JButton selectButton = new JButton("Select");
         JButton cancelButton = new JButton("Cancel");
 
         selectButton.addActionListener(e -> {
-            Armor selectedItem = (Armor) selectInput.getSelectedItem();
+            T selectedItem = selectInput.getItemAt(selectInput.getSelectedIndex());
             if (selectedItem != null) {
-                System.out.println("Selected " + "Armor" + ": " + selectedItem);
-
                 Label label = new Label();
-                label.setText(selectedItem.getName());
+                label.setText(selectedItem.toString());
 
                 Button button = new Button();
                 button.setLabel("-");
                 button.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        List<Armor> list = current.getArmorList();
-                        list.remove(selectedItem);
-                        current.setArmorList(list);
-
-                        armors.remove(label);
-                        armors.remove(button);
+                        listToUpdate.remove(selectedItem);
+                        panelToUpdate.remove(label);
+                        panelToUpdate.remove(button);
+                        panelToUpdate.revalidate();
+                        panelToUpdate.repaint();
                     }
                 });
 
-                armors.add(label);
-                armors.add(button);
+                panelToUpdate.add(label);
+                panelToUpdate.add(button);
+                listToUpdate.add(selectedItem);
                 popupFrame.dispose(); // Close the popup
             } else {
                 JOptionPane.showMessageDialog(popupFrame, "Please select an item.", "Error", JOptionPane.ERROR_MESSAGE);
-            }
-        });
-
-        cancelButton.addActionListener(e -> popupFrame.dispose()); // Close the popup
-
-        popupPanel.add(selectInput, BorderLayout.NORTH);
-        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-        buttonPanel.add(selectButton);
-        buttonPanel.add(cancelButton);
-        popupPanel.add(buttonPanel, BorderLayout.SOUTH);
-
-        popupFrame.getContentPane().add(popupPanel);
-        popupFrame.pack();
-        popupFrame.setLocationRelativeTo(null); // Center the popup
-        popupFrame.setVisible(true);
-    }
-
-    private void displayWeaponPopup() {
-        JFrame popupFrame = new JFrame("Select Weapon");
-        JPanel popupPanel = new JPanel(new BorderLayout());
-
-        JComboBox<Weapon> selectInput = new JComboBox<Weapon>();
-        DefaultComboBoxModel model = new DefaultComboBoxModel();
-        model.addAll(weaponList);
-        selectInput.setModel(model);
-
-        JButton selectButton = new JButton("Select");
-        JButton cancelButton = new JButton("Cancel");
-
-        selectButton.addActionListener(e -> {
-            Weapon selectedItem = (Weapon) selectInput.getSelectedItem();
-            if (selectedItem != null) {
-                System.out.println("Selected Weapon: " + selectedItem);
-
-                Label label = new Label();
-                label.setText(selectedItem.getName());
-
-                Button button = new Button();
-                button.setLabel("-");
-                button.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        List<Weapon> list = current.getWeaponsList();
-                        list.remove(selectedItem);
-                        current.setWeaponsList(list);
-
-                        weapons.remove(label);
-                        weapons.remove(button);
-                    }
-                });
-
-                weapons.add(label);
-                weapons.add(button);
-                popupFrame.dispose(); // Close the popup
-            } else {
-                JOptionPane.showMessageDialog(popupFrame, "Please select an item.", "Error", JOptionPane.ERROR_MESSAGE);
-            }
-        });
-
-        cancelButton.addActionListener(e -> popupFrame.dispose()); // Close the popup
-
-        popupPanel.add(selectInput, BorderLayout.NORTH);
-        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-        buttonPanel.add(selectButton);
-        buttonPanel.add(cancelButton);
-        popupPanel.add(buttonPanel, BorderLayout.SOUTH);
-
-        popupFrame.getContentPane().add(popupPanel);
-        popupFrame.pack();
-        popupFrame.setLocationRelativeTo(null); // Center the popup
-        popupFrame.setVisible(true);
-    }
-
-    private void displayMinionPopup() {
-        JFrame popupFrame = new JFrame("Select Minion");
-        JPanel popupPanel = new JPanel(new BorderLayout());
-
-        JComboBox<Minion> selectInput = new JComboBox<Minion>();
-        DefaultComboBoxModel model = new DefaultComboBoxModel();
-        model.addAll(minionList);
-        selectInput.setModel(model);
-
-        JButton selectButton = new JButton("Select");
-        JButton cancelButton = new JButton("Cancel");
-
-        selectButton.addActionListener(e -> {
-            Minion selectedItem = (Minion) selectInput.getSelectedItem();
-            if (selectedItem != null) {
-                System.out.println("Selected Minion: " + selectedItem);
-
-                Label label = new Label();
-                label.setText(selectedItem.getName());
-
-                Button button = new Button();
-                button.setLabel("-");
-                button.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        List<Minion> list = current.getMinionList();
-                        list.remove(selectedItem);
-                        current.setMinionList(list);
-
-                        minions.remove(label);
-                        minions.remove(button);
-                    }
-                });
-
-                minions.add(label);
-                minions.add(button);
-                popupFrame.dispose(); // Close the popup
-            } else {
-                JOptionPane.showMessageDialog(popupFrame, "Please select a minion.", "Error", JOptionPane.ERROR_MESSAGE);
-            }
-        });
-
-        cancelButton.addActionListener(e -> popupFrame.dispose()); // Close the popup
-
-        popupPanel.add(selectInput, BorderLayout.NORTH);
-        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-        buttonPanel.add(selectButton);
-        buttonPanel.add(cancelButton);
-        popupPanel.add(buttonPanel, BorderLayout.SOUTH);
-
-        popupFrame.getContentPane().add(popupPanel);
-        popupFrame.pack();
-        popupFrame.setLocationRelativeTo(null); // Center the popup
-        popupFrame.setVisible(true);
-    }
-
-
-    private void displayAbilityPopup() {
-        JFrame popupFrame = new JFrame("Select Ability");
-        JPanel popupPanel = new JPanel(new BorderLayout());
-
-        JComboBox<Ability> selectInput = new JComboBox<Ability>();
-        DefaultComboBoxModel model = new DefaultComboBoxModel();
-        model.addAll(abilityList);
-        selectInput.setModel(model);
-
-        JButton selectButton = new JButton("Select");
-        JButton cancelButton = new JButton("Cancel");
-
-        selectButton.addActionListener(e -> {
-            Ability selectedItem = (Ability) selectInput.getSelectedItem();
-            if (selectedItem != null) {
-                System.out.println("Selected Ability: " + selectedItem);
-
-                Label label = new Label();
-                label.setText(selectedItem.getName());
-
-                Button button = new Button();
-                button.setLabel("-");
-                button.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        List<Ability> list = current.getAbilityList();
-                        list.remove(selectedItem);
-                        current.setAbilityList(list);
-
-                        abilities.remove(label);
-                        abilities.remove(button);
-                    }
-                });
-
-                abilities.add(label);
-                abilities.add(button);
-                popupFrame.dispose(); // Close the popup
-            } else {
-                JOptionPane.showMessageDialog(popupFrame, "Please select an ability.", "Error", JOptionPane.ERROR_MESSAGE);
-            }
-        });
-
-        cancelButton.addActionListener(e -> popupFrame.dispose()); // Close the popup
-
-        popupPanel.add(selectInput, BorderLayout.NORTH);
-        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-        buttonPanel.add(selectButton);
-        buttonPanel.add(cancelButton);
-        popupPanel.add(buttonPanel, BorderLayout.SOUTH);
-
-        popupFrame.getContentPane().add(popupPanel);
-        popupFrame.pack();
-        popupFrame.setLocationRelativeTo(null); // Center the popup
-        popupFrame.setVisible(true);
-    }
-
-    private void displaySpecialAbilityPopup() {
-        JFrame popupFrame = new JFrame("Select Special Ability");
-        JPanel popupPanel = new JPanel(new BorderLayout());
-
-        JComboBox<Ability> selectInput = new JComboBox<Ability>();
-        DefaultComboBoxModel model = new DefaultComboBoxModel();
-        model.addAll(abilityList);
-        selectInput.setModel(model);
-
-        JButton selectButton = new JButton("Select");
-        JButton cancelButton = new JButton("Cancel");
-
-        selectButton.addActionListener(e -> {
-            Ability selectedItem = (Ability) selectInput.getSelectedItem();
-            if (selectedItem != null) {
-                System.out.println("Selected Special Ability: " + selectedItem);
-
-                Label label = new Label();
-                label.setText(selectedItem.getName());
-
-                Button button = new Button();
-                button.setLabel("-");
-                button.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        List<Ability> list = current.getSpecialAbilityList();
-                        list.remove(selectedItem);
-                        current.setSpecialAbilityList(list);
-
-                        specialAbilities.remove(label);
-                        specialAbilities.remove(button);
-                    }
-                });
-
-                specialAbilities.add(label);
-                specialAbilities.add(button);
-                popupFrame.dispose(); // Close the popup
-            } else {
-                JOptionPane.showMessageDialog(popupFrame, "Please select a special ability.", "Error", JOptionPane.ERROR_MESSAGE);
-            }
-        });
-
-        cancelButton.addActionListener(e -> popupFrame.dispose()); // Close the popup
-
-        popupPanel.add(selectInput, BorderLayout.NORTH);
-        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-        buttonPanel.add(selectButton);
-        buttonPanel.add(cancelButton);
-        popupPanel.add(buttonPanel, BorderLayout.SOUTH);
-
-        popupFrame.getContentPane().add(popupPanel);
-        popupFrame.pack();
-        popupFrame.setLocationRelativeTo(null); // Center the popup
-        popupFrame.setVisible(true);
-    }
-
-    private void displayWeaknessPopup() {
-        JFrame popupFrame = new JFrame("Select Weakness");
-        JPanel popupPanel = new JPanel(new BorderLayout());
-
-        JComboBox<Characteristic> selectInput = new JComboBox<Characteristic>();
-        DefaultComboBoxModel model = new DefaultComboBoxModel();
-        model.addAll(characteristicList);
-        selectInput.setModel(model);
-
-        JButton selectButton = new JButton("Select");
-        JButton cancelButton = new JButton("Cancel");
-
-        selectButton.addActionListener(e -> {
-            Characteristic selectedItem = (Characteristic) selectInput.getSelectedItem();
-            if (selectedItem != null) {
-                System.out.println("Selected Weakness: " + selectedItem);
-
-                Label label = new Label();
-                label.setText(selectedItem.getName());
-
-                Button button = new Button();
-                button.setLabel("-");
-                button.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        List<Characteristic> list = current.getDebilitiesList();
-                        list.remove(selectedItem);
-                        current.setDebilitiesList(list);
-
-                        weaknesses.remove(label);
-                        weaknesses.remove(button);
-                    }
-                });
-
-                weaknesses.add(label);
-                weaknesses.add(button);
-                popupFrame.dispose(); // Close the popup
-            } else {
-                JOptionPane.showMessageDialog(popupFrame, "Please select a weakness.", "Error", JOptionPane.ERROR_MESSAGE);
-            }
-        });
-
-        cancelButton.addActionListener(e -> popupFrame.dispose()); // Close the popup
-
-        popupPanel.add(selectInput, BorderLayout.NORTH);
-        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-        buttonPanel.add(selectButton);
-        buttonPanel.add(cancelButton);
-        popupPanel.add(buttonPanel, BorderLayout.SOUTH);
-
-        popupFrame.getContentPane().add(popupPanel);
-        popupFrame.pack();
-        popupFrame.setLocationRelativeTo(null); // Center the popup
-        popupFrame.setVisible(true);
-    }
-
-    private void displayStrengthPopup() {
-        JFrame popupFrame = new JFrame("Select Strength");
-        JPanel popupPanel = new JPanel(new BorderLayout());
-
-        JComboBox<Characteristic> selectInput = new JComboBox<Characteristic>();
-        DefaultComboBoxModel model = new DefaultComboBoxModel();
-        model.addAll(characteristicList);
-        selectInput.setModel(model);
-
-        JButton selectButton = new JButton("Select");
-        JButton cancelButton = new JButton("Cancel");
-
-        selectButton.addActionListener(e -> {
-            Characteristic selectedItem = (Characteristic) selectInput.getSelectedItem();
-            if (selectedItem != null) {
-                System.out.println("Selected Strength: " + selectedItem);
-
-                Label label = new Label();
-                label.setText(selectedItem.getName());
-
-                Button button = new Button();
-                button.setLabel("-");
-                button.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        List<Characteristic> list = current.getResistancesList();
-                        list.remove(selectedItem);
-                        current.setResistancesList(list);
-
-                        strengths.remove(label);
-                        strengths.remove(button);
-                    }
-                });
-
-                strengths.add(label);
-                strengths.add(button);
-                popupFrame.dispose(); // Close the popup
-            } else {
-                JOptionPane.showMessageDialog(popupFrame, "Please select a strength.", "Error", JOptionPane.ERROR_MESSAGE);
             }
         });
 
@@ -730,8 +369,8 @@ public class EditDefaultCharactersScreen extends Screen {
             strengths.add(label);
             strengths.add(button);
         });
-
     }
+
     @Override
     public Container getPanel() {
         return this.frame;

@@ -15,59 +15,61 @@ public class LoginScreen extends Screen {
     private JButton logInButton;
     private JTextField username;
     private JPasswordField password;
+    private JButton signUpButton;
+    private JButton exitButton;
     private JPanel frame;
     private JButton donTHaveAnButton;
-    private JButton exitButton;
+    private JPanel mainPanel;
 
     public LoginScreen() {
-        logInButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String user = username.getText();
-                String pwd = new String(password.getPassword());
-
-                if (user == null) {
-                    // TODO! Add visual feedback
-                    return;
-                }
-
-                RequestBody body = new RequestBody();
-                body.addField("username", user);
-                body.addField("password", pwd);
-
-                ResponseBody response = Client.request("auth/login", body);
-
-                if (!response.ok) {
-                    // TODO! Add visual feedback
-                    return;
-                }
-
-                Session.setCurrentUser((User) response.getField("user"));
-
-                if ((Boolean) response.getField("isOperator")) {
-                    Session.sudo();
-                    ScreenManager.render(OperatorDashboardScreen.class);
-                    return;
-                }
-
-                ScreenManager.render(PlayerDashboardScreen.class);
-            }
-        });
-        donTHaveAnButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                ScreenManager.render(SignupScreen.class);
-            }
-        });
-        exitButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                ScreenManager.exit();
-            }
-        });
+        initializeListeners();
     }
 
+    private void initializeListeners() {
+        logInButton.addActionListener(e -> {
+            String user = username.getText();
+            String pwd = new String(password.getPassword());
+
+            if (user.isEmpty() || pwd.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Username and password are required!", "Login Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            authenticateUser(user, pwd);
+        });
+
+        signUpButton.addActionListener(e -> ScreenManager.render(SignupScreen.class));
+
+        exitButton.addActionListener(e -> ScreenManager.exit());
+    }
+
+    private void authenticateUser(String username, String password) {
+        RequestBody body = new RequestBody();
+        body.addField("username", username);
+        body.addField("password", password);
+
+        ResponseBody response = Client.request("auth/login", body);
+
+        if (!response.ok) {
+            JOptionPane.showMessageDialog(null, "Invalid username or password!", "Login Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        User currentUser = (User) response.getField("user");
+        boolean isOperator = (Boolean) response.getField("isOperator");
+
+        Session.setCurrentUser(currentUser);
+
+        if (isOperator) {
+            Session.sudo();
+            ScreenManager.render(OperatorDashboardScreen.class);
+        } else {
+            ScreenManager.render(PlayerDashboardScreen.class);
+        }
+    }
+
+    @Override
     public JPanel getPanel() {
-        return this.frame;
+        return mainPanel;
     }
 }

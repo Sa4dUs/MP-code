@@ -1,6 +1,7 @@
 package server.services;
 
 import lib.ResponseBody;
+import org.json.JSONArray;
 import server.*;
 import server.nosql.Collection;
 import server.nosql.Document;
@@ -83,10 +84,15 @@ public class ChallengeService implements Service {
         if(doc == null)
             return  new ResponseBody(false);
 
+
+        if(!addIdToPlayer(doc.getId(), challenge.getAttackedId(), "pendingDuels").ok)
+            return new ResponseBody(false);
+
         Database.deleteOne(Collection.CHALLENGE_OPERATORS, query);
         Database.insertOne(ChallengeRequest.class.getName(), doc);
 
-        return addIdToPlayer(challenge.getAttackedId(), doc.getId(), "pendingDuels");
+        return new ResponseBody(true);
+
     }
 
     //Terminado
@@ -104,7 +110,7 @@ public class ChallengeService implements Service {
 
         Database.insertOne(ChallengeResult.class.getName(), resultDoc);
 
-        addIdToPlayer(resultDoc.getId(), attackingPlayer.getId(), "duelResultID");
+        addIdToPlayer(resultDoc.getId(), attackingPlayer.getId(), "results");
 
         Query query = new Query();
         query.addFilter("id", challenge.getId());
@@ -129,8 +135,8 @@ public class ChallengeService implements Service {
 
         Database.insertOne(ChallengeResult.class.getName(), resultDoc);
 
-        addIdToPlayer(resultDoc.getId(), attackingPlayer.getId(), "duelResultID");
-        addIdToPlayer(resultDoc.getId(), attackedPlayer.getId(), "duelResultID");
+        addIdToPlayer(resultDoc.getId(), attackingPlayer.getId(), "results");
+        addIdToPlayer(resultDoc.getId(), attackedPlayer.getId(), "results");
 
         Query query = new Query();
         query.addFilter("id", challenge.getId());
@@ -159,7 +165,9 @@ public class ChallengeService implements Service {
         System.arraycopy(array, 0, newArray, 0, array.length);
         newArray[array.length] = id;
 
-        playerDoc.setProperty(property, newArray);
+        JSONArray JSONArray = new JSONArray(Arrays.asList(newArray));
+
+        playerDoc.setProperty(property, JSONArray);
 
         Database.updateOne(Player.class.getName(), playerDoc, query);
 

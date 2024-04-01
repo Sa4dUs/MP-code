@@ -68,10 +68,10 @@ public class PendingChallengeScreen extends Screen {
             accept.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    String endpoint = "item/acceptChallengeFromPlayer";
+                    String endpoint = "challenge/acceptChallengeFromPlayer";
 
                     if (Session.isOperator()) {
-                        endpoint = "item/acceptChallengeFromOperator";
+                        endpoint = "challenge/acceptChallengeFromOperator";
                     }
 
                     RequestBody request = new RequestBody();

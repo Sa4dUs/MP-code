@@ -1,13 +1,27 @@
 {
-    "L28SS": {
-        "nick": "L28SS",
+    "F90WW": {
+        "nick": "F90WW",
         "password": "1234",
-        "character": "65fb066f-5ace-48d3-a568-2ff8ff8c26d5",
+        "character": "",
         "blocked": "false",
         "pending": "false",
-        "name": "shania",
-        "pendingDuels": [],
-        "id": "L28SS",
+        "name": "Shania",
+        "pendingDuels": [
+            "a7bcaa8b-efb3-46d2-a615-538da689f6f9",
+            "f8d46c21-6ec7-48d0-a6a1-2e97b2a7a70e"
+        ],
+        "id": "F90WW",
+        "results": []
+    },
+    "W46AA": {
+        "nick": "W46AA",
+        "password": "1234",
+        "character": "",
+        "blocked": "false",
+        "pending": "false",
+        "name": "Jaime",
+        "pendingDuels": ["a9f4bba6-482e-4401-81f9-03e1cb99b514"],
+        "id": "W46AA",
         "results": []
     },
     "L60YY": {
@@ -17,7 +31,7 @@
         "blocked": "false",
         "pending": "false",
         "name": "sa4dus",
-        "pendingDuels": [],
+        "pendingDuels": ["32c87ce7-db96-49ac-bc32-6c7d80f71698"],
         "id": "L60YY",
         "results": []
     }

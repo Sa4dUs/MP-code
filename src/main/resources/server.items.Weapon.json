@@ -1,15 +1,30 @@
 {
-    "ea58228a-786b-49c3-b7cf-ad1f66e1076d": {
+    "440141af-c95c-4dd2-aac7-bf7037dcbdf0": {
         "twoHanded": "false",
-        "defense": 0,
-        "attack": 0,
-        "id": "ea58228a-786b-49c3-b7cf-ad1f66e1076d"
-    },
-    "29e9c8bf-2b59-4a6c-a7c4-3b266fdd087a": {
-        "twoHanded": "true",
-        "defense": 3,
+        "defense": 1,
         "attack": 3,
-        "name": "Tu madre",
-        "id": "29e9c8bf-2b59-4a6c-a7c4-3b266fdd087a"
+        "name": "Latigo",
+        "id": "440141af-c95c-4dd2-aac7-bf7037dcbdf0"
+    },
+    "8d23c26d-e61d-4b5a-bf8c-34459766018a": {
+        "twoHanded": "true",
+        "defense": 2,
+        "attack": 3,
+        "name": "Mandoble",
+        "id": "8d23c26d-e61d-4b5a-bf8c-34459766018a"
+    },
+    "c5f18e18-fba1-4139-b300-3a7cb7c0d725": {
+        "twoHanded": "false",
+        "defense": 1,
+        "attack": 3,
+        "name": "Daga de cristal",
+        "id": "c5f18e18-fba1-4139-b300-3a7cb7c0d725"
+    },
+    "0cf03b7a-581e-4799-8148-09ad92418a17": {
+        "twoHanded": "false",
+        "defense": 1,
+        "attack": 2,
+        "name": "Daga",
+        "id": "0cf03b7a-581e-4799-8148-09ad92418a17"
     }
 }

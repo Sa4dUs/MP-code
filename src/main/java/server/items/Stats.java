@@ -5,7 +5,6 @@ import server.nosql.JSONable;
 import server.nosql.Schemas.StatsSchema;
 
 public abstract class Stats implements JSONable {
-
     private String id;
     private String name;
     private int attack;
@@ -42,6 +41,14 @@ public abstract class Stats implements JSONable {
 
     public void setDefense(int defense) {
         this.defense = (defense > maxDefense) ? maxDefense : Math.max(defense, 1);;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     @Override

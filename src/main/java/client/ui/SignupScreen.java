@@ -8,6 +8,7 @@ import lib.ResponseBody;
 import server.User;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -20,48 +21,49 @@ public class SignupScreen extends Screen {
     private JButton exitButton;
 
     public SignupScreen() {
-        signUpButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String user = username.getText();
-                String pwd = new String(password.getPassword());
+        initializeListeners();
+    }
 
-                if (user == null) {
-                    // TODO! Add visual feedback
-                    return;
-                }
+    private void initializeListeners() {
+        signUpButton.addActionListener(e -> signUp());
+        alreadyHaveAnAccountButton.addActionListener(e -> goToLogin());
+        exitButton.addActionListener(e -> ScreenManager.exit());
+    }
 
-                RequestBody body = new RequestBody();
-                body.addField("username", user);
-                body.addField("password", pwd);
+    private void signUp() {
+        String user = username.getText();
+        String pwd = new String(password.getPassword());
 
-                ResponseBody response = Client.request("auth/signup", body);
+        if (user.isEmpty() || pwd.isEmpty()) {
+            showFeedback("Please enter both username and password", Color.RED);
+            return;
+        }
 
-                if (!response.ok) {
-                    // TODO! Add visual feedback
-                    return;
-                }
+        RequestBody body = new RequestBody();
+        body.addField("username", user);
+        body.addField("password", pwd);
 
-                Session.setCurrentUser((User) response.getField("user"));
+        ResponseBody response = Client.request("auth/signup", body);
 
-                ScreenManager.render(PlayerDashboardScreen.class);
-            }
-        });
-        alreadyHaveAnAccountButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                ScreenManager.render(LoginScreen.class);
-            }
-        });
-        exitButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                ScreenManager.exit();
-            }
-        });
+        if (!response.ok) {
+            showFeedback("Failed to sign up. Please try again.", Color.RED);
+            return;
+        }
+
+        Session.setCurrentUser((User) response.getField("user"));
+        ScreenManager.render(PlayerDashboardScreen.class);
+    }
+
+    private void goToLogin() {
+        ScreenManager.render(LoginScreen.class);
+    }
+
+    private void showFeedback(String message, Color color) {
+        // TODO: Implement visual feedback display
+        JOptionPane.showMessageDialog(frame, message, "Signup Feedback", JOptionPane.ERROR_MESSAGE);
     }
 
     public JPanel getPanel() {
-        return this.frame;
+        return frame;
     }
 }

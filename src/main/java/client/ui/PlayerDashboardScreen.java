@@ -30,99 +30,72 @@ public class PlayerDashboardScreen extends Screen {
     @Override
     public void start() {
         super.start();
+        displayRanking();
+    }
 
+    private void displayRanking() {
         ResponseBody response = Client.request("challenge/ranking", new RequestBody());
         List<Player> ranking = (List<Player>) response.getField("ranking");
 
-        for (int i = 0; i < ranking.size(); i++) {
-            switch (i + 1) {
-                case 1:
-                    first.setText("1º " + ranking.get(i).getName());
-                    break;
-                case 2:
-                    second.setText("2º " + ranking.get(i).getName());
-                    break;
-                case 3:
-                    third.setText("3º " + ranking.get(i).getName());
-                    break;
+        if (ranking != null && !ranking.isEmpty()) {
+            for (int i = 0; i < Math.min(3, ranking.size()); i++) {
+                switch (i) {
+                    case 0:
+                        first.setText("1º " + ranking.get(i).getName());
+                        break;
+                    case 1:
+                        second.setText("2º " + ranking.get(i).getName());
+                        break;
+                    case 2:
+                        third.setText("3º " + ranking.get(i).getName());
+                        break;
+                }
             }
         }
     }
 
     public PlayerDashboardScreen() {
-        deleteAccountBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                RequestBody req = new RequestBody();
-                req.addField("id", Session.getCurrentUser().getId());
+        setupButtonListeners();
+    }
 
-                // TODO! Add confirmation dialogue
-                ScreenManager.render(LoginScreen.class);
-                Session.setCurrentUser(null);
+    private void setupButtonListeners() {
+        deleteAccountBtn.addActionListener(e -> {
+            int confirmation = JOptionPane.showConfirmDialog(frame, "Are you sure you want to delete your account?", "Confirmation", JOptionPane.YES_NO_OPTION);
+            if (confirmation == JOptionPane.YES_OPTION) {
+                deleteAccount();
+            }
+        });
 
-                Client.request("auth/delete", req);
-            }
-        });
-        LogOutBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                ScreenManager.render(LoginScreen.class);
-                Session.setCurrentUser(null);
-            }
-        });
-        CareerBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // TODO!
-                ScreenManager.render(HistoryScreen.class);
-            }
-        });
-        NotificationsBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // TODO! Get pending challenges where current is the attacked user
-                ScreenManager.render(PendingChallengeScreen.class);
-            }
-        });
-        sendChallengeBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                ScreenManager.render(SendChallengeScreen.class);
-            }
-        });
-        editCharacterBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // TODO!
-                ScreenManager.render(CharacterScreen.class);
-            }
-        });
-        checkRankBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // TODO!
-                ScreenManager.render(RankingScreen.class);
-            }
-        });
-        exitBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                ScreenManager.exit();
-            }
-        });
-        createCharacter.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                ScreenManager.render(RegisterCharacterScreen.class);
-            }
-        });
+        LogOutBtn.addActionListener(e -> logOut());
+
+        CareerBtn.addActionListener(e -> ScreenManager.render(HistoryScreen.class));
+
+        NotificationsBtn.addActionListener(e -> ScreenManager.render(PendingChallengeScreen.class));
+
+        sendChallengeBtn.addActionListener(e -> ScreenManager.render(SendChallengeScreen.class));
+
+        editCharacterBtn.addActionListener(e -> ScreenManager.render(CharacterScreen.class));
+
+        checkRankBtn.addActionListener(e -> ScreenManager.render(RankingScreen.class));
+
+        exitBtn.addActionListener(e -> ScreenManager.exit());
+
+        createCharacter.addActionListener(e -> ScreenManager.render(RegisterCharacterScreen.class));
+    }
+
+    private void deleteAccount() {
+        RequestBody req = new RequestBody();
+        req.addField("id", Session.getCurrentUser().getId());
+        Client.request("auth/delete", req);
+        logOut();
+    }
+
+    private void logOut() {
+        Session.setCurrentUser(null);
+        ScreenManager.render(LoginScreen.class);
     }
 
     public JPanel getPanel() {
-        return this.frame;
-    }
-
-    private void createUIComponents() {
-        // TODO: place custom component creation code here
+        return frame;
     }
 }

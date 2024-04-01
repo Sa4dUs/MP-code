@@ -19,31 +19,12 @@ public class ChallengeRequest implements JSONable {
         this.id = id;
     }
 
+    public ChallengeRequest() {}
     public ChallengeRequest(String attackingPlayerId, String attackedPlayerId, int bet)
     {
         this.attackerId = attackingPlayerId;
         this.attackedId = attackedPlayerId;
         this.bet = bet;
-    }
-
-    public void accept()
-    {
-
-    }
-
-    public void denyFromPlayer()
-    {
-
-    }
-
-    public void sendToTarget()
-    {
-
-    }
-
-    public void denyFromOperator()
-    {
-
     }
 
     public String getAttackerId() {
@@ -79,7 +60,7 @@ public class ChallengeRequest implements JSONable {
             this.id = document.getId();
         document.setProperty("bet", this.bet);
         document.setProperty("attackerId", this.attackerId);
-        document.setProperty("attackerId", this.attackedId);
+        document.setProperty("attackedId", this.attackedId);
 
         return document;
     }

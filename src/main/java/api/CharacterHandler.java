@@ -15,8 +15,10 @@ public class CharacterHandler extends Handler {
         this.service = new CharacterService();
         this.operations.put(null, req -> new ResponseBody());
         this.operations.put("get", req -> this.service.getCharacterFromPlayerNick((String) req.getField("nick")));
-        this.operations.put("create", req -> this.service.createCharacter((Character) req.getField("character")));
-        this.operations.put("update", req -> this.service.updateCharacter((Character) req.getField("character")));
+        this.operations.put("createCharacter", req -> this.service.createCharacter((Character) req.getField("character")));
+        this.operations.put("createPlayerCharacter", req -> this.service.createCharacter((PlayerCharacter) req.getField("character")));
+        this.operations.put("updateCharacter", req -> this.service.updateCharacter((Character) req.getField("character")));
+        this.operations.put("updatePlayerCharacter", req -> this.service.updateCharacter((PlayerCharacter) req.getField("character")));
         this.operations.put("delete", req -> this.service.deleteCharacter((String) req.getField("id"), (Class<?>) req.getField("clazz")));
         this.operations.put("default", req -> this.service.getDefaultCharacters());
         this.operations.put("player", req -> this.service.getPlayerCharacters());

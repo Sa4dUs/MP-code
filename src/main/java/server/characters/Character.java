@@ -152,6 +152,27 @@ public class Character implements JSONable {
     public List<Minion> getMinionList() {
         return minionList;
     }
+    public void setMinionList(List<Minion> minionList) {
+        this.minionList = minionList;
+    }
+    public void setArmorList(List<Armor> armorList) {
+        this.armorList = armorList;
+    }
+    public void setWeaponsList(List<Weapon> weaponsList) {
+        this.weaponsList = weaponsList;
+    }
+    public void setAbilityList(List<Ability> abilityList) {
+        this.abilityList = abilityList;
+    }
+    public void setSpecialAbilityList(List<Ability> specialAbilityList) {
+        this.specialAbilityList = specialAbilityList;
+    }
+    public void setResistancesList(List<Characteristic> resistancesList) {
+        this.resistancesList = resistancesList;
+    }
+    public void setDebilitiesList(List<Characteristic> debilitiesList) {
+        this.debilitiesList = debilitiesList;
+    }
 
     public void addMinion(Minion minion){this.minionList.add(minion);}
 

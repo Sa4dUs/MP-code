@@ -15,14 +15,28 @@ import server.minions.Minion;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 public class CharacterScreen extends Screen {
-    private JComboBox rightWeaponSelect;
+    private JComboBox<String> rightWeaponSelect;
     private JPanel frame;
     private JButton backButton;
+    private JTextField nameField;
+    private JTextField breedField;
+    private JTextField healthField;
+    private JTextField goldField;
+    private JList<String> strengthsList;
+    private JList<String> weaknessesList;
+    private JList<String> weaponsList;
+    private JList<String> armorsList;
+    private JList<String> abilitiesList;
+    private JList<String> specialAbilitiesList;
+    private JList<String> minionsList;
+    private JComboBox<String> armorSelect;
+    private JComboBox<String> leftWeaponSelect;
     private JTextField name;
-    private JTextField breed;
     private JTextField health;
+    private JTextField breed;
     private JTextField gold;
     private JList strengths;
     private JList weaknesses;
@@ -31,109 +45,129 @@ public class CharacterScreen extends Screen {
     private JList abilities;
     private JList specialAbilities;
     private JList minions;
-    private JComboBox armorSelect;
-    private JComboBox leftWeaponSelect;
     private PlayerCharacter character;
 
     @Override
     public void start() {
         super.start();
+        initializeUI();
+        loadCharacterData();
+        setupEventHandlers();
+    }
 
+    private void initializeUI() {
+        frame = new JPanel();
+        // Initialize UI components
+        // Example:
+        // frame.setLayout(new BorderLayout());
+        // nameField = new JTextField();
+        // frame.add(nameField, BorderLayout.NORTH);
+        // Add other UI components similarly
+    }
+
+    private void loadCharacterData() {
         RequestBody request = new RequestBody();
         request.addField("nick", Session.getCurrentUser().getNick());
 
         ResponseBody response = Client.request("character/get", request);
 
         if (!response.ok) {
-            ScreenManager.render(RegisterCharacterScreen.class); // hasta luego maricarmen
+            ScreenManager.render(RegisterCharacterScreen.class); // Redirect to character registration screen
             return;
         }
 
-        this.character = (PlayerCharacter) response.getField("character");
+        character = (PlayerCharacter) response.getField("character");
 
+        // Populate UI elements with character data
+        nameField.setText(character.getName());
+        healthField.setText(Integer.toString(character.getHealth()));
+        goldField.setText(Integer.toString(character.getGold()));
 
-        // Parte de la izquierda
+        populateListFromModel(abilitiesList, character.getAbilityList());
+        populateListFromModel(weaknessesList, character.getDebilitiesList());
+        populateListFromModel(strengthsList, character.getResistancesList());
+        populateListFromModel(minionsList, character.getMinionList());
+        populateListFromModel(weaponsList, character.getWeaponsList());
+        populateListFromModel(armorsList, character.getArmorList());
 
-        name.setText(character.getName());
-        health.setText(Integer.toString(character.getHealth()));
-        gold.setText(Integer.toString(character.getGold()));
-
-        DefaultListModel<String> abilityModel = new DefaultListModel<>();
-        for (Ability a: character.getAbilityList()) {
-            abilityModel.addElement(a.getName());
-        }
-        abilities.setModel(abilityModel);
-
-        DefaultListModel<String> weaknessesModel = new DefaultListModel<>();
-        for (Characteristic c: character.getDebilitiesList()) {
-            weaknessesModel.addElement(c.getName());
-        }
-        weaknesses.setModel(weaknessesModel);
-
-        DefaultListModel<String> strengthsModel = new DefaultListModel<>();
-        for (Characteristic c: character.getResistancesList()) {
-            strengthsModel.addElement(c.getName());
-        }
-        strengths.setModel(strengthsModel);
-
-        DefaultListModel<String> minionsModel = new DefaultListModel<>();
-        for (Minion m: character.getMinionList()) {
-            minionsModel.addElement(m.getName());
-        }
-        minions.setModel(minionsModel);
-
-        DefaultListModel<String> weaponsModel = new DefaultListModel<>();
-        for (Weapon w: character.getWeaponsList()) {
-            weaponsModel.addElement(w.getName());
-        }
-        weapons.setModel(weaponsModel);
-
-        DefaultListModel<String> armorModel = new DefaultListModel<>();
-        for (Armor a: character.getArmorList()) {
-            armorModel.addElement(a.getName());
-        }
-        armors.setModel(armorModel);
-
-        // Parte de PP y VOX
-        character.getArmorList().forEach(e -> {
-            armorSelect.addItem(e.getName());
-        });
+        character.getArmorList().forEach(e -> armorSelect.addItem(e.getName()));
+        armorSelect.addItem("");
+        armorSelect.setSelectedItem(character.getActiveArmor() == null ? "" : character.getActiveArmor().getName());
 
         character.getWeaponsList().forEach(e -> {
             leftWeaponSelect.addItem(e.getName());
             rightWeaponSelect.addItem(e.getName());
         });
 
+        leftWeaponSelect.addItem("");
+        leftWeaponSelect.setSelectedItem(character.getActiveWeaponL() == null ? "" : character.getActiveWeaponL().getName());
+
+        rightWeaponSelect.addItem("");
+        rightWeaponSelect.setSelectedItem(character.getActiveWeaponR() == null ? "" : character.getActiveWeaponR().getName());
     }
 
-    public CharacterScreen() {
-        backButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                ScreenManager.goBack();
-            }
-        });
-        armorSelect.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+    private void setupEventHandlers() {
+        backButton.addActionListener(e -> ScreenManager.goBack());
 
-            }
-        });
-        leftWeaponSelect.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+        armorSelect.addActionListener(e -> updateActiveArmor());
 
-            }
-        });
-        rightWeaponSelect.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+        leftWeaponSelect.addActionListener(e -> updateActiveWeapon(leftWeaponSelect));
 
+        rightWeaponSelect.addActionListener(e -> updateActiveWeapon(rightWeaponSelect));
+    }
+
+    private void updateActiveArmor() {
+        String selectedArmorName = (String) armorSelect.getSelectedItem();
+        character.setActiveArmor(findItemInList(selectedArmorName, character.getArmorList()));
+        updatePlayerCharacter();
+    }
+
+    private void updateActiveWeapon(JComboBox<String> weaponSelect) {
+        String selectedWeaponName = (String) weaponSelect.getSelectedItem();
+        Weapon selectedWeapon = findItemInList(selectedWeaponName, character.getWeaponsList());
+        if (weaponSelect == leftWeaponSelect && selectedWeapon != null && selectedWeapon.isTwoHanded()) {
+            rightWeaponSelect.setSelectedItem("");
+            character.setActiveWeaponR(null);
+        } else if (weaponSelect == rightWeaponSelect && selectedWeapon != null && selectedWeapon.isTwoHanded()) {
+            leftWeaponSelect.setSelectedItem("");
+            character.setActiveWeaponL(null);
+        }
+        if (weaponSelect == leftWeaponSelect) {
+            character.setActiveWeaponL(selectedWeapon);
+        } else {
+            character.setActiveWeaponR(selectedWeapon);
+        }
+        updatePlayerCharacter();
+    }
+
+    private <T> T findItemInList(String itemName, List<T> itemList) {
+        for (T item : itemList) {
+            if (item.toString().equals(itemName)) {
+                return item;
             }
-        });
+        }
+        return null;
+    }
+
+    private void populateListFromModel(JList<String> list, List<?> modelList) {
+        DefaultListModel<String> listModel = new DefaultListModel<>();
+        for (Object item : modelList) {
+            listModel.addElement(item.toString());
+        }
+        list.setModel(listModel);
+    }
+
+    private void updatePlayerCharacter() {
+        RequestBody request = new RequestBody();
+        request.addField("character", character);
+        ResponseBody response = Client.request("character/updatePlayerCharacter", request);
+        if (!response.ok) {
+            // Handle error
+            System.out.println("Failed to update player character");
+        }
     }
 
     public JPanel getPanel() {
-        return this.frame;
+        return frame;
     }
 }

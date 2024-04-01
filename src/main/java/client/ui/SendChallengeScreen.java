@@ -21,60 +21,55 @@ public class SendChallengeScreen extends Screen {
     private JButton backButton;
 
     public SendChallengeScreen() {
-        challengeButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                feedback.setVisible(false);
+        initializeListeners();
+    }
 
-                String challengeNick = nick.getText();
-                int challengeGold = 0;
+    private void initializeListeners() {
+        challengeButton.addActionListener(e -> sendChallenge());
+        backButton.addActionListener(e -> ScreenManager.goBack());
+    }
 
-                try {
-                    challengeGold = Integer.parseInt(gold.getText());
-                } catch (NumberFormatException error) {
-                    feedback.setText("Enter a valid gold value");
-                    feedback.setForeground(new Color(255, 0, 0));
-                    feedback.setVisible(true);
-                    return;
-                }
+    private void sendChallenge() {
+        feedback.setVisible(false);
 
-                RequestBody req = new RequestBody();
-                ChallengeRequest challenge = new ChallengeRequest(Session.getCurrentUser().getId(), challengeNick, challengeGold);
-                req.addField("challenge", challenge);
+        String challengeNick = nick.getText();
+        int challengeGold = 0;
 
-                ResponseBody response = Client.request("challenge/create", req);
+        try {
+            challengeGold = Integer.parseInt(gold.getText());
+        } catch (NumberFormatException error) {
+            showFeedback("Enter a valid gold value", Color.RED);
+            return;
+        }
 
-                nick.setText("");
-                gold.setText("");
+        ChallengeRequest challenge = new ChallengeRequest(Session.getCurrentUser().getId(), challengeNick, challengeGold);
+        RequestBody req = new RequestBody();
+        req.addField("challenge", challenge);
 
-                if (!response.ok) {
-                    // TODO! Show visual feedback
-                    feedback.setText("Error sending challenge!");
-                    feedback.setForeground(new Color(255, 0, 0));
-                    feedback.setVisible(true);
-                    return;
-                }
+        ResponseBody response = Client.request("challenge/create", req);
 
-                // TODO! Handle challenge successfully sent
-                feedback.setText("Challenge sent successfully!");
-                feedback.setForeground(new Color(0, 255, 0));
-                feedback.setVisible(true);
-            }
-        });
+        clearInputs();
 
-        backButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                ScreenManager.goBack();
-            }
-        });
+        if (!response.ok) {
+            showFeedback("Error sending challenge!", Color.RED);
+            return;
+        }
+
+        showFeedback("Challenge sent successfully!", Color.GREEN);
+    }
+
+    private void showFeedback(String message, Color color) {
+        feedback.setText(message);
+        feedback.setForeground(color);
+        feedback.setVisible(true);
+    }
+
+    private void clearInputs() {
+        nick.setText("");
+        gold.setText("");
     }
 
     public JPanel getPanel() {
-        return this.frame;
-    }
-
-    private void createUIComponents() {
-        // TODO: place custom component creation code here
+        return frame;
     }
 }

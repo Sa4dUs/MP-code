@@ -44,11 +44,12 @@
             "29e9c8bf-2b59-4a6c-a7c4-3b266fdd087a",
             "ea58228a-786b-49c3-b7cf-ad1f66e1076d"
         ],
+        "gold": 500,
         "armorList": ["bb3bc38c-1662-4748-94f4-ed251ae60309"],
         "specialAbilityList": [],
         "minionList": ["792d5a66-bf10-4330-8026-22dbefacd045"],
         "activeWeaponL": "",
-        "activeArmor": "",
+        "activeArmor": "bb3bc38c-1662-4748-94f4-ed251ae60309",
         "name": "Franco",
         "id": "5c43c919-09ba-4605-9f17-b33971831b6a",
         "debilitiesList": []

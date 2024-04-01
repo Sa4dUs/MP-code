@@ -148,7 +148,7 @@ public class Document {
                         ParameterizedType parameterizedType = (ParameterizedType) field.getGenericType();
                         Class<?> elementType = (Class<?>) parameterizedType.getActualTypeArguments()[0];
 
-                        field.set(object, List.of(getObjectArrayFromDoc((String[]) property, elementType)));
+                        field.set(object, new ArrayList<>(Arrays.asList(getObjectArrayFromDoc((String[]) property, elementType))));
                     }
                     else if (fieldType.isEnum())
                     {
@@ -234,7 +234,9 @@ public class Document {
         query.addFilter("id", this.getId());
         if(Database.findOne(clazz.getName(), query) == null)
             Database.insertOne(clazz.getName(), this);
+
         else
             Database.updateOne(clazz.getName(), this, query);
+
     }
 }

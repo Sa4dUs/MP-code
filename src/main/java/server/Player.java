@@ -27,14 +27,6 @@ public class Player extends User {
         super(name, password);
     }
 
-    private void sendChallenge (String targetId, int bet)
-    {
-        ChallengeService service = new ChallengeService();
-        ChallengeRequest request = new ChallengeRequest(getId(), targetId, bet);
-
-        pending = service.createChallenge(request).ok;
-    }
-
     public PlayerCharacter getCharacter() {
         return this.character;
     }
@@ -94,6 +86,8 @@ public class Player extends User {
                 this.character.getDocument().saveToDatabase(PlayerCharacter.class);
             document.setProperty("character", this.character.getId());
         }
+        else
+            document.setProperty("character", "");
 
         document.setProperty("blocked", this.blocked);
         document.setProperty("pending", this.pending);

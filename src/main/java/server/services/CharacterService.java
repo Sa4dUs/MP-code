@@ -21,6 +21,12 @@ public class CharacterService implements Service {
         return new ResponseBody(true);
     }
 
+    public ResponseBody createPlayerCharacter(PlayerCharacter character)
+    {
+        character.getDocument().saveToDatabase(character.getClass());
+        return new ResponseBody(true);
+    }
+
     public ResponseBody setCharacterOfPlayer(String nick, PlayerCharacter character)
     {
         Player player = (Player) Document.getDocument(nick, Player.class).deJSONDocument(Player.class);
@@ -28,14 +34,19 @@ public class CharacterService implements Service {
         {
             Query query = new Query();
             query.addFilter("id", player.getCharacter().getId());
-            Database.deleteOne(PlayerCharacter.class.getName(), query);
+            Database.updateOne(PlayerCharacter.class.getName(), character.getDocument(), query);
         }
         Document document = character.getDocument();
         return setIdToPlayer(document.getId(), nick, "character");
     }
 
-
     public ResponseBody updateCharacter(Character character)
+    {
+        character.getDocument().saveToDatabase(character.getClass());
+        return new ResponseBody(true);
+    }
+
+    public ResponseBody updatePlayerCharacter(PlayerCharacter character)
     {
         character.getDocument().saveToDatabase(character.getClass());
         return new ResponseBody(true);

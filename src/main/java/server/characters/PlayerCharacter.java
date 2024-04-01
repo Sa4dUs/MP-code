@@ -60,16 +60,15 @@ public class PlayerCharacter extends Character{
         this.activeSpecialAbility = activeSpecialAbility;
     }
 
-    @Override
     public Document getDocument()
     {
         Document document = new Document(new PlayerCharacterSchema());
         document.updateFromDocument(super.getDocument());
-        document.setProperty("activeWeaponL", this.activeWeaponL != null ? this.activeWeaponL.getDocument(): "");
-        document.setProperty("activeWeaponR", this.activeWeaponR != null ? this.activeWeaponR.getDocument(): "");
-        document.setProperty("activeArmor", this.activeArmor != null ? this.activeArmor.getDocument(): "");
-        document.setProperty("activeNormalAbility", this.activeNormalAbility != null ? this.activeNormalAbility.getDocument(): "");
-        document.setProperty("activeNormalAbility", this.activeSpecialAbility != null ? this.activeSpecialAbility.getDocument(): "");
+        document.setProperty("activeWeaponL", this.activeWeaponL != null ? this.activeWeaponL.getDocument().getId(): "");
+        document.setProperty("activeWeaponR", this.activeWeaponR != null ? this.activeWeaponR.getDocument().getId(): "");
+        document.setProperty("activeArmor", this.activeArmor != null ? this.activeArmor.getDocument().getId(): "");
+        document.setProperty("activeNormalAbility", this.activeNormalAbility != null ? this.activeNormalAbility.getDocument().getId(): "");
+        document.setProperty("activeNormalAbility", this.activeSpecialAbility != null ? this.activeSpecialAbility.getDocument().getId(): "");
 
         return document;
     }

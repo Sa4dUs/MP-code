@@ -1,40 +1,40 @@
 {
-    "6540f0f3-551b-4678-99f3-305c83d0997f": {
-        "pact": "Riquezas infinitas",
-        "name": "Mammon",
-        "health": 3,
-        "id": "6540f0f3-551b-4678-99f3-305c83d0997f",
-        "minions": ["54de51ba-c053-420e-9283-03963dcd7662"]
-    },
-    "6edec9d7-eb1b-40a8-b665-399d2c82cd84": {
-        "pact": "Sabiduría suprema",
-        "name": "Thoth",
-        "health": 3,
-        "id": "6edec9d7-eb1b-40a8-b665-399d2c82cd84",
-        "minions": ["afede007-c012-47b8-9ef8-394d5cd641bc"]
-    },
-    "49e07a46-5e2e-46a7-a86d-5f042b6a5f45": {
+    "b7f8e4cc-90a9-49a4-860b-6ddbd68c30c1": {
         "pact": "Amor eterno",
         "name": "Introducir nombre de demonio que tenga algo que ver con amor",
         "health": 3,
-        "id": "49e07a46-5e2e-46a7-a86d-5f042b6a5f45",
+        "id": "b7f8e4cc-90a9-49a4-860b-6ddbd68c30c1",
         "minions": [
-            "7bbd333a-4537-4757-b503-fedc76910c5c",
-            "6540f0f3-551b-4678-99f3-305c83d0997f",
-            "6edec9d7-eb1b-40a8-b665-399d2c82cd84",
-            "9cd5dcd5-0605-4f6f-bcdf-756fa5c934b1",
-            "b8c9a9a6-7ef9-45be-a990-a4e2f1665d21"
+            "e03bb014-069e-4ab0-a71a-b966b67ff6ab",
+            "7eefc669-5593-453d-bf34-bb9f3aa7f91f",
+            "08e73ba6-331e-45a7-88a4-e81a19d469b9",
+            "cce329e1-ec2b-4962-88ab-dbcab03fa5be",
+            "fc865169-ed93-42b2-839a-69e3f5c4b903"
         ]
     },
-    "29edc80b-73f3-4724-b638-e3c1f3537f30": {
+    "7eefc669-5593-453d-bf34-bb9f3aa7f91f": {
+        "pact": "Riquezas infinitas",
+        "name": "Mammon",
+        "health": 3,
+        "id": "7eefc669-5593-453d-bf34-bb9f3aa7f91f",
+        "minions": ["4a6435ec-ef3f-4be0-9fa3-d1675e3483e0"]
+    },
+    "4a04bc8b-d0f2-4682-8c95-674b096c497c": {
         "pact": "Contrato de alma",
         "name": "Satan",
         "health": 3,
-        "id": "29edc80b-73f3-4724-b638-e3c1f3537f30",
+        "id": "4a04bc8b-d0f2-4682-8c95-674b096c497c",
         "minions": [
-            "0cbf19bd-ec32-4dae-91bc-adf3472c673f",
-            "56514c81-50da-41d8-b207-eac4952f2a38",
-            "6540f0f3-551b-4678-99f3-305c83d0997f"
+            "af1fc353-d882-4f27-b728-599301e89812",
+            "18c9cd54-5e0f-4888-ba93-6d2c494e1750",
+            "7eefc669-5593-453d-bf34-bb9f3aa7f91f"
         ]
+    },
+    "08e73ba6-331e-45a7-88a4-e81a19d469b9": {
+        "pact": "Sabiduría suprema",
+        "name": "Thoth",
+        "health": 3,
+        "id": "08e73ba6-331e-45a7-88a4-e81a19d469b9",
+        "minions": ["ea427fb8-f72c-46ec-8a21-474f5d0b8895"]
     }
 }

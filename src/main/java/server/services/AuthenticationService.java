@@ -33,6 +33,7 @@ public class AuthenticationService implements Service {
             return response;
         }
 
+        response.addField("user", doc.deJSONDocument(User.class));
         response.setOk(true);
         response.addField("isOperator", true);
         return response;

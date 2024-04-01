@@ -6,6 +6,7 @@ import client.Session;
 import lib.RequestBody;
 import lib.ResponseBody;
 import server.ChallengeRequest;
+import server.Player;
 
 import javax.swing.*;
 import java.awt.*;
@@ -22,6 +23,11 @@ public class SendChallengeScreen extends Screen {
 
     public SendChallengeScreen() {
         initializeListeners();
+    }
+
+    @Override
+    public void start() {
+        super.start();
     }
 
     private void initializeListeners() {

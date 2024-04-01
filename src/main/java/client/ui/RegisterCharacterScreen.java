@@ -5,25 +5,17 @@ import client.ScreenManager;
 import client.Session;
 import lib.RequestBody;
 import lib.ResponseBody;
-import server.Characteristic;
-import server.Player;
 import server.characters.Character;
 import server.characters.PlayerCharacter;
-import server.items.Ability;
-import server.items.Armor;
-import server.items.Weapon;
-import server.minions.Minion;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.List;
 
 public class RegisterCharacterScreen extends Screen {
     private Character current = null;
     private JPanel frame;
     private JButton backButton;
-    private JPanel charaContainer;
+    private JPanel container;
     private JLabel name;
     private JLabel health;
     private JLabel gold;
@@ -48,7 +40,7 @@ public class RegisterCharacterScreen extends Screen {
         for (Character character : defaultCharacters) {
             JButton button = new JButton(character.getName());
             button.addActionListener(e -> setPanelData(character));
-            charaContainer.add(button);
+            container.add(button);
         }
     }
 

@@ -6,6 +6,7 @@ import client.Session;
 import lib.RequestBody;
 import lib.ResponseBody;
 import server.ChallengeRequest;
+import server.Player;
 
 import javax.swing.*;
 import java.awt.*;
@@ -77,24 +78,18 @@ public class PendingChallengeScreen extends Screen {
 
     private JButton createAcceptButton(ChallengeRequest challenge) {
         JButton acceptButton = new JButton("Accept");
-        acceptButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String endpoint = Session.isOperator() ? "challenge/acceptChallengeFromOperator" : "challenge/acceptChallengeFromPlayer";
-                handleChallengeResponse(endpoint, challenge);
-            }
+        acceptButton.addActionListener(e -> {
+            String endpoint = Session.isOperator() ? "challenge/acceptChallengeFromOperator" : "challenge/acceptChallengeFromPlayer";
+            handleChallengeResponse(endpoint, challenge);
         });
         return acceptButton;
     }
 
     private JButton createDeclineButton(ChallengeRequest challenge) {
         JButton declineButton = new JButton("Decline");
-        declineButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String endpoint = Session.isOperator() ? "challenge/denyChallengeFromOperator" : "challenge/denyChallengeFromPlayer";
-                handleChallengeResponse(endpoint, challenge);
-            }
+        declineButton.addActionListener(e -> {
+            String endpoint = Session.isOperator() ? "challenge/denyChallengeFromOperator" : "challenge/denyChallengeFromPlayer";
+            handleChallengeResponse(endpoint, challenge);
         });
         return declineButton;
     }
@@ -119,12 +114,7 @@ public class PendingChallengeScreen extends Screen {
     }
 
     public PendingChallengeScreen() {
-        backButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                ScreenManager.goBack();
-            }
-        });
+        backButton.addActionListener(e -> ScreenManager.goBack());
     }
 
     public JPanel getPanel() {

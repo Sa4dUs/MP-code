@@ -37,7 +37,7 @@
         "resistancesList": [],
         "health": 2,
         "abilityList": ["aa8134e6-742b-4697-a6fb-5cde0176004f"],
-        "activeWeaponR": "9a32e148-9753-454c-94a4-09ca520e707a",
+        "activeWeaponR": "7991799e-17b6-46eb-8f1e-88bc0fb21ee8",
         "activeNormalAbility": "",
         "breed": 0,
         "weaponsList": [
@@ -51,7 +51,7 @@
         ],
         "specialAbilityList": ["62f36381-5f45-4fbc-9ae4-1384da1458a9"],
         "minionList": [],
-        "activeWeaponL": "7991799e-17b6-46eb-8f1e-88bc0fb21ee8",
+        "activeWeaponL": "9a32e148-9753-454c-94a4-09ca520e707a",
         "activeArmor": "ac072b4c-4edc-4185-8698-828e47cf983c",
         "name": "Franco",
         "id": "5c43c919-09ba-4605-9f17-b33971831b6a",

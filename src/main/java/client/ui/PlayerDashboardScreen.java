@@ -8,8 +8,6 @@ import lib.ResponseBody;
 import server.Player;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.List;
 
 public class PlayerDashboardScreen extends Screen {
@@ -26,11 +24,17 @@ public class PlayerDashboardScreen extends Screen {
     private JLabel first;
     private JLabel second;
     private JLabel third;
+    private JLabel userInfo;
 
     @Override
     public void start() {
         super.start();
+        setUIInfo();
         displayRanking();
+    }
+
+    private void setUIInfo() {
+        userInfo.setText(Session.getCurrentUser().getName() + "#" + Session.getCurrentUser().getNick());
     }
 
     private void displayRanking() {

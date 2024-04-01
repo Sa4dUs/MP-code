@@ -1,4 +1,10 @@
 {
+    "a1b41e0e-11aa-45f6-8498-0852ece5cb51": {
+        "bet": 50,
+        "id": "a1b41e0e-11aa-45f6-8498-0852ece5cb51",
+        "attackerId": "Y95ZZ",
+        "attackedId": "L60YY"
+    },
     "f8d46c21-6ec7-48d0-a6a1-2e97b2a7a70e": {
         "bet": 100,
         "id": "f8d46c21-6ec7-48d0-a6a1-2e97b2a7a70e",
@@ -28,5 +34,17 @@
         "id": "1b40605e-b94e-4ae3-9580-f30915e71b93",
         "attackerId": "V12AA",
         "attackedId": "F90WW"
+    },
+    "26260ba7-29d2-47ae-adc5-52c18c743e20": {
+        "bet": 50,
+        "id": "26260ba7-29d2-47ae-adc5-52c18c743e20",
+        "attackerId": "Y95ZZ",
+        "attackedId": "L60YY"
+    },
+    "af4ac25e-f347-40fa-bae9-64b776c5c9c0": {
+        "bet": 650,
+        "id": "af4ac25e-f347-40fa-bae9-64b776c5c9c0",
+        "attackerId": "Y95ZZ",
+        "attackedId": "L60YY"
     }
 }

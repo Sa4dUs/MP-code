@@ -180,6 +180,7 @@ public class EditDefaultCharactersScreen extends Screen {
 
                 panelToUpdate.add(label);
                 panelToUpdate.add(button);
+                panelToUpdate.repaint();
                 listToUpdate.add(selectedItem);
                 popupFrame.dispose(); // Close the popup
             } else {
@@ -202,8 +203,6 @@ public class EditDefaultCharactersScreen extends Screen {
     }
 
     public void setPanelData(Character item) {
-        minions.setEnabled(false);
-
         name.setText(item.getName());
         health.setText(Integer.toString(item.getHealth()));
         gold.setText(Integer.toString(item.getGold()));

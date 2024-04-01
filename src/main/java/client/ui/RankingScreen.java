@@ -17,7 +17,6 @@ public class RankingScreen extends Screen {
     private JLabel first;
     private JLabel second;
     private JLabel third;
-    private JList ranking;
     private JList<String> rankingList;
 
     @Override

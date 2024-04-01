@@ -8,8 +8,6 @@ import lib.ResponseBody;
 import server.User;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class LoginScreen extends Screen {
     private JButton logInButton;
@@ -18,8 +16,6 @@ public class LoginScreen extends Screen {
     private JButton signUpButton;
     private JButton exitButton;
     private JPanel frame;
-    private JButton donTHaveAnButton;
-    private JPanel mainPanel;
 
     public LoginScreen() {
         initializeListeners();
@@ -70,6 +66,6 @@ public class LoginScreen extends Screen {
 
     @Override
     public JPanel getPanel() {
-        return mainPanel;
+        return frame;
     }
 }

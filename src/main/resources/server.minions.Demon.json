@@ -1,40 +1,40 @@
 {
-    "c057fc33-32b5-4776-8f5d-48b6eea0c898": {
+    "6540f0f3-551b-4678-99f3-305c83d0997f": {
         "pact": "Riquezas infinitas",
         "name": "Mammon",
         "health": 3,
-        "id": "c057fc33-32b5-4776-8f5d-48b6eea0c898",
-        "minions": ["ef1155fd-84f2-4368-b608-c0515f141e58"]
+        "id": "6540f0f3-551b-4678-99f3-305c83d0997f",
+        "minions": ["54de51ba-c053-420e-9283-03963dcd7662"]
     },
-    "4376f1c4-b805-457a-bbf9-2bd7ebed7d2d": {
+    "6edec9d7-eb1b-40a8-b665-399d2c82cd84": {
         "pact": "Sabiduría suprema",
         "name": "Thoth",
         "health": 3,
-        "id": "4376f1c4-b805-457a-bbf9-2bd7ebed7d2d",
-        "minions": ["8c7d6085-0b3b-4d11-b25e-a4e068662412"]
+        "id": "6edec9d7-eb1b-40a8-b665-399d2c82cd84",
+        "minions": ["afede007-c012-47b8-9ef8-394d5cd641bc"]
     },
-    "f38afce2-88fe-4db0-a486-88ede7f74da0": {
+    "49e07a46-5e2e-46a7-a86d-5f042b6a5f45": {
         "pact": "Amor eterno",
         "name": "Introducir nombre de demonio que tenga algo que ver con amor",
         "health": 3,
-        "id": "f38afce2-88fe-4db0-a486-88ede7f74da0",
+        "id": "49e07a46-5e2e-46a7-a86d-5f042b6a5f45",
         "minions": [
-            "e172750e-6efa-4210-a5f2-2a31a75fec93",
-            "c057fc33-32b5-4776-8f5d-48b6eea0c898",
-            "4376f1c4-b805-457a-bbf9-2bd7ebed7d2d",
-            "d64ee399-84fd-4260-9eab-fead3e479aca",
-            "31cf2afe-43ce-40b8-80da-3dc5a1df83bd"
+            "7bbd333a-4537-4757-b503-fedc76910c5c",
+            "6540f0f3-551b-4678-99f3-305c83d0997f",
+            "6edec9d7-eb1b-40a8-b665-399d2c82cd84",
+            "9cd5dcd5-0605-4f6f-bcdf-756fa5c934b1",
+            "b8c9a9a6-7ef9-45be-a990-a4e2f1665d21"
         ]
     },
-    "df34223a-47c6-416e-a0a9-775e9ab25477": {
+    "29edc80b-73f3-4724-b638-e3c1f3537f30": {
         "pact": "Contrato de alma",
         "name": "Satan",
         "health": 3,
-        "id": "df34223a-47c6-416e-a0a9-775e9ab25477",
+        "id": "29edc80b-73f3-4724-b638-e3c1f3537f30",
         "minions": [
-            "8c11efad-39f7-46a7-89e7-acbd81e6d4a9",
-            "e983f14b-c846-411d-88b8-ceeda1f42d9e",
-            "c057fc33-32b5-4776-8f5d-48b6eea0c898"
+            "0cbf19bd-ec32-4dae-91bc-adf3472c673f",
+            "56514c81-50da-41d8-b207-eac4952f2a38",
+            "6540f0f3-551b-4678-99f3-305c83d0997f"
         ]
     }
 }

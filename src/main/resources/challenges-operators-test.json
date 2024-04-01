@@ -22,5 +22,11 @@
         "id": "4f1fdedd-c62f-41d8-a163-a1ec05b1314a",
         "attackerId": "F90WW",
         "attackedId": "L60YY"
+    },
+    "1b40605e-b94e-4ae3-9580-f30915e71b93": {
+        "bet": 1,
+        "id": "1b40605e-b94e-4ae3-9580-f30915e71b93",
+        "attackerId": "V12AA",
+        "attackedId": "F90WW"
     }
 }

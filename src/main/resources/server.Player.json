@@ -1,4 +1,15 @@
 {
+    "V12AA": {
+        "nick": "V12AA",
+        "password": "1234",
+        "character": "",
+        "blocked": "false",
+        "pending": "false",
+        "name": "caca",
+        "pendingDuels": [],
+        "id": "V12AA",
+        "results": []
+    },
     "F90WW": {
         "nick": "F90WW",
         "password": "1234",

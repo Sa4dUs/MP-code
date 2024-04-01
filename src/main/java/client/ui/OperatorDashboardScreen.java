@@ -22,7 +22,6 @@ public class OperatorDashboardScreen extends Screen {
     private JButton editPlayerCharactersButton;
     private JButton viewRankingButton;
     private JButton editMinionsButton;
-    private JPanel buttonPanel; // Assuming this panel contains buttons
 
     private Map<JButton, Class<? extends Screen>> buttonActionMap;
 
@@ -33,15 +32,22 @@ public class OperatorDashboardScreen extends Screen {
     }
 
     private void initializeComponents() {
-        exitButton = new JButton("Exit");
         // Initialize other components from the .form file
-        buttonPanel.setLayout(new GridLayout(0, 1)); // Assuming buttons are arranged vertically
     }
 
     private void mapButtonActions() {
         buttonActionMap = new HashMap<>();
-        buttonActionMap.put(exitButton, null); // No action for exit button initially
-        // Add mappings for other buttons
+        buttonActionMap.put(exitButton, null);
+        buttonActionMap.put(editArmorsButton, EditArmorsScreen.class);
+        buttonActionMap.put(viewHistoryButton, HistoryScreen.class);
+        buttonActionMap.put(editWeaponsButton, EditWeaponsScreen.class);
+        buttonActionMap.put(editAbilitiesButton, EditAbilitiesScreen.class);
+        buttonActionMap.put(editCharacteristicsButton, EditCharacteristicsScreen.class);
+        buttonActionMap.put(manageChallengesButton, PendingChallengeScreen.class);
+        buttonActionMap.put(editDefaultCharactersButton, EditDefaultCharactersScreen.class);
+        buttonActionMap.put(editPlayerCharactersButton, EditPlayerCharactersScreen.class);
+        buttonActionMap.put(viewRankingButton, RankingScreen.class);
+        buttonActionMap.put(editMinionsButton, EditMinionsScreen.class);
     }
 
     private void setupButtonListeners() {

@@ -100,7 +100,9 @@ public class RegisterCharacterScreen extends Screen {
 
     private void setListData(JList<String> list, List<? extends Object> dataList) {
         DefaultListModel<String> model = new DefaultListModel<>();
-        dataList.forEach(entity -> model.addElement(entity.toString())); // Assuming toString() gives name or appropriate representation
+        dataList.forEach(entity -> {
+            model.addElement(entity.toString());
+        });
         list.setModel(model);
     }
 }

@@ -1,32 +1,32 @@
 {
-    "8c11efad-39f7-46a7-89e7-acbd81e6d4a9": {
-        "loyalty": 1,
-        "name": "Delilah",
-        "health": 2,
-        "id": "8c11efad-39f7-46a7-89e7-acbd81e6d4a9"
-    },
-    "b6d23b7e-23f7-4a05-a472-41e1aeb22b8a": {
-        "loyalty": 1,
-        "name": "Lucifer",
-        "health": 2,
-        "id": "b6d23b7e-23f7-4a05-a472-41e1aeb22b8a"
-    },
-    "e983f14b-c846-411d-88b8-ceeda1f42d9e": {
-        "loyalty": 2,
-        "name": "Cain",
-        "health": 2,
-        "id": "e983f14b-c846-411d-88b8-ceeda1f42d9e"
-    },
-    "ef1155fd-84f2-4368-b608-c0515f141e58": {
-        "loyalty": 3,
-        "name": "Lilith",
-        "health": 2,
-        "id": "ef1155fd-84f2-4368-b608-c0515f141e58"
-    },
-    "e172750e-6efa-4210-a5f2-2a31a75fec93": {
+    "7bbd333a-4537-4757-b503-fedc76910c5c": {
         "loyalty": 1,
         "name": "Judas",
         "health": 2,
-        "id": "e172750e-6efa-4210-a5f2-2a31a75fec93"
+        "id": "7bbd333a-4537-4757-b503-fedc76910c5c"
+    },
+    "0cbf19bd-ec32-4dae-91bc-adf3472c673f": {
+        "loyalty": 1,
+        "name": "Delilah",
+        "health": 2,
+        "id": "0cbf19bd-ec32-4dae-91bc-adf3472c673f"
+    },
+    "afede007-c012-47b8-9ef8-394d5cd641bc": {
+        "loyalty": 1,
+        "name": "Lucifer",
+        "health": 2,
+        "id": "afede007-c012-47b8-9ef8-394d5cd641bc"
+    },
+    "56514c81-50da-41d8-b207-eac4952f2a38": {
+        "loyalty": 2,
+        "name": "Cain",
+        "health": 2,
+        "id": "56514c81-50da-41d8-b207-eac4952f2a38"
+    },
+    "54de51ba-c053-420e-9283-03963dcd7662": {
+        "loyalty": 3,
+        "name": "Lilith",
+        "health": 2,
+        "id": "54de51ba-c053-420e-9283-03963dcd7662"
     }
 }

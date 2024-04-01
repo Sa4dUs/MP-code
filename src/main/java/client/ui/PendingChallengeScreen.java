@@ -90,10 +90,10 @@ public class PendingChallengeScreen extends Screen {
             decline.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    String endpoint = "item/denyChallengeFromPlayer";
+                    String endpoint = "challenge/denyChallengeFromPlayer";
 
                     if (Session.isOperator()) {
-                        endpoint = "item/denyChallengeFromOperator";
+                        endpoint = "challenge/denyChallengeFromOperator";
                     }
 
                     RequestBody request = new RequestBody();

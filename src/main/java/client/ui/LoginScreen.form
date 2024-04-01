@@ -6,7 +6,7 @@
       <xy x="20" y="20" width="500" height="400"/>
     </constraints>
     <properties>
-      <background color="-1708289"/>
+      <background color="-15329766"/>
       <enabled value="true"/>
     </properties>
     <border type="line">
@@ -28,9 +28,9 @@
           <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <font size="22" style="1"/>
-          <foreground color="-16777216"/>
-          <text value="Game Title"/>
+          <font name="Fira Code" size="48" style="1"/>
+          <foreground color="-2"/>
+          <text value="GAME TITLE"/>
         </properties>
       </component>
       <grid id="7fd61" layout-manager="GridLayoutManager" row-count="6" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
@@ -41,7 +41,7 @@
           </grid>
         </constraints>
         <properties>
-          <background color="-1708289"/>
+          <background color="-2"/>
         </properties>
         <border type="line">
           <color color="-15263968"/>
@@ -56,8 +56,8 @@
               </grid>
             </constraints>
             <properties>
-              <background color="-1708289"/>
-              <foreground color="-13619130"/>
+              <background color="-2"/>
+              <foreground color="-15329766"/>
               <horizontalAlignment value="0"/>
               <text value=""/>
               <toolTipText value="Username"/>
@@ -72,8 +72,8 @@
               </grid>
             </constraints>
             <properties>
-              <background color="-1708289"/>
-              <foreground color="-13619130"/>
+              <background color="-2"/>
+              <foreground color="-15329766"/>
               <horizontalAlignment value="0"/>
               <text value=""/>
               <toolTipText value="Password"/>
@@ -97,7 +97,8 @@
               <borderPainted value="false"/>
               <contentAreaFilled value="false"/>
               <enabled value="true"/>
-              <foreground color="-16777216"/>
+              <font name="Inconsolata" style="1"/>
+              <foreground color="-7036494"/>
               <hideActionText value="false"/>
               <opaque value="false"/>
               <selected value="false"/>
@@ -117,10 +118,10 @@
               </grid>
             </constraints>
             <properties>
-              <background color="-14869472"/>
+              <background color="-8430864"/>
               <borderPainted value="false"/>
-              <font style="1"/>
-              <foreground color="-1708289"/>
+              <font name="Inconsolata" style="1"/>
+              <foreground color="-2"/>
               <text value="Log In"/>
             </properties>
           </component>
@@ -137,13 +138,13 @@
       </grid>
       <component id="b4b5e" class="javax.swing.JButton" binding="exitButton" default-binding="true">
         <constraints>
-          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="3" use-parent-layout="false"/>
         </constraints>
         <properties>
           <borderPainted value="false"/>
           <contentAreaFilled value="false"/>
-          <font size="13" style="1"/>
-          <foreground color="-14869472"/>
+          <font name="Inconsolata" size="18" style="1"/>
+          <foreground color="-2"/>
           <label value="↩ Exit"/>
           <text value="↩ Exit"/>
         </properties>

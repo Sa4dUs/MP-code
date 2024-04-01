@@ -6,7 +6,7 @@
       <xy x="20" y="20" width="894" height="402"/>
     </constraints>
     <properties>
-      <background color="-1708289"/>
+      <background color="-15329766"/>
       <foreground color="-13947600"/>
     </properties>
     <border type="none">
@@ -15,13 +15,13 @@
     <children>
       <component id="f8c4f" class="javax.swing.JButton" binding="exitBtn">
         <constraints>
-          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="3" use-parent-layout="false"/>
         </constraints>
         <properties>
           <borderPainted value="false"/>
           <contentAreaFilled value="false"/>
-          <font size="13" style="1"/>
-          <foreground color="-14869472"/>
+          <font name="Inconsolata" size="18" style="1"/>
+          <foreground color="-2"/>
           <label value="↩ Exit"/>
           <text value="↩ Exit"/>
         </properties>
@@ -31,11 +31,11 @@
           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <font size="22" style="1"/>
-          <foreground color="-14869472"/>
+          <font name="Fira Code" size="48" style="1"/>
+          <foreground color="-2"/>
           <horizontalAlignment value="0"/>
           <horizontalTextPosition value="0"/>
-          <text value="Game Title"/>
+          <text value="GAME TITLE"/>
         </properties>
       </component>
       <grid id="1342f" layout-manager="GridLayoutManager" row-count="1" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
@@ -44,19 +44,21 @@
           <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <background color="-1708289"/>
+          <background color="-15329766"/>
         </properties>
         <border type="empty"/>
         <children>
           <grid id="c865a" layout-manager="GridLayoutManager" row-count="7" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                <minimum-size width="160" height="230"/>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="2" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                <minimum-size width="230" height="300"/>
+                <preferred-size width="230" height="300"/>
+                <maximum-size width="230" height="300"/>
               </grid>
             </constraints>
             <properties>
-              <background color="-1708289"/>
+              <background color="-2"/>
             </properties>
             <border type="line">
               <color color="-14013908"/>
@@ -65,9 +67,8 @@
               <component id="dd278" class="javax.swing.JButton" binding="NotificationsBtn">
                 <constraints>
                   <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                    <minimum-size width="130" height="-1"/>
+                    <minimum-size width="170" height="40"/>
                     <preferred-size width="130" height="-1"/>
-                    <maximum-size width="130" height="-1"/>
                   </grid>
                 </constraints>
                 <properties>
@@ -75,8 +76,8 @@
                   <borderPainted value="true"/>
                   <contentAreaFilled value="false"/>
                   <enabled value="true"/>
-                  <font style="1"/>
-                  <foreground color="-14013908"/>
+                  <font name="Inconsolata" size="17" style="1"/>
+                  <foreground color="-16711423"/>
                   <hideActionText value="false"/>
                   <text value="Notifications"/>
                 </properties>
@@ -84,9 +85,7 @@
               <component id="5ec34" class="javax.swing.JButton" binding="CareerBtn">
                 <constraints>
                   <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                    <minimum-size width="130" height="-1"/>
-                    <preferred-size width="130" height="-1"/>
-                    <maximum-size width="130" height="-1"/>
+                    <minimum-size width="170" height="40"/>
                   </grid>
                 </constraints>
                 <properties>
@@ -94,8 +93,8 @@
                   <borderPainted value="true"/>
                   <contentAreaFilled value="false"/>
                   <enabled value="true"/>
-                  <font style="1"/>
-                  <foreground color="-14013908"/>
+                  <font name="Inconsolata" size="17" style="1"/>
+                  <foreground color="-16711423"/>
                   <hideActionText value="false"/>
                   <text value="View Career"/>
                 </properties>
@@ -123,29 +122,25 @@
               </vspacer>
               <component id="3977a" class="javax.swing.JButton" binding="deleteAccountBtn">
                 <constraints>
-                  <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                    <minimum-size width="130" height="-1"/>
-                    <preferred-size width="130" height="-1"/>
-                    <maximum-size width="130" height="-1"/>
+                  <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="170" height="40"/>
                   </grid>
                 </constraints>
                 <properties>
-                  <background color="-1708289"/>
-                  <borderPainted value="true"/>
-                  <contentAreaFilled value="false"/>
+                  <background color="-7036494"/>
+                  <borderPainted value="false"/>
+                  <contentAreaFilled value="true"/>
                   <enabled value="true"/>
-                  <font style="1"/>
-                  <foreground color="-14013908"/>
+                  <font name="Inconsolata" size="17" style="1"/>
+                  <foreground color="-2"/>
                   <hideActionText value="false"/>
                   <text value="Delete Account"/>
                 </properties>
               </component>
               <component id="e68c9" class="javax.swing.JButton" binding="LogOutBtn">
                 <constraints>
-                  <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                    <minimum-size width="130" height="-1"/>
-                    <preferred-size width="130" height="-1"/>
-                    <maximum-size width="130" height="-1"/>
+                  <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="170" height="40"/>
                   </grid>
                 </constraints>
                 <properties>
@@ -153,8 +148,8 @@
                   <borderPainted value="true"/>
                   <contentAreaFilled value="false"/>
                   <enabled value="true"/>
-                  <font style="1"/>
-                  <foreground color="-14013908"/>
+                  <font name="Inconsolata" size="17" style="1"/>
+                  <foreground color="-16711423"/>
                   <hideActionText value="false"/>
                   <text value="Check Out"/>
                 </properties>
@@ -162,14 +157,16 @@
             </children>
           </grid>
           <grid id="ea2cf" layout-manager="GridLayoutManager" row-count="7" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-            <margin top="2" left="2" bottom="9" right="0"/>
+            <margin top="9" left="2" bottom="9" right="0"/>
             <constraints>
-              <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="2" hsize-policy="2" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                <minimum-size width="160" height="230"/>
+              <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="2" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                <minimum-size width="230" height="300"/>
+                <preferred-size width="230" height="300"/>
+                <maximum-size width="230" height="300"/>
               </grid>
             </constraints>
             <properties>
-              <background color="-1708289"/>
+              <background color="-2"/>
             </properties>
             <border type="line">
               <color color="-14013908"/>
@@ -187,16 +184,19 @@
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="4" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <font size="16" style="1"/>
-                  <foreground color="-14013908"/>
+                  <font name="Fira Code" size="22" style="1"/>
+                  <foreground color="-13846915"/>
                   <text value="PODIUM"/>
                 </properties>
               </component>
               <component id="a3f82" class="javax.swing.JLabel" binding="first">
                 <constraints>
-                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="0" anchor="8" fill="0" indent="1" use-parent-layout="false"/>
+                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="2" anchor="8" fill="0" indent="1" use-parent-layout="false">
+                    <minimum-size width="190" height="60"/>
+                  </grid>
                 </constraints>
                 <properties>
+                  <font name="Inconsolata" size="14" style="1"/>
                   <foreground color="-14013908"/>
                   <text value="1º --"/>
                 </properties>
@@ -210,18 +210,24 @@
               </vspacer>
               <component id="3c256" class="javax.swing.JLabel" binding="second">
                 <constraints>
-                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="0" anchor="8" fill="0" indent="1" use-parent-layout="false"/>
+                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="2" anchor="8" fill="0" indent="1" use-parent-layout="false">
+                    <minimum-size width="190" height="60"/>
+                  </grid>
                 </constraints>
                 <properties>
+                  <font name="Inconsolata" size="14" style="1"/>
                   <foreground color="-14013908"/>
                   <text value="2º --"/>
                 </properties>
               </component>
               <component id="11018" class="javax.swing.JLabel" binding="third">
                 <constraints>
-                  <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="0" anchor="8" fill="0" indent="1" use-parent-layout="false"/>
+                  <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="2" anchor="8" fill="0" indent="1" use-parent-layout="false">
+                    <minimum-size width="190" height="60"/>
+                  </grid>
                 </constraints>
                 <properties>
+                  <font name="Inconsolata" size="14" style="1"/>
                   <foreground color="-14013908"/>
                   <text value="3º --"/>
                 </properties>
@@ -229,91 +235,105 @@
               <component id="ead86" class="javax.swing.JButton" binding="checkRankBtn">
                 <constraints>
                   <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                    <minimum-size width="130" height="-1"/>
-                    <preferred-size width="130" height="-1"/>
-                    <maximum-size width="130" height="-1"/>
+                    <minimum-size width="170" height="40"/>
                   </grid>
                 </constraints>
                 <properties>
-                  <background color="-1708289"/>
-                  <borderPainted value="true"/>
-                  <contentAreaFilled value="false"/>
+                  <background color="-13846915"/>
+                  <borderPainted value="false"/>
+                  <contentAreaFilled value="true"/>
                   <enabled value="true"/>
-                  <font style="1"/>
-                  <foreground color="-14013908"/>
+                  <font name="Inconsolata" size="17" style="1"/>
+                  <foreground color="-2"/>
                   <hideActionText value="false"/>
                   <text value="Check Rank"/>
                 </properties>
               </component>
             </children>
           </grid>
-          <grid id="50889" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="50889" layout-manager="GridLayoutManager" row-count="5" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
-              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                <minimum-size width="230" height="210"/>
+                <preferred-size width="230" height="210"/>
+                <maximum-size width="230" height="210"/>
+              </grid>
             </constraints>
             <properties>
-              <background color="-1708289"/>
+              <background color="-15329766"/>
             </properties>
             <border type="empty"/>
             <children>
-              <component id="4a435" class="javax.swing.JButton" binding="sendChallengeBtn">
-                <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                    <minimum-size width="130" height="-1"/>
-                    <preferred-size width="130" height="-1"/>
-                    <maximum-size width="130" height="-1"/>
-                  </grid>
-                </constraints>
-                <properties>
-                  <background color="-1708289"/>
-                  <borderPainted value="true"/>
-                  <contentAreaFilled value="false"/>
-                  <enabled value="true"/>
-                  <font style="1"/>
-                  <foreground color="-14013908"/>
-                  <hideActionText value="false"/>
-                  <text value="Send Challenge"/>
-                </properties>
-              </component>
               <component id="8aeeb" class="javax.swing.JButton" binding="editCharacterBtn">
                 <constraints>
-                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                    <minimum-size width="130" height="-1"/>
-                    <preferred-size width="130" height="-1"/>
-                    <maximum-size width="130" height="-1"/>
+                  <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="190" height="40"/>
                   </grid>
                 </constraints>
                 <properties>
-                  <background color="-1708289"/>
-                  <borderPainted value="true"/>
-                  <contentAreaFilled value="false"/>
+                  <background color="-8430864"/>
+                  <borderPainted value="false"/>
+                  <contentAreaFilled value="true"/>
                   <enabled value="true"/>
-                  <font style="1"/>
-                  <foreground color="-14013908"/>
+                  <font name="Inconsolata" size="17" style="1"/>
+                  <foreground color="-2"/>
                   <hideActionText value="false"/>
                   <text value="Edit Character"/>
                 </properties>
               </component>
               <component id="96861" class="javax.swing.JButton" binding="createCharacter">
                 <constraints>
-                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                    <minimum-size width="130" height="-1"/>
-                    <preferred-size width="130" height="-1"/>
-                    <maximum-size width="130" height="-1"/>
+                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="190" height="40"/>
                   </grid>
                 </constraints>
                 <properties>
-                  <background color="-1708289"/>
-                  <borderPainted value="true"/>
-                  <contentAreaFilled value="false"/>
+                  <background color="-8430864"/>
+                  <borderPainted value="false"/>
+                  <contentAreaFilled value="true"/>
                   <enabled value="true"/>
-                  <font style="1"/>
-                  <foreground color="-14013908"/>
+                  <font name="Inconsolata" size="17" style="1"/>
+                  <foreground color="-2"/>
                   <hideActionText value="false"/>
-                  <text value="Create character"/>
+                  <text value="Create Character"/>
                 </properties>
               </component>
+              <component id="4a435" class="javax.swing.JButton" binding="sendChallengeBtn">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="190" height="40"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-8430864"/>
+                  <borderPainted value="false"/>
+                  <contentAreaFilled value="true"/>
+                  <enabled value="true"/>
+                  <font name="Inconsolata" size="17" style="1"/>
+                  <foreground color="-2"/>
+                  <hideActionText value="false"/>
+                  <text value="Send Challenge"/>
+                </properties>
+              </component>
+              <vspacer id="a7923">
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="2" hsize-policy="1" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="10" height="30"/>
+                    <preferred-size width="10" height="30"/>
+                    <maximum-size width="10" height="30"/>
+                  </grid>
+                </constraints>
+              </vspacer>
+              <vspacer id="3c9b4">
+                <constraints>
+                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="2" hsize-policy="1" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="10" height="30"/>
+                    <preferred-size width="10" height="30"/>
+                    <maximum-size width="10" height="30"/>
+                  </grid>
+                </constraints>
+              </vspacer>
             </children>
           </grid>
           <hspacer id="5d5d6">

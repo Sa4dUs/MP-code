@@ -6,7 +6,7 @@
       <xy x="20" y="20" width="584" height="391"/>
     </constraints>
     <properties>
-      <background color="-1708289"/>
+      <background color="-15329766"/>
       <enabled value="true"/>
     </properties>
     <border type="line">
@@ -19,9 +19,9 @@
         </constraints>
         <properties>
           <enabled value="true"/>
-          <font size="24" style="1"/>
-          <foreground color="-16777216"/>
-          <text value="Game Title"/>
+          <font name="Fira Code" size="48" style="1"/>
+          <foreground color="-2"/>
+          <text value="GAME TITLE"/>
         </properties>
       </component>
       <vspacer id="7a32c">
@@ -36,13 +36,13 @@
       </vspacer>
       <component id="9dfe4" class="javax.swing.JButton" binding="exitButton" default-binding="true">
         <constraints>
-          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="3" use-parent-layout="false"/>
         </constraints>
         <properties>
           <borderPainted value="false"/>
           <contentAreaFilled value="false"/>
-          <font size="13" style="1"/>
-          <foreground color="-14869472"/>
+          <font name="Inconsolata" size="18" style="1"/>
+          <foreground color="-2"/>
           <label value="↩ Exit"/>
           <text value="↩ Exit"/>
         </properties>
@@ -56,10 +56,11 @@
           </grid>
         </constraints>
         <properties>
-          <background color="-14869472"/>
+          <background color="-8430864"/>
           <borderPainted value="false"/>
           <enabled value="true"/>
-          <foreground color="-1"/>
+          <font name="Inconsolata" style="1"/>
+          <foreground color="-2"/>
           <text value="Sign Up"/>
         </properties>
       </component>
@@ -72,10 +73,11 @@
           </grid>
         </constraints>
         <properties>
-          <background color="-14869472"/>
+          <background color="-8430864"/>
           <borderPainted value="false"/>
           <enabled value="true"/>
-          <foreground color="-1"/>
+          <font name="Inconsolata" style="1"/>
+          <foreground color="-2"/>
           <text value="Log In"/>
         </properties>
       </component>

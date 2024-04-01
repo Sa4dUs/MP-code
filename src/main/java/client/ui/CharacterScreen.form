@@ -3,10 +3,10 @@
   <grid id="27dc6" binding="frame" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="500" height="695"/>
+      <xy x="20" y="20" width="553" height="695"/>
     </constraints>
     <properties>
-      <background color="-1708289"/>
+      <background color="-15329766"/>
     </properties>
     <border type="none"/>
     <children>
@@ -16,7 +16,7 @@
           <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <background color="-1708289"/>
+          <background color="-15329766"/>
         </properties>
         <border type="none"/>
         <children>
@@ -28,15 +28,15 @@
               </grid>
             </constraints>
             <properties>
-              <background color="-1708289"/>
+              <background color="-15329766"/>
             </properties>
             <border type="empty" title="Character Name" title-justification="2" title-position="1">
-              <font size="16" style="1"/>
-              <title-color color="-13158598"/>
+              <font name="Fira Code" size="16" style="1"/>
+              <title-color color="-8430864"/>
               <color color="-13158598"/>
             </border>
             <children>
-              <grid id="49659" layout-manager="GridLayoutManager" row-count="11" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+              <grid id="49659" layout-manager="GridLayoutManager" row-count="11" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                 <margin top="2" left="0" bottom="2" right="0"/>
                 <constraints>
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="2" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
@@ -44,7 +44,7 @@
                   </grid>
                 </constraints>
                 <properties>
-                  <background color="-1708289"/>
+                  <background color="-2"/>
                 </properties>
                 <border type="line">
                   <color color="-13158598"/>
@@ -52,27 +52,30 @@
                 <children>
                   <component id="f9167" class="javax.swing.JLabel">
                     <constraints>
-                      <grid row="5" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                      <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
+                      <font name="Fira Code" style="3"/>
                       <foreground color="-14869472"/>
-                      <text value="Weaknesses"/>
+                      <text value="Weaknesses:"/>
                     </properties>
                   </component>
                   <component id="8ea09" class="javax.swing.JLabel">
                     <constraints>
-                      <grid row="4" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                      <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
+                      <font name="Fira Code" style="3"/>
                       <foreground color="-14869472"/>
                       <text value="Strengths:"/>
                     </properties>
                   </component>
                   <component id="60d36" class="javax.swing.JLabel">
                     <constraints>
-                      <grid row="0" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
+                      <font name="Fira Code" style="3"/>
                       <foreground color="-14869472"/>
                       <labelFor value="4cca5"/>
                       <text value="Name:"/>
@@ -80,44 +83,48 @@
                   </component>
                   <component id="eb96" class="javax.swing.JTextField" binding="name">
                     <constraints>
-                      <grid row="0" column="3" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
                       </grid>
                     </constraints>
                     <properties>
                       <background color="-1708289"/>
                       <editable value="false"/>
+                      <font name="Inconsolata"/>
                       <foreground color="-14013908"/>
                     </properties>
                   </component>
                   <component id="bab4b" class="javax.swing.JLabel">
                     <constraints>
-                      <grid row="6" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                      <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
+                      <font name="Fira Code" style="3"/>
                       <foreground color="-14869472"/>
-                      <text value="Weapons"/>
+                      <text value="Weapons:"/>
                     </properties>
                   </component>
                   <component id="320cd" class="javax.swing.JLabel">
                     <constraints>
-                      <grid row="3" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                      <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
+                      <font name="Fira Code" style="3"/>
                       <foreground color="-14869472"/>
                       <labelFor value="4cca5"/>
-                      <text value="Breed"/>
+                      <text value="Breed:"/>
                     </properties>
                   </component>
                   <component id="bb95e" class="javax.swing.JTextField" binding="breed">
                     <constraints>
-                      <grid row="3" column="3" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                      <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
                       </grid>
                     </constraints>
                     <properties>
                       <background color="-1708289"/>
                       <editable value="false"/>
+                      <font name="Inconsolata"/>
                       <foreground color="-14013908"/>
                     </properties>
                   </component>
@@ -126,157 +133,172 @@
                       <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
+                      <font name="Fira Code" style="3"/>
                       <foreground color="-14869472"/>
                       <labelFor value="4cca5"/>
-                      <text value="Health"/>
+                      <text value="Health:"/>
                     </properties>
                   </component>
                   <component id="d9d2d" class="javax.swing.JTextField" binding="health">
                     <constraints>
-                      <grid row="1" column="3" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                      <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
                       </grid>
                     </constraints>
                     <properties>
                       <background color="-1708289"/>
                       <editable value="false"/>
+                      <font name="Inconsolata"/>
                       <foreground color="-14013908"/>
                     </properties>
                   </component>
                   <component id="a22d6" class="javax.swing.JLabel">
                     <constraints>
-                      <grid row="2" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                      <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
+                      <font name="Fira Code" style="3"/>
                       <foreground color="-14869472"/>
                       <labelFor value="4cca5"/>
-                      <text value="Gold"/>
+                      <text value="Gold:"/>
                     </properties>
                   </component>
                   <component id="f2399" class="javax.swing.JTextField" binding="gold">
                     <constraints>
-                      <grid row="2" column="3" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                      <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
                       </grid>
                     </constraints>
                     <properties>
                       <background color="-1708289"/>
                       <editable value="false"/>
+                      <font name="Inconsolata"/>
                       <foreground color="-14013908"/>
                     </properties>
                   </component>
                   <component id="94aff" class="javax.swing.JLabel">
                     <constraints>
-                      <grid row="7" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                      <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
+                      <font name="Fira Code" style="3"/>
                       <foreground color="-14869472"/>
-                      <text value="Armors"/>
+                      <text value="Armors:"/>
                     </properties>
                   </component>
                   <component id="f861" class="javax.swing.JLabel">
                     <constraints>
-                      <grid row="8" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                      <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
+                      <font name="Fira Code" style="3"/>
                       <foreground color="-14869472"/>
-                      <text value="Abilities"/>
+                      <text value="Abilities:"/>
                     </properties>
                   </component>
                   <component id="71ad5" class="javax.swing.JLabel">
                     <constraints>
-                      <grid row="9" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                      <grid row="9" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
+                      <font name="Fira Code" style="3"/>
                       <foreground color="-14869472"/>
-                      <text value="Special Abilities"/>
+                      <text value="Special Abilities:"/>
                     </properties>
                   </component>
                   <component id="489be" class="javax.swing.JLabel">
                     <constraints>
-                      <grid row="10" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                      <grid row="10" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
+                      <font name="Fira Code" style="3"/>
                       <foreground color="-14869472"/>
-                      <text value="Minions"/>
+                      <text value="Minions:"/>
                     </properties>
                   </component>
                   <component id="a8a1" class="javax.swing.JList" binding="strengths">
                     <constraints>
-                      <grid row="4" column="3" row-span="1" col-span="2" vsize-policy="6" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                      <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="50"/>
                       </grid>
                     </constraints>
                     <properties>
-                      <background color="-1708289"/>
-                      <foreground color="-13947600"/>
+                      <background color="-2"/>
+                      <font name="Inconsolata"/>
+                      <foreground color="-15329766"/>
                       <model/>
                     </properties>
                   </component>
                   <component id="15e4c" class="javax.swing.JList" binding="weaknesses">
                     <constraints>
-                      <grid row="5" column="3" row-span="1" col-span="2" vsize-policy="6" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                      <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="50"/>
                       </grid>
                     </constraints>
                     <properties>
-                      <background color="-1708289"/>
-                      <foreground color="-13947600"/>
+                      <background color="-2"/>
+                      <font name="Inconsolata"/>
+                      <foreground color="-15329766"/>
                     </properties>
                   </component>
                   <component id="7c4b2" class="javax.swing.JList" binding="weapons">
                     <constraints>
-                      <grid row="6" column="3" row-span="1" col-span="2" vsize-policy="6" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                      <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="50"/>
                       </grid>
                     </constraints>
                     <properties>
-                      <background color="-1708289"/>
-                      <foreground color="-13947600"/>
+                      <background color="-2"/>
+                      <font name="Inconsolata"/>
+                      <foreground color="-15329766"/>
                     </properties>
                   </component>
                   <component id="20767" class="javax.swing.JList" binding="armors">
                     <constraints>
-                      <grid row="7" column="3" row-span="1" col-span="2" vsize-policy="6" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                      <grid row="7" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="50"/>
                       </grid>
                     </constraints>
                     <properties>
-                      <background color="-1708289"/>
-                      <foreground color="-13947600"/>
+                      <background color="-2"/>
+                      <font name="Inconsolata"/>
+                      <foreground color="-15329766"/>
                     </properties>
                   </component>
                   <component id="1dd8b" class="javax.swing.JList" binding="abilities">
                     <constraints>
-                      <grid row="8" column="3" row-span="1" col-span="2" vsize-policy="6" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                      <grid row="8" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="50"/>
                       </grid>
                     </constraints>
                     <properties>
-                      <background color="-1708289"/>
-                      <foreground color="-13947600"/>
+                      <background color="-2"/>
+                      <font name="Inconsolata"/>
+                      <foreground color="-15329766"/>
                     </properties>
                   </component>
                   <component id="13205" class="javax.swing.JList" binding="specialAbilities">
                     <constraints>
-                      <grid row="9" column="3" row-span="1" col-span="2" vsize-policy="6" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                      <grid row="9" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="50"/>
                       </grid>
                     </constraints>
                     <properties>
-                      <background color="-1708289"/>
-                      <foreground color="-13947600"/>
+                      <background color="-2"/>
+                      <font name="Inconsolata"/>
+                      <foreground color="-15329766"/>
                     </properties>
                   </component>
                   <component id="99c90" class="javax.swing.JList" binding="minions">
                     <constraints>
-                      <grid row="10" column="3" row-span="1" col-span="2" vsize-policy="6" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                      <grid row="10" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="50"/>
                       </grid>
                     </constraints>
                     <properties>
-                      <background color="-1708289"/>
-                      <foreground color="-13947600"/>
+                      <background color="-2"/>
+                      <font name="Inconsolata"/>
+                      <foreground color="-15329766"/>
                     </properties>
                   </component>
                 </children>
@@ -296,7 +318,7 @@
               </grid>
             </constraints>
             <properties>
-              <background color="-1708289"/>
+              <background color="-2"/>
             </properties>
             <border type="empty"/>
             <children>
@@ -305,6 +327,7 @@
                   <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
+                  <font name="Inconsolata" style="1"/>
                   <foreground color="-13158598"/>
                   <text value="Right Weapon"/>
                 </properties>
@@ -314,8 +337,8 @@
                   <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <background color="-1708289"/>
-                  <foreground color="-13158598"/>
+                  <background color="-2"/>
+                  <foreground color="-15329766"/>
                 </properties>
               </component>
               <component id="e178c" class="javax.swing.JLabel">
@@ -323,6 +346,7 @@
                   <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
+                  <font name="Inconsolata" style="1"/>
                   <foreground color="-13158598"/>
                   <text value="Left Weapon"/>
                 </properties>
@@ -332,6 +356,7 @@
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
+                  <font name="Inconsolata" style="1"/>
                   <foreground color="-13158598"/>
                   <text value="Armor"/>
                 </properties>
@@ -341,8 +366,8 @@
                   <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <background color="-1708289"/>
-                  <foreground color="-13158598"/>
+                  <background color="-2"/>
+                  <foreground color="-15329766"/>
                 </properties>
               </component>
               <component id="edc45" class="javax.swing.JComboBox" binding="armorSelect">
@@ -350,8 +375,8 @@
                   <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <background color="-1708289"/>
-                  <foreground color="-13158598"/>
+                  <background color="-2"/>
+                  <foreground color="-15329766"/>
                 </properties>
               </component>
             </children>
@@ -360,13 +385,13 @@
       </grid>
       <component id="67567" class="javax.swing.JButton" binding="backButton">
         <constraints>
-          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="3" use-parent-layout="false"/>
         </constraints>
         <properties>
           <borderPainted value="false"/>
           <contentAreaFilled value="false"/>
-          <font size="13" style="1"/>
-          <foreground color="-14869472"/>
+          <font name="Inconsolata" size="18" style="1"/>
+          <foreground color="-2"/>
           <label value="↩ Back"/>
           <text value="↩ Back"/>
         </properties>
@@ -376,9 +401,9 @@
           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <font size="22" style="1"/>
-          <foreground color="-14869472"/>
-          <text value="Game Title"/>
+          <font name="Fira Code" size="36" style="1"/>
+          <foreground color="-2"/>
+          <text value="GAME TITLE"/>
         </properties>
       </component>
     </children>

@@ -231,7 +231,7 @@ public class EditDefaultCharactersScreen extends Screen {
 
         JComboBox<Weapon> selectInput = new JComboBox<Weapon>();
         DefaultComboBoxModel model = new DefaultComboBoxModel();
-        model.addAll(armorList);
+        model.addAll(weaponList);
         selectInput.setModel(model);
 
         JButton selectButton = new JButton("Select");
@@ -456,7 +456,7 @@ public class EditDefaultCharactersScreen extends Screen {
 
         JComboBox<Characteristic> selectInput = new JComboBox<Characteristic>();
         DefaultComboBoxModel model = new DefaultComboBoxModel();
-        model.addAll(characterList);
+        model.addAll(characteristicList);
         selectInput.setModel(model);
 
         JButton selectButton = new JButton("Select");
@@ -512,7 +512,7 @@ public class EditDefaultCharactersScreen extends Screen {
 
         JComboBox<Characteristic> selectInput = new JComboBox<Characteristic>();
         DefaultComboBoxModel model = new DefaultComboBoxModel();
-        model.addAll(characterList);
+        model.addAll(characteristicList);
         selectInput.setModel(model);
 
         JButton selectButton = new JButton("Select");

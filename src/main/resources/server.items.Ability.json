@@ -1,4 +1,11 @@
 {
+    "b533f0d2-a82b-4ee5-ad71-42a92787a27f": {
+        "cost": 2,
+        "defense": 1,
+        "attack": 3,
+        "name": "Sed de sangre",
+        "id": "b533f0d2-a82b-4ee5-ad71-42a92787a27f"
+    },
     "48d43750-d5ad-4cf0-9966-03db594e1edc": {
         "cost": 2,
         "defense": 1,

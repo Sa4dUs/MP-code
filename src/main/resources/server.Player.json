@@ -2,6 +2,7 @@
     "F90WW": {
         "nick": "F90WW",
         "password": "1234",
+        "character": "",
         "blocked": "false",
         "pending": "false",
         "name": "Shania",
@@ -15,6 +16,7 @@
     "W46AA": {
         "nick": "W46AA",
         "password": "1234",
+        "character": "",
         "blocked": "false",
         "pending": "false",
         "name": "Jaime",

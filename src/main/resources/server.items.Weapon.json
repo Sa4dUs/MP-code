@@ -1,7 +1,14 @@
 {
+    "440141af-c95c-4dd2-aac7-bf7037dcbdf0": {
+        "twoHanded": "false",
+        "defense": 1,
+        "attack": 3,
+        "name": "Latigo",
+        "id": "440141af-c95c-4dd2-aac7-bf7037dcbdf0"
+    },
     "8d23c26d-e61d-4b5a-bf8c-34459766018a": {
         "twoHanded": "true",
-        "defense": 3,
+        "defense": 2,
         "attack": 3,
         "name": "Mandoble",
         "id": "8d23c26d-e61d-4b5a-bf8c-34459766018a"

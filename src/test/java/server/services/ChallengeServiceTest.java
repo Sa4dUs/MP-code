@@ -8,10 +8,22 @@ import server.Database;
 import server.Player;
 import server.nosql.Collection;
 import server.nosql.Document;
+import server.nosql.Query;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class ChallengeServiceTest {
+
+    @Test
+    public void acceptFromOperatorTest()
+    {
+        Query query = new Query();
+        query.addFilter("id", "936bc5e1-07a4-4adc-9440-43fd88e07b67");
+
+        ChallengeRequest request =(ChallengeRequest) Database.findOne(Collection.CHALLENGE_OPERATORS, query).deJSONDocument(ChallengeRequest.class);
+        ChallengeService service = new ChallengeService();
+        service.acceptChallengeFromOperator(request);
+    }
 
     @Test
     public void createResultTest()

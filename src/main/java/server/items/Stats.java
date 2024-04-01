@@ -43,6 +43,14 @@ public abstract class Stats implements JSONable {
         this.defense = (defense > maxDefense) ? maxDefense : Math.max(defense, 1);;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     @Override
     public Document getDocument()
     {

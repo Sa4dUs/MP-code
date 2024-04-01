@@ -20,6 +20,8 @@ public class EditCharacteristicsScreen extends Screen {
     private JButton saveButton;
     private JTextField value;
 
+    private Characteristic currentItem;
+
     @Override
     public void start() {
         // CHANGE HERE!
@@ -63,6 +65,8 @@ public class EditCharacteristicsScreen extends Screen {
                 Characteristic item = new Characteristic();
                 item.setName(name.getText());
                 item.setValue(Integer.parseInt(value.getText()));
+                if (currentItem != null)
+                    item.setId(currentItem.getId());
 
                 RequestBody request = new RequestBody();
                 request.addField("object", item);
@@ -80,5 +84,6 @@ public class EditCharacteristicsScreen extends Screen {
     public void setPanelData(Characteristic item) {
         name.setText(item.getName());
         value.setText(Integer.toString(item.getValue()));
+        this.currentItem = item;
     }
 }

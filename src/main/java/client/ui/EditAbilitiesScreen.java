@@ -22,6 +22,7 @@ public class EditAbilitiesScreen extends Screen {
     private JPanel charaContainer;
     private JButton saveButton;
     private JTextField defense;
+    private Stats currentItem;
 
     @Override
     public void start() {
@@ -69,6 +70,8 @@ public class EditAbilitiesScreen extends Screen {
                 item.setCost(Integer.parseInt(cost.getText()));
                 item.setAttack(Integer.parseInt(attack.getText()));
                 item.setDefense(Integer.parseInt(defense.getText()));
+                if (currentItem != null)
+                    item.setId(currentItem.getId());
 
                 RequestBody request = new RequestBody();
                 request.addField("object", item);
@@ -88,5 +91,6 @@ public class EditAbilitiesScreen extends Screen {
         cost.setText(Integer.toString(item.getCost()));
         attack.setText(Integer.toString(item.getAttack()));
         defense.setText(Integer.toString(item.getDefense()));
+        currentItem = item;
     }
 }

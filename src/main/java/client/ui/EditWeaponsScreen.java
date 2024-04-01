@@ -25,6 +25,8 @@ public class EditWeaponsScreen extends Screen {
     private JTextField defense;
     private JCheckBox twoHanded;
 
+    private Stats currentItem;
+
     @Override
     public void start() {
         // CHANGE HERE!
@@ -71,6 +73,8 @@ public class EditWeaponsScreen extends Screen {
                 item.setAttack(Integer.parseInt(attack.getText()));
                 item.setDefense(Integer.parseInt(defense.getText()));
                 item.setTwoHanded(twoHanded.isSelected());
+                if (currentItem != null)
+                    item.setId(currentItem.getId());
 
                 RequestBody request = new RequestBody();
                 request.addField("object", item);
@@ -90,5 +94,6 @@ public class EditWeaponsScreen extends Screen {
         attack.setText(Integer.toString(item.getAttack()));
         defense.setText(Integer.toString(item.getDefense()));
         twoHanded.setSelected(item.isTwoHanded());
+        this.currentItem = item;
     }
 }

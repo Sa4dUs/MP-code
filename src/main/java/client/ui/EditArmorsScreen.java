@@ -22,6 +22,7 @@ public class EditArmorsScreen extends Screen {
     private JPanel charaContainer;
     private JButton saveButton;
     private JTextField defense;
+    private Stats currentItem;
 
     @Override
     public void start() {
@@ -68,6 +69,8 @@ public class EditArmorsScreen extends Screen {
                 item.setName(name.getText());
                 item.setAttack(Integer.parseInt(attack.getText()));
                 item.setDefense(Integer.parseInt(defense.getText()));
+                if (currentItem != null)
+                    item.setId(currentItem.getId());
 
                 RequestBody request = new RequestBody();
                 request.addField("object", item);
@@ -86,5 +89,6 @@ public class EditArmorsScreen extends Screen {
         name.setText(item.getName());
         attack.setText(Integer.toString(item.getAttack()));
         defense.setText(Integer.toString(item.getDefense()));
+        this.currentItem = item;
     }
 }

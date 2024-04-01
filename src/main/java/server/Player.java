@@ -86,6 +86,8 @@ public class Player extends User {
                 this.character.getDocument().saveToDatabase(PlayerCharacter.class);
             document.setProperty("character", this.character.getId());
         }
+        else
+            document.setProperty("character", "");
 
         document.setProperty("blocked", this.blocked);
         document.setProperty("pending", this.pending);

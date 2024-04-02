@@ -22,8 +22,7 @@ public abstract class EditItemsScreen<T> extends Screen {
         container.removeAll();
 
         items.forEach(item -> {
-            JButton button = new JButton(getItemName(item));
-            button.addActionListener(e -> setPanelData(item));
+            JButton button = new DefaultButton(getItemName(item), e -> setPanelData(item));
             container.add(button);
         });
 

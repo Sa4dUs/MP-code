@@ -56,15 +56,5 @@ public abstract class EditItemsScreen<T> extends Screen {
             System.out.println("Failed to save item");
         }
     }
-    private JButton createDefaultButton(String text) {
-        JButton defaultButton = new JButton(text);
-        defaultButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                //TODO! add the action you want, Marcelo
-            }
-        });
 
-        return defaultButton;
-    }
 }

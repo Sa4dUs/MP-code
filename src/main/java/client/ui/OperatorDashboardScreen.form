@@ -1,122 +1,201 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="client.ui.OperatorDashboardScreen">
-  <grid id="27dc6" binding="frame" layout-manager="GridLayoutManager" row-count="16" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-    <margin top="0" left="0" bottom="0" right="0"/>
+  <grid id="27dc6" binding="frame" layout-manager="GridLayoutManager" row-count="4" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="7" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="509" height="477"/>
+      <xy x="20" y="20" width="687" height="706"/>
     </constraints>
     <properties>
-      <background color="-1708289"/>
+      <background color="-15329766"/>
       <foreground color="-1708289"/>
     </properties>
     <border type="none"/>
     <children>
-      <vspacer id="fc0ab">
+      <component id="4a48f" class="javax.swing.JLabel">
         <constraints>
-          <grid row="1" column="1" row-span="15" col-span="2" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-        </constraints>
-      </vspacer>
-      <component id="e11fd" class="javax.swing.JButton" binding="editArmorsButton">
-        <constraints>
-          <grid row="2" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Edit Armors"/>
+          <font name="Fira Code" size="48" style="1"/>
+          <foreground color="-2"/>
+          <text value="GAME TITLE"/>
         </properties>
       </component>
-      <component id="ddf11" class="javax.swing.JButton" binding="viewHistoryButton" default-binding="true">
+      <grid id="151b4" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
-          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="View History"/>
+          <background color="-15329766"/>
         </properties>
-      </component>
-      <component id="52ad0" class="javax.swing.JButton" binding="editWeaponsButton" default-binding="true">
+        <border type="none"/>
+        <children>
+          <grid id="884b" layout-manager="GridLayoutManager" row-count="4" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                <minimum-size width="500" height="300"/>
+                <preferred-size width="500" height="300"/>
+                <maximum-size width="500" height="300"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-15329766"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="e11fd" class="javax.swing.JButton" binding="editArmorsButton">
+                <constraints>
+                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-8430864"/>
+                  <borderPainted value="false"/>
+                  <font name="Inconsolata" style="1"/>
+                  <foreground color="-2"/>
+                  <text value="Edit Armors"/>
+                </properties>
+              </component>
+              <component id="27f19" class="javax.swing.JButton" binding="editAbilitiesButton">
+                <constraints>
+                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-8430864"/>
+                  <borderPainted value="false"/>
+                  <font name="Inconsolata" style="1"/>
+                  <foreground color="-2"/>
+                  <text value="Edit Abilities"/>
+                </properties>
+              </component>
+              <component id="c3831" class="javax.swing.JButton" binding="editMinionsButton">
+                <constraints>
+                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-8430864"/>
+                  <borderPainted value="false"/>
+                  <font name="Inconsolata" style="1"/>
+                  <foreground color="-2"/>
+                  <text value="Edit Minions"/>
+                </properties>
+              </component>
+              <component id="52ad0" class="javax.swing.JButton" binding="editWeaponsButton" default-binding="true">
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-8430864"/>
+                  <borderPainted value="false"/>
+                  <font name="Inconsolata" style="1"/>
+                  <foreground color="-2"/>
+                  <text value="Edit Weapons"/>
+                </properties>
+              </component>
+              <component id="4106c" class="javax.swing.JButton" binding="editDefaultCharactersButton">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-8430864"/>
+                  <borderPainted value="false"/>
+                  <font name="Inconsolata" style="1"/>
+                  <foreground color="-2"/>
+                  <text value="Edit Default Characters"/>
+                </properties>
+              </component>
+              <component id="248a7" class="javax.swing.JButton" binding="editCharacteristicsButton">
+                <constraints>
+                  <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-8430864"/>
+                  <borderPainted value="false"/>
+                  <font name="Inconsolata" style="1"/>
+                  <foreground color="-2"/>
+                  <text value="Edit Characteristics"/>
+                </properties>
+              </component>
+              <component id="56805" class="javax.swing.JButton" binding="editPlayerCharactersButton">
+                <constraints>
+                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-8430864"/>
+                  <borderPainted value="false"/>
+                  <font name="Inconsolata" style="1"/>
+                  <foreground color="-2"/>
+                  <text value="Edit Player Character"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <grid id="52c2" layout-manager="GridLayoutManager" row-count="1" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                <minimum-size width="500" height="100"/>
+                <preferred-size width="500" height="100"/>
+                <maximum-size width="500" height="100"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-15329766"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="ddf11" class="javax.swing.JButton" binding="viewHistoryButton" default-binding="true">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-13846915"/>
+                  <borderPainted value="false"/>
+                  <font name="Inconsolata" style="1"/>
+                  <foreground color="-2"/>
+                  <text value="View History"/>
+                </properties>
+              </component>
+              <component id="62d5" class="javax.swing.JButton" binding="viewRankingButton">
+                <constraints>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-13846915"/>
+                  <borderPainted value="false"/>
+                  <font name="Inconsolata" style="1"/>
+                  <foreground color="-2"/>
+                  <text value="View Ranking"/>
+                </properties>
+              </component>
+              <component id="258b" class="javax.swing.JButton" binding="manageChallengesButton">
+                <constraints>
+                  <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-13846915"/>
+                  <borderPainted value="false"/>
+                  <font name="Inconsolata" style="1"/>
+                  <foreground color="-2"/>
+                  <text value="Manage Challenges"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+        </children>
+      </grid>
+      <component id="8e948" class="javax.swing.JButton" binding="exitBtn">
         <constraints>
-          <grid row="1" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Edit Weapons"/>
-        </properties>
-      </component>
-      <component id="5d8c7" class="javax.swing.JButton" binding="exitButton" default-binding="true">
-        <constraints>
-          <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="3" use-parent-layout="false"/>
         </constraints>
         <properties>
           <borderPainted value="false"/>
           <contentAreaFilled value="false"/>
-          <font size="13" style="1"/>
-          <foreground color="-14869472"/>
+          <font name="Inconsolata" size="18" style="1"/>
+          <foreground color="-2"/>
           <label value="↩ Exit"/>
           <text value="↩ Exit"/>
-        </properties>
-      </component>
-      <component id="4a48f" class="javax.swing.JLabel">
-        <constraints>
-          <grid row="0" column="2" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <font size="22" style="1"/>
-          <foreground color="-14869472"/>
-          <text value="Game Title"/>
-        </properties>
-      </component>
-      <component id="27f19" class="javax.swing.JButton" binding="editAbilitiesButton">
-        <constraints>
-          <grid row="3" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Edit Abilities"/>
-        </properties>
-      </component>
-      <component id="248a7" class="javax.swing.JButton" binding="editCharacteristicsButton">
-        <constraints>
-          <grid row="4" column="4" row-span="2" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Edit Characteristics"/>
-        </properties>
-      </component>
-      <component id="258b" class="javax.swing.JButton" binding="manageChallengesButton">
-        <constraints>
-          <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Manage Challenges"/>
-        </properties>
-      </component>
-      <component id="4106c" class="javax.swing.JButton" binding="editDefaultCharactersButton">
-        <constraints>
-          <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Edit Default Characters"/>
-        </properties>
-      </component>
-      <component id="56805" class="javax.swing.JButton" binding="editPlayerCharactersButton">
-        <constraints>
-          <grid row="7" column="0" row-span="2" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Edit Player Character"/>
-        </properties>
-      </component>
-      <component id="62d5" class="javax.swing.JButton" binding="viewRankingButton">
-        <constraints>
-          <grid row="2" column="0" row-span="3" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="View Ranking"/>
-        </properties>
-      </component>
-      <component id="c3831" class="javax.swing.JButton" binding="editMinionsButton">
-        <constraints>
-          <grid row="6" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Edit Minions"/>
         </properties>
       </component>
     </children>

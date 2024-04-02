@@ -22,6 +22,7 @@ public class OperatorDashboardScreen extends Screen {
     private JButton editPlayerCharactersButton;
     private JButton viewRankingButton;
     private JButton editMinionsButton;
+    private JButton exitBtn;
 
     private Map<JButton, Class<? extends Screen>> buttonActionMap;
 

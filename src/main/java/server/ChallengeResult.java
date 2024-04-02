@@ -31,14 +31,14 @@ public class ChallengeResult implements JSONable {
         FightCharacter attackingCharacter = createFightCharacterFromCharacter(attackingPlayerCharacter);
         FightCharacter attackedCharacter = createFightCharacterFromCharacter(attackedPlayerCharacter);
 
-        attackerMinionsLeft = attackingPlayerCharacter.getMinionCount();
-        attackedMinionsLeft = attackedPlayerCharacter.getMinionCount();
+        this.attackerMinionsLeft = attackingPlayerCharacter.getMinionCount();
+        this.attackedMinionsLeft = attackedPlayerCharacter.getMinionCount();
 
 
         if(attackedCharacter != null) {
             calculateDuel(attackingCharacter, attackedCharacter);
-            attackerMinionsLeft -= attackingPlayerCharacter.calculateMinionsKilledAfterDamage(attackingCharacter.getReceivedDamage());
-            attackedMinionsLeft -= attackedPlayerCharacter.calculateMinionsKilledAfterDamage(attackedCharacter.getReceivedDamage());
+            this.attackerMinionsLeft -= attackingPlayerCharacter.calculateMinionsKilledAfterDamage(attackingCharacter.getReceivedDamage());
+            this.attackedMinionsLeft -= attackedPlayerCharacter.calculateMinionsKilledAfterDamage(attackedCharacter.getReceivedDamage());
         }
 
         //Quitar oro

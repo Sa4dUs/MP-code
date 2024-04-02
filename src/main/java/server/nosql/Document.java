@@ -132,6 +132,7 @@ public class Document {
                         continue;
 
                     field.setAccessible(true);
+
                     if (fieldType.isPrimitive() || fieldType == String.class)
                     {
                         if (fieldType.equals(Boolean.class) || fieldType.equals(boolean.class))

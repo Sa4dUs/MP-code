@@ -11,11 +11,13 @@ import server.nosql.Schemas.ChallengeResultSchema;
 
 public class ChallengeResult implements JSONable {
     private String id;
-    private final String attackerPlayerId, attackedPlayerId;
-    private final int bet;
+    private String attackerPlayerId, attackedPlayerId;
+    private int bet;
     private int turns;
     private int attackerMinionsLeft, attackedMinionsLeft;
     private boolean winnerAttacking = true;
+
+    public ChallengeResult(){};
 
     public ChallengeResult(Player attackingPlayer, Player attackedPlayer, int bet)
     {

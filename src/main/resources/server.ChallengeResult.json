@@ -1,0 +1,22 @@
+{
+    "ac0976d6-91e5-489d-94d6-e56959c3e020": {
+        "bet": 500,
+        "attackerMinionsLeft": 0,
+        "attackedMinionsLeft": 0,
+        "winnerAttacking": "true",
+        "id": "ac0976d6-91e5-489d-94d6-e56959c3e020",
+        "attackerId": "F90WW",
+        "attackedId": "L60YY",
+        "turns": 4
+    },
+    "1ec875ba-d51c-4e75-b231-024b94623204": {
+        "bet": 50,
+        "attackerMinionsLeft": 0,
+        "attackedMinionsLeft": 0,
+        "winnerAttacking": "true",
+        "id": "1ec875ba-d51c-4e75-b231-024b94623204",
+        "attackerId": "W46AA",
+        "attackedId": "L60YY",
+        "turns": 4
+    }
+}

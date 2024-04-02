@@ -24,16 +24,19 @@
     "F90WW": {
         "nick": "F90WW",
         "password": "1234",
-        "character": "",
+        "character": "5c43c919-09ba-4605-9f17-b33971831b6a",
         "blocked": "false",
         "pending": "false",
         "name": "Shania",
         "pendingDuels": [
             "a7bcaa8b-efb3-46d2-a615-538da689f6f9",
-            "f8d46c21-6ec7-48d0-a6a1-2e97b2a7a70e"
+            "f8d46c21-6ec7-48d0-a6a1-2e97b2a7a70e",
+            "f8d46c21-6ec7-48d0-a6a1-2e97b2a7a70e",
+            "936bc5e1-07a4-4adc-9440-43fd88e07b67",
+            "1b40605e-b94e-4ae3-9580-f30915e71b93"
         ],
         "id": "F90WW",
-        "results": []
+        "results": ["ac0976d6-91e5-489d-94d6-e56959c3e020"]
     },
     "W46AA": {
         "nick": "W46AA",
@@ -42,9 +45,16 @@
         "blocked": "false",
         "pending": "false",
         "name": "Jaime",
-        "pendingDuels": ["a9f4bba6-482e-4401-81f9-03e1cb99b514"],
+        "pendingDuels": [
+            "a9f4bba6-482e-4401-81f9-03e1cb99b514",
+            "b441c63b-236c-4c6e-9e39-cd45077e7ec8"
+        ],
         "id": "W46AA",
+<<<<<<< Updated upstream
         "results": ["a6885e29-8259-4cb4-846b-641f8b2e17ce"]
+=======
+        "results": ["1ec875ba-d51c-4e75-b231-024b94623204"]
+>>>>>>> Stashed changes
     },
     "L60YY": {
         "nick": "L60YY",
@@ -53,8 +63,18 @@
         "blocked": "false",
         "pending": "false",
         "name": "sa4dus",
-        "pendingDuels": ["32c87ce7-db96-49ac-bc32-6c7d80f71698"],
+        "pendingDuels": [
+            "32c87ce7-db96-49ac-bc32-6c7d80f71698",
+            "4f1fdedd-c62f-41d8-a163-a1ec05b1314a"
+        ],
         "id": "L60YY",
+<<<<<<< Updated upstream
         "results": ["a6885e29-8259-4cb4-846b-641f8b2e17ce"]
+=======
+        "results": [
+            "1ec875ba-d51c-4e75-b231-024b94623204",
+            "ac0976d6-91e5-489d-94d6-e56959c3e020"
+        ]
+>>>>>>> Stashed changes
     }
 }

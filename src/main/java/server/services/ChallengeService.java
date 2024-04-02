@@ -225,7 +225,7 @@ public class ChallengeService implements Service {
 
         List<ChallengeRequest> challengeList = Database.findMany(Collection.CHALLENGE_OPERATORS, new Query()).stream().map(e -> (ChallengeRequest) e.deJSONDocument(ChallengeRequest.class)).toList();
 
-        response.addField("list", challengeList);
+        response.addField("data", challengeList);
         response.setOk(true);
         return response;
     }

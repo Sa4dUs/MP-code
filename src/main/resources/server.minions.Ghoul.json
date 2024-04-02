@@ -1,20 +1,20 @@
 {
-    "75be443f-5d92-4a69-a998-1fccb9779e60": {
-        "name": "Kaneki",
-        "health": 2,
-        "dependence": 3,
-        "id": "75be443f-5d92-4a69-a998-1fccb9779e60"
-    },
-    "fc865169-ed93-42b2-839a-69e3f5c4b903": {
-        "name": "Jason",
-        "health": 2,
-        "dependence": 2,
-        "id": "fc865169-ed93-42b2-839a-69e3f5c4b903"
-    },
-    "cce329e1-ec2b-4962-88ab-dbcab03fa5be": {
+    "9b9f832c-1eed-414f-8551-b900643b690e": {
         "name": "Rize",
         "health": 2,
         "dependence": 3,
-        "id": "cce329e1-ec2b-4962-88ab-dbcab03fa5be"
+        "id": "9b9f832c-1eed-414f-8551-b900643b690e"
+    },
+    "c7550229-2bbb-4459-9463-5bc513267fe2": {
+        "name": "Jason",
+        "health": 2,
+        "dependence": 2,
+        "id": "c7550229-2bbb-4459-9463-5bc513267fe2"
+    },
+    "792dcf01-0504-47b5-a052-3b2bb578e3b2": {
+        "name": "Kaneki",
+        "health": 2,
+        "dependence": 3,
+        "id": "792dcf01-0504-47b5-a052-3b2bb578e3b2"
     }
 }

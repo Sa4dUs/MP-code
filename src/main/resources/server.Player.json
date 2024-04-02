@@ -36,7 +36,10 @@
             "1b40605e-b94e-4ae3-9580-f30915e71b93"
         ],
         "id": "F90WW",
-        "results": ["ac0976d6-91e5-489d-94d6-e56959c3e020"]
+        "results": [
+            "ac0976d6-91e5-489d-94d6-e56959c3e020",
+            "333ad68a-39e7-4846-97c1-63da9865642a"
+        ]
     },
     "W46AA": {
         "nick": "W46AA",
@@ -50,11 +53,7 @@
             "b441c63b-236c-4c6e-9e39-cd45077e7ec8"
         ],
         "id": "W46AA",
-<<<<<<< Updated upstream
         "results": ["a6885e29-8259-4cb4-846b-641f8b2e17ce"]
-=======
-        "results": ["1ec875ba-d51c-4e75-b231-024b94623204"]
->>>>>>> Stashed changes
     },
     "L60YY": {
         "nick": "L60YY",
@@ -68,13 +67,10 @@
             "4f1fdedd-c62f-41d8-a163-a1ec05b1314a"
         ],
         "id": "L60YY",
-<<<<<<< Updated upstream
-        "results": ["a6885e29-8259-4cb4-846b-641f8b2e17ce"]
-=======
         "results": [
             "1ec875ba-d51c-4e75-b231-024b94623204",
-            "ac0976d6-91e5-489d-94d6-e56959c3e020"
+            "ac0976d6-91e5-489d-94d6-e56959c3e020",
+            "333ad68a-39e7-4846-97c1-63da9865642a"
         ]
->>>>>>> Stashed changes
     }
 }

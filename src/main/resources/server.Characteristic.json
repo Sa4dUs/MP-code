@@ -1,12 +1,12 @@
 {
-    "bd89cc32-9dd1-494e-85d1-787143355818": {
-        "name": "Debilidad al sol",
-        "id": "bd89cc32-9dd1-494e-85d1-787143355818",
+    "953f8534-0114-4ba2-ac9f-3ba3c40d8d7d": {
+        "name": "Resistencia al fuego",
+        "id": "953f8534-0114-4ba2-ac9f-3ba3c40d8d7d",
         "value": 3
     },
-    "3f02869d-bcd6-4857-ad21-27bb0403fdd2": {
-        "name": "Resistencia al fuego",
-        "id": "3f02869d-bcd6-4857-ad21-27bb0403fdd2",
+    "1bebc150-dc0d-4cef-a369-7203e26b81c5": {
+        "name": "Debilidad al sol",
+        "id": "1bebc150-dc0d-4cef-a369-7203e26b81c5",
         "value": 3
     }
 }

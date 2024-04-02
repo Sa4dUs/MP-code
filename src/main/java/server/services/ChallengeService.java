@@ -143,7 +143,10 @@ public class ChallengeService implements Service {
 
         Database.deleteOne(ChallengeRequest.class.getName(), query);
 
-        return new ResponseBody(true);
+        ResponseBody responseBody = new ResponseBody(true);
+        responseBody.addField("data", challengeResult);
+
+        return responseBody;
     }
 
     public ResponseBody addIdToPlayer(String id, String nick, String property)

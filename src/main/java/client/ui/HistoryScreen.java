@@ -43,7 +43,7 @@ public class HistoryScreen extends Screen {
             return;
         }
 
-        pane.setLayout(new GridLayout(challengeResultList.size(), 3));
+        pane.setLayout(new GridLayout(challengeResultList.size(), 5));
         for (ChallengeResult challenge : challengeResultList) {
             String op = Objects.equals(current, challenge.getAttackerId()) ? challenge.getAttackedPlayerId() : challenge.getAttackerId();
             boolean isWinning = Objects.equals(current, challenge.getAttackerId()) && challenge.isWinnerAttacking();
@@ -58,6 +58,15 @@ public class HistoryScreen extends Screen {
 
             JLabel bet = new JLabel(String.format("%s%d", isWinning ? "+" : "-", challenge.getBet()));
             pane.add(bet);
+
+            JLabel attackerMinionsLeft = new JLabel(Integer.toString(challenge.getAttackerMinionsLeft()));
+            pane.add(attackerMinionsLeft);
+
+            JLabel attackedMinionsLeft = new JLabel(Integer.toString(challenge.getAttackerMinionsLeft()));
+            pane.add(attackedMinionsLeft);
+
+            JLabel turns = new JLabel(Integer.toString(challenge.getTurns()));
+            pane.add(turns);
         }
     }
 

@@ -2,6 +2,7 @@ package client.ui;
 
 import client.ScreenManager;
 import server.items.Ability;
+import server.items.Armor;
 
 import javax.swing.*;
 
@@ -11,19 +12,19 @@ public class EditAbilitiesScreen extends EditItemsScreen<Ability> {
     private JTextField costField;
     private JTextField nameField;
     private JTextField attackField;
-    private JPanel abilitiesPanel;
     private JButton saveButton;
     private JPanel container;
-    private JTextField cost;
-    private JTextField name;
-    private JTextField attack;
-    private JTextField defense;
     private JTextField defenseField;
     private Ability currentItem;
 
     @Override
+    public void start() {
+        super.start(Ability.class, container);
+    }
+
+    @Override
     protected JPanel getContainerPanel() {
-        return abilitiesPanel;
+        return container;
     }
 
     @Override

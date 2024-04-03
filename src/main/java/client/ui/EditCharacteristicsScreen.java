@@ -2,6 +2,7 @@ package client.ui;
 
 import client.ScreenManager;
 import server.Characteristic;
+import server.items.Ability;
 
 import javax.swing.*;
 
@@ -9,17 +10,19 @@ public class EditCharacteristicsScreen extends EditItemsScreen<Characteristic> {
     private JPanel frame;
     private JButton backButton;
     private JTextField nameField;
-    private JPanel characteristicsPanel;
     private JButton saveButton;
-    private JPanel containe;
-    private JTextField name;
-    private JTextField value;
+    private JPanel container;
     private JTextField valueField;
     private Characteristic currentItem;
 
     @Override
+    public void start() {
+        super.start(Characteristic.class, container);
+    }
+
+    @Override
     protected JPanel getContainerPanel() {
-        return characteristicsPanel;
+        return container;
     }
 
     @Override

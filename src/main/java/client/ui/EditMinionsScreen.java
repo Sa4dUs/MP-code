@@ -30,6 +30,7 @@ public class EditMinionsScreen extends Screen {
     private JPanel minions;
     private JButton add;
     private JButton deleteButton;
+    private JComboBox breedComboBox;
     public Minion current;
 
     @Override
@@ -46,8 +47,7 @@ public class EditMinionsScreen extends Screen {
 
         // Add buttons for each minion
         items.forEach(el -> {
-            JButton button = new JButton(el.getName());
-            button.addActionListener(e -> {
+            JButton button = new DefaultButton(el.getName(), e -> {
                 current = el;
                 setPanelData(el);
             });
@@ -114,6 +114,10 @@ public class EditMinionsScreen extends Screen {
             extraLabel.setText("Dependence:");
             extraField.setText(Integer.toString(((Ghoul) item).getDependence()));
         }
+
+        breedComboBox.removeAllItems();
+        breedComboBox.addItem(item.getClass().getSimpleName());
+        breedComboBox.setEnabled(false);
     }
 
     private void createPopup() {
@@ -201,13 +205,13 @@ public class EditMinionsScreen extends Screen {
             request.addField("object", minion);
             Client.request("item/set", request);
 
-            // Add new minion to the container
-            JButton button = new JButton(minion.getName());
             Minion finalMinion = minion;
-            button.addActionListener(ev -> {
+
+            JButton button = new DefaultButton(minion.getName(), ev -> {
                 current = finalMinion;
                 setPanelData(finalMinion);
             });
+
             container.add(button, new GridConstraints());
 
             // Close the popup

@@ -10,18 +10,19 @@ public class EditArmorsScreen extends EditItemsScreen<Armor> {
     private JButton backButton;
     private JTextField nameField;
     private JTextField attackField;
-    private JPanel armorsPanel;
     private JButton saveButton;
-    private JTextField name;
-    private JTextField attack;
     private JPanel container;
-    private JTextField defense;
     private JTextField defenseField;
     private Armor currentItem;
 
     @Override
+    public void start() {
+        super.start(Armor.class, container);
+    }
+
+    @Override
     protected JPanel getContainerPanel() {
-        return armorsPanel;
+        return container;
     }
 
     @Override

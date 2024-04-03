@@ -31,19 +31,12 @@ public class EditPlayerCharactersScreen extends Screen {
     private JPanel container;
     private JButton saveButton;
     private JButton deleteButton;
-    private JPanel minions;
     private JButton minionAdd;
-    private JPanel armors;
     private JButton armorAdd;
-    private JPanel weapons;
     private JButton weaponsAdd;
-    private JPanel abilities;
     private JButton abilitiesAdd;
-    private JPanel specialAbilities;
     private JButton specialAbilitiesAdd;
-    private JPanel weaknesses;
     private JButton resistancesAdd;
-    private JPanel strengths;
     private JButton strengthsAdd;
     private JComboBox<CharacterType> breedComboBox;
     private JPanel armorsPanel;
@@ -109,13 +102,6 @@ public class EditPlayerCharactersScreen extends Screen {
     }
 
     private void setActionListeners() {
-        minionsPanel.add(new JButton("Add Minion"));
-        armorsPanel.add(new JButton("Add Armor"));
-        weaponsPanel.add(new JButton("Add Weapon"));
-        abilitiesPanel.add(new JButton("Add Ability"));
-        specialAbilitiesPanel.add(new JButton("Add Special Ability"));
-        weaknessesPanel.add(new JButton("Add Weakness"));
-        strengthsPanel.add(new JButton("Add Strength"));
     }
 
     private void updateCharacter() {

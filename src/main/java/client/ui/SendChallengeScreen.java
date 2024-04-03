@@ -6,6 +6,7 @@ import client.Session;
 import lib.RequestBody;
 import lib.ResponseBody;
 import server.ChallengeRequest;
+import server.ChallengeResult;
 import server.Player;
 
 import javax.swing.*;
@@ -49,6 +50,17 @@ public class SendChallengeScreen extends Screen {
         }
 
         ChallengeRequest challenge = new ChallengeRequest(Session.getCurrentUser().getId(), challengeNick, challengeGold);
+
+        {
+            RequestBody request = new RequestBody();
+            request.addField("nick", Session.getCurrentUser().getId());
+            ResponseBody response = Client.request("character/get", request);
+
+            if (!response.ok) {
+                showFeedback("Error! No character available.", Color.RED);
+                return;
+            }
+        }
         RequestBody req = new RequestBody();
         req.addField("challenge", challenge);
 
@@ -57,9 +69,10 @@ public class SendChallengeScreen extends Screen {
         clearInputs();
 
         if (!response.ok) {
-            showFeedback("Error sending challenge!", Color.RED);
+            showFeedback("Error sending challenge! Player cannot be selected for a challenge.", Color.RED);
             return;
         }
+
 
         showFeedback("Challenge sent successfully!", Color.GREEN);
     }

@@ -11,7 +11,7 @@ import server.nosql.Schemas.ChallengeResultSchema;
 
 public class ChallengeResult implements JSONable {
     private String id;
-    private String attackerPlayerId, attackedPlayerId;
+    private String attackerId, attackedId;
     private int bet;
     private int turns;
     private int attackerMinionsLeft, attackedMinionsLeft;
@@ -22,8 +22,8 @@ public class ChallengeResult implements JSONable {
     public ChallengeResult(Player attackingPlayer, Player attackedPlayer, int bet)
     {
         this.bet = bet;
-        this.attackerPlayerId = attackingPlayer.getId();
-        this.attackedPlayerId = attackedPlayer.getId();
+        this.attackerId = attackingPlayer.getId();
+        this.attackedId = attackedPlayer.getId();
 
         PlayerCharacter attackingPlayerCharacter = attackingPlayer.getCharacter();
         PlayerCharacter attackedPlayerCharacter = attackedPlayer.getCharacter();
@@ -46,8 +46,8 @@ public class ChallengeResult implements JSONable {
 
     public ChallengeResult(Player attackingPlayer, Player attackedPlayer, int bet, boolean deniedFromOperator)
     {
-        this.attackerPlayerId = attackingPlayer.getId();
-        this.attackedPlayerId = attackedPlayer.getId();
+        this.attackerId = attackingPlayer.getId();
+        this.attackedId = attackedPlayer.getId();
         this.winnerAttacking = !deniedFromOperator;
         this.turns = -1;
         this.bet = bet;
@@ -93,12 +93,12 @@ public class ChallengeResult implements JSONable {
             defender.receiveDamage();
     }
 
-    public String getAttackerPlayerId() {
-        return this.attackerPlayerId;
+    public String getAttackerId() {
+        return this.attackerId;
     }
 
     public String getAttackedPlayerId() {
-        return this.attackedPlayerId;
+        return this.attackedId;
     }
 
     public int getBet() {
@@ -141,8 +141,8 @@ public class ChallengeResult implements JSONable {
         else
             this.id = document.getId();
         document.setProperty("bet", this.bet);
-        document.setProperty("attackerId", this.attackerPlayerId);
-        document.setProperty("attackedId", this.attackedPlayerId);
+        document.setProperty("attackerId", this.attackerId);
+        document.setProperty("attackedId", this.attackedId);
         document.setProperty("turns", this.turns);
         document.setProperty("attackerMinionsLeft", this.attackerMinionsLeft);
         document.setProperty("attackedMinionsLeft", this.attackedMinionsLeft);

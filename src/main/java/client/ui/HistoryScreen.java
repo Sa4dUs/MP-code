@@ -5,7 +5,6 @@ import client.ScreenManager;
 import client.Session;
 import lib.RequestBody;
 import lib.ResponseBody;
-import server.ChallengeRequest;
 import server.ChallengeResult;
 
 import javax.swing.*;
@@ -46,8 +45,8 @@ public class HistoryScreen extends Screen {
 
         pane.setLayout(new GridLayout(challengeResultList.size(), 3));
         for (ChallengeResult challenge : challengeResultList) {
-            String op = Objects.equals(current, challenge.getAttackerPlayerId()) ? challenge.getAttackedPlayerId() : challenge.getAttackerPlayerId();
-            boolean isWinning = Objects.equals(current, challenge.getAttackerPlayerId()) && challenge.isWinnerAttacking();
+            String op = Objects.equals(current, challenge.getAttackerId()) ? challenge.getAttackedPlayerId() : challenge.getAttackerId();
+            boolean isWinning = Objects.equals(current, challenge.getAttackerId()) && challenge.isWinnerAttacking();
 
             JLabel result = new JLabel(
                    isWinning ? "VICTORY" : "DEFEAT"
@@ -77,7 +76,7 @@ public class HistoryScreen extends Screen {
         duelList = (List<ChallengeResult>) response.getField("data");
         if (!Session.isOperator()) {
             duelList = duelList.stream()
-                    .filter(e -> Objects.equals(e.getAttackedPlayerId(), Session.getCurrentUser().getId()) || Objects.equals(e.getAttackerPlayerId(), Session.getCurrentUser().getId()))
+                    .filter(e -> Objects.equals(e.getAttackedPlayerId(), Session.getCurrentUser().getId()) || Objects.equals(e.getAttackerId(), Session.getCurrentUser().getId()))
                     .toList();
         }
 

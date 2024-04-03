@@ -33,7 +33,6 @@ public class EditPlayerCharactersScreen extends Screen {
     private JButton deleteButton;
     private JPanel minions;
     private JButton minionAdd;
-    private JComboBox breed;
     private JPanel armors;
     private JButton armorAdd;
     private JPanel weapons;

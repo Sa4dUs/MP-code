@@ -19,7 +19,7 @@
         "name": "Lamoara",
         "pendingDuels": [],
         "id": "Y95ZZ",
-        "results": []
+        "results": ["1cba0a96-e629-421b-969b-f1a0f32c97f6"]
     },
     "F90WW": {
         "nick": "F90WW",
@@ -33,7 +33,8 @@
             "f8d46c21-6ec7-48d0-a6a1-2e97b2a7a70e",
             "f8d46c21-6ec7-48d0-a6a1-2e97b2a7a70e",
             "936bc5e1-07a4-4adc-9440-43fd88e07b67",
-            "1b40605e-b94e-4ae3-9580-f30915e71b93"
+            "1b40605e-b94e-4ae3-9580-f30915e71b93",
+            "f8d46c21-6ec7-48d0-a6a1-2e97b2a7a70e"
         ],
         "id": "F90WW",
         "results": [
@@ -50,6 +51,7 @@
         "name": "Jaime",
         "pendingDuels": [
             "a9f4bba6-482e-4401-81f9-03e1cb99b514",
+            "b441c63b-236c-4c6e-9e39-cd45077e7ec8",
             "b441c63b-236c-4c6e-9e39-cd45077e7ec8"
         ],
         "id": "W46AA",
@@ -64,13 +66,15 @@
         "name": "sa4dus",
         "pendingDuels": [
             "32c87ce7-db96-49ac-bc32-6c7d80f71698",
-            "4f1fdedd-c62f-41d8-a163-a1ec05b1314a"
+            "4f1fdedd-c62f-41d8-a163-a1ec05b1314a",
+            "a1b41e0e-11aa-45f6-8498-0852ece5cb51"
         ],
         "id": "L60YY",
         "results": [
             "1ec875ba-d51c-4e75-b231-024b94623204",
             "ac0976d6-91e5-489d-94d6-e56959c3e020",
-            "333ad68a-39e7-4846-97c1-63da9865642a"
+            "333ad68a-39e7-4846-97c1-63da9865642a",
+            "1cba0a96-e629-421b-969b-f1a0f32c97f6"
         ]
     }
 }

@@ -9,6 +9,16 @@
         "attackedId": "L60YY",
         "turns": 4
     },
+    "1cba0a96-e629-421b-969b-f1a0f32c97f6": {
+        "bet": 50,
+        "attackerMinionsLeft": 0,
+        "attackedMinionsLeft": 0,
+        "winnerAttacking": "true",
+        "id": "1cba0a96-e629-421b-969b-f1a0f32c97f6",
+        "attackerId": "Y95ZZ",
+        "attackedId": "L60YY",
+        "turns": 4
+    },
     "1ec875ba-d51c-4e75-b231-024b94623204": {
         "bet": 50,
         "attackerMinionsLeft": 0,

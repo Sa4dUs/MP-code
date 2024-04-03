@@ -132,11 +132,23 @@ public class ChallengeService implements Service {
 
         ChallengeResult challengeResult = new ChallengeResult(attackingPlayer, attackedPlayer, bet, false);
         Document resultDoc = challengeResult.getDocument();
+        ChallengeResult result =(ChallengeResult) resultDoc.deJSONDocument(ChallengeResult.class);
 
         Database.insertOne(ChallengeResult.class.getName(), resultDoc);
 
-        addIdToPlayer(resultDoc.getId(), attackingPlayer.getId(), "results");
-        addIdToPlayer(resultDoc.getId(), attackedPlayer.getId(), "results");
+        attackingPlayer.addResult(result);
+        attackedPlayer.addResult(result);
+
+        attackingPlayer.deletePendingChallenge(challenge);
+        attackedPlayer.deletePendingChallenge(challenge);
+
+        bet = result.isWinnerAttacking() ? bet: -result.getBet();
+
+        attackingPlayer.changeGold(bet);
+        attackedPlayer.changeGold(-bet);
+
+        attackingPlayer.getDocument().saveToDatabase(Player.class);
+        attackedPlayer.getDocument().saveToDatabase(Player.class);
 
         Query query = new Query();
         query.addFilter("id", challenge.getId());

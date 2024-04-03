@@ -71,6 +71,8 @@ public class Player extends User {
         this.blocked = blocked;
     }
 
+    public void changeGold(int amount){this.character.setGold(this.character.getGold() + amount);}
+
     @Override
     public Document getDocument() {
         Document document = new Document(new PlayerSchema());

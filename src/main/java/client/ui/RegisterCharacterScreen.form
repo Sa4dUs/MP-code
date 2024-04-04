@@ -147,7 +147,7 @@
                 <properties>
                   <font name="Fira Code" style="3"/>
                   <foreground color="-14013908"/>
-                  <text value="Abilities:"/>
+                  <text value="Ability:"/>
                 </properties>
               </component>
               <component id="8def4" class="javax.swing.JLabel">
@@ -158,19 +158,6 @@
                   <font name="Fira Code" style="3"/>
                   <foreground color="-14013908"/>
                   <text value="Weaknesses:"/>
-                </properties>
-              </component>
-              <component id="a5754" class="javax.swing.JList" binding="abilities">
-                <constraints>
-                  <grid row="3" column="2" row-span="1" col-span="2" vsize-policy="6" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
-                    <preferred-size width="150" height="50"/>
-                  </grid>
-                </constraints>
-                <properties>
-                  <background color="-2"/>
-                  <font name="Inconsolata"/>
-                  <foreground color="-16711423"/>
-                  <model/>
                 </properties>
               </component>
               <component id="b5d68" class="javax.swing.JList" binding="weaknesses">
@@ -253,6 +240,17 @@
                   <font name="Inconsolata"/>
                   <foreground color="-16711423"/>
                   <model/>
+                </properties>
+              </component>
+              <component id="5a3fb" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="3" column="2" row-span="1" col-span="2" vsize-policy="1" hsize-policy="1" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-2"/>
+                  <font name="Inconsolata"/>
+                  <foreground color="-16711423"/>
+                  <text value="Placeholder"/>
                 </properties>
               </component>
             </children>

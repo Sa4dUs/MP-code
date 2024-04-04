@@ -53,7 +53,7 @@ public class EditDefaultCharactersScreen extends Screen {
 
     private List<Armor> armorList = new ArrayList<>();
     private List<Weapon> weaponList = new ArrayList<>();
-    private List<Ability> abilityList = new ArrayList<>();
+    private Ability ability;
     private List<Characteristic> characteristicList = new ArrayList<>();
     private List<Minion> minionList = new ArrayList<>();
     private List<Character> characterList = new ArrayList<>();
@@ -66,6 +66,7 @@ public class EditDefaultCharactersScreen extends Screen {
         breed.setModel(model);
 
         fetchItems();
+        fetchCharacters();
 
         container.setLayout(new GridLayout(characterList.size(), 1));
 
@@ -81,8 +82,8 @@ public class EditDefaultCharactersScreen extends Screen {
         minionAdd.addActionListener(e -> displayPopup("Minion", minionList, minions, current.getMinionList()));
         armorAdd.addActionListener(e -> displayPopup("Armor", armorList, armors, current.getArmorList()));
         weaponsAdd.addActionListener(e -> displayPopup("Weapon", weaponList, weapons, current.getWeaponsList()));
-        abilitiesAdd.addActionListener(e -> displayPopup("Ability", abilityList, abilities, current.getAbilityList()));
-        specialAbilitiesAdd.addActionListener(e -> displayPopup("Special Ability", abilityList, specialAbilities, current.getSpecialAbilityList()));
+        abilitiesAdd.addActionListener(e -> displayPopup("Ability", ability, abilities, current.getAbility()));
+        specialAbilitiesAdd.addActionListener(e -> displayPopup("Special Ability", ability, specialAbilities, current.getSpecialAbility()));
         resistancesAdd.addActionListener(e -> displayPopup("Strength", characteristicList, strengths, current.getResistancesList()));
         strengthsAdd.addActionListener(e -> displayPopup("Weakness", characteristicList, weaknesses, current.getDebilitiesList()));
     }
@@ -111,7 +112,7 @@ public class EditDefaultCharactersScreen extends Screen {
         fetchItemsOfType(Ability.class, abilityList);
         fetchItemsOfType(Characteristic.class, characteristicList);
         fetchMinions();
-        fetchCharacters();
+        //fetchCharacters();
     }
 
     private <T> void fetchItemsOfType(Class<T> clazz, List<T> itemList) {

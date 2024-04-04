@@ -1,4 +1,11 @@
 {
+    "ecc3d475-e677-439c-97cc-25e072aeeca7": {
+        "twoHanded": "false",
+        "defense": 2,
+        "attack": 1,
+        "name": "Nabo gigante",
+        "id": "ecc3d475-e677-439c-97cc-25e072aeeca7"
+    },
     "1084b262-41f9-4033-993c-b3ccff43b6e3": {
         "twoHanded": "true",
         "defense": 3,

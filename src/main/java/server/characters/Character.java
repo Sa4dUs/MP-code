@@ -26,8 +26,7 @@ public class Character implements JSONable {
     //Items
     private List<Weapon> weaponsList = new ArrayList<>();
     private List<Armor> armorList = new ArrayList<>();
-    private List<Ability> abilityList = new ArrayList<>();
-    private List<Ability> specialAbilityList = new ArrayList<>();
+    private Ability ability, specialAbility;
 
     //Minions
     private List<Minion> minionList = new ArrayList<>();
@@ -46,8 +45,8 @@ public class Character implements JSONable {
         this.breed = character.getBreed();
         this.weaponsList = character.getWeaponsList();
         this.armorList = character.getArmorList();
-        this.abilityList = character.getAbilityList();
-        this.specialAbilityList = character.getSpecialAbilityList();
+        this.ability = character.getAbility();
+        this.specialAbility = character.getSpecialAbility();
         this.minionList = character.getMinionList();
         this.debilitiesList = character.getDebilitiesList();
         this.resistancesList = character.getResistancesList();
@@ -141,12 +140,12 @@ public class Character implements JSONable {
         this.armorList.add(armor);
     }
 
-    public List<Ability> getAbilityList() {
-        return abilityList;
+    public Ability getAbility() {
+        return ability;
     }
 
-    public List<Ability> getSpecialAbilityList() {
-        return specialAbilityList;
+    public Ability getSpecialAbility() {
+        return specialAbility;
     }
 
     public List<Minion> getMinionList() {

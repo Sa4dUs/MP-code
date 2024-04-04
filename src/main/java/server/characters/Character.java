@@ -160,11 +160,11 @@ public class Character implements JSONable {
     public void setWeaponsList(List<Weapon> weaponsList) {
         this.weaponsList = weaponsList;
     }
-    public void setAbilityList(List<Ability> abilityList) {
-        this.abilityList = abilityList;
+    public void setAbility(Ability ability) {
+        this.ability = ability;
     }
-    public void setSpecialAbilityList(List<Ability> specialAbilityList) {
-        this.specialAbilityList = specialAbilityList;
+    public void setSpecialAbility(Ability specialAbility) {
+        this.specialAbility = specialAbility;
     }
     public void setResistancesList(List<Characteristic> resistancesList) {
         this.resistancesList = resistancesList;
@@ -194,8 +194,8 @@ public class Character implements JSONable {
         document.setProperty("gold", this.gold);
         document.setProperty("weaponsList", getIdArrayFromArray(weaponsList.toArray(new JSONable[0])));
         document.setProperty("armorList", getIdArrayFromArray(armorList.toArray(new JSONable[0])));
-        document.setProperty("abilityList", getIdArrayFromArray(abilityList.toArray(new JSONable[0])));
-        document.setProperty("specialAbilityList", getIdArrayFromArray(specialAbilityList.toArray(new JSONable[0])));
+        document.setProperty("ability", this.ability.getDocument().getId());
+        document.setProperty("specialAbility", this.specialAbility.getDocument().getId());
         document.setProperty("debilitiesList", getIdArrayFromArray(debilitiesList.toArray(new JSONable[0])));
         document.setProperty("resistancesList", getIdArrayFromArray(resistancesList.toArray(new JSONable[0])));
         document.setProperty("minionList", getIdArrayFromArray(minionList.toArray(new JSONable[0])));

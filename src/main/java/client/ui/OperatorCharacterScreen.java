@@ -24,8 +24,6 @@ public class OperatorCharacterScreen extends Screen {
     private JList weaknesses;
     private JList weapons;
     private JList armors;
-    private JList abilities;
-    private JList specialAbilities;
     private JList minions;
     private JPanel container;
     private JTextField name;

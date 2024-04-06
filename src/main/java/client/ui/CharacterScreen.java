@@ -31,7 +31,6 @@ public class CharacterScreen extends Screen {
     private JList<String> weaponsList;
     private JList<String> armorsList;
     private JList<String> abilitiesList;
-    private JList<String> specialAbilitiesList;
     private JList<String> minionsList;
     private JComboBox<String> armorSelect;
     private JComboBox<String> leftWeaponSelect;

@@ -263,7 +263,7 @@
                     <properties>
                       <font name="Fira Code" style="3"/>
                       <foreground color="-16711423"/>
-                      <text value="Abilities:"/>
+                      <text value="Ability:"/>
                     </properties>
                   </component>
                   <grid id="45095" binding="abilities" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
@@ -298,7 +298,7 @@
                     <properties>
                       <font name="Fira Code" style="3"/>
                       <foreground color="-16711423"/>
-                      <text value="S.Abilities:"/>
+                      <text value="Special Ability:"/>
                     </properties>
                   </component>
                   <grid id="85bb6" binding="specialAbilities" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">

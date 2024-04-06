@@ -3,7 +3,7 @@
   <grid id="27dc6" binding="frame" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="7" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="558" height="686"/>
+      <xy x="20" y="20" width="658" height="686"/>
     </constraints>
     <properties>
       <background color="-15329766"/>
@@ -183,7 +183,7 @@
                 <properties>
                   <font name="Fira Code" style="3"/>
                   <foreground color="-14869472"/>
-                  <text value="Abilities:"/>
+                  <text value="Ability:"/>
                 </properties>
               </component>
               <component id="e1b6c" class="javax.swing.JLabel">
@@ -193,7 +193,7 @@
                 <properties>
                   <font name="Fira Code" style="3"/>
                   <foreground color="-14869472"/>
-                  <text value="Special Abilities:"/>
+                  <text value="Special Ability:"/>
                 </properties>
               </component>
               <component id="6c636" class="javax.swing.JLabel">
@@ -255,30 +255,6 @@
                   <foreground color="-13947600"/>
                 </properties>
               </component>
-              <component id="d577a" class="javax.swing.JList" binding="abilities">
-                <constraints>
-                  <grid row="8" column="3" row-span="1" col-span="3" vsize-policy="6" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
-                    <preferred-size width="150" height="50"/>
-                  </grid>
-                </constraints>
-                <properties>
-                  <background color="-2"/>
-                  <font name="Inconsolata"/>
-                  <foreground color="-13947600"/>
-                </properties>
-              </component>
-              <component id="9382d" class="javax.swing.JList" binding="specialAbilities">
-                <constraints>
-                  <grid row="9" column="3" row-span="1" col-span="3" vsize-policy="6" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
-                    <preferred-size width="150" height="50"/>
-                  </grid>
-                </constraints>
-                <properties>
-                  <background color="-2"/>
-                  <font name="Inconsolata"/>
-                  <foreground color="-13947600"/>
-                </properties>
-              </component>
               <component id="88068" class="javax.swing.JList" binding="minions">
                 <constraints>
                   <grid row="10" column="3" row-span="1" col-span="3" vsize-policy="6" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
@@ -324,6 +300,32 @@
                   <font name="Inconsolata" style="1"/>
                   <foreground color="-1"/>
                   <text value="Delete"/>
+                </properties>
+              </component>
+              <component id="c974d" class="javax.swing.JTextField" binding="breedField">
+                <constraints>
+                  <grid row="8" column="3" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                    <preferred-size width="150" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-1708289"/>
+                  <editable value="false"/>
+                  <font name="Inconsolata"/>
+                  <foreground color="-16711423"/>
+                </properties>
+              </component>
+              <component id="834ea" class="javax.swing.JTextField">
+                <constraints>
+                  <grid row="9" column="3" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                    <preferred-size width="150" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-1708289"/>
+                  <editable value="false"/>
+                  <font name="Inconsolata"/>
+                  <foreground color="-16711423"/>
                 </properties>
               </component>
             </children>

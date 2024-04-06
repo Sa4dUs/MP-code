@@ -18,7 +18,7 @@ class CharacterServiceTest {
         Character character = new Character();
         character.setBreed(CharacterType.Hunter);
         character.setName("Vayne");
-        character.setHealth(3);
+        character.setHealth(1);
         character.setGold(500);
 
         CharacterService service = new CharacterService();
@@ -32,8 +32,8 @@ class CharacterServiceTest {
     public void generatePlayerCharacterTest()
     {
         PlayerCharacter character = new PlayerCharacter();
-        character.setBreed(CharacterType.Hunter);
-        character.setName("Juan");
+        character.setBreed(CharacterType.Vampire);
+        character.setName("Shion");
         character.setHealth(3);
         character.setGold(500);
 

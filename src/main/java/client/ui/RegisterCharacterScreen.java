@@ -26,6 +26,8 @@ public class RegisterCharacterScreen extends Screen {
     private JList<String> armors;
     private JList<String> weapons;
     private JButton submit;
+    private JLabel ability;
+    private JLabel specialAbility;
 
     @Override
     public void start() {
@@ -82,7 +84,8 @@ public class RegisterCharacterScreen extends Screen {
         health.setText(Integer.toString(character.getHealth()));
         gold.setText(Integer.toString(character.getGold()));
 
-        setListData(abilities, character.getAbilityList());
+        ability.setText(character.getAbility().getName());
+        specialAbility.setText(character.getSpecialAbility().getName());
         setListData(weaknesses, character.getDebilitiesList());
         setListData(strengths, character.getResistancesList());
         setListData(minions, character.getMinionList());

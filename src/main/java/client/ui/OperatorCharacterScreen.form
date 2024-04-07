@@ -302,31 +302,17 @@
                   <text value="Delete"/>
                 </properties>
               </component>
-              <component id="c974d" class="javax.swing.JTextField" binding="breedField">
+              <component id="cb99a" class="javax.swing.JComboBox" binding="abilityComboBox">
                 <constraints>
-                  <grid row="8" column="3" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                    <preferred-size width="150" height="-1"/>
-                  </grid>
+                  <grid row="8" column="3" row-span="1" col-span="3" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
-                <properties>
-                  <background color="-1708289"/>
-                  <editable value="false"/>
-                  <font name="Inconsolata"/>
-                  <foreground color="-16711423"/>
-                </properties>
+                <properties/>
               </component>
-              <component id="834ea" class="javax.swing.JTextField">
+              <component id="27a0b" class="javax.swing.JComboBox" binding="specialAbilityComboBox">
                 <constraints>
-                  <grid row="9" column="3" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                    <preferred-size width="150" height="-1"/>
-                  </grid>
+                  <grid row="9" column="3" row-span="1" col-span="3" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
-                <properties>
-                  <background color="-1708289"/>
-                  <editable value="false"/>
-                  <font name="Inconsolata"/>
-                  <foreground color="-16711423"/>
-                </properties>
+                <properties/>
               </component>
             </children>
           </grid>

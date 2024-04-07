@@ -53,7 +53,7 @@
             </properties>
             <border type="none"/>
             <children>
-              <grid id="2525" layout-manager="GridLayoutManager" row-count="18" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+              <grid id="2525" layout-manager="GridLayoutManager" row-count="16" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                 <margin top="0" left="0" bottom="0" right="0"/>
                 <constraints>
                   <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
@@ -245,34 +245,9 @@
                       <text value="Ability:"/>
                     </properties>
                   </component>
-                  <grid id="8885" binding="abilitiesPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                    <margin top="0" left="0" bottom="0" right="0"/>
-                    <constraints>
-                      <grid row="10" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <background color="-2"/>
-                      <font name="Inconsolata"/>
-                      <foreground color="-16711423"/>
-                    </properties>
-                    <border type="none"/>
-                    <children/>
-                  </grid>
-                  <component id="57558" class="javax.swing.JButton" binding="abilitiesAdd">
-                    <constraints>
-                      <grid row="11" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <background color="-8430864"/>
-                      <borderPainted value="false"/>
-                      <font name="Inconsolata" size="16" style="1"/>
-                      <foreground color="-2"/>
-                      <text value="+"/>
-                    </properties>
-                  </component>
                   <component id="d3e39" class="javax.swing.JLabel">
                     <constraints>
-                      <grid row="12" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="1" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                      <grid row="11" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="1" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
                       <font name="Fira Code" style="3"/>
@@ -280,7 +255,17 @@
                       <text value="Special Ability:"/>
                     </properties>
                   </component>
-                  <grid id="d7df7" binding="specialAbilitiesPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                  <component id="a2bbc" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="12" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="1" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="Fira Code" style="3"/>
+                      <foreground color="-14013908"/>
+                      <text value="Weaknesses:"/>
+                    </properties>
+                  </component>
+                  <grid id="2bf66" binding="weaknessesPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                     <margin top="0" left="0" bottom="0" right="0"/>
                     <constraints>
                       <grid row="12" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -293,7 +278,7 @@
                     <border type="none"/>
                     <children/>
                   </grid>
-                  <component id="12ded" class="javax.swing.JButton" binding="specialAbilitiesAdd">
+                  <component id="d63a3" class="javax.swing.JButton" binding="resistancesAdd">
                     <constraints>
                       <grid row="13" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                     </constraints>
@@ -305,17 +290,17 @@
                       <text value="+"/>
                     </properties>
                   </component>
-                  <component id="a2bbc" class="javax.swing.JLabel">
+                  <component id="e8582" class="javax.swing.JLabel">
                     <constraints>
                       <grid row="14" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="1" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
                       <font name="Fira Code" style="3"/>
                       <foreground color="-14013908"/>
-                      <text value="Weaknesses:"/>
+                      <text value="Strengths:"/>
                     </properties>
                   </component>
-                  <grid id="2bf66" binding="weaknessesPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                  <grid id="44b1d" binding="strengthsPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                     <margin top="0" left="0" bottom="0" right="0"/>
                     <constraints>
                       <grid row="14" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -328,44 +313,9 @@
                     <border type="none"/>
                     <children/>
                   </grid>
-                  <component id="d63a3" class="javax.swing.JButton" binding="resistancesAdd">
-                    <constraints>
-                      <grid row="15" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <background color="-8430864"/>
-                      <borderPainted value="false"/>
-                      <font name="Inconsolata" size="16" style="1"/>
-                      <foreground color="-2"/>
-                      <text value="+"/>
-                    </properties>
-                  </component>
-                  <component id="e8582" class="javax.swing.JLabel">
-                    <constraints>
-                      <grid row="16" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="1" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <font name="Fira Code" style="3"/>
-                      <foreground color="-14013908"/>
-                      <text value="Strengths:"/>
-                    </properties>
-                  </component>
-                  <grid id="44b1d" binding="strengthsPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                    <margin top="0" left="0" bottom="0" right="0"/>
-                    <constraints>
-                      <grid row="16" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <background color="-2"/>
-                      <font name="Inconsolata"/>
-                      <foreground color="-16711423"/>
-                    </properties>
-                    <border type="none"/>
-                    <children/>
-                  </grid>
                   <component id="b89e9" class="javax.swing.JButton" binding="strengthsAdd">
                     <constraints>
-                      <grid row="17" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                      <grid row="15" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
                       <background color="-8430864"/>
@@ -394,6 +344,18 @@
                       <foreground color="-14013908"/>
                       <text value="Health:"/>
                     </properties>
+                  </component>
+                  <component id="6133d" class="javax.swing.JComboBox" binding="abilityField">
+                    <constraints>
+                      <grid row="10" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="ac7e0" class="javax.swing.JComboBox" binding="specialAbilityField">
+                    <constraints>
+                      <grid row="11" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties/>
                   </component>
                 </children>
               </grid>

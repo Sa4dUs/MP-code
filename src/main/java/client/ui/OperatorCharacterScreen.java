@@ -5,12 +5,16 @@ import client.ScreenManager;
 import lib.RequestBody;
 import lib.ResponseBody;
 import server.characters.Character;
+import server.characters.CharacterType;
+import server.items.Ability;
 
 import javax.swing.*;
 import java.util.List;
+import java.util.Vector;
 import java.util.stream.Stream;
 
 public class OperatorCharacterScreen extends Screen {
+    private List<Ability> abilityList;
     private JTextField nameField;
     private JButton deleteButton;
     private JButton exitButton;
@@ -27,6 +31,8 @@ public class OperatorCharacterScreen extends Screen {
     private JList minions;
     private JPanel container;
     private JTextField name;
+    private JComboBox<Ability> abilityComboBox;
+    private JComboBox<Ability> specialAbilityComboBox;
     private JList<String> strengthsList;
     private JList<String> weaknessesList;
     private JList<String> weaponsList;
@@ -43,10 +49,14 @@ public class OperatorCharacterScreen extends Screen {
     public OperatorCharacterScreen() {
         initializeComponents();
         loadCharacterButtons();
+        fetchItemsOfType(Ability.class, abilityList);
     }
 
     private void initializeComponents() {
         exitButton.addActionListener(e -> ScreenManager.goBack());
+
+        abilityComboBox.setModel(new DefaultComboBoxModel<Ability>((Vector<Ability>) abilityList));
+        abilityComboBox.setModel(new DefaultComboBoxModel<Ability>((Vector<Ability>) abilityList));
     }
 
     private void loadCharacterButtons() {
@@ -72,12 +82,19 @@ public class OperatorCharacterScreen extends Screen {
         goldField.setText(String.valueOf(character.getGold()));
         breedField.setText(String.valueOf(character.getBreed()));
 
-        setListData(abilitiesList, character.getAbilityList());
+        setListData(abilitiesList, abilityList);
         setListData(weaknessesList, character.getDebilitiesList());
         setListData(strengthsList, character.getResistancesList());
         setListData(minionsList, character.getMinionList());
         setListData(weaponsList, character.getWeaponsList());
         setListData(armorsList, character.getArmorList());
+    }
+
+    private <T> void fetchItemsOfType(Class<T> clazz, List<T> itemList) {
+        RequestBody request = new RequestBody();
+        request.addField("clazz", clazz);
+        ResponseBody response = Client.request("item/getAll", request);
+        itemList.addAll((List<T>) response.getField("data"));
     }
 
     private void setListData(JList<String> list, List<? extends Object> dataList) {

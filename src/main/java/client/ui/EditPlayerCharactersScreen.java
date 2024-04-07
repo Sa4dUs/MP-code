@@ -15,10 +15,9 @@ import server.minions.Minion;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 
 public class EditPlayerCharactersScreen extends Screen {
     private JPanel frame;
@@ -34,8 +33,6 @@ public class EditPlayerCharactersScreen extends Screen {
     private JButton minionAdd;
     private JButton armorAdd;
     private JButton weaponsAdd;
-    private JButton abilitiesAdd;
-    private JButton specialAbilitiesAdd;
     private JButton resistancesAdd;
     private JButton strengthsAdd;
     private JComboBox<CharacterType> breedComboBox;
@@ -45,6 +42,8 @@ public class EditPlayerCharactersScreen extends Screen {
     private JPanel specialAbilitiesPanel;
     private JPanel weaknessesPanel;
     private JPanel strengthsPanel;
+    private JComboBox<Ability> abilityField;
+    private JComboBox<Ability> specialAbilityField;
 
     private PlayerCharacter current;
     private List<Armor> armorList = new ArrayList<>();
@@ -67,10 +66,22 @@ public class EditPlayerCharactersScreen extends Screen {
         backButton.addActionListener(e -> ScreenManager.goBack());
         saveButton.addActionListener(e -> updateCharacter());
         deleteButton.addActionListener(e -> deleteCharacter());
+        abilityField.addActionListener(e -> updateAbility(abilityField));
+        specialAbilityField.addActionListener(e -> updateAbility(specialAbilityField));
+    }
+
+    private void updateAbility(JComboBox<Ability> selection) {
+        current.setAbility((Ability) selection.getSelectedItem());
+    }
+
+    private void updateSpecialAbility(JComboBox<Ability> selection) {
+        current.setSpecialAbility((Ability) selection.getSelectedItem());
     }
 
     private void initializeComboBoxes() {
         breedComboBox.setModel(new DefaultComboBoxModel<>(CharacterType.values()));
+        abilityField.setModel(new DefaultComboBoxModel<Ability>((Vector<Ability>) abilityList));
+        specialAbilityField.setModel(new DefaultComboBoxModel<Ability>((Vector<Ability>) abilityList));
     }
 
     private void fetchItems() {
@@ -114,6 +125,15 @@ public class EditPlayerCharactersScreen extends Screen {
         // TODO: Implement delete functionality
     }
 
+    private <T> T findItemInList(String itemName, List<T> itemList) {
+        for (T item : itemList) {
+            if (item.toString().equals(itemName)) {
+                return item;
+            }
+        }
+        return null;
+    }
+
     public void setPanelData(PlayerCharacter character) {
         name.setText(character.getName());
         health.setText(Integer.toString(character.getHealth()));
@@ -122,8 +142,8 @@ public class EditPlayerCharactersScreen extends Screen {
         populateItemList(minionsPanel, character.getMinionList());
         populateItemList(armorsPanel, character.getArmorList());
         populateItemList(weaponsPanel, character.getWeaponsList());
-        populateItemList(abilitiesPanel, character.getAbilityList());
-        populateItemList(specialAbilitiesPanel, character.getSpecialAbilityList());
+        populateItemList(abilitiesPanel, abilityList);
+        populateItemList(specialAbilitiesPanel, abilityList);
         populateItemList(weaknessesPanel, character.getDebilitiesList());
         populateItemList(strengthsPanel, character.getResistancesList());
     }

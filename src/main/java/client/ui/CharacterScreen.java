@@ -5,17 +5,10 @@ import client.ScreenManager;
 import client.Session;
 import lib.RequestBody;
 import lib.ResponseBody;
-import server.Characteristic;
-import server.characters.CharacterType;
 import server.characters.PlayerCharacter;
-import server.items.Ability;
-import server.items.Armor;
 import server.items.Weapon;
-import server.minions.Minion;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.List;
 
 public class CharacterScreen extends Screen {
@@ -34,6 +27,8 @@ public class CharacterScreen extends Screen {
     private JList<String> minionsList;
     private JComboBox<String> armorSelect;
     private JComboBox<String> leftWeaponSelect;
+    private JTextField abilityField;
+    private JTextField specialAbilityField;
     private PlayerCharacter character;
 
     @Override
@@ -65,8 +60,9 @@ public class CharacterScreen extends Screen {
         healthField.setText(Integer.toString(character.getHealth()));
         goldField.setText(Integer.toString(character.getGold()));
         breedField.setText(character.getBreed().toString());
+        abilityField.setText(character.getAbility().toString());
+        specialAbilityField.setText(character.getSpecialAbility().toString());
 
-        populateListFromModel(abilitiesList, character.getAbilityList());
         populateListFromModel(weaknessesList, character.getDebilitiesList());
         populateListFromModel(strengthsList, character.getResistancesList());
         populateListFromModel(minionsList, character.getMinionList());

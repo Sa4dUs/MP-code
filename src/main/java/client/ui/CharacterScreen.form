@@ -89,7 +89,7 @@
                     </constraints>
                     <properties>
                       <background color="-1708289"/>
-                      <editable value="false"/>
+                      <editable value="true"/>
                       <font name="Inconsolata"/>
                       <foreground color="-16711423"/>
                     </properties>
@@ -123,7 +123,7 @@
                     </constraints>
                     <properties>
                       <background color="-1708289"/>
-                      <editable value="false"/>
+                      <editable value="true"/>
                       <font name="Inconsolata"/>
                       <foreground color="-16711423"/>
                     </properties>
@@ -147,7 +147,7 @@
                     </constraints>
                     <properties>
                       <background color="-1708289"/>
-                      <editable value="false"/>
+                      <editable value="true"/>
                       <font name="Inconsolata"/>
                       <foreground color="-16711423"/>
                     </properties>
@@ -171,7 +171,7 @@
                     </constraints>
                     <properties>
                       <background color="-1708289"/>
-                      <editable value="false"/>
+                      <editable value="true"/>
                       <font name="Inconsolata"/>
                       <foreground color="-16711423"/>
                     </properties>
@@ -277,7 +277,7 @@
                       <foreground color="-16711423"/>
                     </properties>
                   </component>
-                  <component id="8ed7f" class="javax.swing.JTextField">
+                  <component id="8ed7f" class="javax.swing.JTextField" binding="abilityField">
                     <constraints>
                       <grid row="8" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
@@ -285,12 +285,12 @@
                     </constraints>
                     <properties>
                       <background color="-1708289"/>
-                      <editable value="false"/>
+                      <editable value="true"/>
                       <font name="Inconsolata"/>
                       <foreground color="-16711423"/>
                     </properties>
                   </component>
-                  <component id="f64d2" class="javax.swing.JTextField">
+                  <component id="f64d2" class="javax.swing.JTextField" binding="specialAbilityField">
                     <constraints>
                       <grid row="9" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
@@ -298,7 +298,7 @@
                     </constraints>
                     <properties>
                       <background color="-1708289"/>
-                      <editable value="false"/>
+                      <editable value="true"/>
                       <font name="Inconsolata"/>
                       <foreground color="-16711423"/>
                     </properties>

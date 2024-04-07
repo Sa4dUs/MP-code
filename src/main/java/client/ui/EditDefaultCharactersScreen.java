@@ -48,6 +48,8 @@ public class EditDefaultCharactersScreen extends Screen {
     private JButton resistancesAdd;
     private JPanel strengths;
     private JButton strengthsAdd;
+    private JComboBox<Ability> abilityComboBox;
+    private JComboBox<Ability> specialAbilityComboBox;
 
     private Character current;
 
@@ -57,6 +59,7 @@ public class EditDefaultCharactersScreen extends Screen {
     private List<Characteristic> characteristicList = new ArrayList<>();
     private List<Minion> minionList = new ArrayList<>();
     private List<Character> characterList = new ArrayList<>();
+    private List<Ability> abilityList = new ArrayList<>();
 
     @Override
     public void start() {
@@ -82,8 +85,6 @@ public class EditDefaultCharactersScreen extends Screen {
         minionAdd.addActionListener(e -> displayPopup("Minion", minionList, minions, current.getMinionList()));
         armorAdd.addActionListener(e -> displayPopup("Armor", armorList, armors, current.getArmorList()));
         weaponsAdd.addActionListener(e -> displayPopup("Weapon", weaponList, weapons, current.getWeaponsList()));
-        abilitiesAdd.addActionListener(e -> displayPopup("Ability", ability, abilities, current.getAbility()));
-        specialAbilitiesAdd.addActionListener(e -> displayPopup("Special Ability", ability, specialAbilities, current.getSpecialAbility()));
         resistancesAdd.addActionListener(e -> displayPopup("Strength", characteristicList, strengths, current.getResistancesList()));
         strengthsAdd.addActionListener(e -> displayPopup("Weakness", characteristicList, weaknesses, current.getDebilitiesList()));
     }
@@ -104,6 +105,17 @@ public class EditDefaultCharactersScreen extends Screen {
                 // TODO!
             }
         });
+
+        abilityComboBox.addActionListener(e -> updateAbility(abilityComboBox));
+        specialAbilityComboBox.addActionListener(e -> updateAbility(specialAbilityComboBox));
+    }
+
+    private void updateAbility(JComboBox<Ability> selection) {
+        current.setAbility((Ability) selection.getSelectedItem());
+    }
+
+    private void updateSpecialAbility(JComboBox<Ability> selection) {
+        current.setSpecialAbility((Ability) selection.getSelectedItem());
     }
 
     private void fetchItems() {
@@ -276,52 +288,6 @@ public class EditDefaultCharactersScreen extends Screen {
 
             weapons.add(label);
             weapons.add(button);
-        });
-
-        abilities.setLayout(new GridLayout(item.getAbilityList().size(), 2));
-        item.getAbilityList().forEach(element -> {
-            Label label = new Label();
-            label.setText(element.getName());
-
-            Button button = new Button();
-            button.setLabel("-");
-            button.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    List<Ability> list = current.getAbilityList();
-                    list.remove(element);
-                    current.setAbilityList(list);
-
-                    abilities.remove(label);
-                    abilities.remove(button);
-                }
-            });
-
-            abilities.add(label);
-            abilities.add(button);
-        });
-
-        specialAbilities.setLayout(new GridLayout(item.getSpecialAbilityList().size(), 2));
-        item.getSpecialAbilityList().forEach(element -> {
-            Label label = new Label();
-            label.setText(element.getName());
-
-            Button button = new Button();
-            button.setLabel("-");
-            button.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    List<Ability> list = current.getSpecialAbilityList();
-                    list.remove(element);
-                    current.setSpecialAbilityList(list);
-
-                    specialAbilities.remove(label);
-                    specialAbilities.remove(button);
-                }
-            });
-
-            specialAbilities.add(label);
-            specialAbilities.add(button);
         });
 
         weaknesses.setLayout(new GridLayout(item.getDebilitiesList().size(), 2));

@@ -10,11 +10,5 @@
         "attack": 1,
         "name": "Warmog",
         "id": "24d223be-a6a4-44ac-953e-7d68c1dd6971"
-    },
-    "bb9b6f75-d73b-44c1-92bf-e7aeb47690e3": {
-        "defense": 3,
-        "attack": 1,
-        "name": "Coraza impenetrable",
-        "id": "bb9b6f75-d73b-44c1-92bf-e7aeb47690e3"
     }
 }

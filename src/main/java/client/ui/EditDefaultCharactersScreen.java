@@ -106,7 +106,7 @@ public class EditDefaultCharactersScreen extends Screen {
         });
 
         abilityComboBox.addActionListener(e -> updateAbility(abilityComboBox));
-        specialAbilityComboBox.addActionListener(e -> updateAbility(specialAbilityComboBox));
+        specialAbilityComboBox.addActionListener(e -> updateSpecialAbility(specialAbilityComboBox));
     }
 
     private void updateAbility(JComboBox<Ability> selection) {
@@ -123,7 +123,6 @@ public class EditDefaultCharactersScreen extends Screen {
         fetchItemsOfType(Ability.class, abilityList);
         fetchItemsOfType(Characteristic.class, characteristicList);
         fetchMinions();
-        //fetchCharacters();
     }
 
     private <T> void fetchItemsOfType(Class<T> clazz, List<T> itemList) {

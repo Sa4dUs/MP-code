@@ -41,8 +41,7 @@ public class RegisterCharacterScreen extends Screen {
         List<Character> defaultCharacters = (List<Character>) response.getField("characterList");
 
         for (Character character : defaultCharacters) {
-            JButton button = new JButton(character.getName());
-            button.addActionListener(e -> setPanelData(character));
+            JButton button = new DefaultButton(character.getName(), e -> setPanelData(character));
             container.add(button);
         }
     }
@@ -68,7 +67,6 @@ public class RegisterCharacterScreen extends Screen {
         setCharacterRequest.addField("character", playerCharacter);
         ResponseBody response = Client.request("character/setCharacterOfPlayer", setCharacterRequest);
 
-        // TODO: Add visual feedback
         if (response.ok) {
             ScreenManager.render(PlayerDashboardScreen.class);
         }

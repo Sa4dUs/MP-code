@@ -2,6 +2,7 @@ package client.ui;
 
 import client.Client;
 import client.ScreenManager;
+import com.intellij.uiDesigner.core.GridConstraints;
 import lib.RequestBody;
 import lib.ResponseBody;
 
@@ -23,7 +24,7 @@ public abstract class EditItemsScreen<T> extends Screen {
 
         items.forEach(item -> {
             JButton button = new DefaultButton(getItemName(item), e -> setPanelData(item));
-            container.add(button);
+            container.add(button, new GridConstraints());
         });
 
         container.updateUI();
@@ -51,7 +52,6 @@ public abstract class EditItemsScreen<T> extends Screen {
         ResponseBody response = Client.request("item/set", request);
 
         if (!response.ok) {
-            // Handle error
             System.out.println("Failed to save item");
         }
     }

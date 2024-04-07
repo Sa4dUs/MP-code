@@ -120,19 +120,6 @@
                       <text value="Minions:"/>
                     </properties>
                   </component>
-                  <grid id="5b92f" binding="minionsPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                    <margin top="0" left="0" bottom="0" right="0"/>
-                    <constraints>
-                      <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <background color="-2"/>
-                      <font name="Inconsolata"/>
-                      <foreground color="-16711423"/>
-                    </properties>
-                    <border type="none"/>
-                    <children/>
-                  </grid>
                   <component id="f70d3" class="javax.swing.JButton" binding="minionAdd">
                     <constraints>
                       <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
@@ -252,6 +239,7 @@
                     <properties>
                       <font name="Fira Code" style="3"/>
                       <foreground color="-14013908"/>
+                      <labelFor value="ac7e0"/>
                       <text value="Special Ability:"/>
                     </properties>
                   </component>
@@ -325,7 +313,7 @@
                       <text value="+"/>
                     </properties>
                   </component>
-                  <component id="8b82a" class="javax.swing.JLabel" binding="extraLabel">
+                  <component id="8b82a" class="javax.swing.JLabel">
                     <constraints>
                       <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="1" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
@@ -357,6 +345,19 @@
                     </constraints>
                     <properties/>
                   </component>
+                  <grid id="cf329" binding="minionsPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                    <margin top="0" left="0" bottom="0" right="0"/>
+                    <constraints>
+                      <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <background color="-2"/>
+                      <font name="Inconsolata"/>
+                      <foreground color="-16711423"/>
+                    </properties>
+                    <border type="none"/>
+                    <children/>
+                  </grid>
                 </children>
               </grid>
               <grid id="3096a" binding="container" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
@@ -370,7 +371,7 @@
                   <background color="-2"/>
                   <foreground color="-16711423"/>
                 </properties>
-                <border type="line" title="Select Your Special Ability" title-justification="2" title-position="1">
+                <border type="line" title="Select a Player Character" title-justification="2" title-position="1">
                   <font name="Fira Code" size="14" style="1"/>
                   <title-color color="-8430864"/>
                   <color color="-13158598"/>

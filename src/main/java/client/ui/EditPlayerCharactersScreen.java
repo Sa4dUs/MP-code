@@ -6,6 +6,7 @@ import com.intellij.uiDesigner.core.GridConstraints;
 import lib.RequestBody;
 import lib.ResponseBody;
 import server.Characteristic;
+import server.Player;
 import server.characters.PlayerCharacter;
 import server.characters.CharacterType;
 import server.items.Ability;
@@ -19,15 +20,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
-public class EditPlayerCharactersScreen extends Screen {
+public class EditPlayerCharactersScreen extends EditItemsScreen<PlayerCharacter> {
     private JPanel frame;
     private JButton backButton;
+    private JPanel container;
     private JTextField name;
     private JTextField health;
-    private JLabel extraLabel;
     private JTextField gold;
     private JPanel minionsPanel;
-    private JPanel container;
     private JButton saveButton;
     private JButton deleteButton;
     private JButton minionAdd;
@@ -55,27 +55,20 @@ public class EditPlayerCharactersScreen extends Screen {
 
     @Override
     public void start() {
-        super.start();
-        initializeComboBoxes();
+        super.start(PlayerCharacter.class, this.getContainerPanel());
         fetchItems();
-        populateCharacterButtons();
+        initializeComboBoxes();
         setActionListeners();
     }
 
-    public EditPlayerCharactersScreen() {
-        backButton.addActionListener(e -> ScreenManager.goBack());
-        saveButton.addActionListener(e -> updateCharacter());
-        deleteButton.addActionListener(e -> deleteCharacter());
-        abilityField.addActionListener(e -> updateAbility(abilityField));
-        specialAbilityField.addActionListener(e -> updateAbility(specialAbilityField));
-    }
+    private void fetchItems() {
+        characterList = this.fetchItems(PlayerCharacter.class);
 
-    private void updateAbility(JComboBox<Ability> selection) {
-        current.setAbility((Ability) selection.getSelectedItem());
-    }
-
-    private void updateSpecialAbility(JComboBox<Ability> selection) {
-        current.setSpecialAbility((Ability) selection.getSelectedItem());
+        fetchItemsOfType(Armor.class, armorList);
+        fetchItemsOfType(Weapon.class, weaponList);
+        fetchItemsOfType(Ability.class, abilityList);
+        fetchItemsOfType(Characteristic.class, characteristicList);
+        fetchItemsOfType(Minion.class, minionList);
     }
 
     private void initializeComboBoxes() {
@@ -84,14 +77,6 @@ public class EditPlayerCharactersScreen extends Screen {
         specialAbilityField.setModel(new DefaultComboBoxModel<Ability>(abilityList.toArray(Ability[]::new)));
     }
 
-    private void fetchItems() {
-        fetchItemsOfType(Armor.class, armorList);
-        fetchItemsOfType(Weapon.class, weaponList);
-        fetchItemsOfType(Ability.class, abilityList);
-        fetchItemsOfType(Characteristic.class, characteristicList);
-        fetchItemsOfType(Minion.class, minionList);
-        fetchItemsOfType(PlayerCharacter.class, characterList);
-    }
 
     private <T> void fetchItemsOfType(Class<T> clazz, List<T> itemList) {
         RequestBody request = new RequestBody();
@@ -100,51 +85,12 @@ public class EditPlayerCharactersScreen extends Screen {
         itemList.addAll((List<T>) response.getField("data"));
     }
 
-    private void populateCharacterButtons() {
-        container.setLayout(new GridLayout(characterList.size(), 1));
-        characterList.forEach(character -> {
-            JButton button = new DefaultButton(character.getName(), e -> {
-                current = character;
-                setPanelData(character);
-            });
-            container.add(button, new GridConstraints());
-        });
-    }
-
     private void setActionListeners() {
-    }
-
-    private void updateCharacter() {
-        RequestBody request = new RequestBody();
-        request.addField("character", current);
-        Client.request("character/updateCharacter", request);
-    }
-
-    private void deleteCharacter() {
-        // TODO: Implement delete functionality
-    }
-
-    private <T> T findItemInList(String itemName, List<T> itemList) {
-        for (T item : itemList) {
-            if (item.toString().equals(itemName)) {
-                return item;
-            }
-        }
-        return null;
-    }
-
-    public void setPanelData(PlayerCharacter character) {
-        name.setText(character.getName());
-        health.setText(Integer.toString(character.getHealth()));
-        gold.setText(Integer.toString(character.getGold()));
-        breedComboBox.setSelectedItem(character.getBreed());
-        populateItemList(minionsPanel, character.getMinionList());
-        populateItemList(armorsPanel, character.getArmorList());
-        populateItemList(weaponsPanel, character.getWeaponsList());
-        abilityField.setSelectedItem(current.getAbility());
-        specialAbilityField.setSelectedItem(current.getAbility());
-        populateItemList(weaknessesPanel, character.getDebilitiesList());
-        populateItemList(strengthsPanel, character.getResistancesList());
+        backButton.addActionListener(e -> ScreenManager.goBack());
+        saveButton.addActionListener(e -> saveItem(current));
+        deleteButton.addActionListener(e -> deleteItem(current));
+        abilityField.addActionListener(e -> updateAbility(abilityField));
+        specialAbilityField.addActionListener(e -> updateSpecialAbility(specialAbilityField));
     }
 
     private void populateItemList(JPanel panel, List<? extends Object> itemList) {
@@ -159,13 +105,46 @@ public class EditPlayerCharactersScreen extends Screen {
                 panel.revalidate();
                 panel.repaint();
             });
-            panel.add(label);
-            panel.add(removeButton);
+            panel.add(label, new GridConstraints());
+            panel.add(removeButton, new GridConstraints());
         });
+    }
+
+    private void updateAbility(JComboBox<Ability> selection) {
+        current.setAbility((Ability) selection.getSelectedItem());
+    }
+
+    private void updateSpecialAbility(JComboBox<Ability> selection) {
+        current.setSpecialAbility((Ability) selection.getSelectedItem());
     }
 
     @Override
     public Container getPanel() {
         return this.frame;
+    }
+
+    @Override
+    protected JPanel getContainerPanel() {
+        return this.container;
+    }
+
+    @Override
+    protected String getItemName(PlayerCharacter character) {
+        return character.getName();
+    }
+
+    @Override
+    protected void setPanelData(PlayerCharacter character) {
+        name.setText(character.getName());
+        health.setText(Integer.toString(character.getHealth()));
+        gold.setText(Integer.toString(character.getGold()));
+        breedComboBox.setSelectedItem(character.getBreed());
+        populateItemList(minionsPanel, character.getMinionList());
+        populateItemList(armorsPanel, character.getArmorList());
+        populateItemList(weaponsPanel, character.getWeaponsList());
+        abilityField.setSelectedItem(character.getAbility());
+        specialAbilityField.setSelectedItem(character.getAbility());
+        populateItemList(weaknessesPanel, character.getDebilitiesList());
+        populateItemList(strengthsPanel, character.getResistancesList());
     }
 }

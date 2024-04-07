@@ -41,4 +41,12 @@ public class ItemService implements Service{
         document.saveToDatabase(object.getClass());
         return new ResponseBody(true);
     }
+
+    public ResponseBody deleteItem(JSONable item) {
+        Query query = new Query();
+        query.addFilter("id", item.getDocument().getId());
+
+        Database.deleteMany(item.getClass().getName(), query);
+        return new ResponseBody(true);
+    }
 }

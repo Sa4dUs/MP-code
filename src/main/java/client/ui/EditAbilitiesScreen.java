@@ -15,8 +15,8 @@ public class EditAbilitiesScreen extends EditItemsScreen<Ability> {
     private JButton saveButton;
     private JPanel container;
     private JTextField defenseField;
+    private JButton deleteButton;
     private Ability currentItem;
-
     @Override
     public void start() {
         super.start(Ability.class, container);
@@ -43,8 +43,8 @@ public class EditAbilitiesScreen extends EditItemsScreen<Ability> {
 
     public EditAbilitiesScreen() {
         backButton.addActionListener(e -> ScreenManager.goBack());
-
         saveButton.addActionListener(e -> saveItem());
+        deleteButton.addActionListener(e -> deleteItem(currentItem));
     }
 
     private void saveItem() {

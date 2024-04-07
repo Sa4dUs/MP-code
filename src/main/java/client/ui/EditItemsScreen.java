@@ -56,4 +56,10 @@ public abstract class EditItemsScreen<T> extends Screen {
         }
     }
 
+    protected void deleteItem(T item) {
+        RequestBody request = new RequestBody();
+        request.addField("item", item);
+
+        ResponseBody response = Client.request("item/delete", request);
+    }
 }

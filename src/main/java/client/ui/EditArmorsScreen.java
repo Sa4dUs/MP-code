@@ -13,6 +13,7 @@ public class EditArmorsScreen extends EditItemsScreen<Armor> {
     private JButton saveButton;
     private JPanel container;
     private JTextField defenseField;
+    private JButton deleteButton;
     private Armor currentItem;
 
     @Override
@@ -40,8 +41,8 @@ public class EditArmorsScreen extends EditItemsScreen<Armor> {
 
     public EditArmorsScreen() {
         backButton.addActionListener(e -> ScreenManager.goBack());
-
         saveButton.addActionListener(e -> saveItem());
+        deleteButton.addActionListener(e -> deleteItem(currentItem));
     }
 
     private void saveItem() {

@@ -13,6 +13,7 @@ public class EditCharacteristicsScreen extends EditItemsScreen<Characteristic> {
     private JButton saveButton;
     private JPanel container;
     private JTextField valueField;
+    private JButton deleteButton;
     private Characteristic currentItem;
 
     @Override
@@ -39,8 +40,8 @@ public class EditCharacteristicsScreen extends EditItemsScreen<Characteristic> {
 
     public EditCharacteristicsScreen() {
         backButton.addActionListener(e -> ScreenManager.goBack());
-
         saveButton.addActionListener(e -> saveCharacteristic());
+        deleteButton.addActionListener(e -> deleteItem(currentItem));
     }
 
     private void saveCharacteristic() {

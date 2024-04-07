@@ -13,5 +13,6 @@ public class ItemHandler extends Handler{
         this.operations.put("get", req -> this.service.getItem((String) req.getField("id"), (Class<?>) req.getField("clazz")));
         this.operations.put("getAll", req -> this.service.getAll((Class<?>) req.getField("clazz")));
         this.operations.put("set", req -> this.service.setItem((JSONable) req.getField("object")));
+        this.operations.put("delete", req -> this.service.deleteItem((JSONable) req.getField("item")));
     }
 }

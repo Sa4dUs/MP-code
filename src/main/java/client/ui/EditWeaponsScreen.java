@@ -16,6 +16,7 @@ public class EditWeaponsScreen extends EditItemsScreen<Weapon> {
     private JButton saveButton;
     private JTextField defense;
     private JCheckBox twoHanded;
+    private JButton deleteButton;
 
     private Weapon currentItem;
 
@@ -27,6 +28,7 @@ public class EditWeaponsScreen extends EditItemsScreen<Weapon> {
     public EditWeaponsScreen() {
         backButton.addActionListener(e -> ScreenManager.goBack());
         saveButton.addActionListener(e -> saveItem());
+        deleteButton.addActionListener(e -> deleteItem(currentItem));
     }
 
     @Override

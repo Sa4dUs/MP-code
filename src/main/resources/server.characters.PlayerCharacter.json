@@ -1,20 +1,4 @@
 {
-    "4f3d2836-8710-4396-a8cc-8532abce2ae4": {
-        "resistancesList": [],
-        "health": 3,
-        "activeWeaponR": "",
-        "activeNormalAbility": "",
-        "breed": 2,
-        "weaponsList": [],
-        "gold": 500,
-        "armorList": [],
-        "minionList": [],
-        "activeWeaponL": "",
-        "activeArmor": "",
-        "name": "Shion",
-        "id": "4f3d2836-8710-4396-a8cc-8532abce2ae4",
-        "debilitiesList": []
-    },
     "8d700a0e-8fd0-48d6-a7e6-be2fdfbbe3ed": {
         "resistancesList": [],
         "health": 3,

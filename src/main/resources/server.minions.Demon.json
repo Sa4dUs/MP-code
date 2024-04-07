@@ -1,40 +1,40 @@
 {
-    "2d554791-1e77-403a-ae53-7e2a04163037": {
-        "pact": "Amor eterno",
-        "name": "Introducir nombre de demonio que tenga algo que ver con amor",
-        "health": 3,
-        "id": "2d554791-1e77-403a-ae53-7e2a04163037",
-        "minions": [
-            "8ad8e8b3-0ff7-497d-8f1e-e2c7f93cf3fb",
-            "21b0c0e0-0c17-4137-8847-3378e37740b8",
-            "cfc172b3-82b8-4508-b7ea-495dfd363b27",
-            "9b9f832c-1eed-414f-8551-b900643b690e",
-            "c7550229-2bbb-4459-9463-5bc513267fe2"
-        ]
-    },
-    "cfc172b3-82b8-4508-b7ea-495dfd363b27": {
+    "9dcdd711-3866-4094-b99d-0c62e851aeb5": {
         "pact": "Sabiduría suprema",
         "name": "Thoth",
         "health": 3,
-        "id": "cfc172b3-82b8-4508-b7ea-495dfd363b27",
-        "minions": ["9c9c87cf-c142-4454-b341-c72488b648dd"]
+        "id": "9dcdd711-3866-4094-b99d-0c62e851aeb5",
+        "minions": ["eab3d8e1-b227-4ff0-82a4-c165fe9ee845"]
     },
-    "7794f299-00ef-4739-9171-0376601032b3": {
-        "pact": "Contrato de alma",
-        "name": "Satan",
-        "health": 3,
-        "id": "7794f299-00ef-4739-9171-0376601032b3",
-        "minions": [
-            "04673217-8ec7-438f-ae9d-b5211f7c2c00",
-            "5c887656-5c30-4112-b26e-8c68ef19c859",
-            "21b0c0e0-0c17-4137-8847-3378e37740b8"
-        ]
-    },
-    "21b0c0e0-0c17-4137-8847-3378e37740b8": {
+    "dcdaec59-4e57-4c32-8290-c0000a22f9f8": {
         "pact": "Riquezas infinitas",
         "name": "Mammon",
         "health": 3,
-        "id": "21b0c0e0-0c17-4137-8847-3378e37740b8",
-        "minions": ["f9b1a3a6-5db6-4742-8af2-efca71341eca"]
+        "id": "dcdaec59-4e57-4c32-8290-c0000a22f9f8",
+        "minions": ["daad74b2-d982-4a34-9619-fea32c3817cc"]
+    },
+    "2e752dc0-be30-4ffb-9d8a-38f5f1a0d7a7": {
+        "pact": "Contrato de alma",
+        "name": "Satan",
+        "health": 3,
+        "id": "2e752dc0-be30-4ffb-9d8a-38f5f1a0d7a7",
+        "minions": [
+            "e3976f90-1e81-4d27-953f-06f4a16f7477",
+            "da358215-b69d-40b6-bd14-d3fc597d5ba9",
+            "dcdaec59-4e57-4c32-8290-c0000a22f9f8"
+        ]
+    },
+    "a993ef5b-cfae-44d9-a1f7-ec074588c4d5": {
+        "pact": "Amor eterno",
+        "name": "Introducir nombre de demonio que tenga algo que ver con amor",
+        "health": 3,
+        "id": "a993ef5b-cfae-44d9-a1f7-ec074588c4d5",
+        "minions": [
+            "0250d6a9-c8d6-4180-899a-c5b8059ceb8a",
+            "dcdaec59-4e57-4c32-8290-c0000a22f9f8",
+            "9dcdd711-3866-4094-b99d-0c62e851aeb5",
+            "0ee5c564-68d3-441e-ac70-c58e9930e4d6",
+            "913a7cb4-6dd5-4eea-a614-622320ced204"
+        ]
     }
 }

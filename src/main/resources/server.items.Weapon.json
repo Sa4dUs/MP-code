@@ -1,30 +1,23 @@
 {
-    "ecc3d475-e677-439c-97cc-25e072aeeca7": {
-        "twoHanded": "false",
-        "defense": 2,
-        "attack": 1,
-        "name": "Nabo gigante",
-        "id": "ecc3d475-e677-439c-97cc-25e072aeeca7"
-    },
-    "1084b262-41f9-4033-993c-b3ccff43b6e3": {
+    "d4d2fe67-da43-4b24-b188-622b86577795": {
         "twoHanded": "true",
         "defense": 3,
         "attack": 3,
         "name": "Mandoble",
-        "id": "1084b262-41f9-4033-993c-b3ccff43b6e3"
+        "id": "d4d2fe67-da43-4b24-b188-622b86577795"
     },
-    "a100e118-49dc-4aea-a5b4-435cdd263348": {
-        "twoHanded": "false",
-        "defense": 1,
-        "attack": 2,
-        "name": "Daga",
-        "id": "a100e118-49dc-4aea-a5b4-435cdd263348"
-    },
-    "f3df8b85-12a5-4b9d-870a-9467ce3b0075": {
+    "effffe38-6595-4aaa-a61f-ae6a1927689c": {
         "twoHanded": "false",
         "defense": 1,
         "attack": 3,
         "name": "Daga de cristal",
-        "id": "f3df8b85-12a5-4b9d-870a-9467ce3b0075"
+        "id": "effffe38-6595-4aaa-a61f-ae6a1927689c"
+    },
+    "8f38b03c-8b51-4939-8654-a4b60c1d5ef9": {
+        "twoHanded": "false",
+        "defense": 1,
+        "attack": 2,
+        "name": "Daga",
+        "id": "8f38b03c-8b51-4939-8654-a4b60c1d5ef9"
     }
 }

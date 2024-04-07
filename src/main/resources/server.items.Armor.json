@@ -1,14 +1,14 @@
 {
-    "547e0759-6d2c-4b03-b77c-1f348521603a": {
-        "defense": 1,
-        "attack": 2,
-        "name": "Malla de espinas",
-        "id": "547e0759-6d2c-4b03-b77c-1f348521603a"
-    },
-    "b47ecea7-690f-4b14-8e3c-a6aed53e5756": {
+    "92a33497-3ea6-4ede-9ab9-2afbdeef64a8": {
         "defense": 3,
         "attack": 1,
         "name": "Coraza impenetrable",
-        "id": "b47ecea7-690f-4b14-8e3c-a6aed53e5756"
+        "id": "92a33497-3ea6-4ede-9ab9-2afbdeef64a8"
+    },
+    "7e6e2e6e-d966-4980-9c75-219d490d0c5d": {
+        "defense": 1,
+        "attack": 2,
+        "name": "Malla de espinas",
+        "id": "7e6e2e6e-d966-4980-9c75-219d490d0c5d"
     }
 }

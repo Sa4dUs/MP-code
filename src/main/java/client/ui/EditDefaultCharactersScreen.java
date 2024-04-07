@@ -74,8 +74,7 @@ public class EditDefaultCharactersScreen extends Screen {
         container.setLayout(new GridLayout(characterList.size(), 1));
 
         characterList.forEach(el -> {
-            JButton button = new JButton(el.getName());
-            button.addActionListener(e -> {
+            JButton button = new DefaultButton(el.getName(), e -> {
                 current = el;
                 setPanelData(el);
             });

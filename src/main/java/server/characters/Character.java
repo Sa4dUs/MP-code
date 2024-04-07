@@ -194,7 +194,9 @@ public class Character implements JSONable {
         document.setProperty("gold", this.gold);
         document.setProperty("weaponsList", getIdArrayFromArray(weaponsList.toArray(new JSONable[0])));
         document.setProperty("armorList", getIdArrayFromArray(armorList.toArray(new JSONable[0])));
-
+        document.setProperty("ability", "");
+        document.setProperty("specialAbility", "");
+        
         if (ability != null) {
             document.setProperty("ability", ability.getDocument().getId());
             ability.getDocument().saveToDatabase(Ability.class);

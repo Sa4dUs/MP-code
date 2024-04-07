@@ -46,7 +46,7 @@ class CharacterServiceTest {
     @Test
     public void generatePlayerCharacterTest()
     {
-        PlayerCharacter character = new PlayerCharacter();
+        Character character = new Character();
         character.setBreed(CharacterType.Vampire);
         character.setName("Shion");
         character.setHealth(3);
@@ -69,7 +69,7 @@ class CharacterServiceTest {
         CharacterService service = new CharacterService();
         service.createCharacter(character);
 
-        PlayerCharacter character1 = (PlayerCharacter) Document.getDocument(character.getId(), PlayerCharacter.class).deJSONDocument(PlayerCharacter.class);
+        PlayerCharacter character1 = (PlayerCharacter) Document.getDocument(character.getId(), Character.class).deJSONDocument(Character.class);
         Assert.assertEquals(character1.getName(), character.getName());
     }
 

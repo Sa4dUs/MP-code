@@ -63,7 +63,7 @@ public class CharacterScreen extends Screen {
         breedField.setText(character.getBreed().toString());
         Ability charcarterAbility = character.getAbility();
         abilityField.setText(charcarterAbility != null ? charcarterAbility.getName() : "Empty");
-        Ability charcarterSpecialAbility = character.getAbility();
+        Ability charcarterSpecialAbility = character.getSpecialAbility();
         specialAbilityField.setText(charcarterSpecialAbility != null ? charcarterSpecialAbility.getName() : "Empty");
 
         populateListFromModel(weaknessesList, character.getDebilitiesList());

@@ -1,23 +1,30 @@
 {
-    "671efc96-971c-40a3-809b-f81d4828fe63": {
+    "78001421-d7b6-46d0-9ae4-0073add5a7ea": {
         "cost": 2,
         "defense": 1,
         "attack": 3,
-        "name": "Bola de fuego",
-        "id": "671efc96-971c-40a3-809b-f81d4828fe63"
+        "name": "Proyectiles de plata",
+        "id": "78001421-d7b6-46d0-9ae4-0073add5a7ea"
     },
-    "e8023c32-0aee-47e4-9cd8-2409f141738a": {
-        "cost": 3,
-        "defense": 3,
-        "attack": 1,
-        "name": "Pared de hielo",
-        "id": "e8023c32-0aee-47e4-9cd8-2409f141738a"
+    "0e64e8fe-7bae-48b9-bdb3-ea7e2123237d": {
+        "cost": 2,
+        "defense": 2,
+        "attack": 3,
+        "name": "Voltereta",
+        "id": "0e64e8fe-7bae-48b9-bdb3-ea7e2123237d"
     },
-    "35a062bb-0d1e-4864-8c4b-2173faabcbb6": {
+    "89bad798-2ec1-4708-82f5-a3844c3ed345": {
         "cost": 1,
         "defense": 1,
         "attack": 3,
-        "name": "Talento de cazador",
-        "id": "35a062bb-0d1e-4864-8c4b-2173faabcbb6"
+        "name": "Ostion",
+        "id": "89bad798-2ec1-4708-82f5-a3844c3ed345"
+    },
+    "fe834be0-43cf-43f1-ade8-15454684f8e1": {
+        "cost": 1,
+        "defense": 1,
+        "attack": 3,
+        "name": "Patadoncio",
+        "id": "fe834be0-43cf-43f1-ade8-15454684f8e1"
     }
 }

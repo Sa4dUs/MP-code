@@ -38,7 +38,6 @@ public class Character implements JSONable {
     public Character(){}
 
     public Character(Character character) {
-        this.id = character.getId();
         this.name = character.getName();
         this.health = character.getHealth();
         this.gold = character.getGold();

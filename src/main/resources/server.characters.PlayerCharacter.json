@@ -1,0 +1,34 @@
+{
+    "4f3d2836-8710-4396-a8cc-8532abce2ae4": {
+        "resistancesList": [],
+        "health": 3,
+        "activeWeaponR": "",
+        "activeNormalAbility": "",
+        "breed": 2,
+        "weaponsList": [],
+        "gold": 500,
+        "armorList": [],
+        "minionList": [],
+        "activeWeaponL": "",
+        "activeArmor": "",
+        "name": "Shion",
+        "id": "4f3d2836-8710-4396-a8cc-8532abce2ae4",
+        "debilitiesList": []
+    },
+    "a13fe893-c01a-4ef8-a739-a61a87fd6bf2": {
+        "resistancesList": [],
+        "health": 1,
+        "activeWeaponR": "",
+        "activeNormalAbility": "",
+        "breed": 0,
+        "weaponsList": [],
+        "gold": 500,
+        "armorList": [],
+        "minionList": [],
+        "activeWeaponL": "",
+        "activeArmor": "",
+        "name": "Vayne",
+        "id": "a13fe893-c01a-4ef8-a739-a61a87fd6bf2",
+        "debilitiesList": []
+    }
+}

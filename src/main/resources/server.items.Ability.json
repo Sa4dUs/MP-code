@@ -1,23 +1,23 @@
 {
-    "cd8ad78b-bf69-4551-8b9c-be1837e79a1c": {
+    "671efc96-971c-40a3-809b-f81d4828fe63": {
         "cost": 2,
         "defense": 1,
         "attack": 3,
         "name": "Bola de fuego",
-        "id": "cd8ad78b-bf69-4551-8b9c-be1837e79a1c"
+        "id": "671efc96-971c-40a3-809b-f81d4828fe63"
     },
-    "71612477-9047-48ec-9256-f869cc10a1a5": {
+    "e8023c32-0aee-47e4-9cd8-2409f141738a": {
         "cost": 3,
         "defense": 3,
         "attack": 1,
         "name": "Pared de hielo",
-        "id": "71612477-9047-48ec-9256-f869cc10a1a5"
+        "id": "e8023c32-0aee-47e4-9cd8-2409f141738a"
     },
-    "eac1e7be-f7e3-4405-ae51-add54a256ca5": {
+    "35a062bb-0d1e-4864-8c4b-2173faabcbb6": {
         "cost": 1,
         "defense": 1,
         "attack": 3,
         "name": "Talento de cazador",
-        "id": "eac1e7be-f7e3-4405-ae51-add54a256ca5"
+        "id": "35a062bb-0d1e-4864-8c4b-2173faabcbb6"
     }
 }

@@ -1,40 +1,40 @@
 {
-    "9dcdd711-3866-4094-b99d-0c62e851aeb5": {
+    "1afb44fd-a383-4ad7-8d16-7c8c6613df7b": {
         "pact": "Sabiduría suprema",
         "name": "Thoth",
         "health": 3,
-        "id": "9dcdd711-3866-4094-b99d-0c62e851aeb5",
-        "minions": ["eab3d8e1-b227-4ff0-82a4-c165fe9ee845"]
+        "id": "1afb44fd-a383-4ad7-8d16-7c8c6613df7b",
+        "minions": ["92f92387-eb81-43d9-9ed8-6929960574b6"]
     },
-    "dcdaec59-4e57-4c32-8290-c0000a22f9f8": {
-        "pact": "Riquezas infinitas",
-        "name": "Mammon",
-        "health": 3,
-        "id": "dcdaec59-4e57-4c32-8290-c0000a22f9f8",
-        "minions": ["daad74b2-d982-4a34-9619-fea32c3817cc"]
-    },
-    "2e752dc0-be30-4ffb-9d8a-38f5f1a0d7a7": {
-        "pact": "Contrato de alma",
-        "name": "Satan",
-        "health": 3,
-        "id": "2e752dc0-be30-4ffb-9d8a-38f5f1a0d7a7",
-        "minions": [
-            "e3976f90-1e81-4d27-953f-06f4a16f7477",
-            "da358215-b69d-40b6-bd14-d3fc597d5ba9",
-            "dcdaec59-4e57-4c32-8290-c0000a22f9f8"
-        ]
-    },
-    "a993ef5b-cfae-44d9-a1f7-ec074588c4d5": {
+    "644265d5-720b-4e44-9437-8a7801b28033": {
         "pact": "Amor eterno",
         "name": "Introducir nombre de demonio que tenga algo que ver con amor",
         "health": 3,
-        "id": "a993ef5b-cfae-44d9-a1f7-ec074588c4d5",
+        "id": "644265d5-720b-4e44-9437-8a7801b28033",
         "minions": [
-            "0250d6a9-c8d6-4180-899a-c5b8059ceb8a",
-            "dcdaec59-4e57-4c32-8290-c0000a22f9f8",
-            "9dcdd711-3866-4094-b99d-0c62e851aeb5",
-            "0ee5c564-68d3-441e-ac70-c58e9930e4d6",
-            "913a7cb4-6dd5-4eea-a614-622320ced204"
+            "0289bde5-d3f9-4e42-b7a0-9137c2259277",
+            "99eb0915-7f09-4faf-b042-406b1474cbe9",
+            "1afb44fd-a383-4ad7-8d16-7c8c6613df7b",
+            "789156c3-9599-40ca-838b-721e023c0502",
+            "4544f1f2-7a52-4984-a373-16e8d3d09e88"
         ]
+    },
+    "6c341f25-dd33-47ce-b1af-acf0c770f9c0": {
+        "pact": "Contrato de alma",
+        "name": "Satan",
+        "health": 3,
+        "id": "6c341f25-dd33-47ce-b1af-acf0c770f9c0",
+        "minions": [
+            "c56b5fd5-67f6-46a2-8fdf-296dc08cdb37",
+            "59f7f596-6f02-47a2-b097-883e36e40596",
+            "99eb0915-7f09-4faf-b042-406b1474cbe9"
+        ]
+    },
+    "99eb0915-7f09-4faf-b042-406b1474cbe9": {
+        "pact": "Riquezas infinitas",
+        "name": "Mammon",
+        "health": 3,
+        "id": "99eb0915-7f09-4faf-b042-406b1474cbe9",
+        "minions": ["78e29b96-f4a5-405e-8919-e7ffee4006ad"]
     }
 }

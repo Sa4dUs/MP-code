@@ -7,6 +7,7 @@ import lib.RequestBody;
 import lib.ResponseBody;
 import server.characters.Character;
 import server.characters.PlayerCharacter;
+import server.items.Ability;
 
 import javax.swing.*;
 import java.util.List;
@@ -83,9 +84,10 @@ public class RegisterCharacterScreen extends Screen {
         name.setText(character.getName());
         health.setText(Integer.toString(character.getHealth()));
         gold.setText(Integer.toString(character.getGold()));
-
-        ability.setText(character.getAbility().getName());
-        specialAbility.setText(character.getSpecialAbility().getName());
+        Ability charcarterAbility = character.getAbility();
+        ability.setText(charcarterAbility != null ? charcarterAbility.getName(): "Empty");
+        Ability charcarterSpecialAbility = character.getSpecialAbility();
+        specialAbility.setText(charcarterSpecialAbility != null ? charcarterSpecialAbility.getName(): "Empty");
         setListData(weaknesses, character.getDebilitiesList());
         setListData(strengths, character.getResistancesList());
         setListData(minions, character.getMinionList());

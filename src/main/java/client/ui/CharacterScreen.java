@@ -6,6 +6,7 @@ import client.Session;
 import lib.RequestBody;
 import lib.ResponseBody;
 import server.characters.PlayerCharacter;
+import server.items.Ability;
 import server.items.Weapon;
 
 import javax.swing.*;
@@ -60,8 +61,10 @@ public class CharacterScreen extends Screen {
         healthField.setText(Integer.toString(character.getHealth()));
         goldField.setText(Integer.toString(character.getGold()));
         breedField.setText(character.getBreed().toString());
-        abilityField.setText(character.getAbility().toString());
-        specialAbilityField.setText(character.getSpecialAbility().toString());
+        Ability charcarterAbility = character.getAbility();
+        abilityField.setText(charcarterAbility != null ? charcarterAbility.getName() : "Empty");
+        Ability charcarterSpecialAbility = character.getAbility();
+        specialAbilityField.setText(charcarterSpecialAbility != null ? charcarterSpecialAbility.getName() : "Empty");
 
         populateListFromModel(weaknessesList, character.getDebilitiesList());
         populateListFromModel(strengthsList, character.getResistancesList());

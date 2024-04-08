@@ -17,7 +17,7 @@ public class Player extends User {
     private List<ChallengeRequest> pendingDuels = new ArrayList<>();
     private List<ChallengeResult> results = new ArrayList<>();
     private PlayerCharacter character;
-    private boolean blocked, pending;
+    private boolean blocked;
 
     public Player() {
         super();
@@ -55,14 +55,6 @@ public class Player extends User {
         return this.results;
     }
 
-    public boolean isPending() {
-        return pending;
-    }
-
-    public void setPending(boolean pending) {
-        this.pending = pending;
-    }
-
     public boolean isBlocked() {
         return blocked;
     }
@@ -92,7 +84,6 @@ public class Player extends User {
             document.setProperty("character", "");
 
         document.setProperty("blocked", this.blocked);
-        document.setProperty("pending", this.pending);
 
         return document;
     }

@@ -15,6 +15,11 @@ public class ChallengeService implements Service {
     public ResponseBody createChallenge(ChallengeRequest challenge)
     {
         ResponseBody response = new ResponseBody();
+        Player attacker = (Player) Document.getDocument(challenge.getAttackerId(), Player.class).deJSONDocument(Player.class);
+        Player attacked = (Player) Document.getDocument(challenge.getAttackedId(), Player.class).deJSONDocument(Player.class);
+
+        if(attacked.isBlocked() || attacker.isBlocked() || attacker.getCharacter() == null || attacked.getCharacter() == null || attacker.getCharacter().getGold() < challenge.getBet() || attacked.getCharacter().getGold() < challenge.getBet())
+            return new ResponseBody(false);
 
         Database.insertOne(Collection.CHALLENGE_OPERATORS, challenge.getDocument());
 
@@ -59,6 +64,19 @@ public class ChallengeService implements Service {
         Document resultDoc = challengeResult.getDocument();
 
         resultDoc.saveToDatabase(ChallengeResult.class);
+
+        if(challengeResult.isWinnerAttacking())
+        {
+            attackingPlayer.getCharacter().removeGold(-challengeResult.getBet());
+            attackedPlayer.getCharacter().removeGold(challengeResult.getBet());
+            attackedPlayer.setBlocked(true);
+        }
+        else
+        {
+            attackingPlayer.getCharacter().removeGold(challengeResult.getBet());
+            attackedPlayer.getCharacter().removeGold(-challengeResult.getBet());
+            attackingPlayer.setBlocked(true);
+        }
 
         addIdToPlayer(resultDoc.getId(), attackingPlayer.getId(), "results");
         addIdToPlayer(resultDoc.getId(), attackedPlayer.getId(), "results");

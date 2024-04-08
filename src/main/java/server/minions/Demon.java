@@ -13,6 +13,10 @@ public class Demon extends Minion{
 
     public Demon(){}
 
+    @Override
+    public String toString() {
+        return super.toString() + " Pact:" + this.pact + " Minions:" + this.minions.size();
+    }
 
     public int calculateMinionsKilledAfterDamage(int damage)
     {
@@ -88,11 +92,6 @@ public class Demon extends Minion{
     @Override
     public int getHealth(){
         return super.getHealth() + getMinionsHealth();
-    }
-
-    @Override
-    public String toString() {
-        return super.toString();
     }
 
     @Override

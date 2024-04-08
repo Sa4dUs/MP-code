@@ -9,7 +9,7 @@ public class Ability extends Stats{
     public Ability(){}
     @Override
     public String toString() {
-        return super.toString();
+        return super.toString() + " Cost:" + this.cost;
     }
     public int getCost() {
         return cost;

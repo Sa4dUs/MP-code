@@ -30,7 +30,7 @@ public abstract class Minion implements JSONable {
     @Override
     public String toString()
     {
-        return this.name;
+        return (this.name + " HP:" + this.health);
     }
 
     public String getName() {

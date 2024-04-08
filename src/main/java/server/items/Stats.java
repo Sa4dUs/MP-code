@@ -17,7 +17,7 @@ public abstract class Stats implements JSONable {
     @Override
     public String toString()
     {
-        return this.name;
+        return this.name + " ATK:" + this.attack + " DFS:" + this.defense;
     }
     public String getName() {
         return this.name;
@@ -32,7 +32,7 @@ public abstract class Stats implements JSONable {
     }
 
     public void setAttack(int attack) {
-        this.attack = (attack > maxAttack) ? maxAttack : Math.max(attack, 1);;
+        this.attack = (attack > maxAttack) ? maxAttack : Math.max(attack, 0);;
     }
 
     public int getDefense() {
@@ -40,7 +40,7 @@ public abstract class Stats implements JSONable {
     }
 
     public void setDefense(int defense) {
-        this.defense = (defense > maxDefense) ? maxDefense : Math.max(defense, 1);;
+        this.defense = (defense > maxDefense) ? maxDefense : Math.max(defense, 0);;
     }
 
     public String getId() {

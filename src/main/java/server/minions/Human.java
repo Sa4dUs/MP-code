@@ -7,11 +7,15 @@ public class Human extends Minion{
     private int loyalty;
     private final int maxLoyalty = 3;
 
+    private enum LoyaltyLevels
+    {
+        Low, Mid, High
+    }
     public Human(){}
 
     @Override
     public String toString() {
-        return super.toString();
+        return super.toString() + " Loyalty:" + LoyaltyLevels.values()[loyalty-1];
     }
 
     public int getLoyalty() {

@@ -11,7 +11,7 @@ public class Ghoul extends  Minion{
 
     @Override
     public String toString() {
-        return super.toString();
+        return super.toString() + " Dependence:" + this.dependence;
     }
 
     public int getDependence() {

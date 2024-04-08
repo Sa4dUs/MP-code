@@ -1,338 +1,198 @@
 package client.ui;
 
-import client.Client;
-import client.ScreenManager;
-import com.intellij.uiDesigner.core.GridConstraints;
-import lib.RequestBody;
-import lib.ResponseBody;
 import server.Characteristic;
 import server.characters.Character;
 import server.characters.CharacterType;
 import server.items.Ability;
 import server.items.Armor;
 import server.items.Weapon;
-import server.minions.Demon;
-import server.minions.Ghoul;
-import server.minions.Human;
 import server.minions.Minion;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EditDefaultCharactersScreen extends Screen {
+public class EditDefaultCharactersScreen extends EditCharacterScreen<Character> {
     private JPanel frame;
     private JButton backButton;
-    private JTextField name;
-    private JTextField health;
-    private JLabel extraLabel;
-    private JTextField gold;
-    private JPanel minions;
-    private JButton minionAdd;
+    private JTextField nameField;
+    private JTextField healthField;
+    private JTextField goldField;
+    private JPanel minionsPanel;
+    private JButton minionAddButton;
     private JPanel container;
     private JButton saveButton;
     private JButton deleteButton;
-    private JComboBox breed;
-    private JPanel armors;
-    private JButton armorAdd;
-    private JPanel weapons;
-    private JButton weaponsAdd;
-    private JPanel abilities;
-    private JButton abilitiesAdd;
-    private JPanel specialAbilities;
-    private JButton specialAbilitiesAdd;
-    private JPanel weaknesses;
-    private JButton resistancesAdd;
-    private JPanel strengths;
-    private JButton strengthsAdd;
+    private JComboBox<CharacterType> breedComboBox;
+    private JPanel armorsPanel;
+    private JButton armorAddButton;
+    private JPanel weaponsPanel;
+    private JButton weaponsAddButton;
+    private JPanel weaknessesPanel;
+    private JButton resistancesAddButton;
+    private JPanel strengthsPanel;
+    private JButton strengthsAddButton;
     private JComboBox<Ability> abilityComboBox;
     private JComboBox<Ability> specialAbilityComboBox;
 
     private Character current;
-
-    private List<Armor> armorList = new ArrayList<>();
-    private List<Weapon> weaponList = new ArrayList<>();
-    private Ability ability;
-    private List<Characteristic> characteristicList = new ArrayList<>();
-    private List<Minion> minionList = new ArrayList<>();
-    private List<Character> characterList = new ArrayList<>();
-    private List<Ability> abilityList = new ArrayList<>();
+    private final List<Armor> armorList = new ArrayList<>();
+    private final List<Weapon> weaponList = new ArrayList<>();
+    private final List<Characteristic> characteristicList = new ArrayList<>();
+    private final List<Minion> minionList = new ArrayList<>();
+    private final List<Character> characterList = new ArrayList<>();
+    private final List<Ability> abilityList = new ArrayList<>();
 
     @Override
     public void start() {
-        super.start();
-
-        DefaultComboBoxModel<CharacterType> model = new DefaultComboBoxModel<>(CharacterType.values());
-        breed.setModel(model);
-
-        fetchItems();
-        fetchCharacters();
-
-        container.setLayout(new GridLayout(characterList.size(), 1));
-
-        characterList.forEach(el -> {
-            JButton button = new DefaultButton(el.getName(), e -> {
-                current = el;
-                setPanelData(el);
-            });
-            container.add(button, new GridConstraints());
-        });
-
-        minionAdd.addActionListener(e -> displayPopup("Minion", minionList, minions, current.getMinionList()));
-        armorAdd.addActionListener(e -> displayPopup("Armor", armorList, armors, current.getArmorList()));
-        weaponsAdd.addActionListener(e -> displayPopup("Weapon", weaponList, weapons, current.getWeaponsList()));
-        resistancesAdd.addActionListener(e -> displayPopup("Strength", characteristicList, strengths, current.getResistancesList()));
-        strengthsAdd.addActionListener(e -> displayPopup("Weakness", characteristicList, weaknesses, current.getDebilitiesList()));
+        super.start(Character.class);
     }
 
-    public EditDefaultCharactersScreen() {
-        backButton.addActionListener(e -> ScreenManager.goBack());
-        saveButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                RequestBody request = new RequestBody();
-                request.addField("character", current);
-                Client.request("character/updateCharacter", request);
-            }
-        });
-        deleteButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // TODO!
-            }
-        });
-
-        abilityComboBox.addActionListener(e -> updateAbility(abilityComboBox));
-        specialAbilityComboBox.addActionListener(e -> updateSpecialAbility(specialAbilityComboBox));
+    @Override
+    protected JTextField getNameField() {
+        return this.nameField;
     }
 
-    private void updateAbility(JComboBox<Ability> selection) {
-        current.setAbility((Ability) selection.getSelectedItem());
+    @Override
+    protected JTextField getHealthField() {
+        return this.healthField;
     }
 
-    private void updateSpecialAbility(JComboBox<Ability> selection) {
-        current.setSpecialAbility((Ability) selection.getSelectedItem());
+    @Override
+    protected JTextField getGoldField() {
+        return this.goldField;
     }
 
-    private void fetchItems() {
-        fetchItemsOfType(Armor.class, armorList);
-        fetchItemsOfType(Weapon.class, weaponList);
-        fetchItemsOfType(Ability.class, abilityList);
-        fetchItemsOfType(Characteristic.class, characteristicList);
-        fetchMinions();
+    @Override
+    protected JComboBox<CharacterType> getBreedComboBox() {
+        return this.breedComboBox;
     }
 
-    private <T> void fetchItemsOfType(Class<T> clazz, List<T> itemList) {
-        RequestBody request = new RequestBody();
-        request.addField("clazz", clazz);
-        ResponseBody response = Client.request("item/getAll", request);
-        itemList.addAll((List<T>) response.getField("data"));
+    @Override
+    protected JPanel getMinionsPanel() {
+        return this.minionsPanel;
     }
 
-    private void fetchMinions() {
-        RequestBody request = new RequestBody();
-
-        {
-            request.addField("clazz", Demon.class);
-            ResponseBody response = Client.request("item/getAll", request);
-            minionList.addAll((List<Minion>) response.getField("data"));
-        }
-
-        {
-            request.addField("clazz", Human.class);
-            ResponseBody response = Client.request("item/getAll", request);
-            minionList.addAll((List<Minion>) response.getField("data"));
-        }
-
-        {
-            request.addField("clazz", Ghoul.class);
-            ResponseBody response = Client.request("item/getAll", request);
-            minionList.addAll((List<Minion>) response.getField("data"));
-        }
+    @Override
+    protected JButton getMinionAddButton() {
+        return this.minionAddButton;
     }
 
-    private void fetchCharacters() {
-        fetchItemsOfType(Character.class, characterList);
+    @Override
+    protected JPanel getArmorsPanel() {
+        return this.armorsPanel;
     }
 
-    private <T> void displayPopup(String title, List<T> itemList, JPanel panelToUpdate, List<T> listToUpdate) {
-        JFrame popupFrame = new JFrame("Select " + title);
-        JPanel popupPanel = new JPanel(new BorderLayout());
-
-        JComboBox<T> selectInput = new JComboBox<>();
-        DefaultComboBoxModel<T> model = new DefaultComboBoxModel<>();
-        model.addAll(itemList);
-        selectInput.setModel(model);
-
-        JButton selectButton = new JButton("Select");
-        JButton cancelButton = new JButton("Cancel");
-
-        selectButton.addActionListener(e -> {
-            T selectedItem = selectInput.getItemAt(selectInput.getSelectedIndex());
-            if (selectedItem != null) {
-                Label label = new Label();
-                label.setText(selectedItem.toString());
-
-                Button button = new Button();
-                button.setLabel("-");
-                button.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        listToUpdate.remove(selectedItem);
-                        panelToUpdate.remove(label);
-                        panelToUpdate.remove(button);
-                        panelToUpdate.revalidate();
-                        panelToUpdate.repaint();
-                    }
-                });
-
-                panelToUpdate.add(label);
-                panelToUpdate.add(button);
-                panelToUpdate.repaint();
-                listToUpdate.add(selectedItem);
-                popupFrame.dispose(); // Close the popup
-            } else {
-                JOptionPane.showMessageDialog(popupFrame, "Please select an item.", "Error", JOptionPane.ERROR_MESSAGE);
-            }
-        });
-
-        cancelButton.addActionListener(e -> popupFrame.dispose()); // Close the popup
-
-        popupPanel.add(selectInput, BorderLayout.NORTH);
-        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-        buttonPanel.add(selectButton);
-        buttonPanel.add(cancelButton);
-        popupPanel.add(buttonPanel, BorderLayout.SOUTH);
-
-        popupFrame.getContentPane().add(popupPanel);
-        popupFrame.pack();
-        popupFrame.setLocationRelativeTo(null); // Center the popup
-        popupFrame.setVisible(true);
+    @Override
+    protected JButton getArmorAddButton() {
+        return this.armorAddButton;
     }
 
-    public void setPanelData(Character item) {
-        name.setText(item.getName());
-        health.setText(Integer.toString(item.getHealth()));
-        gold.setText(Integer.toString(item.getGold()));
-        breed.setSelectedItem(item.getBreed());
+    @Override
+    protected JPanel getWeaponsPanel() {
+        return this.weaponsPanel;
+    }
 
-        minions.setLayout(new GridLayout(item.getMinionCount(), 2));
-        item.getMinionList().forEach(element -> {
-            Label label = new Label();
-            label.setText(element.getName());
+    @Override
+    protected JButton getWeaponsAddButton() {
+        return this.weaponsAddButton;
+    }
 
-            Button button = new Button();
-            button.setLabel("-");
-            button.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    List<Minion> list = current.getMinionList();
-                    list.remove(element);
-                    current.setMinionList(list);
+    @Override
+    protected JPanel getStrengthsPanel() {
+        return this.strengthsPanel;
+    }
 
-                    minions.remove(label);
-                    minions.remove(button);
-                }
-            });
+    @Override
+    protected JButton getStrengthsAddButton() {
+        return this.strengthsAddButton;
+    }
 
-            minions.add(label);
-            minions.add(button);
-        });
+    @Override
+    protected JPanel getWeaknessesPanel() {
+        return this.weaknessesPanel;
+    }
 
-        armors.setLayout(new GridLayout(item.getArmorList().size(), 2));
-        item.getArmorList().forEach(element -> {
-            Label label = new Label();
-            label.setText(element.getName());
+    @Override
+    protected JButton getWeaknessesAddButton() {
+        return this.resistancesAddButton;
+    }
 
-            Button button = new Button();
-            button.setLabel("-");
-            button.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    List<Armor> list = current.getArmorList();
-                    list.remove(element);
-                    current.setArmorList(list);
+    @Override
+    protected JComboBox<Ability> getAbilityField() {
+        return this.abilityComboBox;
+    }
 
-                    armors.remove(label);
-                    armors.remove(button);
-                }
-            });
+    @Override
+    protected JComboBox<Ability> getSpecialAbilityField() {
+        return this.specialAbilityComboBox;
+    }
 
-            armors.add(label);
-            armors.add(button);
-        });
+    @Override
+    protected JButton getSaveButton() {
+        return this.saveButton;
+    }
 
-        weapons.setLayout(new GridLayout(item.getWeaponsList().size(), 2));
-        item.getWeaponsList().forEach(element -> {
-            Label label = new Label();
-            label.setText(element.getName());
+    @Override
+    protected JButton getDeleteButton() {
+        return this.deleteButton;
+    }
 
-            Button button = new Button();
-            button.setLabel("-");
-            button.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    List<Weapon> list = current.getWeaponsList();
-                    list.remove(element);
-                    current.setWeaponsList(list);
+    @Override
+    protected JButton getBackButton() {
+        return this.backButton;
+    }
 
-                    weapons.remove(label);
-                    weapons.remove(button);
-                }
-            });
+    @Override
+    protected Character getCurrent() {
+        return this.current;
+    }
 
-            weapons.add(label);
-            weapons.add(button);
-        });
+    @Override
+    protected void setCurrent(Character character) {
+        this.current = character;
+    }
 
-        weaknesses.setLayout(new GridLayout(item.getDebilitiesList().size(), 2));
-        item.getDebilitiesList().forEach(element -> {
-            Label label = new Label();
-            label.setText(element.getName());
+    @Override
+    protected List<Armor> getArmorList() {
+        return this.armorList;
+    }
 
-            Button button = new Button();
-            button.setLabel("-");
-            button.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    List<Characteristic> list = current.getDebilitiesList();
-                    list.remove(element);
-                    current.setDebilitiesList(list);
+    @Override
+    protected List<Weapon> getWeaponList() {
+        return this.weaponList;
+    }
 
-                    weaknesses.remove(label);
-                    weaknesses.remove(button);
-                }
-            });
+    @Override
+    protected List<Ability> getAbilityList() {
+        return this.abilityList;
+    }
 
-            weaknesses.add(label);
-            weaknesses.add(button);
-        });
+    @Override
+    protected List<Characteristic> getCharacteristicList() {
+        return this.characteristicList;
+    }
 
-        strengths.setLayout(new GridLayout(item.getResistancesList().size(), 2));
-        item.getResistancesList().forEach(element -> {
-            Label label = new Label();
-            label.setText(element.getName());
+    @Override
+    protected List<Minion> getMinionList() {
+        return this.minionList;
+    }
 
-            Button button = new Button();
-            button.setLabel("-");
-            button.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    List<Characteristic> list = current.getResistancesList();
-                    list.remove(element);
-                    current.setResistancesList(list);
+    @Override
+    protected List<Character> getCharacterList() {
+        return this.characterList;
+    }
 
-                    strengths.remove(label);
-                    strengths.remove(button);
-                }
-            });
+    @Override
+    protected void fetchItems() {
+        super.fetchItems();
+        fetchItemsOfType(Character.class, this.getCharacterList());
+    }
 
-            strengths.add(label);
-            strengths.add(button);
-        });
+    @Override
+    protected JPanel getContainerPanel() {
+        return this.container;
     }
 
     @Override

@@ -1,12 +1,7 @@
 package client.ui;
 
-import client.Client;
-import client.ScreenManager;
-import com.intellij.uiDesigner.core.GridConstraints;
-import lib.RequestBody;
-import lib.ResponseBody;
 import server.Characteristic;
-import server.Player;
+import server.characters.Character;
 import server.characters.PlayerCharacter;
 import server.characters.CharacterType;
 import server.items.Ability;
@@ -18,104 +13,183 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Vector;
 
-public class EditPlayerCharactersScreen extends EditItemsScreen<PlayerCharacter> {
+public class EditPlayerCharactersScreen extends EditCharacterScreen<PlayerCharacter> {
     private JPanel frame;
-    private JButton backButton;
     private JPanel container;
-    private JTextField name;
-    private JTextField health;
-    private JTextField gold;
+
+    private JButton backButton;
+    private JTextField nameField;
+    private JTextField healthField;
+    private JTextField goldField;
+    private JComboBox<CharacterType> breedComboBox;
     private JPanel minionsPanel;
+    private JButton minionAddButton;
+    private JPanel armorsPanel;
+    private JButton armorAddButton;
+    private JPanel weaponsPanel;
+    private JButton weaponsAddButton;
+    private JPanel strengthsPanel;
+    private JButton strengthsAddButton;
+    private JPanel weaknessesPanel;
+    private JButton weaknessesAddButton;
+    private JComboBox<Ability> abilityComboBox;
+    private JComboBox<Ability> specialAbilityComboBox;
     private JButton saveButton;
     private JButton deleteButton;
-    private JButton minionAdd;
-    private JButton armorAdd;
-    private JButton weaponsAdd;
-    private JButton resistancesAdd;
-    private JButton strengthsAdd;
-    private JComboBox<CharacterType> breedComboBox;
-    private JPanel armorsPanel;
-    private JPanel weaponsPanel;
-    private JPanel abilitiesPanel;
-    private JPanel specialAbilitiesPanel;
-    private JPanel weaknessesPanel;
-    private JPanel strengthsPanel;
-    private JComboBox<Ability> abilityField;
-    private JComboBox<Ability> specialAbilityField;
 
     private PlayerCharacter current;
-    private List<Armor> armorList = new ArrayList<>();
-    private List<Weapon> weaponList = new ArrayList<>();
-    private List<Ability> abilityList = new ArrayList<>();
-    private List<Characteristic> characteristicList = new ArrayList<>();
-    private List<Minion> minionList = new ArrayList<>();
-    private List<PlayerCharacter> characterList = new ArrayList<>();
+    private final List<Armor> armorList = new ArrayList<>();
+    private final List<Weapon> weaponList = new ArrayList<>();
+    private final List<Ability> abilityList = new ArrayList<>();
+    private final List<Characteristic> characteristicList = new ArrayList<>();
+    private final List<Minion> minionList = new ArrayList<>();
+    private final List<PlayerCharacter> characterList = new ArrayList<>();
 
     @Override
     public void start() {
-        super.start(PlayerCharacter.class, this.getContainerPanel());
-        fetchItems();
-        initializeComboBoxes();
-        setActionListeners();
+        super.start(PlayerCharacter.class);
     }
 
-    private void fetchItems() {
-        characterList = this.fetchItems(PlayerCharacter.class);
-
-        fetchItemsOfType(Armor.class, armorList);
-        fetchItemsOfType(Weapon.class, weaponList);
-        fetchItemsOfType(Ability.class, abilityList);
-        fetchItemsOfType(Characteristic.class, characteristicList);
-        fetchItemsOfType(Minion.class, minionList);
+    @Override
+    protected JTextField getNameField() {
+        return this.nameField;
     }
 
-    private void initializeComboBoxes() {
-        breedComboBox.setModel(new DefaultComboBoxModel<>(CharacterType.values()));
-        abilityField.setModel(new DefaultComboBoxModel<Ability>(abilityList.toArray(Ability[]::new)));
-        specialAbilityField.setModel(new DefaultComboBoxModel<Ability>(abilityList.toArray(Ability[]::new)));
+    @Override
+    protected JTextField getHealthField() {
+        return this.healthField;
     }
 
-
-    private <T> void fetchItemsOfType(Class<T> clazz, List<T> itemList) {
-        RequestBody request = new RequestBody();
-        request.addField("clazz", clazz);
-        ResponseBody response = Client.request("item/getAll", request);
-        itemList.addAll((List<T>) response.getField("data"));
+    @Override
+    protected JTextField getGoldField() {
+        return this.goldField;
     }
 
-    private void setActionListeners() {
-        backButton.addActionListener(e -> ScreenManager.goBack());
-        saveButton.addActionListener(e -> saveItem(current));
-        deleteButton.addActionListener(e -> deleteItem(current));
-        abilityField.addActionListener(e -> updateAbility(abilityField));
-        specialAbilityField.addActionListener(e -> updateSpecialAbility(specialAbilityField));
+    @Override
+    protected JComboBox<CharacterType> getBreedComboBox() {
+        return this.breedComboBox;
     }
 
-    private void populateItemList(JPanel panel, List<? extends Object> itemList) {
-        panel.removeAll();
-        itemList.forEach(item -> {
-            JLabel label = new JLabel(item.toString());
-            JButton removeButton = new JButton("-");
-            removeButton.addActionListener(e -> {
-                itemList.remove(item);
-                panel.remove(label);
-                panel.remove(removeButton);
-                panel.revalidate();
-                panel.repaint();
-            });
-            panel.add(label, new GridConstraints());
-            panel.add(removeButton, new GridConstraints());
-        });
+    @Override
+    protected JPanel getMinionsPanel() {
+        return this.minionsPanel;
     }
 
-    private void updateAbility(JComboBox<Ability> selection) {
-        current.setAbility((Ability) selection.getSelectedItem());
+    @Override
+    protected JButton getMinionAddButton() {
+        return this.minionAddButton;
     }
 
-    private void updateSpecialAbility(JComboBox<Ability> selection) {
-        current.setSpecialAbility((Ability) selection.getSelectedItem());
+    @Override
+    protected JPanel getArmorsPanel() {
+        return this.armorsPanel;
+    }
+
+    @Override
+    protected JButton getArmorAddButton() {
+        return this.armorAddButton;
+    }
+
+    @Override
+    protected JPanel getWeaponsPanel() {
+        return this.weaponsPanel;
+    }
+
+    @Override
+    protected JButton getWeaponsAddButton() {
+        return this.weaponsAddButton;
+    }
+
+    @Override
+    protected JPanel getStrengthsPanel() {
+        return this.strengthsPanel;
+    }
+
+    @Override
+    protected JButton getStrengthsAddButton() {
+        return this.strengthsAddButton;
+    }
+
+    @Override
+    protected JPanel getWeaknessesPanel() {
+        return this.weaknessesPanel;
+    }
+
+    @Override
+    protected JButton getWeaknessesAddButton() {
+        return this.weaknessesAddButton;
+    }
+
+    @Override
+    protected JComboBox<Ability> getAbilityField() {
+        return this.abilityComboBox;
+    }
+
+    @Override
+    protected JComboBox<Ability> getSpecialAbilityField() {
+        return this.specialAbilityComboBox;
+    }
+
+    @Override
+    protected JButton getSaveButton() {
+        return this.saveButton;
+    }
+
+    @Override
+    protected JButton getDeleteButton() {
+        return this.deleteButton;
+    }
+
+    @Override
+    protected JButton getBackButton() {
+        return this.backButton;
+    }
+
+    @Override
+    protected Character getCurrent() {
+        return this.current;
+    }
+
+    @Override
+    protected void setCurrent(PlayerCharacter character) {
+        this.current = character;
+    }
+
+    @Override
+    protected List<Armor> getArmorList() {
+        return this.armorList;
+    }
+
+    @Override
+    protected List<Weapon> getWeaponList() {
+        return this.weaponList;
+    }
+
+    @Override
+    protected List<Ability> getAbilityList() {
+        return this.abilityList;
+    }
+
+    @Override
+    protected List<Characteristic> getCharacteristicList() {
+        return this.characteristicList;
+    }
+
+    @Override
+    protected List<Minion> getMinionList() {
+        return this.minionList;
+    }
+
+    @Override
+    protected List<PlayerCharacter> getCharacterList() {
+        return this.characterList;
+    }
+
+    @Override
+    protected void fetchItems() {
+        super.fetchItems();
+        fetchItemsOfType(PlayerCharacter.class, this.getCharacterList());
     }
 
     @Override
@@ -126,25 +200,5 @@ public class EditPlayerCharactersScreen extends EditItemsScreen<PlayerCharacter>
     @Override
     protected JPanel getContainerPanel() {
         return this.container;
-    }
-
-    @Override
-    protected String getItemName(PlayerCharacter character) {
-        return character.getName();
-    }
-
-    @Override
-    protected void setPanelData(PlayerCharacter character) {
-        name.setText(character.getName());
-        health.setText(Integer.toString(character.getHealth()));
-        gold.setText(Integer.toString(character.getGold()));
-        breedComboBox.setSelectedItem(character.getBreed());
-        populateItemList(minionsPanel, character.getMinionList());
-        populateItemList(armorsPanel, character.getArmorList());
-        populateItemList(weaponsPanel, character.getWeaponsList());
-        abilityField.setSelectedItem(character.getAbility());
-        specialAbilityField.setSelectedItem(character.getAbility());
-        populateItemList(weaknessesPanel, character.getDebilitiesList());
-        populateItemList(strengthsPanel, character.getResistancesList());
     }
 }

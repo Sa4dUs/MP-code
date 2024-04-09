@@ -11,11 +11,14 @@ import java.util.concurrent.ThreadLocalRandom;
 public abstract class FightCharacter {
 
     private String id;
+
     private String name;
     private int maxHealth, health, minionHealth, power, mana;
     private Weapon activeWeaponL, activeWeaponR;
     private Armor activeArmor;
     private Ability activeNormalAbility, activeSpecialAbility;
+
+    private StringBuilder turnResume;
 
     public FightCharacter(PlayerCharacter character)
     {
@@ -33,6 +36,8 @@ public abstract class FightCharacter {
 
         this.activeNormalAbility = character.getActiveNormalAbility();
         this.activeSpecialAbility = character.getActiveSpecialAbility();
+
+        this.turnResume = new StringBuilder(this.name);
     }
 
     private int getMinionHealth(PlayerCharacter character){
@@ -62,6 +67,7 @@ public abstract class FightCharacter {
 
     public void receiveDamage()
     {
+        this.turnResume.append(" received damage");
         this.health--;
     }
 
@@ -70,13 +76,15 @@ public abstract class FightCharacter {
         return this.health <= 0;
     }
 
-    public abstract void tick();
+    public void tick()
+    {
+        ++this.power;
+    }
 
     public int calculateDamage()
     {
+        this.turnResume.append(" used ");
         int totalDamage = 0;
-
-        totalDamage += this.activeArmor != null ? this.activeArmor.getAttack() : 0;
 
         if(canUseAbility(this.activeSpecialAbility, this.mana))
         {
@@ -90,18 +98,29 @@ public abstract class FightCharacter {
         }
         else
         {
-            totalDamage += this.activeWeaponL != null ? this.activeWeaponL.getAttack() : 0;
-            totalDamage += this.activeWeaponR != null ? this.activeWeaponR.getAttack() : 0;
+            if(this.activeWeaponL != null)
+            {
+                this.turnResume.append(activeWeaponL.toString());
+                totalDamage += this.activeWeaponL.getAttack();
+            }
+            if(this.activeWeaponR != null)
+            {
+                this.turnResume.append(totalDamage == 0 ? this.activeWeaponR.toString(): " and " + this.activeWeaponR.toString());
+                totalDamage += this.activeWeaponR.getAttack();
+            }
         }
+
+        totalDamage += this.activeArmor != null ? this.activeArmor.getAttack() : 0;
+
+        this.turnResume.append(" to attack.");
 
         return roll(totalDamage, 1, 6, 2);
     }
 
     public int calculateDefense()
     {
+        this.turnResume.append(" used ");
         int totalDefense = 0;
-
-        totalDefense += this.activeArmor != null ? this.activeArmor.getDefense() : 0;
 
         if(canUseAbility(this.activeSpecialAbility, this.mana))
         {
@@ -115,9 +134,21 @@ public abstract class FightCharacter {
         }
         else
         {
-            totalDefense += this.activeWeaponL != null ? this.activeWeaponL.getDefense() : 0;
-            totalDefense += this.activeWeaponR != null ? this.activeWeaponR.getDefense() : 0;
+            if(this.activeWeaponL != null)
+            {
+                this.turnResume.append(activeWeaponL.toString());
+                totalDefense += this.activeWeaponL.getAttack();
+            }
+            if(this.activeWeaponR != null)
+            {
+                this.turnResume.append(totalDefense == 0 ? this.activeWeaponR.toString(): " and " + (this.activeWeaponR.toString()));
+                totalDefense += this.activeWeaponR.getAttack();
+            }
         }
+
+        totalDefense += this.activeArmor != null ? this.activeArmor.getDefense() : 0;
+
+        this.turnResume.append(" to defend.");
 
         return roll(totalDefense, 1, 6, 2);
     }
@@ -125,11 +156,13 @@ public abstract class FightCharacter {
     private void useNormalAbility()
     {
         this.power -= this.activeNormalAbility.getCost();
+        this.turnResume.append(activeNormalAbility.toString());
     }
 
     private void useSpecialAbility()
     {
         this.mana -= this.activeSpecialAbility.getCost();
+        this.turnResume.append(activeSpecialAbility.toString());
     }
 
     private boolean canUseAbility(Ability ability, int resource) {
@@ -152,4 +185,16 @@ public abstract class FightCharacter {
 
     private int calculateHealth()
     { return this.health + this.minionHealth; }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public String getLastTurn(){
+        String res = this.turnResume.toString();
+        this.turnResume = new StringBuilder(this.name);
+        return res;
+    }
+
+    public abstract void dealtDamage();
 }

@@ -9,6 +9,9 @@ import server.nosql.Document;
 import server.nosql.JSONable;
 import server.nosql.Schemas.ChallengeResultSchema;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ChallengeResult implements JSONable {
     private String id;
     private String attackerId, attackedId;
@@ -16,6 +19,7 @@ public class ChallengeResult implements JSONable {
     private int turns;
     private int attackerMinionsLeft, attackedMinionsLeft;
     private boolean winnerAttacking = true;
+    private List<String> history = new ArrayList<>();
 
     public ChallengeResult(){};
 
@@ -37,6 +41,7 @@ public class ChallengeResult implements JSONable {
 
         if(attackedCharacter != null) {
             calculateDuel(attackingCharacter, attackedCharacter);
+            this.history.add("Winner is: " + (winnerAttacking ? attackingPlayer.getName() : attackedPlayer.getName()));
             this.attackerMinionsLeft -= attackingPlayerCharacter.calculateMinionsKilledAfterDamage(attackingCharacter.getReceivedDamage());
             this.attackedMinionsLeft -= attackedPlayerCharacter.calculateMinionsKilledAfterDamage(attackedCharacter.getReceivedDamage());
         }
@@ -90,7 +95,14 @@ public class ChallengeResult implements JSONable {
         int dfs = defender.calculateDefense();
 
         if(dmg >= dfs)
+        {
             defender.receiveDamage();
+            attacker.dealtDamage();
+        }
+
+        history.add("Turn " + this.turns + ":");
+        history.add(attacker.getLastTurn());
+        history.add(defender.getLastTurn());
     }
 
     public String getAttackerId() {
@@ -117,16 +129,8 @@ public class ChallengeResult implements JSONable {
         return attackerMinionsLeft;
     }
 
-    public void setAttackerMinionsLeft(int attackerMinionsLeft) {
-        this.attackerMinionsLeft = attackerMinionsLeft;
-    }
-
     public int getAttackedMinionsLeft() {
         return attackedMinionsLeft;
-    }
-
-    public void setAttackedMinionsLeft(int attackedMinionsLeft) {
-        this.attackedMinionsLeft = attackedMinionsLeft;
     }
 
     public String getId(){return id;}
@@ -147,6 +151,7 @@ public class ChallengeResult implements JSONable {
         document.setProperty("attackerMinionsLeft", this.attackerMinionsLeft);
         document.setProperty("attackedMinionsLeft", this.attackedMinionsLeft);
         document.setProperty("winnerAttacking",this.winnerAttacking);
+        document.setProperty("history", this.history.toArray());
         return document;
     }
 }

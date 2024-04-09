@@ -13,6 +13,11 @@ public class Hunter extends FightCharacter{
     public void tick() {}
 
     @Override
+    public void dealtDamage() {
+
+    }
+
+    @Override
     public void receiveDamage(){
         super.receiveDamage();
         this.setMana(Math.max(this.getMana() - 1, minMana));

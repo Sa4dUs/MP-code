@@ -10,5 +10,9 @@ public class Vampire extends FightCharacter{
     }
 
     @Override
-    public void tick() {this.setMana(Math.min(this.getMana() + 1, maxMana)); }
+    public void tick(){}
+    @Override
+    public void dealtDamage() {
+        this.setMana(Math.min(this.getMana() + 1, maxMana));
+    }
 }

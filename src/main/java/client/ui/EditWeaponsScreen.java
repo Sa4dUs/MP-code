@@ -1,6 +1,7 @@
 package client.ui;
 
 import client.ScreenManager;
+import server.items.Armor;
 import server.items.Weapon;
 
 import javax.swing.*;
@@ -17,6 +18,7 @@ public class EditWeaponsScreen extends EditItemsScreen<Weapon> {
     private JTextField defense;
     private JCheckBox twoHanded;
     private JButton deleteButton;
+    private JButton createButton;
 
     private Weapon currentItem;
 
@@ -39,6 +41,16 @@ public class EditWeaponsScreen extends EditItemsScreen<Weapon> {
     @Override
     protected JPanel getContainerPanel() {
         return container;
+    }
+
+    @Override
+    protected JButton getCreateButton() {
+        return this.createButton;
+    }
+
+    @Override
+    protected void createButtonActionListener() {
+        setPanelData(new Weapon());
     }
 
     @Override

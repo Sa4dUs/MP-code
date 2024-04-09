@@ -14,13 +14,17 @@ import java.util.List;
 public abstract class EditItemsScreen<T> extends Screen {
 
     protected abstract JPanel getContainerPanel();
+    protected abstract JButton getCreateButton();
+    protected abstract void createButtonActionListener();
 
     protected void start(Class<T> clazz, JPanel container) {
         super.start();
 
-        List<T> items = fetchItems(clazz);
+        List<T> items = this.fetchItems(clazz);
 
         container.removeAll();
+
+        this.getCreateButton().addActionListener(e -> this.createButtonActionListener());
 
         items.forEach(item -> {
             JButton button = new DefaultButton(getItemName(item), e -> setPanelData(item));

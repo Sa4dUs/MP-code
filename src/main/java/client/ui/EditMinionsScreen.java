@@ -31,6 +31,7 @@ public class EditMinionsScreen extends Screen {
     private JButton add;
     private JButton deleteButton;
     private JComboBox breedComboBox;
+    private JButton createButton;
     public Minion current;
 
     @Override

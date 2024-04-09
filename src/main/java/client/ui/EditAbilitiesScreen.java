@@ -16,6 +16,7 @@ public class EditAbilitiesScreen extends EditItemsScreen<Ability> {
     private JPanel container;
     private JTextField defenseField;
     private JButton deleteButton;
+    private JButton createButton;
     private Ability currentItem;
     @Override
     public void start() {
@@ -25,6 +26,16 @@ public class EditAbilitiesScreen extends EditItemsScreen<Ability> {
     @Override
     protected JPanel getContainerPanel() {
         return container;
+    }
+
+    @Override
+    protected JButton getCreateButton() {
+        return this.createButton;
+    }
+
+    @Override
+    protected void createButtonActionListener() {
+        setPanelData(new Ability());
     }
 
     @Override

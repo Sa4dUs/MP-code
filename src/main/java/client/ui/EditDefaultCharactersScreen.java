@@ -35,6 +35,7 @@ public class EditDefaultCharactersScreen extends EditCharacterScreen<Character> 
     private JButton strengthsAddButton;
     private JComboBox<Ability> abilityComboBox;
     private JComboBox<Ability> specialAbilityComboBox;
+    private JButton createButton;
 
     private Character current;
     private final List<Armor> armorList = new ArrayList<>();
@@ -47,6 +48,16 @@ public class EditDefaultCharactersScreen extends EditCharacterScreen<Character> 
     @Override
     public void start() {
         super.start(Character.class);
+    }
+
+    @Override
+    protected JButton getCreateButton() {
+        return this.createButton;
+    }
+
+    @Override
+    protected void createButtonActionListener() {
+        setPanelData(new Character());
     }
 
     @Override

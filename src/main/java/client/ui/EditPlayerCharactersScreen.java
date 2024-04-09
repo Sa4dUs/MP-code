@@ -37,6 +37,7 @@ public class EditPlayerCharactersScreen extends EditCharacterScreen<PlayerCharac
     private JComboBox<Ability> specialAbilityComboBox;
     private JButton saveButton;
     private JButton deleteButton;
+    private JButton createButton;
 
     private PlayerCharacter current;
     private final List<Armor> armorList = new ArrayList<>();
@@ -49,6 +50,16 @@ public class EditPlayerCharactersScreen extends EditCharacterScreen<PlayerCharac
     @Override
     public void start() {
         super.start(PlayerCharacter.class);
+    }
+
+    @Override
+    protected JButton getCreateButton() {
+        return this.createButton;
+    }
+
+    @Override
+    protected void createButtonActionListener() {
+        setPanelData(new PlayerCharacter());
     }
 
     @Override

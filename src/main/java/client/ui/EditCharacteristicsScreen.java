@@ -18,12 +18,28 @@ public class EditCharacteristicsScreen extends EditItemsScreen<Characteristic> {
     private JTextField valueField;
     private JButton deleteButton;
     private JButton createButton;
+    private JComboBox<Characteristic.CharacteristicType> typeComboBox;
     private Characteristic currentItem;
-    private Characteristic.CharacteristicType currentType; //!TODO Añadir selector en la UI @Marcelo
+    private Characteristic.CharacteristicType currentType;
 
     @Override
     public void start() {
-        super.start(Characteristic.class, container);
+        typeComboBox.addItem(Characteristic.CharacteristicType.Resistance);
+        typeComboBox.addItem(Characteristic.CharacteristicType.Weakness);
+        typeComboBox.addActionListener(e -> this.updateType());
+
+        super.start(Resistance.class, container);
+    }
+
+    private void updateType() {
+        switch ((Characteristic.CharacteristicType) typeComboBox.getSelectedItem()) {
+            case Weakness -> {
+                super.start(Weakness.class, container);
+            }
+            case Resistance -> {
+                super.start(Resistance.class, container);
+            }
+        }
     }
 
     @Override
@@ -38,7 +54,14 @@ public class EditCharacteristicsScreen extends EditItemsScreen<Characteristic> {
 
     @Override
     protected void createButtonActionListener() {
-        setPanelData(new Weakness());
+        switch (currentType) {
+            case Weakness -> {
+                setPanelData(new Weakness());
+            }
+            case Resistance -> {
+                setPanelData(new Resistance());
+            }
+        }
     }
 
     @Override

@@ -17,7 +17,7 @@ public abstract class EditItemsScreen<T> extends Screen {
     protected abstract JButton getCreateButton();
     protected abstract void createButtonActionListener();
 
-    protected void start(Class<T> clazz, JPanel container) {
+    protected void start(Class<? extends T> clazz, JPanel container) {
         super.start();
 
         List<T> items = this.fetchItems(clazz);
@@ -36,7 +36,7 @@ public abstract class EditItemsScreen<T> extends Screen {
         container.repaint();
     }
 
-    protected List<T> fetchItems(Class<T> clazz) {
+    protected List<T> fetchItems(Class<? extends T> clazz) {
         RequestBody request = new RequestBody();
         request.addField("clazz", clazz);
 

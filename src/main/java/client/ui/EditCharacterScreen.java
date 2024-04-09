@@ -62,7 +62,6 @@ public abstract class EditCharacterScreen<T extends Character> extends EditItems
     protected void fetchItems() {
         fetchItemsOfType(Armor.class, this.getArmorList());
         fetchItemsOfType(Weapon.class, this.getWeaponList());
-        //!TODO Lo he cambiado para que pille abilidades dependiendo del breed
         fetchItemsOfType(Weakness.class, this.getWeaknessesList());
         fetchItemsOfType(Resistance.class, this.getResistancesList());
         fetchMinions(this.getMinionList());
@@ -126,11 +125,13 @@ public abstract class EditCharacterScreen<T extends Character> extends EditItems
 
     protected void initializeComboBoxes() {
         this.getBreedComboBox().setModel(new DefaultComboBoxModel<>(CharacterType.values()));
+
         this.getSpecialAbilityField().setModel(new DefaultComboBoxModel<Ability>(getSpecialAbilityList().toArray(Ability[]::new)));
     }
 
     protected void setActionListeners() {
-        this.getBreedComboBox().addActionListener(e -> updateAbilities());
+        this.getBreedComboBox().addActionListener(e -> updateBreed());
+        this.getSpecialAbilityField().addActionListener(e -> updateSpecialAbility());
         this.getBackButton().addActionListener(e -> ScreenManager.goBack());
         this.getSaveButton().addActionListener(e -> saveItem(this.getCurrent()));
         this.getDeleteButton().addActionListener(e -> deleteItem(this.getCurrent()));
@@ -140,6 +141,15 @@ public abstract class EditCharacterScreen<T extends Character> extends EditItems
         getWeaponsAddButton().addActionListener(e -> displayPopup("Weapon", getWeaponList(), getWeaponsPanel(), getCurrent().getWeaponsList()));
         getStrengthsAddButton().addActionListener(e -> displayPopup("Strength", getResistancesList(), getStrengthsPanel(), getCurrent().getResistancesList()));
         getWeaknessesAddButton().addActionListener(e -> displayPopup("Weakness", getWeaknessesList(), getWeaknessesPanel(), getCurrent().getDebilitiesList()));
+    }
+
+    private void updateBreed() {
+        this.getCurrent().setBreed((CharacterType) this.getBreedComboBox().getSelectedItem());
+        this.updateAbilities();
+    }
+
+    private void updateSpecialAbility() {
+        this.getCurrent().setSpecialAbility((Ability) this.getSpecialAbilityField().getSelectedItem());
     }
 
     private <T> void displayPopup(String title, List<T> itemList, JPanel panelToUpdate, List<T> listToUpdate) {
@@ -211,6 +221,8 @@ public abstract class EditCharacterScreen<T extends Character> extends EditItems
         this.getHealthField().setText(Integer.toString(character.getHealth()));
         this.getGoldField().setText(Integer.toString(character.getGold()));
         this.getBreedComboBox().setSelectedItem(character.getBreed());
+
+        this.getSpecialAbilityField().addItem(null);
         this.getSpecialAbilityField().setSelectedItem(character.getSpecialAbility());
 
         populateItemList(this.getMinionsPanel(), character.getMinionList());

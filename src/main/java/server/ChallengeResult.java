@@ -19,6 +19,7 @@ public class ChallengeResult implements JSONable {
     private int turns;
     private int attackerMinionsLeft, attackedMinionsLeft;
     private boolean winnerAttacking = true;
+    private final String date = java.time.ZonedDateTime.now().toString();
     private List<String> history = new ArrayList<>();
 
     public ChallengeResult(){};
@@ -132,6 +133,8 @@ public class ChallengeResult implements JSONable {
     public int getAttackedMinionsLeft() {
         return attackedMinionsLeft;
     }
+
+    public String getDate(){return this.date;}
 
     public String getId(){return id;}
 

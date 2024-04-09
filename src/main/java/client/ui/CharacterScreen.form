@@ -75,9 +75,10 @@
                       <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
+                      <enabled value="true"/>
                       <font name="Fira Code" size="16" style="3"/>
                       <foreground color="-14869472"/>
-                      <labelFor value="4cca5"/>
+                      <labelFor value="eb96"/>
                       <text value="Name:"/>
                     </properties>
                   </component>
@@ -111,7 +112,7 @@
                     <properties>
                       <font name="Fira Code" size="16" style="3"/>
                       <foreground color="-14869472"/>
-                      <labelFor value="4cca5"/>
+                      <labelFor value="bb95e"/>
                       <text value="Breed:"/>
                     </properties>
                   </component>
@@ -135,7 +136,7 @@
                     <properties>
                       <font name="Fira Code" size="16" style="3"/>
                       <foreground color="-14869472"/>
-                      <labelFor value="4cca5"/>
+                      <labelFor value="d9d2d"/>
                       <text value="Health:"/>
                     </properties>
                   </component>
@@ -159,7 +160,7 @@
                     <properties>
                       <font name="Fira Code" size="16" style="3"/>
                       <foreground color="-14869472"/>
-                      <labelFor value="4cca5"/>
+                      <labelFor value="f2399"/>
                       <text value="Gold:"/>
                     </properties>
                   </component>
@@ -308,6 +309,7 @@
                 <properties>
                   <font name="Fira Code" size="16" style="3"/>
                   <foreground color="-16711423"/>
+                  <labelFor value="8effb"/>
                   <text value="Right Weapon"/>
                 </properties>
               </component>
@@ -331,6 +333,7 @@
                 <properties>
                   <font name="Fira Code" size="16" style="3"/>
                   <foreground color="-16711423"/>
+                  <labelFor value="f5daa"/>
                   <text value="Left Weapon"/>
                 </properties>
               </component>
@@ -341,6 +344,7 @@
                 <properties>
                   <font name="Fira Code" size="16" style="3"/>
                   <foreground color="-16711423"/>
+                  <labelFor value="edc45"/>
                   <text value="Armor"/>
                 </properties>
               </component>

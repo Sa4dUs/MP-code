@@ -105,10 +105,10 @@ public class CharacterScreen extends Screen {
         Weapon selectedWeapon = (Weapon) weaponSelect.getSelectedItem();
 
         if (weaponSelect == leftWeaponSelect && selectedWeapon != null && selectedWeapon.isTwoHanded()) {
-            rightWeaponSelect.setSelectedItem("");
+            rightWeaponSelect.setSelectedItem(null);
             character.setActiveWeaponR(null);
         } else if (weaponSelect == rightWeaponSelect && selectedWeapon != null && selectedWeapon.isTwoHanded()) {
-            leftWeaponSelect.setSelectedItem("");
+            leftWeaponSelect.setSelectedItem(null);
             character.setActiveWeaponL(null);
         }
         if (weaponSelect == leftWeaponSelect) {

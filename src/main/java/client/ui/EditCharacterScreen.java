@@ -210,7 +210,7 @@ public abstract class EditCharacterScreen<T extends Character> extends EditItems
         this.getNameField().setText(character.getName());
         this.getHealthField().setText(Integer.toString(character.getHealth()));
         this.getGoldField().setText(Integer.toString(character.getGold()));
-        this.getBreedComboBox().setSelectedItem(character.getBreed());// !TODO He borrado el getAbility Normal
+        this.getBreedComboBox().setSelectedItem(character.getBreed());
         this.getSpecialAbilityField().setSelectedItem(character.getSpecialAbility());
 
         populateItemList(this.getMinionsPanel(), character.getMinionList());

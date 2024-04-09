@@ -17,19 +17,16 @@ public class RegisterCharacterScreen extends Screen {
     private JPanel frame;
     private JButton backButton;
     private JPanel container;
-    private JLabel name;
-    private JLabel health;
-    private JLabel gold;
-    private JList<String> abilities;
-    private JList<String> weaknesses;
-    private JList<String> strengths;
-    private JList<String> minions;
-    private JList<String> armors;
-    private JList<String> weapons;
-    private JButton submit;
-    private JLabel specialAbility;
     private JTextField nameField;
-    private JComboBox abilityComboBox;
+    private JList<String> weaknessesList;
+    private JList<String> strengthsList;
+    private JList<String> minionsList;
+    private JList<String> armorsList;
+    private JList<String> weaponsList;
+    private JButton submit;
+    private JTextField healthField;
+    private JTextField goldField;
+    private JComboBox specialAbilityComboBox;
 
     @Override
     public void start() {
@@ -80,16 +77,16 @@ public class RegisterCharacterScreen extends Screen {
     public void setPanelData(Character character) {
         current = character;
 
-        name.setText(character.getName());
-        health.setText(Integer.toString(character.getHealth()));
-        gold.setText(Integer.toString(character.getGold()));
+        nameField.setText(character.getName());
+        healthField.setText(Integer.toString(character.getHealth()));
+        goldField.setText(Integer.toString(character.getGold()));
         Ability charcarterSpecialAbility = character.getSpecialAbility();
-        specialAbility.setText(charcarterSpecialAbility != null ? charcarterSpecialAbility.getName(): "Empty");
-        setListData(weaknesses, character.getDebilitiesList());
-        setListData(strengths, character.getResistancesList());
-        setListData(minions, character.getMinionList());
-        setListData(weapons, character.getWeaponsList());
-        setListData(armors, character.getArmorList());
+        specialAbilityComboBox.setSelectedItem(charcarterSpecialAbility != null ? charcarterSpecialAbility: "Empty");
+        setListData(weaknessesList, character.getDebilitiesList());
+        setListData(strengthsList, character.getResistancesList());
+        setListData(minionsList, character.getMinionList());
+        setListData(weaponsList, character.getWeaponsList());
+        setListData(armorsList, character.getArmorList());
     }
 
     private void setListData(JList<String> list, List<? extends Object> dataList) {

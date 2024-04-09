@@ -38,15 +38,12 @@ public class EditMinionsScreen extends Screen {
     public void start() {
         super.start();
 
-        // Fetch items from server
         List<Minion> items = fetchMinions(Human.class);
         items.addAll(fetchMinions(Demon.class));
         items.addAll(fetchMinions(Ghoul.class));
 
-        // Set container layout
-        container.setLayout(new GridLayout(items.size(), 1));
+        container.setLayout(new FlowLayout());
 
-        // Add buttons for each minion
         items.forEach(el -> {
             JButton button = new DefaultButton(el.getName(), e -> {
                 current = el;
@@ -54,6 +51,10 @@ public class EditMinionsScreen extends Screen {
             });
             container.add(button, new GridConstraints());
         });
+
+        createButton.addActionListener(e -> setPanelData(new Human()));
+
+        setPanelData(!items.isEmpty() ? items.get(0) : new Human());
     }
 
     private List<Minion> fetchMinions(Class<? extends Minion> clazz) {
@@ -100,7 +101,10 @@ public class EditMinionsScreen extends Screen {
     }
 
     public void setPanelData(Minion item) {
+        this.current = item;
+
         minions.setEnabled(false);
+        add.setEnabled(false);
 
         name.setText(item.getName());
         health.setText(Integer.toString(item.getHealth()));
@@ -108,6 +112,9 @@ public class EditMinionsScreen extends Screen {
         if (item instanceof Demon) {
             extraLabel.setText("Pact:");
             extraField.setText(((Demon) item).getPact());
+            minions.setEnabled(true);
+            add.setEnabled(true);
+
         } else if (item instanceof Human) {
             extraLabel.setText("Loyalty:");
             extraField.setText(Integer.toString(((Human) item).getLoyalty()));
@@ -122,7 +129,6 @@ public class EditMinionsScreen extends Screen {
     }
 
     private void createPopup() {
-        // Create a new JFrame
         JFrame popupFrame = new JFrame("Create Minion");
         JPanel popupPanel = new JPanel(new GridLayout(5, 2));
 
@@ -138,7 +144,6 @@ public class EditMinionsScreen extends Screen {
         JButton saveButton = new JButton("Save");
         JButton cancelButton = new JButton("Cancel");
 
-        // Add components to the panel
         popupPanel.add(typeLabel);
         popupPanel.add(typeComboBox);
         popupPanel.add(nameLabel);
@@ -150,12 +155,10 @@ public class EditMinionsScreen extends Screen {
         popupPanel.add(saveButton);
         popupPanel.add(cancelButton);
 
-        // Set default state of fields
         nameField.setEnabled(false);
         healthField.setEnabled(false);
         extraField.setEnabled(false);
 
-        // Update extraLabel and enable fields based on selected type
         typeComboBox.addActionListener(e -> {
             String selectedType = (String) typeComboBox.getSelectedItem();
             switch (selectedType) {
@@ -201,7 +204,6 @@ public class EditMinionsScreen extends Screen {
             minion.setName(name);
             minion.setHealth(health);
 
-            // Save minion to the server
             RequestBody request = new RequestBody();
             request.addField("object", minion);
             Client.request("item/set", request);
@@ -215,17 +217,14 @@ public class EditMinionsScreen extends Screen {
 
             container.add(button, new GridConstraints());
 
-            // Close the popup
             popupFrame.dispose();
         });
 
-        // Handle cancel button click
         cancelButton.addActionListener(e -> popupFrame.dispose());
 
-        // Add panel to the frame
         popupFrame.getContentPane().add(popupPanel);
         popupFrame.pack();
-        popupFrame.setLocationRelativeTo(null); // Center the popup
+        popupFrame.setLocationRelativeTo(null);
         popupFrame.setVisible(true);
     }
 }

@@ -9,6 +9,7 @@ import lib.ResponseBody;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 public abstract class EditItemsScreen<T> extends Screen {
@@ -30,6 +31,12 @@ public abstract class EditItemsScreen<T> extends Screen {
             JButton button = new DefaultButton(getItemName(item), e -> setPanelData(item));
             container.add(button, new GridConstraints());
         });
+
+        try {
+            setPanelData(!items.isEmpty() ? items.get(0) : clazz.getDeclaredConstructor().newInstance());
+        } catch (InstantiationException | InvocationTargetException | IllegalAccessException | NoSuchMethodException e) {
+            throw new RuntimeException(e);
+        }
 
         container.updateUI();
         container.revalidate();

@@ -1,22 +1,4 @@
 {
-    "80653048-9bec-4b1d-9ae9-fcdbc091b5ac": {
-        "pact": "Contrato de alma",
-        "name": "Satan",
-        "health": 3,
-        "id": "80653048-9bec-4b1d-9ae9-fcdbc091b5ac",
-        "minions": [
-            "827e2935-5d91-4b63-8e1a-3dfdd9675b3d",
-            "26eef297-bcb7-46da-a604-c73695f254aa",
-            "37afca31-db97-4bc0-9bd4-caf3f3d7acdf"
-        ]
-    },
-    "30ce3b7b-58db-4c14-8dd4-fb34d1a05a55": {
-        "pact": "Sabiduría suprema",
-        "name": "Thoth",
-        "health": 3,
-        "id": "30ce3b7b-58db-4c14-8dd4-fb34d1a05a55",
-        "minions": ["808df08c-83c5-4aef-a73d-da50c419775d"]
-    },
     "37afca31-db97-4bc0-9bd4-caf3f3d7acdf": {
         "pact": "Riquezas infinitas",
         "name": "Mammon",

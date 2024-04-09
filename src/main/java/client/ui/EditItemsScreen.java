@@ -17,9 +17,12 @@ public abstract class EditItemsScreen<T> extends Screen {
     protected abstract JPanel getContainerPanel();
     protected abstract JButton getCreateButton();
     protected abstract void createButtonActionListener();
-
     private Class<? extends T> clazz;
     private JPanel container;
+
+    public void start() {
+        super.start();
+    }
 
     protected void start(Class<? extends T> clazz, JPanel container) {
         super.start();

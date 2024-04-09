@@ -32,8 +32,8 @@ public class ChallengeResult implements JSONable {
         PlayerCharacter attackingPlayerCharacter = attackingPlayer.getCharacter();
         PlayerCharacter attackedPlayerCharacter = attackedPlayer.getCharacter();
 
-        FightCharacter attackingCharacter = createFightCharacterFromCharacter(attackingPlayerCharacter);
-        FightCharacter attackedCharacter = createFightCharacterFromCharacter(attackedPlayerCharacter);
+        FightCharacter attackingCharacter = createFightCharacterFromCharacter(attackingPlayerCharacter, attackingPlayer.getName());
+        FightCharacter attackedCharacter = createFightCharacterFromCharacter(attackedPlayerCharacter, attackedPlayer.getName());
 
         this.attackerMinionsLeft = attackingPlayerCharacter.getMinionCount();
         this.attackedMinionsLeft = attackedPlayerCharacter.getMinionCount();
@@ -60,12 +60,12 @@ public class ChallengeResult implements JSONable {
         //quitar oro
     }
 
-    public FightCharacter createFightCharacterFromCharacter(PlayerCharacter character)
+    public FightCharacter createFightCharacterFromCharacter(PlayerCharacter character, String playerName)
     {
         return switch (character.getBreed()) {
-            case Hunter -> new Hunter(character);
-            case Vampire -> new Vampire(character);
-            case Lycanthrope -> new Lycanthrope(character);
+            case Hunter -> new Hunter(character, playerName);
+            case Vampire -> new Vampire(character, playerName);
+            case Lycanthrope -> new Lycanthrope(character, playerName);
             default -> null;
         };
     }
@@ -100,7 +100,7 @@ public class ChallengeResult implements JSONable {
             attacker.dealtDamage();
         }
 
-        history.add("Turn " + this.turns + ":");
+        history.add("Turn " + ++this.turns + ":");
         history.add(attacker.getLastTurn());
         history.add(defender.getLastTurn());
     }

@@ -8,7 +8,7 @@ class LycanthropeTest {
 
     @Test
     public void testReceiveDamageIncreasesMana() {
-        Lycanthrope lycanthrope = new Lycanthrope(new PlayerCharacter());
+        Lycanthrope lycanthrope = new Lycanthrope(new PlayerCharacter(), "");
 
         int initialMana = lycanthrope.getMana();
 

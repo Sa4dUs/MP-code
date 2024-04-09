@@ -68,7 +68,7 @@ public class PlayerCharacter extends Character{
         document.setProperty("activeWeaponR", this.activeWeaponR != null ? this.activeWeaponR.getDocument().getId(): "");
         document.setProperty("activeArmor", this.activeArmor != null ? this.activeArmor.getDocument().getId(): "");
         document.setProperty("activeNormalAbility", this.activeNormalAbility != null ? this.activeNormalAbility.getDocument().getId(): "");
-        document.setProperty("activeNormalAbility", this.activeSpecialAbility != null ? this.activeSpecialAbility.getDocument().getId(): "");
+        document.setProperty("activeSpecialAbility", this.activeSpecialAbility != null ? this.activeSpecialAbility.getDocument().getId(): "");
 
         return document;
     }

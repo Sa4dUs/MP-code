@@ -11,7 +11,7 @@ public class Weapon extends Stats {
     private boolean twoHanded;
     @Override
     public String toString() {
-        return super.toString() + " Two handed:" + (this.twoHanded ? "Yes" : "No");
+        return super.toString() + (this.twoHanded ? "Two handed" : "One handed");
     }
 
     public boolean isTwoHanded() {

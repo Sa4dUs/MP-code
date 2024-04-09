@@ -8,7 +8,7 @@ class HunterTest {
 
     @Test
     public void testManaDecreasesWhenTakingDamage() {
-        Hunter hunter = new Hunter(new PlayerCharacter());
+        Hunter hunter = new Hunter(new PlayerCharacter(), "");
         int initialMana = hunter.getMana();
 
         hunter.receiveDamage();

@@ -3,8 +3,8 @@ package server.characters;
 public class Lycanthrope extends FightCharacter{
     private int maxMana;
 
-    public Lycanthrope(PlayerCharacter character) {
-        super(character);
+    public Lycanthrope(PlayerCharacter character, String playerName) {
+        super(character, playerName);
         this.maxMana = 3;
         setMana(0);
     }

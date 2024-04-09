@@ -12,7 +12,7 @@ public abstract class FightCharacter {
 
     private String id;
 
-    private String name;
+    private String name, playerName;
     private int maxHealth, health, minionHealth, power, mana;
     private Weapon activeWeaponL, activeWeaponR;
     private Armor activeArmor;
@@ -20,9 +20,10 @@ public abstract class FightCharacter {
 
     private StringBuilder turnResume;
 
-    public FightCharacter(PlayerCharacter character)
+    public FightCharacter(PlayerCharacter character, String playerName)
     {
         this.name = character.getName();
+        this.playerName = playerName;
 
         this.minionHealth = getMinionHealth(character);
         this.health = character.getHealth() + this.minionHealth;
@@ -37,7 +38,7 @@ public abstract class FightCharacter {
         this.activeNormalAbility = character.getActiveNormalAbility();
         this.activeSpecialAbility = character.getActiveSpecialAbility();
 
-        this.turnResume = new StringBuilder(this.name);
+        this.turnResume = new StringBuilder("(").append(this.playerName).append(") ").append(this.name);
     }
 
     private int getMinionHealth(PlayerCharacter character){
@@ -67,7 +68,7 @@ public abstract class FightCharacter {
 
     public void receiveDamage()
     {
-        this.turnResume.append(" received damage");
+        this.turnResume.append(" Received damage");
         this.health--;
     }
 
@@ -192,7 +193,7 @@ public abstract class FightCharacter {
 
     public String getLastTurn(){
         String res = this.turnResume.toString();
-        this.turnResume = new StringBuilder(this.name);
+        this.turnResume = new StringBuilder("(").append(this.playerName).append(") ").append(this.name);
         return res;
     }
 

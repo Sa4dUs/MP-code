@@ -9,6 +9,20 @@
         "id": "V12AA",
         "results": []
     },
+    "Y95ZZ": {
+        "nick": "Y95ZZ",
+        "password": "1234",
+        "character": "89272f6f-dc36-4baf-8038-cb75a2c6b147",
+        "blocked": "false",
+        "name": "Lamoara",
+        "pendingDuels": [],
+        "id": "Y95ZZ",
+        "results": [
+            "d6aac3dd-f0f3-4e82-8f8d-a2f17b6b837e",
+            "58c00646-82a1-40cf-9cef-9d7986ecb1ad",
+            "b910c2d9-34c1-4ecb-88f0-1478222ef575"
+        ]
+    },
     "F90WW": {
         "nick": "F90WW",
         "password": "1234",
@@ -35,8 +49,18 @@
         "character": "cbf0b3de-029e-4a63-81d7-ee10fdd60a54",
         "blocked": "false",
         "name": "sa4dus",
-        "pendingDuels": ["78f535d6-ac37-4eb6-a971-ca35baadfd1d"],
+        "pendingDuels": [
+            "78f535d6-ac37-4eb6-a971-ca35baadfd1d",
+            "ee22f0f6-7f80-46c7-968a-78451c898ffd",
+            "6a6504f9-1ffb-4b06-91f5-b7c55384c5f1",
+            "cb85a830-06b9-4db2-beb7-42060d12df9c"
+        ],
         "id": "L60YY",
-        "results": ["d4eb6783-d798-4676-a188-601dc0e59b07"]
+        "results": [
+            "d4eb6783-d798-4676-a188-601dc0e59b07",
+            "d6aac3dd-f0f3-4e82-8f8d-a2f17b6b837e",
+            "58c00646-82a1-40cf-9cef-9d7986ecb1ad",
+            "b910c2d9-34c1-4ecb-88f0-1478222ef575"
+        ]
     }
 }

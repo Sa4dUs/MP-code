@@ -3,8 +3,8 @@ package server.characters;
 public class Vampire extends FightCharacter{
     private int maxMana, age;
 
-    public Vampire(PlayerCharacter character) {
-        super(character);
+    public Vampire(PlayerCharacter character, String playerName) {
+        super(character, playerName);
         this.maxMana = 10;
         setMana(0);
     }

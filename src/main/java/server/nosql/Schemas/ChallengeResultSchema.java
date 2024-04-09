@@ -13,7 +13,8 @@ public class ChallengeResultSchema extends Schema {
                 "turns", Integer.class,
                 "attackerMinionsLeft", Integer.class,
                 "attackedMinionsLeft", Integer.class,
-                "bet", Integer.class
+                "bet", Integer.class,
+                "history", String[].class
         ));
     }
 }

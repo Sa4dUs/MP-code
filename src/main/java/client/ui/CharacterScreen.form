@@ -90,7 +90,7 @@
                     </constraints>
                     <properties>
                       <background color="-1842206"/>
-                      <editable value="true"/>
+                      <editable value="false"/>
                       <font name="Inconsolata" size="14"/>
                       <foreground color="-16711423"/>
                     </properties>
@@ -124,7 +124,7 @@
                     </constraints>
                     <properties>
                       <background color="-1842206"/>
-                      <editable value="true"/>
+                      <editable value="false"/>
                       <font name="Inconsolata" size="14"/>
                       <foreground color="-16711423"/>
                     </properties>
@@ -148,7 +148,7 @@
                     </constraints>
                     <properties>
                       <background color="-1842206"/>
-                      <editable value="true"/>
+                      <editable value="false"/>
                       <font name="Inconsolata" size="14"/>
                       <foreground color="-16711423"/>
                     </properties>
@@ -172,7 +172,7 @@
                     </constraints>
                     <properties>
                       <background color="-1842206"/>
-                      <editable value="true"/>
+                      <editable value="false"/>
                       <font name="Inconsolata" size="14"/>
                       <foreground color="-16711423"/>
                     </properties>
@@ -276,7 +276,7 @@
                     </constraints>
                     <properties>
                       <background color="-1842206"/>
-                      <editable value="true"/>
+                      <editable value="false"/>
                       <font name="Inconsolata" size="14"/>
                       <foreground color="-16711423"/>
                     </properties>

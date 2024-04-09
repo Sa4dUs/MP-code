@@ -1,16 +1,20 @@
 {
     "c643397c-37d5-49b7-8d7f-74a55be311b3": {
         "gold": 500,
-        "armorList": [],
-        "specialAbility": "015c02ec-6967-464c-ae8c-64b04b50841b",
-        "resistancesList": [],
-        "minionList": [],
+        "armorList": ["70e3e35e-1808-4a67-8ed9-71555eb22644"],
+        "specialAbility": "2eacc01d-b626-4914-8842-a45c06b8fd24",
+        "resistancesList": ["d91ddda8-55cd-4772-9d1a-4b25e39100bb"],
+        "minionList": [
+            "80653048-9bec-4b1d-9ae9-fcdbc091b5ac",
+            "26eef297-bcb7-46da-a604-c73695f254aa",
+            "808df08c-83c5-4aef-a73d-da50c419775d"
+        ],
         "name": "Shion",
         "health": 3,
         "id": "c643397c-37d5-49b7-8d7f-74a55be311b3",
         "breed": 2,
-        "weaponsList": [],
-        "debilitiesList": []
+        "weaponsList": ["8de92c68-86ff-43c5-abb4-9f065078c20c"],
+        "debilitiesList": ["eda9ae46-0d09-403d-9e34-0f988a5e0114"]
     },
     "c2c1181f-d8bc-4ecc-aa6b-4afc88aa3357": {
         "gold": 500,

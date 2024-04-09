@@ -20,7 +20,7 @@ public class EditCharacteristicsScreen extends EditItemsScreen<Characteristic> {
     private JButton createButton;
     private JComboBox<Characteristic.CharacteristicType> typeComboBox;
     private Characteristic currentItem;
-    private Characteristic.CharacteristicType currentType;
+    private Characteristic.CharacteristicType currentType = Characteristic.CharacteristicType.Resistance;
 
     @Override
     public void start() {
@@ -32,7 +32,8 @@ public class EditCharacteristicsScreen extends EditItemsScreen<Characteristic> {
     }
 
     private void updateType() {
-        switch ((Characteristic.CharacteristicType) typeComboBox.getSelectedItem()) {
+        this.currentType = (Characteristic.CharacteristicType) typeComboBox.getSelectedItem();
+        switch (currentType) {
             case Weakness -> {
                 super.start(Weakness.class, container);
             }
@@ -90,6 +91,7 @@ public class EditCharacteristicsScreen extends EditItemsScreen<Characteristic> {
             characteristic.setId(currentItem.getId());
 
         saveItem(characteristic);
+        updateType();
     }
 
     private Characteristic getNewCharacteristic(Characteristic.CharacteristicType type)

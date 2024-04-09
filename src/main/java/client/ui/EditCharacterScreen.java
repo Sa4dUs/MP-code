@@ -10,9 +10,8 @@ import server.Resistance;
 import server.Weakness;
 import server.characters.Character;
 import server.characters.CharacterType;
-import server.items.Ability;
-import server.items.Armor;
-import server.items.Weapon;
+import server.characters.Hunter;
+import server.items.*;
 import server.minions.Demon;
 import server.minions.Ghoul;
 import server.minions.Human;
@@ -59,16 +58,18 @@ public abstract class EditCharacterScreen<T extends Character> extends EditItems
         super.start(clazz, this.getContainerPanel());
         fetchItems();
         initializeComboBoxes();
+        updateAbilities();
         setActionListeners();
     }
 
     protected void fetchItems() {
         fetchItemsOfType(Armor.class, this.getArmorList());
         fetchItemsOfType(Weapon.class, this.getWeaponList());
-        fetchItemsOfType(Ability.class, this.getAbilityList());
+        //!TODO Lo he cambiado para que pille abilidades dependiendo del breed
         fetchItemsOfType(Weakness.class, this.getWeaknessesList());
         fetchItemsOfType(Resistance.class, this.getResistancesList());
         fetchMinions(this.getMinionList());
+
     }
 
     <R> void fetchItemsOfType(Class<? extends R> clazz, List<R> itemList) {
@@ -101,13 +102,37 @@ public abstract class EditCharacterScreen<T extends Character> extends EditItems
         }
     }
 
+    private void fetchAbilities()
+    {
+        CharacterType type =(CharacterType) getBreedComboBox().getSelectedItem();
+        if(type == null)
+            type = CharacterType.Hunter;
+        switch (type){
+            case Hunter -> {
+                fetchItemsOfType(Talent.class, this.getAbilityList());
+            }
+            case Lycanthrope -> {
+                fetchItemsOfType(Blessing.class, this.getAbilityList());
+            }
+            case Vampire -> {
+                fetchItemsOfType(Discipline.class, this.getAbilityList());
+            }
+        }
+    }
+
+    private void updateAbilities()
+    {
+        fetchAbilities();
+        this.getSpecialAbilityField().setModel(new DefaultComboBoxModel<Ability>(getAbilityList().toArray(Ability[]::new)));
+    }
+
     protected void initializeComboBoxes() {
         this.getBreedComboBox().setModel(new DefaultComboBoxModel<>(CharacterType.values()));
-        this.getAbilityField().setModel(new DefaultComboBoxModel<Ability>(getAbilityList().toArray(Ability[]::new)));
         this.getSpecialAbilityField().setModel(new DefaultComboBoxModel<Ability>(getAbilityList().toArray(Ability[]::new)));
     }
 
     protected void setActionListeners() {
+        this.getBreedComboBox().addActionListener(e -> updateAbilities());
         this.getBackButton().addActionListener(e -> ScreenManager.goBack());
         this.getSaveButton().addActionListener(e -> saveItem(this.getCurrent()));
         this.getDeleteButton().addActionListener(e -> deleteItem(this.getCurrent()));

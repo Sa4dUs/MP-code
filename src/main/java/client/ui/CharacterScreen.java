@@ -61,7 +61,7 @@ public class CharacterScreen extends Screen {
         healthField.setText(Integer.toString(character.getHealth()));
         goldField.setText(Integer.toString(character.getGold()));
         breedField.setText(character.getBreed().toString());
-        //!TODO me he cargado el ability cosa, ahora hay que hacer que pille cosas segun el tipo de personaje que sea, que al cambiar el tipo borre la habilidad especial tmb
+        //Borrado el normal ability
         Ability charcarterSpecialAbility = character.getSpecialAbility();
         specialAbilityField.setText(charcarterSpecialAbility != null ? charcarterSpecialAbility.getName() : "Empty");
 

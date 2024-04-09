@@ -191,6 +191,7 @@ public abstract class EditCharacterScreen<T extends Character> extends EditItems
             } else {
                 JOptionPane.showMessageDialog(popupFrame, "Please select an item.", "Error", JOptionPane.ERROR_MESSAGE);
             }
+            panelToUpdate.updateUI();
         });
 
         cancelButton.addActionListener(e -> popupFrame.dispose()); // Close the popup

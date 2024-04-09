@@ -26,7 +26,7 @@ public class RegisterCharacterScreen extends Screen {
     private JButton submit;
     private JTextField healthField;
     private JTextField goldField;
-    private JComboBox specialAbilityComboBox;
+    private JTextField specialAbilityField;
 
     @Override
     public void start() {
@@ -77,7 +77,7 @@ public class RegisterCharacterScreen extends Screen {
         healthField.setText(Integer.toString(character.getHealth()));
         goldField.setText(Integer.toString(character.getGold()));
         Ability charcarterSpecialAbility = character.getSpecialAbility();
-        specialAbilityComboBox.setSelectedItem(charcarterSpecialAbility != null ? charcarterSpecialAbility: "Empty");
+        specialAbilityField.setText(charcarterSpecialAbility != null ? charcarterSpecialAbility.toString(): "Empty");
         setListData(weaknessesList, character.getDebilitiesList());
         setListData(strengthsList, character.getResistancesList());
         setListData(minionsList, character.getMinionList());

@@ -248,15 +248,17 @@
                   <text value="Placeholder"/>
                 </properties>
               </component>
-              <component id="861d3" class="javax.swing.JComboBox" binding="specialAbilityComboBox">
+              <component id="6d8d0" class="javax.swing.JTextField" binding="specialAbilityField">
                 <constraints>
-                  <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                  <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="1" hsize-policy="1" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <background color="-1842206"/>
                   <editable value="false"/>
-                  <enabled value="false"/>
+                  <enabled value="true"/>
                   <font name="Inconsolata" size="14"/>
+                  <foreground color="-16711423"/>
+                  <text value="Placeholder"/>
                 </properties>
               </component>
             </children>

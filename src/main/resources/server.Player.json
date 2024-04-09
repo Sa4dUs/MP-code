@@ -1,10 +1,22 @@
-{"Y95ZZ": {
-    "nick": "Y95ZZ",
-    "password": "lraG5KYLUCMLKMaMmhtM+A==",
-    "character": "",
-    "blocked": "false",
-    "name": "Lamoara",
-    "pendingDuels": [],
-    "id": "Y95ZZ",
-    "results": []
-}}
+{
+    "Y95ZZ": {
+        "nick": "Y95ZZ",
+        "password": "lraG5KYLUCMLKMaMmhtM+A==",
+        "character": "",
+        "blocked": "false",
+        "name": "Lamoara",
+        "pendingDuels": [],
+        "id": "Y95ZZ",
+        "results": []
+    },
+    "L60YY": {
+        "nick": "L60YY",
+        "password": "lraG5KYLUCMLKMaMmhtM+A==",
+        "character": "",
+        "blocked": "false",
+        "name": "sa4dus",
+        "pendingDuels": [],
+        "id": "L60YY",
+        "results": []
+    }
+}

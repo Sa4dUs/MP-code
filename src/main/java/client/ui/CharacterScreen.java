@@ -28,7 +28,6 @@ public class CharacterScreen extends Screen {
     private JList<String> minionsList;
     private JComboBox<Armor> armorSelect;
     private JComboBox<Weapon> leftWeaponSelect;
-    private JTextField abilityField;
     private JTextField specialAbilityField;
     private PlayerCharacter character;
 
@@ -61,7 +60,6 @@ public class CharacterScreen extends Screen {
         healthField.setText(Integer.toString(character.getHealth()));
         goldField.setText(Integer.toString(character.getGold()));
         breedField.setText(character.getBreed().toString());
-        //Borrado el normal ability
         Ability charcarterSpecialAbility = character.getSpecialAbility();
         specialAbilityField.setText(charcarterSpecialAbility != null ? charcarterSpecialAbility.getName() : "Empty");
 

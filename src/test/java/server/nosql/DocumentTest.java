@@ -4,9 +4,9 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import server.Characteristic;
 import server.Database;
-import server.items.Ability;
-import server.items.Armor;
-import server.items.Weapon;
+import server.Resistance;
+import server.Weakness;
+import server.items.*;
 import server.minions.Demon;
 import server.minions.Ghoul;
 import server.minions.Human;
@@ -25,7 +25,7 @@ class DocumentTest {
         Database.deleteMany(Demon.class.getName(), new Query());
         Database.deleteMany(Ghoul.class.getName(), new Query());
     }
-    /*@Test
+    @Test
     public void createItems()
     {
         Weapon weapon = new Weapon();
@@ -56,29 +56,29 @@ class DocumentTest {
         armor1.setDefense(3);
         armor1.setAttack(0);
 
-        Ability ability = new Ability();
+        Ability ability = new Talent();
         ability.setName("Bola de fuego");
         ability.setAttack(3);
         ability.setDefense(0);
         ability.setCost(2);
 
-        Ability ability1 = new Ability();
+        Ability ability1 = new Blessing();
         ability1.setName("Pared de hielo");
         ability1.setAttack(0);
         ability1.setDefense(3);
         ability1.setCost(3);
 
-        Ability ability2 = new Ability();
+        Ability ability2 = new Talent();
         ability2.setName("Talento de cazador");
         ability2.setAttack(3);
         ability2.setDefense(0);
         ability2.setCost(1);
 
-        Characteristic characteristic = new Characteristic();
+        Characteristic characteristic = new Weakness();
         characteristic.setValue(3);
         characteristic.setName("Debilidad al sol");
 
-        Characteristic characteristic1 = new Characteristic();
+        Characteristic characteristic1 = new Resistance();
         characteristic1.setValue(3);
         characteristic1.setName("Resistencia al fuego");
 
@@ -163,11 +163,11 @@ class DocumentTest {
         weapon2.getDocument().saveToDatabase(Weapon.class);
         armor.getDocument().saveToDatabase(Armor.class);
         armor1.getDocument().saveToDatabase(Armor.class);
-        ability.getDocument().saveToDatabase(Ability.class);
-        ability1.getDocument().saveToDatabase(Ability.class);
-        ability2.getDocument().saveToDatabase(Ability.class);
-        characteristic.getDocument().saveToDatabase(Characteristic.class);
-        characteristic1.getDocument().saveToDatabase(Characteristic.class);
+        ability.getDocument().saveToDatabase(Talent.class);
+        ability1.getDocument().saveToDatabase(Blessing.class);
+        ability2.getDocument().saveToDatabase(Talent.class);
+        characteristic.getDocument().saveToDatabase(Weakness.class);
+        characteristic1.getDocument().saveToDatabase(Resistance.class);
         human.getDocument().saveToDatabase(Human.class);
         ghoul.getDocument().saveToDatabase(Ghoul.class);
         demon.getDocument().saveToDatabase(Demon.class);
@@ -181,5 +181,4 @@ class DocumentTest {
         human4.getDocument().saveToDatabase(Human.class);
         human5.getDocument().saveToDatabase(Human.class);
     }
-    */
 }

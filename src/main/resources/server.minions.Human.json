@@ -1,0 +1,32 @@
+{
+    "827e2935-5d91-4b63-8e1a-3dfdd9675b3d": {
+        "loyalty": 1,
+        "name": "Delilah",
+        "health": 2,
+        "id": "827e2935-5d91-4b63-8e1a-3dfdd9675b3d"
+    },
+    "4b06ed35-1317-4366-9f11-56a7fe3224e8": {
+        "loyalty": 3,
+        "name": "Lilith",
+        "health": 2,
+        "id": "4b06ed35-1317-4366-9f11-56a7fe3224e8"
+    },
+    "808df08c-83c5-4aef-a73d-da50c419775d": {
+        "loyalty": 1,
+        "name": "Lucifer",
+        "health": 2,
+        "id": "808df08c-83c5-4aef-a73d-da50c419775d"
+    },
+    "26eef297-bcb7-46da-a604-c73695f254aa": {
+        "loyalty": 2,
+        "name": "Cain",
+        "health": 2,
+        "id": "26eef297-bcb7-46da-a604-c73695f254aa"
+    },
+    "73691627-d492-4701-8b3a-223853cb0281": {
+        "loyalty": 1,
+        "name": "Judas",
+        "health": 2,
+        "id": "73691627-d492-4701-8b3a-223853cb0281"
+    }
+}

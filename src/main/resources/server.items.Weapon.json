@@ -1,0 +1,23 @@
+{
+    "104e6076-a237-4bbd-971c-16773156059a": {
+        "twoHanded": "false",
+        "defense": 1,
+        "attack": 2,
+        "name": "Daga",
+        "id": "104e6076-a237-4bbd-971c-16773156059a"
+    },
+    "a6ca4653-60be-4e05-b609-dcca34e0c71e": {
+        "twoHanded": "false",
+        "defense": 0,
+        "attack": 3,
+        "name": "Daga de cristal",
+        "id": "a6ca4653-60be-4e05-b609-dcca34e0c71e"
+    },
+    "8de92c68-86ff-43c5-abb4-9f065078c20c": {
+        "twoHanded": "true",
+        "defense": 3,
+        "attack": 3,
+        "name": "Mandoble",
+        "id": "8de92c68-86ff-43c5-abb4-9f065078c20c"
+    }
+}

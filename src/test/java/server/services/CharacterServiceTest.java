@@ -7,6 +7,9 @@ import server.characters.Character;
 import server.characters.CharacterType;
 import server.characters.PlayerCharacter;
 import server.items.Ability;
+import server.items.Blessing;
+import server.items.Discipline;
+import server.items.Talent;
 import server.nosql.Document;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -22,14 +25,15 @@ class CharacterServiceTest {
         character.setHealth(1);
         character.setGold(500);
 
-        Ability ability = new Ability();
+        Ability ability = new Discipline();
         ability.setName("Voltereta");
         ability.setCost(2);
         ability.setAttack(3);
         ability.setDefense(2);
-        character.setAbility(ability);
 
-        Ability ability1 = new Ability();
+        ability.getDocument().saveToDatabase(Discipline.class);
+
+        Ability ability1 = new Discipline();
         ability1.setName("Proyectiles de plata");
         ability1.setCost(2);
         ability1.setAttack(3);
@@ -52,14 +56,15 @@ class CharacterServiceTest {
         character.setHealth(3);
         character.setGold(500);
 
-        Ability ability = new Ability();
+        Ability ability = new Talent();
         ability.setName("Ostion");
         ability.setCost(1);
         ability.setAttack(3);
         ability.setDefense(0);
-        character.setAbility(ability);
 
-        Ability ability1 = new Ability();
+        ability.getDocument().saveToDatabase(Talent.class);
+
+        Ability ability1 = new Blessing();
         ability1.setName("Patadoncio");
         ability1.setCost(1);
         ability1.setAttack(3);

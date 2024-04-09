@@ -343,15 +343,6 @@
               </grid>
             </constraints>
           </hspacer>
-          <component id="8fe3e" class="javax.swing.JLabel" binding="userInfo">
-            <constraints>
-              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <foreground color="-1708289"/>
-              <text value="Label"/>
-            </properties>
-          </component>
         </children>
       </grid>
     </children>

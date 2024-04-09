@@ -26,7 +26,7 @@
         </constraints>
         <properties>
           <background color="-15329766"/>
-          <font name="Fira Code" size="48" style="1"/>
+          <font name="Fira Code" size="52" style="1"/>
           <foreground color="-2"/>
           <text value="GAME TITLE"/>
         </properties>
@@ -54,7 +54,7 @@
               <borderPainted value="false"/>
               <contentAreaFilled value="false"/>
               <font name="Inconsolata" style="1"/>
-              <foreground color="-7036494"/>
+              <foreground color="-9142645"/>
               <text value="Already have an account? Log in"/>
             </properties>
           </component>
@@ -69,7 +69,7 @@
             <properties>
               <background color="-8430864"/>
               <borderPainted value="false"/>
-              <font name="Inconsolata" style="1"/>
+              <font name="Inconsolata" size="16" style="1"/>
               <foreground color="-2"/>
               <text value="Sign Up"/>
             </properties>
@@ -84,6 +84,7 @@
             </constraints>
             <properties>
               <background color="-2"/>
+              <font name="Inconsolata" size="16"/>
               <foreground color="-15329766"/>
               <horizontalAlignment value="0"/>
               <text value=""/>
@@ -100,6 +101,7 @@
             </constraints>
             <properties>
               <background color="-2"/>
+              <font name="Inconsolata" size="16"/>
               <foreground color="-15329766"/>
               <horizontalAlignment value="0"/>
               <text value=""/>

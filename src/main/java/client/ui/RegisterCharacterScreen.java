@@ -27,8 +27,9 @@ public class RegisterCharacterScreen extends Screen {
     private JList<String> armors;
     private JList<String> weapons;
     private JButton submit;
-    private JLabel ability;
     private JLabel specialAbility;
+    private JTextField nameField;
+    private JComboBox abilityComboBox;
 
     @Override
     public void start() {

@@ -17,6 +17,8 @@
         </constraints>
         <properties>
           <background color="-2"/>
+          <font name="Fira Code" size="24" style="1"/>
+          <foreground color="-16711423"/>
         </properties>
         <border type="empty"/>
         <children/>
@@ -39,7 +41,7 @@
           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <font name="Fira Code" size="36" style="1"/>
+          <font name="Fira Code" size="48" style="1"/>
           <foreground color="-2"/>
           <text value="GAME TITLE"/>
         </properties>

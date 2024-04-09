@@ -27,4 +27,5 @@ public class Session {
     public static void sudo() {
         isOperator = true;
     }
+    public static void sudont(){isOperator = false;}
 }

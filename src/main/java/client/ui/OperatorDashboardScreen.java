@@ -1,6 +1,7 @@
 package client.ui;
 
 import client.ScreenManager;
+import client.Session;
 
 import javax.swing.*;
 import java.awt.*;
@@ -56,6 +57,8 @@ public class OperatorDashboardScreen extends Screen {
             if (screenClass != null) {
                 button.addActionListener(e -> ScreenManager.render(screenClass));
             } else {
+                Session.setCurrentUser(null);
+                Session.sudont();
                 button.addActionListener(e -> ScreenManager.goBack());
             }
         }

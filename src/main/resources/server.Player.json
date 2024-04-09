@@ -2,7 +2,7 @@
     "Y95ZZ": {
         "nick": "Y95ZZ",
         "password": "lraG5KYLUCMLKMaMmhtM+A==",
-        "character": "",
+        "character": "d078048b-7cd2-4b95-91df-909d6b0f7262",
         "blocked": "false",
         "name": "Lamoara",
         "pendingDuels": [],
@@ -15,7 +15,7 @@
         "character": "26ac16d0-1a6d-4444-9b51-2e91a3d9a683",
         "blocked": "false",
         "name": "sa4dus",
-        "pendingDuels": [],
+        "pendingDuels": ["5d3b2ba0-5b5b-488e-a013-61e62b7ba909"],
         "id": "L60YY",
         "results": []
     }

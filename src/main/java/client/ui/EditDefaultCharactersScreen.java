@@ -1,6 +1,5 @@
 package client.ui;
 
-import server.Characteristic;
 import server.Resistance;
 import server.Weakness;
 import server.characters.Character;
@@ -35,7 +34,6 @@ public class EditDefaultCharactersScreen extends EditCharacterScreen<Character> 
     private JButton resistancesAddButton;
     private JPanel strengthsPanel;
     private JButton strengthsAddButton;
-    private JComboBox<Ability> abilityComboBox;
     private JComboBox<Ability> specialAbilityComboBox;
     private JButton createButton;
 
@@ -46,7 +44,7 @@ public class EditDefaultCharactersScreen extends EditCharacterScreen<Character> 
     private final List<Resistance> resistancesList = new ArrayList<>();
     private final List<Minion> minionList = new ArrayList<>();
     private final List<Character> characterList = new ArrayList<>();
-    private final List<Ability> abilityList = new ArrayList<>();
+    private final List<Ability> specialAbilityList = new ArrayList<>();
 
     @Override
     public void start() {
@@ -134,11 +132,6 @@ public class EditDefaultCharactersScreen extends EditCharacterScreen<Character> 
     }
 
     @Override
-    protected JComboBox<Ability> getAbilityField() {
-        return this.abilityComboBox;
-    }
-
-    @Override
     protected JComboBox<Ability> getSpecialAbilityField() {
         return this.specialAbilityComboBox;
     }
@@ -179,8 +172,8 @@ public class EditDefaultCharactersScreen extends EditCharacterScreen<Character> 
     }
 
     @Override
-    protected List<Ability> getAbilityList() {
-        return this.abilityList;
+    protected List<Ability> getSpecialAbilityList() {
+        return this.specialAbilityList;
     }
 
     @Override

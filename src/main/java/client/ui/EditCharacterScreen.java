@@ -5,12 +5,10 @@ import client.ScreenManager;
 import com.intellij.uiDesigner.core.GridConstraints;
 import lib.RequestBody;
 import lib.ResponseBody;
-import server.Characteristic;
 import server.Resistance;
 import server.Weakness;
 import server.characters.Character;
 import server.characters.CharacterType;
-import server.characters.Hunter;
 import server.items.*;
 import server.minions.Demon;
 import server.minions.Ghoul;
@@ -38,7 +36,6 @@ public abstract class EditCharacterScreen<T extends Character> extends EditItems
     protected abstract JButton getStrengthsAddButton();
     protected abstract JPanel getWeaknessesPanel();
     protected abstract JButton getWeaknessesAddButton();
-    protected abstract JComboBox<Ability> getAbilityField();
     protected abstract JComboBox<Ability> getSpecialAbilityField();
     protected abstract JButton getSaveButton();
     protected abstract JButton getDeleteButton();
@@ -48,7 +45,7 @@ public abstract class EditCharacterScreen<T extends Character> extends EditItems
     protected abstract void setCurrent(T character);
     protected abstract List<Armor> getArmorList();
     protected abstract List<Weapon> getWeaponList();
-    protected abstract List<Ability> getAbilityList();
+    protected abstract List<Ability> getSpecialAbilityList();
     protected abstract List<Weakness> getWeaknessesList();
     protected abstract List<Resistance> getResistancesList();
     protected abstract List<Minion> getMinionList();
@@ -109,27 +106,27 @@ public abstract class EditCharacterScreen<T extends Character> extends EditItems
             type = CharacterType.Hunter;
         switch (type){
             case Hunter -> {
-                fetchItemsOfType(Talent.class, this.getAbilityList());
+                fetchItemsOfType(Talent.class, this.getSpecialAbilityList());
             }
             case Lycanthrope -> {
-                fetchItemsOfType(Blessing.class, this.getAbilityList());
+                fetchItemsOfType(Blessing.class, this.getSpecialAbilityList());
             }
             case Vampire -> {
-                fetchItemsOfType(Discipline.class, this.getAbilityList());
+                fetchItemsOfType(Discipline.class, this.getSpecialAbilityList());
             }
         }
     }
 
     private void updateAbilities()
     {
-        this.getAbilityList().clear();
+        this.getSpecialAbilityList().clear();
         fetchAbilities();
-        this.getSpecialAbilityField().setModel(new DefaultComboBoxModel<Ability>(getAbilityList().toArray(Ability[]::new)));
+        this.getSpecialAbilityField().setModel(new DefaultComboBoxModel<Ability>(getSpecialAbilityList().toArray(Ability[]::new)));
     }
 
     protected void initializeComboBoxes() {
         this.getBreedComboBox().setModel(new DefaultComboBoxModel<>(CharacterType.values()));
-        this.getSpecialAbilityField().setModel(new DefaultComboBoxModel<Ability>(getAbilityList().toArray(Ability[]::new)));
+        this.getSpecialAbilityField().setModel(new DefaultComboBoxModel<Ability>(getSpecialAbilityList().toArray(Ability[]::new)));
     }
 
     protected void setActionListeners() {

@@ -1,6 +1,5 @@
 package client.ui;
 
-import server.Characteristic;
 import server.Resistance;
 import server.Weakness;
 import server.characters.Character;
@@ -34,7 +33,6 @@ public class EditPlayerCharactersScreen extends EditCharacterScreen<PlayerCharac
     private JButton strengthsAddButton;
     private JPanel weaknessesPanel;
     private JButton weaknessesAddButton;
-    private JComboBox<Ability> abilityComboBox;
     private JComboBox<Ability> specialAbilityComboBox;
     private JButton saveButton;
     private JButton deleteButton;
@@ -43,7 +41,7 @@ public class EditPlayerCharactersScreen extends EditCharacterScreen<PlayerCharac
     private PlayerCharacter current;
     private final List<Armor> armorList = new ArrayList<>();
     private final List<Weapon> weaponList = new ArrayList<>();
-    private final List<Ability> abilityList = new ArrayList<>();
+    private final List<Ability> specialAbilityList = new ArrayList<>();
     private final List<Weakness> weaknessesList = new ArrayList<>();
     private final List<Resistance> resistancesList = new ArrayList<>();
     private final List<Minion> minionList = new ArrayList<>();
@@ -135,11 +133,6 @@ public class EditPlayerCharactersScreen extends EditCharacterScreen<PlayerCharac
     }
 
     @Override
-    protected JComboBox<Ability> getAbilityField() {
-        return this.abilityComboBox;
-    }
-
-    @Override
     protected JComboBox<Ability> getSpecialAbilityField() {
         return this.specialAbilityComboBox;
     }
@@ -180,8 +173,8 @@ public class EditPlayerCharactersScreen extends EditCharacterScreen<PlayerCharac
     }
 
     @Override
-    protected List<Ability> getAbilityList() {
-        return this.abilityList;
+    protected List<Ability> getSpecialAbilityList() {
+        return this.specialAbilityList;
     }
 
     @Override

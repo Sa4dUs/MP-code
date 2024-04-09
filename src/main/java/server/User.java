@@ -18,7 +18,7 @@ public class User implements JSONable {
     public User(String name, String password) {
         this.name = name;
         this.nick = this.genNick();
-        this.password = password;
+        this.password = Crypto.encrypt(password);
     }
 
     public String getName() {

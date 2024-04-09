@@ -6,6 +6,8 @@ import com.intellij.uiDesigner.core.GridConstraints;
 import lib.RequestBody;
 import lib.ResponseBody;
 import server.Characteristic;
+import server.Resistance;
+import server.Weakness;
 import server.characters.Character;
 import server.characters.CharacterType;
 import server.items.Ability;
@@ -48,7 +50,8 @@ public abstract class EditCharacterScreen<T extends Character> extends EditItems
     protected abstract List<Armor> getArmorList();
     protected abstract List<Weapon> getWeaponList();
     protected abstract List<Ability> getAbilityList();
-    protected abstract List<Characteristic> getCharacteristicList();
+    protected abstract List<Weakness> getWeaknessesList();
+    protected abstract List<Resistance> getResistancesList();
     protected abstract List<Minion> getMinionList();
     protected abstract List<T> getCharacterList();
 
@@ -63,7 +66,8 @@ public abstract class EditCharacterScreen<T extends Character> extends EditItems
         fetchItemsOfType(Armor.class, this.getArmorList());
         fetchItemsOfType(Weapon.class, this.getWeaponList());
         fetchItemsOfType(Ability.class, this.getAbilityList());
-        fetchItemsOfType(Characteristic.class, this.getCharacteristicList());
+        fetchItemsOfType(Weakness.class, this.getWeaknessesList());
+        fetchItemsOfType(Resistance.class, this.getResistancesList());
         fetchMinions(this.getMinionList());
     }
 
@@ -111,8 +115,8 @@ public abstract class EditCharacterScreen<T extends Character> extends EditItems
         getMinionAddButton().addActionListener(e -> displayPopup("Minion", getMinionList(), getMinionsPanel(), getCurrent().getMinionList()));
         getArmorAddButton().addActionListener(e -> displayPopup("Armor", getArmorList(), getArmorsPanel(), getCurrent().getArmorList()));
         getWeaponsAddButton().addActionListener(e -> displayPopup("Weapon", getWeaponList(), getWeaponsPanel(), getCurrent().getWeaponsList()));
-        getStrengthsAddButton().addActionListener(e -> displayPopup("Strength", getCharacteristicList(), getStrengthsPanel(), getCurrent().getResistancesList()));
-        getWeaknessesAddButton().addActionListener(e -> displayPopup("Weakness", getCharacteristicList(), getWeaknessesPanel(), getCurrent().getDebilitiesList()));
+        getStrengthsAddButton().addActionListener(e -> displayPopup("Strength", getResistancesList(), getStrengthsPanel(), getCurrent().getResistancesList()));
+        getWeaknessesAddButton().addActionListener(e -> displayPopup("Weakness", getWeaknessesList(), getWeaknessesPanel(), getCurrent().getDebilitiesList()));
     }
 
     private <T> void displayPopup(String title, List<T> itemList, JPanel panelToUpdate, List<T> listToUpdate) {

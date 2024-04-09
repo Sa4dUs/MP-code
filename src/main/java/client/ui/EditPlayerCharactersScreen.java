@@ -1,6 +1,8 @@
 package client.ui;
 
 import server.Characteristic;
+import server.Resistance;
+import server.Weakness;
 import server.characters.Character;
 import server.characters.PlayerCharacter;
 import server.characters.CharacterType;
@@ -17,7 +19,6 @@ import java.util.List;
 public class EditPlayerCharactersScreen extends EditCharacterScreen<PlayerCharacter> {
     private JPanel frame;
     private JPanel container;
-
     private JButton backButton;
     private JTextField nameField;
     private JTextField healthField;
@@ -43,7 +44,8 @@ public class EditPlayerCharactersScreen extends EditCharacterScreen<PlayerCharac
     private final List<Armor> armorList = new ArrayList<>();
     private final List<Weapon> weaponList = new ArrayList<>();
     private final List<Ability> abilityList = new ArrayList<>();
-    private final List<Characteristic> characteristicList = new ArrayList<>();
+    private final List<Weakness> weaknessesList = new ArrayList<>();
+    private final List<Resistance> resistancesList = new ArrayList<>();
     private final List<Minion> minionList = new ArrayList<>();
     private final List<PlayerCharacter> characterList = new ArrayList<>();
 
@@ -183,8 +185,12 @@ public class EditPlayerCharactersScreen extends EditCharacterScreen<PlayerCharac
     }
 
     @Override
-    protected List<Characteristic> getCharacteristicList() {
-        return this.characteristicList;
+    protected List<Weakness> getWeaknessesList() {
+        return this.weaknessesList;
+    }
+    @Override
+    protected List<Resistance> getResistancesList() {
+        return this.resistancesList;
     }
 
     @Override

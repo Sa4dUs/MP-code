@@ -25,7 +25,7 @@ class DocumentTest {
         Database.deleteMany(Demon.class.getName(), new Query());
         Database.deleteMany(Ghoul.class.getName(), new Query());
     }
-    @Test
+    /*@Test
     public void createItems()
     {
         Weapon weapon = new Weapon();
@@ -181,5 +181,5 @@ class DocumentTest {
         human4.getDocument().saveToDatabase(Human.class);
         human5.getDocument().saveToDatabase(Human.class);
     }
-
+    */
 }

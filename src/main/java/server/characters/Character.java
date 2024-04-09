@@ -1,6 +1,8 @@
 package server.characters;
 
 import server.Characteristic;
+import server.Resistance;
+import server.Weakness;
 import server.items.Ability;
 import server.items.Armor;
 import server.items.Weapon;
@@ -32,8 +34,8 @@ public class Character implements JSONable {
     private List<Minion> minionList = new ArrayList<>();
 
     //Characteristics
-    private List<Characteristic> debilitiesList = new ArrayList<>();
-    private List<Characteristic> resistancesList = new ArrayList<>();
+    private List<Weakness> debilitiesList = new ArrayList<>();
+    private List<Resistance> resistancesList = new ArrayList<>();
 
     public Character(){}
 
@@ -165,20 +167,20 @@ public class Character implements JSONable {
     public void setSpecialAbility(Ability specialAbility) {
         this.specialAbility = specialAbility;
     }
-    public void setResistancesList(List<Characteristic> resistancesList) {
+    public void setResistancesList(List<Resistance> resistancesList) {
         this.resistancesList = resistancesList;
     }
-    public void setDebilitiesList(List<Characteristic> debilitiesList) {
+    public void setDebilitiesList(List<Weakness> debilitiesList) {
         this.debilitiesList = debilitiesList;
     }
 
     public void addMinion(Minion minion){this.minionList.add(minion);}
 
-    public List<Characteristic> getDebilitiesList() {
+    public List<Weakness> getDebilitiesList() {
         return debilitiesList;
     }
 
-    public List<Characteristic> getResistancesList() {
+    public List<Resistance> getResistancesList() {
         return resistancesList;
     }
 

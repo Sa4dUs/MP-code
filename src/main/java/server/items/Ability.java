@@ -1,10 +1,34 @@
 package server.items;
 
+import server.minions.Demon;
+import server.minions.Ghoul;
+import server.minions.Human;
+import server.minions.Minion;
 import server.nosql.Document;
 import server.nosql.Schemas.AbilitySchema;
 
-public class Ability extends Stats{
+import java.util.ArrayList;
+import java.util.List;
+
+public abstract class Ability extends Stats{
     private int cost;
+
+    public enum AbilityType
+    {
+        Blessing, Discipline, Talent
+    }
+
+    private static final List<Class<? extends Ability>> subClasses = new ArrayList<>();
+
+    static {
+        subClasses.add(Blessing.class);
+        subClasses.add(Discipline.class);
+        subClasses.add(Talent.class);
+    }
+
+    public static List<Class<? extends Ability>> getSubClasses() {
+        return subClasses;
+    }
 
     public Ability(){}
     @Override

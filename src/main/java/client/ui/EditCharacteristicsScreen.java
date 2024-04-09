@@ -2,6 +2,8 @@ package client.ui;
 
 import client.ScreenManager;
 import server.Characteristic;
+import server.Resistance;
+import server.Weakness;
 import server.items.Ability;
 import server.items.Armor;
 
@@ -17,6 +19,7 @@ public class EditCharacteristicsScreen extends EditItemsScreen<Characteristic> {
     private JButton deleteButton;
     private JButton createButton;
     private Characteristic currentItem;
+    private Characteristic.CharacteristicType currentType; //!TODO Añadir selector en la UI @Marcelo
 
     @Override
     public void start() {
@@ -35,7 +38,7 @@ public class EditCharacteristicsScreen extends EditItemsScreen<Characteristic> {
 
     @Override
     protected void createButtonActionListener() {
-        setPanelData(new Characteristic());
+        setPanelData(new Weakness());
     }
 
     @Override
@@ -57,13 +60,26 @@ public class EditCharacteristicsScreen extends EditItemsScreen<Characteristic> {
     }
 
     private void saveCharacteristic() {
-        Characteristic characteristic = new Characteristic();
+        Characteristic characteristic = getNewCharacteristic(currentType);
         characteristic.setName(nameField.getText());
         characteristic.setValue(Integer.parseInt(valueField.getText()));
         if (currentItem != null)
             characteristic.setId(currentItem.getId());
 
         saveItem(characteristic);
+    }
+
+    private Characteristic getNewCharacteristic(Characteristic.CharacteristicType type)
+    {
+        switch (type){
+            case Weakness -> {
+                return new Weakness();
+            }
+            case Resistance -> {
+                return new Resistance();
+            }
+        }
+        return null;
     }
 
     public JPanel getPanel() {

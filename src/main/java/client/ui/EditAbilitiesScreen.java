@@ -1,8 +1,7 @@
 package client.ui;
 
 import client.ScreenManager;
-import server.items.Ability;
-import server.items.Armor;
+import server.items.*;
 
 import javax.swing.*;
 
@@ -18,6 +17,7 @@ public class EditAbilitiesScreen extends EditItemsScreen<Ability> {
     private JButton deleteButton;
     private JButton createButton;
     private Ability currentItem;
+    private Ability.AbilityType currentType; //!TODO Añadir selector en la UI @Marcelo
     @Override
     public void start() {
         super.start(Ability.class, container);
@@ -35,7 +35,7 @@ public class EditAbilitiesScreen extends EditItemsScreen<Ability> {
 
     @Override
     protected void createButtonActionListener() {
-        setPanelData(new Ability());
+        setPanelData(new Talent());
     }
 
     @Override
@@ -59,7 +59,7 @@ public class EditAbilitiesScreen extends EditItemsScreen<Ability> {
     }
 
     private void saveItem() {
-        Ability ability = new Ability();
+        Ability ability = getNewAbility(currentType);
         ability.setName(nameField.getText());
         ability.setCost(Integer.parseInt(costField.getText()));
         ability.setAttack(Integer.parseInt(attackField.getText()));
@@ -68,6 +68,23 @@ public class EditAbilitiesScreen extends EditItemsScreen<Ability> {
             ability.setId(currentItem.getId());
 
         saveItem(ability);
+    }
+
+    private Ability getNewAbility(Ability.AbilityType type)
+    {
+        switch (type)
+        {
+            case Blessing -> {
+                return new Blessing();
+            }
+            case Discipline -> {
+                return new Discipline();
+            }
+            case Talent -> {
+                return new Talent();
+            }
+        }
+        return null;
     }
 
     public JPanel getPanel() {

@@ -1,6 +1,8 @@
 package client.ui;
 
 import server.Characteristic;
+import server.Resistance;
+import server.Weakness;
 import server.characters.Character;
 import server.characters.CharacterType;
 import server.items.Ability;
@@ -40,7 +42,8 @@ public class EditDefaultCharactersScreen extends EditCharacterScreen<Character> 
     private Character current;
     private final List<Armor> armorList = new ArrayList<>();
     private final List<Weapon> weaponList = new ArrayList<>();
-    private final List<Characteristic> characteristicList = new ArrayList<>();
+    private final List<Weakness> weaknessesList = new ArrayList<>();
+    private final List<Resistance> resistancesList = new ArrayList<>();
     private final List<Minion> minionList = new ArrayList<>();
     private final List<Character> characterList = new ArrayList<>();
     private final List<Ability> abilityList = new ArrayList<>();
@@ -181,8 +184,12 @@ public class EditDefaultCharactersScreen extends EditCharacterScreen<Character> 
     }
 
     @Override
-    protected List<Characteristic> getCharacteristicList() {
-        return this.characteristicList;
+    protected List<Weakness> getWeaknessesList() {
+        return this.weaknessesList;
+    }
+    @Override
+    protected List<Resistance> getResistancesList() {
+        return this.resistancesList;
     }
 
     @Override

@@ -1,16 +1,38 @@
 package server;
 
+import server.minions.Demon;
+import server.minions.Ghoul;
+import server.minions.Human;
+import server.minions.Minion;
 import server.nosql.Document;
 import server.nosql.JSONable;
 import server.nosql.Schemas.CharacteristicSchema;
 
-public class Characteristic implements JSONable {
+import java.util.ArrayList;
+import java.util.List;
+
+public abstract class Characteristic implements JSONable {
 
     private String id;
     private String name;
     private int value;
     private final int maxValue = 3;
 
+    public enum CharacteristicType
+    {
+        Weakness, Resistance
+    }
+
+    private static final List<Class<? extends Characteristic>> subClasses = new ArrayList<>();
+
+    static {
+        subClasses.add(Resistance.class);
+        subClasses.add(Weakness.class);
+    }
+
+    public static List<Class<? extends Characteristic>> getSubClasses() {
+        return subClasses;
+    }
     @Override
     public String toString() {
         return this.name + " Impact:" + this.value;

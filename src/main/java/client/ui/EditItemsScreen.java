@@ -18,8 +18,13 @@ public abstract class EditItemsScreen<T> extends Screen {
     protected abstract JButton getCreateButton();
     protected abstract void createButtonActionListener();
 
+    private Class<? extends T> clazz;
+    private JPanel container;
+
     protected void start(Class<? extends T> clazz, JPanel container) {
         super.start();
+        this.clazz = clazz;
+        this.container = container;
 
         List<T> items = this.fetchItems(clazz);
 
@@ -65,6 +70,8 @@ public abstract class EditItemsScreen<T> extends Screen {
         if (!response.ok) {
             System.out.println("Failed to save item");
         }
+
+        start(clazz, container);
     }
 
     protected void deleteItem(T item) {

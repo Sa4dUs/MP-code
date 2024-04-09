@@ -1,5 +1,12 @@
-{"d91ddda8-55cd-4772-9d1a-4b25e39100bb": {
-    "name": "Resistencia al fuego",
-    "id": "d91ddda8-55cd-4772-9d1a-4b25e39100bb",
-    "value": 3
-}}
+{
+    "d91ddda8-55cd-4772-9d1a-4b25e39100bb": {
+        "name": "Resistencia al fuego",
+        "id": "d91ddda8-55cd-4772-9d1a-4b25e39100bb",
+        "value": 3
+    },
+    "1cb85dc1-ac98-4765-8355-5543c048d48d": {
+        "name": "Resistencia al frio",
+        "id": "1cb85dc1-ac98-4765-8355-5543c048d48d",
+        "value": 2
+    }
+}

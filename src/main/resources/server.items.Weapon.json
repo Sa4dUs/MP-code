@@ -13,6 +13,13 @@
         "name": "Daga de cristal",
         "id": "a6ca4653-60be-4e05-b609-dcca34e0c71e"
     },
+    "de54f493-69dd-4106-82ba-dac59f8d158b": {
+        "twoHanded": "true",
+        "defense": 0,
+        "attack": 3,
+        "name": "Ballesta",
+        "id": "de54f493-69dd-4106-82ba-dac59f8d158b"
+    },
     "8de92c68-86ff-43c5-abb4-9f065078c20c": {
         "twoHanded": "true",
         "defense": 3,

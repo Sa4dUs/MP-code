@@ -11,6 +11,12 @@
         "health": 2,
         "id": "78e29b96-f4a5-405e-8919-e7ffee4006ad"
     },
+    "209bd61c-5dcb-45a9-889c-0e50054d45b0": {
+        "loyalty": 1,
+        "name": "Jorginos",
+        "health": 1,
+        "id": "209bd61c-5dcb-45a9-889c-0e50054d45b0"
+    },
     "92f92387-eb81-43d9-9ed8-6929960574b6": {
         "loyalty": 1,
         "name": "Lucifer",

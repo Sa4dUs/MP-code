@@ -146,8 +146,8 @@ public abstract class EditCharacterScreen<T extends Character> extends EditItems
                     }
                 });
 
-                panelToUpdate.add(label);
-                panelToUpdate.add(button);
+                panelToUpdate.add(label, new GridConstraints());
+                panelToUpdate.add(button, new GridConstraints());
                 panelToUpdate.repaint();
                 listToUpdate.add(selectedItem);
                 popupFrame.dispose(); // Close the popup

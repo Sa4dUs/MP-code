@@ -1,6 +1,7 @@
 package client.ui;
 
 import client.ScreenManager;
+import server.items.Ability;
 import server.items.Armor;
 
 import javax.swing.*;
@@ -14,6 +15,7 @@ public class EditArmorsScreen extends EditItemsScreen<Armor> {
     private JPanel container;
     private JTextField defenseField;
     private JButton deleteButton;
+    private JButton createButton;
     private Armor currentItem;
 
     @Override
@@ -24,6 +26,16 @@ public class EditArmorsScreen extends EditItemsScreen<Armor> {
     @Override
     protected JPanel getContainerPanel() {
         return container;
+    }
+
+    @Override
+    protected JButton getCreateButton() {
+        return this.createButton;
+    }
+
+    @Override
+    protected void createButtonActionListener() {
+        setPanelData(new Armor());
     }
 
     @Override

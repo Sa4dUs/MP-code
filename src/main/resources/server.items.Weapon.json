@@ -12,5 +12,12 @@
         "attack": 3,
         "name": "Mandoble",
         "id": "c308f7b6-eb77-442e-840a-094885bbb8c1"
+    },
+    "69ff7b58-3b3d-480d-883a-103688518b80": {
+        "twoHanded": "true",
+        "defense": 0,
+        "attack": 3,
+        "name": "Mi polla",
+        "id": "69ff7b58-3b3d-480d-883a-103688518b80"
     }
 }

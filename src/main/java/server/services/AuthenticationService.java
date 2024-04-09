@@ -63,7 +63,7 @@ public class AuthenticationService implements Service {
 
         Query query = new Query();
         query.addFilter("id", id);
-        Database.deleteOne(Collection.USER, query);
+        Database.deleteOne(Player.class.getName(), query);
 
         response.setOk(true);
 

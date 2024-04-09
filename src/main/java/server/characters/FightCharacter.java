@@ -12,11 +12,15 @@ public abstract class FightCharacter {
 
     private String id;
 
-    private String name, playerName;
-    private int maxHealth, health, minionHealth, power, mana;
-    private Weapon activeWeaponL, activeWeaponR;
-    private Armor activeArmor;
-    private Ability activeNormalAbility, activeSpecialAbility;
+    private final String name, playerName;
+    private final int maxHealth;
+    private int health;
+    private final int minionHealth;
+    private int power;
+    private int mana;
+    private final Weapon activeWeaponL, activeWeaponR;
+    private final Armor activeArmor;
+    private final Ability activeSpecialAbility;
 
     private StringBuilder turnResume;
 
@@ -35,7 +39,6 @@ public abstract class FightCharacter {
 
         this.activeArmor = character.getActiveArmor();
 
-        this.activeNormalAbility = character.getActiveNormalAbility();
         this.activeSpecialAbility = character.getActiveSpecialAbility();
 
         this.turnResume = new StringBuilder("(").append(this.playerName).append(") ").append(this.name);
@@ -92,11 +95,6 @@ public abstract class FightCharacter {
             totalDamage += this.activeSpecialAbility.getAttack();
             useSpecialAbility();
         }
-        else if (canUseAbility(this.activeNormalAbility, this.power))
-        {
-            totalDamage += this.activeNormalAbility.getAttack();
-            useNormalAbility();
-        }
         else
         {
             if(this.activeWeaponL != null)
@@ -128,11 +126,6 @@ public abstract class FightCharacter {
             totalDefense += this.activeSpecialAbility.getDefense();
             useSpecialAbility();
         }
-        else if (canUseAbility(this.activeNormalAbility, this.power))
-        {
-            totalDefense += this.activeNormalAbility.getDefense();
-            useNormalAbility();
-        }
         else
         {
             if(this.activeWeaponL != null)
@@ -153,13 +146,6 @@ public abstract class FightCharacter {
 
         return roll(totalDefense, 1, 6, 2);
     }
-
-    private void useNormalAbility()
-    {
-        this.power -= this.activeNormalAbility.getCost();
-        this.turnResume.append(activeNormalAbility.toString());
-    }
-
     private void useSpecialAbility()
     {
         this.mana -= this.activeSpecialAbility.getCost();

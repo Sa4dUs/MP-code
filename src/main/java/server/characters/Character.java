@@ -28,7 +28,7 @@ public class Character implements JSONable {
     //Items
     private List<Weapon> weaponsList = new ArrayList<>();
     private List<Armor> armorList = new ArrayList<>();
-    private Ability ability, specialAbility;
+    private Ability specialAbility;
 
     //Minions
     private List<Minion> minionList = new ArrayList<>();
@@ -46,7 +46,6 @@ public class Character implements JSONable {
         this.breed = character.getBreed();
         this.weaponsList = character.getWeaponsList();
         this.armorList = character.getArmorList();
-        this.ability = character.getAbility();
         this.specialAbility = character.getSpecialAbility();
         this.minionList = character.getMinionList();
         this.debilitiesList = character.getDebilitiesList();
@@ -141,10 +140,6 @@ public class Character implements JSONable {
         this.armorList.add(armor);
     }
 
-    public Ability getAbility() {
-        return ability;
-    }
-
     public Ability getSpecialAbility() {
         return specialAbility;
     }
@@ -160,9 +155,6 @@ public class Character implements JSONable {
     }
     public void setWeaponsList(List<Weapon> weaponsList) {
         this.weaponsList = weaponsList;
-    }
-    public void setAbility(Ability ability) {
-        this.ability = ability;
     }
     public void setSpecialAbility(Ability specialAbility) {
         this.specialAbility = specialAbility;
@@ -195,13 +187,7 @@ public class Character implements JSONable {
         document.setProperty("gold", this.gold);
         document.setProperty("weaponsList", getIdArrayFromArray(weaponsList.toArray(new JSONable[0])));
         document.setProperty("armorList", getIdArrayFromArray(armorList.toArray(new JSONable[0])));
-        document.setProperty("ability", "");
         document.setProperty("specialAbility", "");
-
-        if (ability != null) {
-            document.setProperty("ability", ability.getDocument().getId());
-            ability.getDocument().saveToDatabase(Ability.class);
-        }
 
         if (specialAbility != null) {
             document.setProperty("specialAbility", specialAbility.getDocument().getId());

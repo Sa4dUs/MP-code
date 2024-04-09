@@ -82,8 +82,6 @@ public class RegisterCharacterScreen extends Screen {
         name.setText(character.getName());
         health.setText(Integer.toString(character.getHealth()));
         gold.setText(Integer.toString(character.getGold()));
-        Ability charcarterAbility = character.getAbility();
-        ability.setText(charcarterAbility != null ? charcarterAbility.getName(): "Empty");
         Ability charcarterSpecialAbility = character.getSpecialAbility();
         specialAbility.setText(charcarterSpecialAbility != null ? charcarterSpecialAbility.getName(): "Empty");
         setListData(weaknesses, character.getDebilitiesList());

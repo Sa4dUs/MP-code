@@ -12,7 +12,6 @@ public class CharacterSchema extends Schema {
                 "health", Integer.class,
                 "weaponsList", String[].class,
                 "armorList", String[].class,
-                "ability", String.class,
                 "specialAbility", String.class,
                 "debilitiesList", String[].class,
                 "resistancesList", String[].class,

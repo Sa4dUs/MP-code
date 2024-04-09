@@ -95,7 +95,7 @@ public class EditMinionsScreen extends EditItemsScreen<Minion> {
 
         addMinionButton.addActionListener(e -> {
             if (current instanceof Demon) {
-                displayPopup("Minion", minionList, minionsPanel, ((Demon) current).getMinions());
+                displayPopup("Minion", minionList.stream().filter(minion -> !(minion instanceof Human)).toList(), minionsPanel, ((Demon) current).getMinions());
             }
         });
 

@@ -1,7 +1,7 @@
 {
     "V12AA": {
         "nick": "V12AA",
-        "password": "1234",
+        "password": "lraG5KYLUCMLKMaMmhtM+A==",
         "character": "",
         "blocked": "false",
         "name": "caca",
@@ -9,9 +9,29 @@
         "id": "V12AA",
         "results": []
     },
+    "I22SS": {
+        "nick": "I22SS",
+        "password": "lraG5KYLUCMLKMaMmhtM+A==",
+        "character": "",
+        "blocked": "false",
+        "name": "penelope",
+        "pendingDuels": [],
+        "id": "I22SS",
+        "results": []
+    },
+    "T81TF": {
+        "nick": "T81TF",
+        "password": "lraG5KYLUCMLKMaMmhtM+A==",
+        "character": "",
+        "blocked": "false",
+        "name": "admin",
+        "pendingDuels": [],
+        "id": "T81TF",
+        "results": []
+    },
     "F90WW": {
         "nick": "F90WW",
-        "password": "1234",
+        "password": "lraG5KYLUCMLKMaMmhtM+A==",
         "character": "",
         "blocked": "false",
         "name": "Shania",
@@ -19,9 +39,19 @@
         "id": "F90WW",
         "results": []
     },
+    "I74QQ": {
+        "nick": "I74QQ",
+        "password": "lraG5KYLUCMLKMaMmhtM+A==",
+        "character": "",
+        "blocked": "false",
+        "name": "pene",
+        "pendingDuels": [],
+        "id": "I74QQ",
+        "results": []
+    },
     "W46AA": {
         "nick": "W46AA",
-        "password": "1234",
+        "password": "lraG5KYLUCMLKMaMmhtM+A==",
         "character": "",
         "blocked": "false",
         "name": "Jaime",
@@ -31,7 +61,7 @@
     },
     "L60YY": {
         "nick": "L60YY",
-        "password": "1234",
+        "password": "lraG5KYLUCMLKMaMmhtM+A==",
         "character": "cbf0b3de-029e-4a63-81d7-ee10fdd60a54",
         "blocked": "false",
         "name": "sa4dus",

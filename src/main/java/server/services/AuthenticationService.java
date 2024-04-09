@@ -1,14 +1,13 @@
 package server.services;
 
 import lib.ResponseBody;
-import server.Database;
-import server.Operator;
-import server.Player;
-import server.User;
+import server.*;
 import server.nosql.Collection;
 import server.nosql.Document;
 import server.nosql.Query;
 import server.nosql.Schemas.UserSchema;
+
+import java.util.Objects;
 
 public class AuthenticationService implements Service {
     public ResponseBody login(String name, String password) {
@@ -16,10 +15,9 @@ public class AuthenticationService implements Service {
 
         Query query = new Query();
         query.addFilter("name", name);
-        query.addFilter("password", password);
         Document doc = Database.findOne(Player.class.getName(), query);
 
-        if (doc != null) {
+        if (doc != null && Crypto.compare((String) doc.getProperty("password"), password)) {
             response.setOk(true);
             response.addField("user", doc.deJSONDocument(User.class));
             response.addField("isOperator", false);
@@ -28,14 +26,14 @@ public class AuthenticationService implements Service {
 
         doc = Database.findOne(Operator.class.getName(), query);
 
-        if (doc == null) {
-            response.setOk(false);
+        if (doc != null && Crypto.compare((String) doc.getProperty("password"), password)) {
+            response.addField("user", doc.deJSONDocument(User.class));
+            response.setOk(true);
+            response.addField("isOperator", true);
             return response;
         }
 
-        response.addField("user", doc.deJSONDocument(User.class));
-        response.setOk(true);
-        response.addField("isOperator", true);
+        response.setOk(false);
         return response;
     }
 

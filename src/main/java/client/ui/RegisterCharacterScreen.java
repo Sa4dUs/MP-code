@@ -56,10 +56,6 @@ public class RegisterCharacterScreen extends Screen {
 
         PlayerCharacter playerCharacter = new PlayerCharacter(current);
 
-        RequestBody createRequest = new RequestBody();
-        createRequest.addField("character", playerCharacter);
-        Client.request("character/createPlayerCharacter", createRequest);
-
         RequestBody setCharacterRequest = new RequestBody();
         setCharacterRequest.addField("nick", Session.getCurrentUser().getNick());
         setCharacterRequest.addField("character", playerCharacter);

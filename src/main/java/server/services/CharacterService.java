@@ -36,6 +36,10 @@ public class CharacterService implements Service {
             query.addFilter("id", player.getCharacter().getId());
             Database.updateOne(PlayerCharacter.class.getName(), character.getDocument(), query);
         }
+        else
+        {
+            character.getDocument().saveToDatabase(PlayerCharacter.class);
+        }
         Document document = character.getDocument();
         return setIdToPlayer(document.getId(), nick, "character");
     }

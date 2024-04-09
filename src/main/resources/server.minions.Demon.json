@@ -1,22 +1,7 @@
-{
-    "37afca31-db97-4bc0-9bd4-caf3f3d7acdf": {
-        "pact": "Riquezas infinitas",
-        "name": "Mammon",
-        "health": 3,
-        "id": "37afca31-db97-4bc0-9bd4-caf3f3d7acdf",
-        "minions": ["4b06ed35-1317-4366-9f11-56a7fe3224e8"]
-    },
-    "74fa1944-c774-4943-99db-8897a83adaf1": {
-        "pact": "Amor eterno",
-        "name": "Introducir nombre de demonio que tenga algo que ver con amor",
-        "health": 3,
-        "id": "74fa1944-c774-4943-99db-8897a83adaf1",
-        "minions": [
-            "73691627-d492-4701-8b3a-223853cb0281",
-            "37afca31-db97-4bc0-9bd4-caf3f3d7acdf",
-            "30ce3b7b-58db-4c14-8dd4-fb34d1a05a55",
-            "d63e03df-a37c-450f-9ee1-6922c4de33ef",
-            "937ccef3-191a-4d05-bfbb-62c138933b33"
-        ]
-    }
-}
+{"9f8b2015-0fb8-40d3-89b4-a761154b15c4": {
+    "pact": "1",
+    "name": "Abduscan",
+    "health": 1,
+    "id": "9f8b2015-0fb8-40d3-89b4-a761154b15c4",
+    "minions": []
+}}

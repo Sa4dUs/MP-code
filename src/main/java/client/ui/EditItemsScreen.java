@@ -83,4 +83,11 @@ public abstract class EditItemsScreen<T> extends Screen {
 
         ResponseBody response = Client.request("item/delete", request);
     }
+
+    public Class<? extends T> getClazz() {
+        return this.clazz;
+    }
+    public void setClazz(Class<? extends T> clazz) {
+        this.clazz = clazz;
+    }
 }

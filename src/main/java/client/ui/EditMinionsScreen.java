@@ -4,6 +4,7 @@ import client.Client;
 import client.ScreenManager;
 import com.intellij.uiDesigner.core.GridConstraints;
 import lib.RequestBody;
+import server.Characteristic;
 import server.minions.Demon;
 import server.minions.Ghoul;
 import server.minions.Human;
@@ -13,8 +14,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class EditMinionsScreen extends EditItemsScreen<Minion> {
     private JPanel frame;
@@ -28,14 +31,14 @@ public class EditMinionsScreen extends EditItemsScreen<Minion> {
     private JPanel minionsPanel;
     private JButton addMinionButton;
     private JButton deleteButton;
-    private JComboBox breedComboBox;
+    private JComboBox<Class<? extends Minion>> breedComboBox;
     private JButton createButton;
     public Minion current;
     private List<Minion> minionList = new ArrayList<>();
 
     @Override
     public void start() {
-        super.start();
+        super.start(Human.class, container);
 
         this.minionList = fetchItems(Human.class);
         this.minionList.addAll(fetchItems(Demon.class));
@@ -66,6 +69,13 @@ public class EditMinionsScreen extends EditItemsScreen<Minion> {
         backButton.addActionListener(e -> ScreenManager.goBack());
 
         saveButton.addActionListener(e -> {
+            try {
+                current = ((Class<? extends Minion>) Objects.requireNonNull(breedComboBox.getSelectedItem())).getDeclaredConstructor().newInstance();
+            } catch (InstantiationException | IllegalAccessException | InvocationTargetException |
+                     NoSuchMethodException ex) {
+                throw new RuntimeException(ex);
+            }
+
             current.setName(nameField.getText());
             current.setHealth(Integer.parseInt(healthField.getText()));
 
@@ -78,6 +88,7 @@ public class EditMinionsScreen extends EditItemsScreen<Minion> {
             }
 
             saveItem(current);
+            this.start();
         });
 
         deleteButton.addActionListener(e -> deleteItem(current));
@@ -85,6 +96,22 @@ public class EditMinionsScreen extends EditItemsScreen<Minion> {
         addMinionButton.addActionListener(e -> {
             if (current instanceof Demon) {
                 displayPopup("Minion", minionList, minionsPanel, ((Demon) current).getMinions());
+            }
+        });
+
+        breedComboBox.addActionListener(e -> {
+            this.setClazz((Class<? extends Minion>) breedComboBox.getSelectedItem());
+
+            if (this.getClazz() == null) {
+                return;
+            }
+
+            if (this.getClazz().equals(Demon.class)) {
+                extraLabel.setText("Pact");
+            } else if (this.getClazz().equals(Human.class)) {
+                extraLabel.setText("Loyalty");
+            } else if (this.getClazz().equals(Ghoul.class)) {
+                extraLabel.setText("Dependence");
             }
         });
     }
@@ -105,7 +132,18 @@ public class EditMinionsScreen extends EditItemsScreen<Minion> {
 
     @Override
     protected void createButtonActionListener() {
+        current = null;
+        nameField.setText("");
+        healthField.setText("");
+        extraField.setText("");
 
+        DefaultComboBoxModel model = new DefaultComboBoxModel();
+        model.addElement(Demon.class);
+        model.addElement(Human.class);
+        model.addElement(Ghoul.class);
+
+        breedComboBox.setModel(model);
+        breedComboBox.setEnabled(true);
     }
 
     @Override
@@ -114,6 +152,7 @@ public class EditMinionsScreen extends EditItemsScreen<Minion> {
     }
 
     public void setPanelData(Minion item) {
+        breedComboBox.setEnabled(false);
         this.current = item;
 
         minionsPanel.setEnabled(false);
@@ -138,7 +177,7 @@ public class EditMinionsScreen extends EditItemsScreen<Minion> {
         }
 
         breedComboBox.removeAllItems();
-        breedComboBox.addItem(item.getClass().getSimpleName());
+        breedComboBox.addItem(item.getClass());
         breedComboBox.setEnabled(false);
     }
 

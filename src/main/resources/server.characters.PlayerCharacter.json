@@ -26,10 +26,7 @@
         "breed": 2,
         "weaponsList": ["c308f7b6-eb77-442e-840a-094885bbb8c1"],
         "gold": 500,
-        "armorList": [
-            "485a4a56-7d6d-4b20-9e53-99056a4911ed",
-            "bb9b6f75-d73b-44c1-92bf-e7aeb47690e3"
-        ],
+        "armorList": ["485a4a56-7d6d-4b20-9e53-99056a4911ed"],
         "minionList": ["99eb0915-7f09-4faf-b042-406b1474cbe9"],
         "activeWeaponL": "",
         "activeArmor": "",

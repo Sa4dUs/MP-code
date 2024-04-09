@@ -7,13 +7,14 @@ import lib.RequestBody;
 import lib.ResponseBody;
 import server.characters.PlayerCharacter;
 import server.items.Ability;
+import server.items.Armor;
 import server.items.Weapon;
 
 import javax.swing.*;
 import java.util.List;
 
 public class CharacterScreen extends Screen {
-    private JComboBox<String> rightWeaponSelect;
+    private JComboBox<Weapon> rightWeaponSelect;
     private JPanel frame;
     private JButton backButton;
     private JTextField nameField;
@@ -24,10 +25,9 @@ public class CharacterScreen extends Screen {
     private JList<String> weaknessesList;
     private JList<String> weaponsList;
     private JList<String> armorsList;
-    private JList<String> abilitiesList;
     private JList<String> minionsList;
-    private JComboBox<String> armorSelect;
-    private JComboBox<String> leftWeaponSelect;
+    private JComboBox<Armor> armorSelect;
+    private JComboBox<Weapon> leftWeaponSelect;
     private JTextField abilityField;
     private JTextField specialAbilityField;
     private PlayerCharacter character;
@@ -72,20 +72,20 @@ public class CharacterScreen extends Screen {
         populateListFromModel(weaponsList, character.getWeaponsList());
         populateListFromModel(armorsList, character.getArmorList());
 
-        character.getArmorList().forEach(e -> armorSelect.addItem(e.getName()));
-        armorSelect.addItem("");
-        armorSelect.setSelectedItem(character.getActiveArmor() == null ? "" : character.getActiveArmor().getName());
+        character.getArmorList().forEach(e -> armorSelect.addItem(e));
+        armorSelect.addItem(null);
+        armorSelect.setSelectedItem(character.getActiveArmor());
 
         character.getWeaponsList().forEach(e -> {
-            leftWeaponSelect.addItem(e.getName());
-            rightWeaponSelect.addItem(e.getName());
+            leftWeaponSelect.addItem(e);
+            rightWeaponSelect.addItem(e);
         });
 
-        leftWeaponSelect.addItem("");
-        leftWeaponSelect.setSelectedItem(character.getActiveWeaponL() == null ? "" : character.getActiveWeaponL().getName());
+        leftWeaponSelect.addItem(null);
+        leftWeaponSelect.setSelectedItem(character.getActiveWeaponL());
 
-        rightWeaponSelect.addItem("");
-        rightWeaponSelect.setSelectedItem(character.getActiveWeaponR() == null ? "" : character.getActiveWeaponR().getName());
+        rightWeaponSelect.addItem(null);
+        rightWeaponSelect.setSelectedItem(character.getActiveWeaponR());
     }
 
     private void setupEventHandlers() {
@@ -99,14 +99,14 @@ public class CharacterScreen extends Screen {
     }
 
     private void updateActiveArmor() {
-        String selectedArmorName = (String) armorSelect.getSelectedItem();
-        character.setActiveArmor(findItemInList(selectedArmorName, character.getArmorList()));
+        Armor selectedArmor = (Armor) armorSelect.getSelectedItem();
+        character.setActiveArmor(selectedArmor);
         updatePlayerCharacter();
     }
 
-    private void updateActiveWeapon(JComboBox<String> weaponSelect) {
-        String selectedWeaponName = (String) weaponSelect.getSelectedItem();
-        Weapon selectedWeapon = findItemInList(selectedWeaponName, character.getWeaponsList());
+    private void updateActiveWeapon(JComboBox<Weapon> weaponSelect) {
+        Weapon selectedWeapon = (Weapon) weaponSelect.getSelectedItem();
+
         if (weaponSelect == leftWeaponSelect && selectedWeapon != null && selectedWeapon.isTwoHanded()) {
             rightWeaponSelect.setSelectedItem("");
             character.setActiveWeaponR(null);
@@ -144,7 +144,6 @@ public class CharacterScreen extends Screen {
         request.addField("character", character);
         ResponseBody response = Client.request("character/updatePlayerCharacter", request);
         if (!response.ok) {
-            // Handle error
             System.out.println("Failed to update player character");
         }
     }

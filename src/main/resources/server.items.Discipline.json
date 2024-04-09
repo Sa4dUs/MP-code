@@ -1,0 +1,16 @@
+{
+    "dcbabfbb-53dc-421e-83d4-6a82f6707fb2": {
+        "cost": 2,
+        "defense": 2,
+        "attack": 3,
+        "name": "Voltereta",
+        "id": "dcbabfbb-53dc-421e-83d4-6a82f6707fb2"
+    },
+    "2eacc01d-b626-4914-8842-a45c06b8fd24": {
+        "cost": 2,
+        "defense": 0,
+        "attack": 3,
+        "name": "Proyectiles de plata",
+        "id": "2eacc01d-b626-4914-8842-a45c06b8fd24"
+    }
+}

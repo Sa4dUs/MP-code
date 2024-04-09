@@ -185,18 +185,18 @@ public class Character implements JSONable {
         document.setProperty("breed", this.breed.ordinal());
         document.setProperty("health", this.health);
         document.setProperty("gold", this.gold);
-        document.setProperty("weaponsList", getIdArrayFromArray(weaponsList.toArray(new JSONable[0])));
-        document.setProperty("armorList", getIdArrayFromArray(armorList.toArray(new JSONable[0])));
+        document.setProperty("weaponsList", getIdArrayFromArray(this.weaponsList.toArray(new JSONable[0])));
+        document.setProperty("armorList", getIdArrayFromArray(this.armorList.toArray(new JSONable[0])));
         document.setProperty("specialAbility", "");
 
-        if (specialAbility != null) {
-            document.setProperty("specialAbility", specialAbility.getDocument().getId());
-            specialAbility.getDocument().saveToDatabase(Ability.class);
+        if (this.specialAbility != null) {
+            document.setProperty("specialAbility", this.specialAbility.getDocument().getId());
+            this.specialAbility.getDocument().saveToDatabase(this.specialAbility.getClass());
         }
 
-        document.setProperty("debilitiesList", getIdArrayFromArray(debilitiesList.toArray(new JSONable[0])));
-        document.setProperty("resistancesList", getIdArrayFromArray(resistancesList.toArray(new JSONable[0])));
-        document.setProperty("minionList", getIdArrayFromArray(minionList.toArray(new JSONable[0])));
+        document.setProperty("debilitiesList", getIdArrayFromArray(this.debilitiesList.toArray(new JSONable[0])));
+        document.setProperty("resistancesList", getIdArrayFromArray(this.resistancesList.toArray(new JSONable[0])));
+        document.setProperty("minionList", getIdArrayFromArray(this.minionList.toArray(new JSONable[0])));
 
         if(this.id != null)
             document.setProperty("id", this.id);

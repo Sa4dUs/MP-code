@@ -12,5 +12,12 @@
         "attack": 3,
         "name": "Bola de fuego",
         "id": "35a8b3e6-dfcd-4298-88b5-3f348685a484"
+    },
+    "90fabb4a-e904-4a7b-90ed-a624389d6911": {
+        "cost": 1,
+        "defense": 0,
+        "attack": 3,
+        "name": "Ostion",
+        "id": "90fabb4a-e904-4a7b-90ed-a624389d6911"
     }
 }

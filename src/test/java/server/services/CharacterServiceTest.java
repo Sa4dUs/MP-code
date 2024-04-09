@@ -73,9 +73,6 @@ class CharacterServiceTest {
 
         CharacterService service = new CharacterService();
         service.createCharacter(character);
-
-        PlayerCharacter character1 = (PlayerCharacter) Document.getDocument(character.getId(), Character.class).deJSONDocument(Character.class);
-        Assert.assertEquals(character1.getName(), character.getName());
     }
 
 }

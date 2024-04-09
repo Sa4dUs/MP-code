@@ -1,7 +1,16 @@
-{"370acd5c-14e2-48b0-900d-4cd7982db14e": {
-    "cost": 3,
-    "defense": 3,
-    "attack": 0,
-    "name": "Pared de hielo",
-    "id": "370acd5c-14e2-48b0-900d-4cd7982db14e"
-}}
+{
+    "370acd5c-14e2-48b0-900d-4cd7982db14e": {
+        "cost": 3,
+        "defense": 3,
+        "attack": 0,
+        "name": "Pared de hielo",
+        "id": "370acd5c-14e2-48b0-900d-4cd7982db14e"
+    },
+    "015c02ec-6967-464c-ae8c-64b04b50841b": {
+        "cost": 1,
+        "defense": 0,
+        "attack": 3,
+        "name": "Patadoncio",
+        "id": "015c02ec-6967-464c-ae8c-64b04b50841b"
+    }
+}

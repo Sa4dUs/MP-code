@@ -1,0 +1,16 @@
+{
+    "0428722e-00cc-47bb-b8f6-c470da582090": {
+        "cost": 1,
+        "defense": 0,
+        "attack": 3,
+        "name": "Talento de cazador",
+        "id": "0428722e-00cc-47bb-b8f6-c470da582090"
+    },
+    "35a8b3e6-dfcd-4298-88b5-3f348685a484": {
+        "cost": 2,
+        "defense": 0,
+        "attack": 3,
+        "name": "Bola de fuego",
+        "id": "35a8b3e6-dfcd-4298-88b5-3f348685a484"
+    }
+}

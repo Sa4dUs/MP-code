@@ -122,6 +122,7 @@ public abstract class EditCharacterScreen<T extends Character> extends EditItems
 
     private void updateAbilities()
     {
+        this.getAbilityList().clear();
         fetchAbilities();
         this.getSpecialAbilityField().setModel(new DefaultComboBoxModel<Ability>(getAbilityList().toArray(Ability[]::new)));
     }

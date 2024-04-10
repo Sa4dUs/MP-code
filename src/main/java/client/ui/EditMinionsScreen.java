@@ -59,10 +59,12 @@ public class EditMinionsScreen extends EditItemsScreen<Minion> {
             setPanelData(this.minionList.get(0));
         }
 
+
+        breedComboBox.setRenderer(new ClassNameRenderer());
+
         container.updateUI();
         container.revalidate();
         container.repaint();
-
     }
 
     public EditMinionsScreen() {

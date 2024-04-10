@@ -6,7 +6,6 @@ import server.nosql.Schemas.GhoulSchema;
 public class Ghoul extends  Minion{
     private int dependence;
     private final int maxDependence = 5;
-
     public Ghoul(){}
 
     @Override

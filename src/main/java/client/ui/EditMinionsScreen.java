@@ -70,8 +70,9 @@ public class EditMinionsScreen extends EditItemsScreen<Minion> {
     public EditMinionsScreen() {
         backButton.addActionListener(e -> ScreenManager.goBack());
         saveButton.addActionListener(e -> {
-            String id = current.getId();
+
             List<Minion> minionList = new ArrayList<>();
+            String id = current != null ? current.getId(): null;
 
             if (current instanceof Demon) {
                 minionList = ((Demon) current).getMinions();
@@ -84,7 +85,8 @@ public class EditMinionsScreen extends EditItemsScreen<Minion> {
                 throw new RuntimeException(ex);
             }
 
-            current.setId(id);
+            if(id != null)
+                current.setId(id);
             current.setName(nameField.getText());
             current.setHealth(Integer.parseInt(healthField.getText()));
 

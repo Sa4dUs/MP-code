@@ -98,8 +98,8 @@ public class Demon extends Minion{
     {
         if(minion.getId().equals(this.getId()))
             return true;
-        
-        for(Minion m: minions)
+
+        for(Minion m: this.minions)
         {
             if(m.getId().equals(minion.getId()))
                 return true;
@@ -113,7 +113,7 @@ public class Demon extends Minion{
 
     public boolean canAddMinion(Minion minion)
     {
-        return !containsMinion(minion);
+        return !this.containsMinion(minion);
     }
 
     @Override

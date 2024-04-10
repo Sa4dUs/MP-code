@@ -37,6 +37,11 @@ public class EditPlayerCharactersScreen extends EditCharacterScreen<PlayerCharac
     private JButton saveButton;
     private JButton deleteButton;
     private JButton createButton;
+    private JPanel buttonsMinionsPanel;
+    private JPanel buttonsArmorsPanel;
+    private JPanel buttonsWeaponsPanel;
+    private JPanel buttonsWeaknessesPanel;
+    private JPanel buttonsStrengthsPanel;
 
     private PlayerCharacter current;
     private final List<Armor> armorList = new ArrayList<>();
@@ -88,6 +93,9 @@ public class EditPlayerCharactersScreen extends EditCharacterScreen<PlayerCharac
     }
 
     @Override
+    protected JPanel getButtonsMinionsPanel() {return  this.buttonsMinionsPanel;}
+
+    @Override
     protected JButton getMinionAddButton() {
         return this.minionAddButton;
     }
@@ -95,6 +103,11 @@ public class EditPlayerCharactersScreen extends EditCharacterScreen<PlayerCharac
     @Override
     protected JPanel getArmorsPanel() {
         return this.armorsPanel;
+    }
+
+    @Override
+    protected JPanel getButtonsArmorPanel() {
+        return this.buttonsArmorsPanel;
     }
 
     @Override
@@ -108,6 +121,11 @@ public class EditPlayerCharactersScreen extends EditCharacterScreen<PlayerCharac
     }
 
     @Override
+    protected JPanel getButtonsWeaponsPanel() {
+        return this.buttonsWeaponsPanel;
+    }
+
+    @Override
     protected JButton getWeaponsAddButton() {
         return this.weaponsAddButton;
     }
@@ -118,6 +136,11 @@ public class EditPlayerCharactersScreen extends EditCharacterScreen<PlayerCharac
     }
 
     @Override
+    protected JPanel getButtonsStrengthsPanel() {
+        return this.buttonsStrengthsPanel;
+    }
+
+    @Override
     protected JButton getStrengthsAddButton() {
         return this.strengthsAddButton;
     }
@@ -125,6 +148,11 @@ public class EditPlayerCharactersScreen extends EditCharacterScreen<PlayerCharac
     @Override
     protected JPanel getWeaknessesPanel() {
         return this.weaknessesPanel;
+    }
+
+    @Override
+    protected JPanel getButtonsWeaknessesPanel() {
+        return this.buttonsWeaknessesPanel;
     }
 
     @Override

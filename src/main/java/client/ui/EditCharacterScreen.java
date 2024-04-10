@@ -27,14 +27,19 @@ public abstract class EditCharacterScreen<T extends Character> extends EditItems
     protected abstract JTextField getGoldField();
     protected abstract JComboBox<CharacterType> getBreedComboBox();
     protected abstract JPanel getMinionsPanel();
+    protected abstract JPanel getButtonsMinionsPanel();
     protected abstract JButton getMinionAddButton();
     protected abstract JPanel getArmorsPanel();
+    protected abstract JPanel getButtonsArmorPanel();
     protected abstract JButton getArmorAddButton();
     protected abstract JPanel getWeaponsPanel();
+    protected abstract JPanel getButtonsWeaponsPanel();
     protected abstract JButton getWeaponsAddButton();
     protected abstract JPanel getStrengthsPanel();
+    protected abstract JPanel getButtonsStrengthsPanel();
     protected abstract JButton getStrengthsAddButton();
     protected abstract JPanel getWeaknessesPanel();
+    protected abstract JPanel getButtonsWeaknessesPanel();
     protected abstract JButton getWeaknessesAddButton();
     protected abstract JComboBox<Ability> getSpecialAbilityField();
     protected abstract JButton getSaveButton();
@@ -136,11 +141,11 @@ public abstract class EditCharacterScreen<T extends Character> extends EditItems
         this.getSaveButton().addActionListener(e -> saveItem(this.getCurrent()));
         this.getDeleteButton().addActionListener(e -> deleteItem(this.getCurrent()));
 
-        getMinionAddButton().addActionListener(e -> displayPopup("Minion", getMinionList(), getMinionsPanel(), getCurrent().getMinionList()));
-        getArmorAddButton().addActionListener(e -> displayPopup("Armor", getArmorList(), getArmorsPanel(), getCurrent().getArmorList()));
-        getWeaponsAddButton().addActionListener(e -> displayPopup("Weapon", getWeaponList(), getWeaponsPanel(), getCurrent().getWeaponsList()));
-        getStrengthsAddButton().addActionListener(e -> displayPopup("Strength", getResistancesList(), getStrengthsPanel(), getCurrent().getResistancesList()));
-        getWeaknessesAddButton().addActionListener(e -> displayPopup("Weakness", getWeaknessesList(), getWeaknessesPanel(), getCurrent().getDebilitiesList()));
+        getMinionAddButton().addActionListener(e -> displayPopup("Minion", getMinionList(), getMinionsPanel(), getButtonsMinionsPanel(), getCurrent().getMinionList()));
+        getArmorAddButton().addActionListener(e -> displayPopup("Armor", getArmorList(), getArmorsPanel(), getButtonsArmorPanel(), getCurrent().getArmorList()));
+        getWeaponsAddButton().addActionListener(e -> displayPopup("Weapon", getWeaponList(), getWeaponsPanel(), getButtonsWeaponsPanel(), getCurrent().getWeaponsList()));
+        getStrengthsAddButton().addActionListener(e -> displayPopup("Strength", getResistancesList(), getStrengthsPanel(), getButtonsStrengthsPanel(), getCurrent().getResistancesList()));
+        getWeaknessesAddButton().addActionListener(e -> displayPopup("Weakness", getWeaknessesList(), getWeaknessesPanel(), getButtonsWeaknessesPanel(), getCurrent().getDebilitiesList()));
     }
 
     private void updateBreed() {
@@ -152,7 +157,7 @@ public abstract class EditCharacterScreen<T extends Character> extends EditItems
         this.getCurrent().setSpecialAbility((Ability) this.getSpecialAbilityField().getSelectedItem());
     }
 
-    private <T> void displayPopup(String title, List<T> itemList, JPanel panelToUpdate, List<T> listToUpdate) {
+    private <T> void displayPopup(String title, List<T> itemList, JPanel panelToUpdate, JPanel buttonsPanelToUpdate, List<T> listToUpdate) {
         JFrame popupFrame = new JFrame("Select " + title);
         JPanel popupPanel = new JPanel(new BorderLayout());
 
@@ -177,21 +182,21 @@ public abstract class EditCharacterScreen<T extends Character> extends EditItems
                     public void actionPerformed(ActionEvent e) {
                         listToUpdate.remove(selectedItem);
                         panelToUpdate.remove(label);
-                        panelToUpdate.remove(button);
-                        panelToUpdate.revalidate();
-                        panelToUpdate.repaint();
+                        buttonsPanelToUpdate.remove(button);
                     }
                 });
+                GridBagConstraints labelConstraints = ((GridBagLayout) panelToUpdate.getLayout()).getConstraints(label);
+                GridBagConstraints buttonConstraints = ((GridBagLayout) buttonsPanelToUpdate.getLayout()).getConstraints(button);
 
-                panelToUpdate.add(label, new GridConstraints());
-                panelToUpdate.add(button, new GridConstraints());
-                panelToUpdate.repaint();
+                panelToUpdate.add(label, labelConstraints);
+                buttonsPanelToUpdate.add(button, buttonConstraints);
                 listToUpdate.add(selectedItem);
                 popupFrame.dispose(); // Close the popup
             } else {
                 JOptionPane.showMessageDialog(popupFrame, "Please select an item.", "Error", JOptionPane.ERROR_MESSAGE);
             }
             panelToUpdate.updateUI();
+            buttonsPanelToUpdate.updateUI();
         });
 
         cancelButton.addActionListener(e -> popupFrame.dispose()); // Close the popup

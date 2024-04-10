@@ -31,11 +31,16 @@ public class EditDefaultCharactersScreen extends EditCharacterScreen<Character> 
     private JPanel weaponsPanel;
     private JButton weaponsAddButton;
     private JPanel weaknessesPanel;
-    private JButton resistancesAddButton;
+    private JButton weaknessesAddButton;
     private JPanel strengthsPanel;
     private JButton strengthsAddButton;
     private JComboBox<Ability> specialAbilityComboBox;
     private JButton createButton;
+    private JPanel buttonsMinionsPanel;
+    private JPanel buttonsArmorsPanel;
+    private JPanel buttonsWeaponsPanel;
+    private JPanel buttonsWeaknessesPanel;
+    private JPanel buttonsStrengthsPanel;
 
     private Character current;
     private final List<Armor> armorList = new ArrayList<>();
@@ -87,6 +92,9 @@ public class EditDefaultCharactersScreen extends EditCharacterScreen<Character> 
     }
 
     @Override
+    protected JPanel getButtonsMinionsPanel() {return  this.buttonsMinionsPanel;}
+
+    @Override
     protected JButton getMinionAddButton() {
         return this.minionAddButton;
     }
@@ -94,6 +102,11 @@ public class EditDefaultCharactersScreen extends EditCharacterScreen<Character> 
     @Override
     protected JPanel getArmorsPanel() {
         return this.armorsPanel;
+    }
+
+    @Override
+    protected JPanel getButtonsArmorPanel() {
+        return this.buttonsArmorsPanel;
     }
 
     @Override
@@ -107,6 +120,11 @@ public class EditDefaultCharactersScreen extends EditCharacterScreen<Character> 
     }
 
     @Override
+    protected JPanel getButtonsWeaponsPanel() {
+        return this.buttonsWeaponsPanel;
+    }
+
+    @Override
     protected JButton getWeaponsAddButton() {
         return this.weaponsAddButton;
     }
@@ -114,6 +132,11 @@ public class EditDefaultCharactersScreen extends EditCharacterScreen<Character> 
     @Override
     protected JPanel getStrengthsPanel() {
         return this.strengthsPanel;
+    }
+
+    @Override
+    protected JPanel getButtonsStrengthsPanel() {
+        return this.buttonsStrengthsPanel;
     }
 
     @Override
@@ -127,8 +150,13 @@ public class EditDefaultCharactersScreen extends EditCharacterScreen<Character> 
     }
 
     @Override
+    protected JPanel getButtonsWeaknessesPanel() {
+        return this.buttonsWeaknessesPanel;
+    }
+
+    @Override
     protected JButton getWeaknessesAddButton() {
-        return this.resistancesAddButton;
+        return this.weaknessesAddButton;
     }
 
     @Override

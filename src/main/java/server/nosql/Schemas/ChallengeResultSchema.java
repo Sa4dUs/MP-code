@@ -14,7 +14,8 @@ public class ChallengeResultSchema extends Schema {
                 "attackerMinionsLeft", Integer.class,
                 "attackedMinionsLeft", Integer.class,
                 "bet", Integer.class,
-                "history", String[].class
+                "history", String[].class,
+                "date", String.class
         ));
     }
 }

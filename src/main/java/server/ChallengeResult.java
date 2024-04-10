@@ -140,6 +140,10 @@ public class ChallengeResult implements JSONable {
 
     public void setId(String id){this.id = id;}
 
+    public List<String> getHistory() {
+        return history;
+    }
+
     @Override
     public Document getDocument() {
         Document document = new Document(new ChallengeResultSchema());

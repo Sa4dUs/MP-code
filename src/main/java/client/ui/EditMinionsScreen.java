@@ -97,7 +97,7 @@ public class EditMinionsScreen extends EditItemsScreen<Minion> {
 
         addMinionButton.addActionListener(e -> {
             if (current instanceof Demon) {
-                displayPopup("Minion", minionList, minionsPanel, ((Demon) current).getMinions());
+                displayPopup("Minion", minionList.stream().filter(minion -> !minion.equals(current)).toList(), minionsPanel, ((Demon) current).getMinions());
             }
         });
 
@@ -158,6 +158,7 @@ public class EditMinionsScreen extends EditItemsScreen<Minion> {
         this.current = item;
 
         minionsPanel.setEnabled(false);
+        minionsPanel.removeAll();
         addMinionButton.setEnabled(false);
 
         nameField.setText(item.getName());
@@ -169,7 +170,6 @@ public class EditMinionsScreen extends EditItemsScreen<Minion> {
             minionsPanel.setEnabled(true);
             addMinionButton.setEnabled(true);
             populateItemList(this.minionsPanel, ((Demon) current).getMinions());
-
         } else if (item instanceof Human) {
             extraLabel.setText("Loyalty:");
             extraField.setText(Integer.toString(((Human) item).getLoyalty()));

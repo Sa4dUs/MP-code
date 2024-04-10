@@ -1,0 +1,22 @@
+{"7049d86c-987c-4190-a9b5-42453e6f00d0": {
+    "bet": 100,
+    "attackerMinionsLeft": 0,
+    "attackedMinionsLeft": 0,
+    "winnerAttacking": "false",
+    "id": "7049d86c-987c-4190-a9b5-42453e6f00d0",
+    "history": [
+        "Turn 1:",
+        "(Lamoara) Vayne used  to attack.",
+        "(sa4dus) Shion used  to defend. Received damage",
+        "Turn 1:",
+        "(sa4dus) Shion used  to attack.",
+        "(Lamoara) Vayne used  to defend. Received damage",
+        "Turn 2:",
+        "(Lamoara) Vayne used  to attack.",
+        "(sa4dus) Shion used  to defend. Received damage",
+        "Winner is: sa4dus"
+    ],
+    "attackerId": "Y95ZZ",
+    "attackedId": "L60YY",
+    "turns": 3
+}}

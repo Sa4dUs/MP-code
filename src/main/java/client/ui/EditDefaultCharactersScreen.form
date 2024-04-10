@@ -340,8 +340,7 @@
                       <font name="Inconsolata" size="14"/>
                     </properties>
                   </component>
-                  <grid id="eddb1" binding="buttonsMinionsPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                    <margin top="0" left="0" bottom="0" right="0"/>
+                  <grid id="eddb1" binding="buttonsMinionsPanel" layout-manager="GridBagLayout">
                     <constraints>
                       <grid row="4" column="3" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                     </constraints>
@@ -349,8 +348,7 @@
                     <border type="none"/>
                     <children/>
                   </grid>
-                  <grid id="a127a" binding="buttonsArmorsPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                    <margin top="0" left="0" bottom="0" right="0"/>
+                  <grid id="a127a" binding="buttonsArmorsPanel" layout-manager="GridBagLayout">
                     <constraints>
                       <grid row="6" column="3" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                     </constraints>
@@ -358,8 +356,7 @@
                     <border type="none"/>
                     <children/>
                   </grid>
-                  <grid id="852dc" binding="buttonsWeaponsPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                    <margin top="0" left="0" bottom="0" right="0"/>
+                  <grid id="852dc" binding="buttonsWeaponsPanel" layout-manager="GridBagLayout">
                     <constraints>
                       <grid row="8" column="3" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                     </constraints>
@@ -367,8 +364,7 @@
                     <border type="none"/>
                     <children/>
                   </grid>
-                  <grid id="38da4" binding="buttonsStrengthsPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                    <margin top="0" left="0" bottom="0" right="0"/>
+                  <grid id="38da4" binding="buttonsStrengthsPanel" layout-manager="GridBagLayout">
                     <constraints>
                       <grid row="13" column="3" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                     </constraints>
@@ -376,8 +372,7 @@
                     <border type="none"/>
                     <children/>
                   </grid>
-                  <grid id="393c0" binding="buttonsWeaknessesPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                    <margin top="0" left="0" bottom="0" right="0"/>
+                  <grid id="393c0" binding="buttonsWeaknessesPanel" layout-manager="GridBagLayout">
                     <constraints>
                       <grid row="11" column="3" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                     </constraints>

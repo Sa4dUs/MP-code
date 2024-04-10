@@ -43,7 +43,7 @@ public class HistoryScreen extends Screen {
             return;
         }
 
-        pane.setLayout(new GridLayout(challengeResultList.size(), 5));
+        pane.setLayout(new GridLayout(challengeResultList.size(), 6));
         for (ChallengeResult challenge : challengeResultList) {
             String op = Objects.equals(current, challenge.getAttackerId()) ? challenge.getAttackedPlayerId() : challenge.getAttackerId();
             boolean isWinning = Objects.equals(current, challenge.getAttackerId()) && challenge.isWinnerAttacking();
@@ -67,6 +67,10 @@ public class HistoryScreen extends Screen {
 
             JLabel turns = new JLabel(Integer.toString(challenge.getTurns()));
             pane.add(turns);
+
+            JButton show = new DefaultButton("+", e -> {
+                showListElements(challenge.getHistory());});
+            pane.add(show);
         }
     }
 
@@ -92,6 +96,20 @@ public class HistoryScreen extends Screen {
         return duelList;
     }
 
+    public static void showListElements(List<String> list) {
+        StringBuilder message = new StringBuilder();
+        for (String element : list) {
+            message.append(element).append("\n");
+        }
+
+        JTextArea textArea = new JTextArea(message.toString());
+        textArea.setEditable(false);
+
+        JScrollPane scrollPane = new JScrollPane(textArea);
+        scrollPane.setPreferredSize(new java.awt.Dimension(200, 100));
+
+        JOptionPane.showMessageDialog(null, scrollPane, "List of Turns", JOptionPane.INFORMATION_MESSAGE);
+    }
 
     public JPanel getPanel() {
         return this.frame;

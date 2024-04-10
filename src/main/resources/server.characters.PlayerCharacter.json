@@ -1,38 +1,44 @@
 {
     "d078048b-7cd2-4b95-91df-909d6b0f7262": {
         "specialAbility": "2eacc01d-b626-4914-8842-a45c06b8fd24",
-        "resistancesList": [],
-        "health": 1,
-        "activeWeaponR": "",
-        "activeNormalAbility": "",
-        "breed": 0,
-        "weaponsList": [],
-        "gold": 500,
-        "armorList": [],
-        "activeSpecialAbility": "",
-        "minionList": [],
-        "activeWeaponL": "",
-        "activeArmor": "",
-        "name": "Vayne",
-        "id": "d078048b-7cd2-4b95-91df-909d6b0f7262",
-        "debilitiesList": []
-    },
-    "26ac16d0-1a6d-4444-9b51-2e91a3d9a683": {
-        "specialAbility": "015c02ec-6967-464c-ae8c-64b04b50841b",
-        "resistancesList": [],
+        "resistancesList": ["d91ddda8-55cd-4772-9d1a-4b25e39100bb"],
         "health": 3,
         "activeWeaponR": "",
         "activeNormalAbility": "",
         "breed": 2,
-        "weaponsList": [],
+        "weaponsList": ["8de92c68-86ff-43c5-abb4-9f065078c20c"],
         "gold": 500,
-        "armorList": [],
+        "armorList": ["70e3e35e-1808-4a67-8ed9-71555eb22644"],
         "activeSpecialAbility": "",
-        "minionList": [],
-        "activeWeaponL": "",
-        "activeArmor": "",
+        "minionList": [
+            "26eef297-bcb7-46da-a604-c73695f254aa",
+            "808df08c-83c5-4aef-a73d-da50c419775d"
+        ],
+        "activeWeaponL": "8de92c68-86ff-43c5-abb4-9f065078c20c",
+        "activeArmor": "70e3e35e-1808-4a67-8ed9-71555eb22644",
         "name": "Shion",
-        "id": "26ac16d0-1a6d-4444-9b51-2e91a3d9a683",
-        "debilitiesList": []
+        "id": "c1493f3d-152c-4eec-a694-c4b00d96cd7b",
+        "debilitiesList": ["eda9ae46-0d09-403d-9e34-0f988a5e0114"]
+    },
+    "26ac16d0-1a6d-4444-9b51-2e91a3d9a683": {
+        "specialAbility": "2eacc01d-b626-4914-8842-a45c06b8fd24",
+        "resistancesList": ["d91ddda8-55cd-4772-9d1a-4b25e39100bb"],
+        "health": 3,
+        "activeWeaponR": "",
+        "activeNormalAbility": "",
+        "breed": 2,
+        "weaponsList": ["8de92c68-86ff-43c5-abb4-9f065078c20c"],
+        "gold": 500,
+        "armorList": ["70e3e35e-1808-4a67-8ed9-71555eb22644"],
+        "activeSpecialAbility": "",
+        "minionList": [
+            "26eef297-bcb7-46da-a604-c73695f254aa",
+            "808df08c-83c5-4aef-a73d-da50c419775d"
+        ],
+        "activeWeaponL": "8de92c68-86ff-43c5-abb4-9f065078c20c",
+        "activeArmor": "70e3e35e-1808-4a67-8ed9-71555eb22644",
+        "name": "Shion",
+        "id": "6d67326c-b4b2-4da7-8888-506d2d36621e",
+        "debilitiesList": ["eda9ae46-0d09-403d-9e34-0f988a5e0114"]
     }
 }

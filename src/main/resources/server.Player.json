@@ -2,7 +2,7 @@
     "Y95ZZ": {
         "nick": "Y95ZZ",
         "password": "lraG5KYLUCMLKMaMmhtM+A==",
-        "character": "d078048b-7cd2-4b95-91df-909d6b0f7262",
+        "character": "c1493f3d-152c-4eec-a694-c4b00d96cd7b",
         "blocked": "false",
         "name": "Lamoara",
         "pendingDuels": [],
@@ -12,10 +12,13 @@
     "L60YY": {
         "nick": "L60YY",
         "password": "lraG5KYLUCMLKMaMmhtM+A==",
-        "character": "26ac16d0-1a6d-4444-9b51-2e91a3d9a683",
+        "character": "6d67326c-b4b2-4da7-8888-506d2d36621e",
         "blocked": "false",
         "name": "sa4dus",
-        "pendingDuels": ["5d3b2ba0-5b5b-488e-a013-61e62b7ba909"],
+        "pendingDuels": [
+            "5d3b2ba0-5b5b-488e-a013-61e62b7ba909",
+            "6321b298-4eb2-43de-8e70-0d8504f99255"
+        ],
         "id": "L60YY",
         "results": []
     }

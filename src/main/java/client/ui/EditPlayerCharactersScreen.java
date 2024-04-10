@@ -93,9 +93,6 @@ public class EditPlayerCharactersScreen extends EditCharacterScreen<PlayerCharac
     }
 
     @Override
-    protected JPanel getButtonsMinionsPanel() {return  this.buttonsMinionsPanel;}
-
-    @Override
     protected JButton getMinionAddButton() {
         return this.minionAddButton;
     }
@@ -103,11 +100,6 @@ public class EditPlayerCharactersScreen extends EditCharacterScreen<PlayerCharac
     @Override
     protected JPanel getArmorsPanel() {
         return this.armorsPanel;
-    }
-
-    @Override
-    protected JPanel getButtonsArmorPanel() {
-        return this.buttonsArmorsPanel;
     }
 
     @Override
@@ -121,11 +113,6 @@ public class EditPlayerCharactersScreen extends EditCharacterScreen<PlayerCharac
     }
 
     @Override
-    protected JPanel getButtonsWeaponsPanel() {
-        return this.buttonsWeaponsPanel;
-    }
-
-    @Override
     protected JButton getWeaponsAddButton() {
         return this.weaponsAddButton;
     }
@@ -136,11 +123,6 @@ public class EditPlayerCharactersScreen extends EditCharacterScreen<PlayerCharac
     }
 
     @Override
-    protected JPanel getButtonsStrengthsPanel() {
-        return this.buttonsStrengthsPanel;
-    }
-
-    @Override
     protected JButton getStrengthsAddButton() {
         return this.strengthsAddButton;
     }
@@ -148,11 +130,6 @@ public class EditPlayerCharactersScreen extends EditCharacterScreen<PlayerCharac
     @Override
     protected JPanel getWeaknessesPanel() {
         return this.weaknessesPanel;
-    }
-
-    @Override
-    protected JPanel getButtonsWeaknessesPanel() {
-        return this.buttonsWeaknessesPanel;
     }
 
     @Override

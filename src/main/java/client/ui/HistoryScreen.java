@@ -68,6 +68,9 @@ public class HistoryScreen extends Screen {
             JLabel turns = new JLabel(Integer.toString(challenge.getTurns()));
             pane.add(turns);
 
+            JLabel date = new JLabel(challenge.getDate() + " ");
+            pane.add(date);
+
             JButton show = new DefaultButton("+", e -> {
                 showListElements(challenge.getHistory());});
             pane.add(show);

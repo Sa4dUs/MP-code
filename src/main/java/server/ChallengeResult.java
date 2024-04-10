@@ -9,6 +9,7 @@ import server.nosql.Document;
 import server.nosql.JSONable;
 import server.nosql.Schemas.ChallengeResultSchema;
 
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +20,7 @@ public class ChallengeResult implements JSONable {
     private int turns = 1;
     private int attackerMinionsLeft, attackedMinionsLeft;
     private boolean winnerAttacking = true;
-    private final String date = java.time.ZonedDateTime.now().toString();
+    private String date;
     private List<String> history = new ArrayList<>();
 
     public ChallengeResult(){};
@@ -29,6 +30,8 @@ public class ChallengeResult implements JSONable {
         this.bet = bet;
         this.attackerId = attackingPlayer.getId();
         this.attackedId = attackedPlayer.getId();
+
+        this.date = java.time.ZonedDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy, HH:mm"));
 
         PlayerCharacter attackingPlayerCharacter = attackingPlayer.getCharacter();
         PlayerCharacter attackedPlayerCharacter = attackedPlayer.getCharacter();
@@ -57,6 +60,8 @@ public class ChallengeResult implements JSONable {
         this.winnerAttacking = !deniedFromOperator;
         this.turns = -1;
         this.bet = bet;
+
+        this.date = java.time.ZonedDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy, HH:mm"));
 
         //quitar oro
     }
@@ -159,6 +164,7 @@ public class ChallengeResult implements JSONable {
         document.setProperty("attackedMinionsLeft", this.attackedMinionsLeft);
         document.setProperty("winnerAttacking",this.winnerAttacking);
         document.setProperty("history", this.history.toArray());
+        document.setProperty("date", this.date);
         return document;
     }
 }

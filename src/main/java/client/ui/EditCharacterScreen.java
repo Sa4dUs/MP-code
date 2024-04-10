@@ -51,9 +51,9 @@ public abstract class EditCharacterScreen<T extends Character> extends EditItems
     protected abstract List<T> getCharacterList();
 
     public void start(Class clazz) {
-        super.start(clazz, this.getContainerPanel());
         fetchItems();
         initializeComboBoxes();
+        super.start(clazz, this.getContainerPanel());
         updateAbilities();
         setActionListeners();
     }
@@ -124,7 +124,6 @@ public abstract class EditCharacterScreen<T extends Character> extends EditItems
 
     protected void initializeComboBoxes() {
         this.getBreedComboBox().setModel(new DefaultComboBoxModel<>(CharacterType.values()));
-
         this.getSpecialAbilityField().setModel(new DefaultComboBoxModel<Ability>(getSpecialAbilityList().toArray(Ability[]::new)));
     }
 

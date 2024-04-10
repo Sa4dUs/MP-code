@@ -1,9 +1,14 @@
 package client.ui;
 
 import client.ScreenManager;
+import server.Characteristic;
+import server.Resistance;
+import server.Weakness;
 import server.items.*;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class EditAbilitiesScreen extends EditItemsScreen<Ability> {
     private JPanel frame;
@@ -16,11 +21,18 @@ public class EditAbilitiesScreen extends EditItemsScreen<Ability> {
     private JTextField defenseField;
     private JButton deleteButton;
     private JButton createButton;
+    private JComboBox typeComboBox;
     private Ability currentItem;
-    private Ability.AbilityType currentType; //!TODO Añadir selector en la UI @Marcelo
+    private Ability.AbilityType currentType;
     @Override
     public void start() {
-        super.start(Ability.class, container);
+        typeComboBox.addItem(Ability.AbilityType.Blessing);
+        typeComboBox.addItem(Ability.AbilityType.Discipline);
+        typeComboBox.addItem(Ability.AbilityType.Talent);
+        typeComboBox.addActionListener(e -> this.updateType());
+
+
+        super.start(Blessing.class, container);
     }
 
     @Override
@@ -35,7 +47,17 @@ public class EditAbilitiesScreen extends EditItemsScreen<Ability> {
 
     @Override
     protected void createButtonActionListener() {
-        setPanelData(new Talent());
+        switch (currentType) {
+            case Talent -> {
+                setPanelData(new Talent());
+            }
+            case Blessing -> {
+                setPanelData(new Blessing());
+            }
+            case Discipline -> {
+                setPanelData(new Discipline());
+            }
+        }
     }
 
     @Override
@@ -49,6 +71,7 @@ public class EditAbilitiesScreen extends EditItemsScreen<Ability> {
         costField.setText(Integer.toString(ability.getCost()));
         attackField.setText(Integer.toString(ability.getAttack()));
         defenseField.setText(Integer.toString(ability.getDefense()));
+        currentType = ability.getType();
         currentItem = ability;
     }
 
@@ -68,6 +91,21 @@ public class EditAbilitiesScreen extends EditItemsScreen<Ability> {
             ability.setId(currentItem.getId());
 
         saveItem(ability);
+    }
+
+    private void updateType() {
+        this.currentType = (Ability.AbilityType) typeComboBox.getSelectedItem();
+        switch (currentType) {
+            case Blessing -> {
+                super.start(Blessing.class, container);
+            }
+            case Talent -> {
+                super.start(Talent.class, container);
+            }
+            case Discipline -> {
+                super.start(Discipline.class, container);
+            }
+        }
     }
 
     private Ability getNewAbility(Ability.AbilityType type)

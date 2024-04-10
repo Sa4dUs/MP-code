@@ -40,10 +40,10 @@ public abstract class EditItemsScreen<T> extends Screen {
             container.add(button, new GridConstraints());
         });
 
-        try {
-            setPanelData(!items.isEmpty() ? items.get(0) : clazz.getDeclaredConstructor().newInstance());
-        } catch (InstantiationException | InvocationTargetException | IllegalAccessException | NoSuchMethodException e) {
-            throw new RuntimeException(e);
+        if (!items.isEmpty()) {
+            setPanelData(items.get(0));
+        } else {
+            this.createButtonActionListener();
         }
 
         container.updateUI();

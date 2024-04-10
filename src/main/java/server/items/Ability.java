@@ -49,4 +49,8 @@ public abstract class Ability extends Stats{
         document.updateFromDocument(super.getDocument());
         return document;
     }
+
+    public AbilityType getType() {
+        return null;
+    }
 }

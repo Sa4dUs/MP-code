@@ -69,8 +69,14 @@ public class EditMinionsScreen extends EditItemsScreen<Minion> {
 
     public EditMinionsScreen() {
         backButton.addActionListener(e -> ScreenManager.goBack());
-
         saveButton.addActionListener(e -> {
+            String id = current.getId();
+            List<Minion> minionList = new ArrayList<>();
+
+            if (current instanceof Demon) {
+                minionList = ((Demon) current).getMinions();
+            }
+
             try {
                 current = ((Class<? extends Minion>) Objects.requireNonNull(breedComboBox.getSelectedItem())).getDeclaredConstructor().newInstance();
             } catch (InstantiationException | IllegalAccessException | InvocationTargetException |
@@ -78,11 +84,13 @@ public class EditMinionsScreen extends EditItemsScreen<Minion> {
                 throw new RuntimeException(ex);
             }
 
+            current.setId(id);
             current.setName(nameField.getText());
             current.setHealth(Integer.parseInt(healthField.getText()));
 
             if (current instanceof Demon) {
                 ((Demon) current).setPact(extraField.getText());
+                ((Demon) current).setMinions(minionList);
             } else if (current instanceof Human) {
                 ((Human) current).setLoyalty(Integer.parseInt(extraField.getText()));
             } else if (current instanceof Ghoul) {
@@ -185,18 +193,22 @@ public class EditMinionsScreen extends EditItemsScreen<Minion> {
 
     private void populateItemList(JPanel panel, List<? extends Object> itemList) {
         panel.removeAll();
+        panel.setLayout(new GridLayout(0,1));
         itemList.forEach(item -> {
+            JPanel container = new JPanel();
+
             JLabel label = new JLabel(item.toString());
-            JButton removeButton = new JButton("-");
-            removeButton.addActionListener(e -> {
+            JButton removeButton = new DefaultButton("-", e -> {
                 itemList.remove(item);
-                panel.remove(label);
-                panel.remove(removeButton);
+                panel.remove(container);
+                panel.revalidate();
                 panel.revalidate();
                 panel.repaint();
             });
-            panel.add(label, new GridConstraints());
-            panel.add(removeButton, new GridConstraints());
+
+            container.add(label, new GridBagConstraints());
+            container.add(removeButton, new GridBagConstraints());
+            panel.add(container);
         });
     }
 
@@ -214,25 +226,24 @@ public class EditMinionsScreen extends EditItemsScreen<Minion> {
 
         selectButton.addActionListener(e -> {
             T selectedItem = selectInput.getItemAt(selectInput.getSelectedIndex());
+            panelToUpdate.setLayout(new GridLayout(0,1));
             if (selectedItem != null) {
-                Label label = new Label();
-                label.setText(selectedItem.toString());
+                JPanel container = new JPanel();
 
-                Button button = new Button();
-                button.setLabel("-");
-                button.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        listToUpdate.remove(selectedItem);
-                        panelToUpdate.remove(label);
-                        panelToUpdate.remove(button);
-                        panelToUpdate.revalidate();
-                        panelToUpdate.repaint();
-                    }
+                Label label = new Label(selectedItem.toString());
+
+                JButton button = new DefaultButton("-", ev -> {
+                    listToUpdate.remove(selectedItem);
+                    panelToUpdate.remove(label);
+                    panelToUpdate.remove(container);
+                    panelToUpdate.revalidate();
+                    panelToUpdate.repaint();
                 });
 
-                panelToUpdate.add(label, new GridConstraints());
-                panelToUpdate.add(button, new GridConstraints());
+                container.add(label);
+                container.add(button);
+                panelToUpdate.add(container);
+                panelToUpdate.revalidate();
                 panelToUpdate.repaint();
                 listToUpdate.add(selectedItem);
                 popupFrame.dispose();

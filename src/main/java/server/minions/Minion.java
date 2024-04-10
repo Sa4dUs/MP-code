@@ -52,6 +52,9 @@ public abstract class Minion implements JSONable {
     public String getId() {
         return this.id != null ? this.id: this.getDocument().getId();
     }
+    public void setId(String id) {
+        this.id = id;
+    }
 
     @Override
     public Document getDocument()

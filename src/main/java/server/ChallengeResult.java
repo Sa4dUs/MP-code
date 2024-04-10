@@ -100,8 +100,8 @@ public class ChallengeResult implements JSONable {
             defender.receiveDamage();
             attacker.dealtDamage();
         }
-        int turns = (this.turns / 2);
-        history.add("Turn " + ++turns + ":");
+        
+        history.add("Turn " + (this.turns + 1) + ":");
         history.add(attacker.getLastTurn());
         history.add(defender.getLastTurn());
     }

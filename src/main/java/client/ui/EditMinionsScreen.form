@@ -200,7 +200,7 @@
                   <autoscrolls value="true"/>
                   <background color="-2"/>
                 </properties>
-                <border type="line" title="Select Your &#10;Special Ability" title-justification="2" title-position="1">
+                <border type="line" title="Select Your Minion" title-justification="2" title-position="1">
                   <font name="Fira Code" size="18" style="1"/>
                   <title-color color="-8430864"/>
                   <color color="-16711423"/>

@@ -3,6 +3,7 @@ package server.services;
 import lib.ResponseBody;
 import org.json.JSONArray;
 import server.*;
+import server.characters.PlayerCharacter;
 import server.nosql.Collection;
 import server.nosql.Document;
 import server.nosql.Query;
@@ -68,7 +69,9 @@ public class ChallengeService implements Service {
         if(challengeResult.isWinnerAttacking())
         {
             attackingPlayer.getCharacter().removeGold(-challengeResult.getBet());
+            attackingPlayer.getCharacter().getDocument().saveToDatabase(PlayerCharacter.class);
             attackedPlayer.getCharacter().removeGold(challengeResult.getBet());
+            attackedPlayer.getCharacter().getDocument().saveToDatabase(PlayerCharacter.class);
             attackedPlayer.setBlocked(true);
         }
         else

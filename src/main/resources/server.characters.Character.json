@@ -1,4 +1,17 @@
 {
+    "600a09b6-2677-4091-84ca-5ba7ce23740a": {
+        "gold": 750,
+        "armorList": [],
+        "specialAbility": "c11e3fc7-7fcc-4bc9-acc1-f941c987ddca",
+        "resistancesList": [],
+        "minionList": ["b0992513-3556-4306-aef2-b11c734972c4"],
+        "name": "Warwick",
+        "health": 2,
+        "id": "600a09b6-2677-4091-84ca-5ba7ce23740a",
+        "breed": 1,
+        "weaponsList": ["92735f13-adad-4da2-9f78-b9c01b2e81db"],
+        "debilitiesList": ["6ef23c19-3de1-4fd2-8956-c233346289ac"]
+    },
     "c643397c-37d5-49b7-8d7f-74a55be311b3": {
         "gold": 500,
         "armorList": ["70e3e35e-1808-4a67-8ed9-71555eb22644"],

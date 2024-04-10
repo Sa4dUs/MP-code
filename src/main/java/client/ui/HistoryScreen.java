@@ -35,6 +35,32 @@ public class HistoryScreen extends Screen {
         displayHistory();
     }
 
+    private void displayTop()
+    {
+        JLabel result = new JLabel("Result  ");
+        pane.add(result);
+
+        JLabel opponent = new JLabel("Oponent  ");
+        pane.add(opponent);
+
+        JLabel bet = new JLabel("Gold  ");
+        pane.add(bet);
+
+        JLabel attackerMinionsLeft = new JLabel("Attacker minions left  ");
+        pane.add(attackerMinionsLeft);
+
+        JLabel attackedMinionsLeft = new JLabel("Attacked minions left  ");
+        pane.add(attackedMinionsLeft);
+
+        JLabel turns = new JLabel("Turns  ");
+        pane.add(turns);
+
+        JLabel date = new JLabel("Date  ");
+        pane.add(date);
+
+        JLabel show = new JLabel("Resume");
+        pane.add(show);
+    }
     private void displayHistory() {
         List<ChallengeResult> challengeResultList = fetchDuels();
         String current = Session.getCurrentUser().getId();
@@ -43,7 +69,8 @@ public class HistoryScreen extends Screen {
             return;
         }
 
-        pane.setLayout(new GridLayout(challengeResultList.size(), 6));
+        pane.setLayout(new GridLayout(challengeResultList.size() + 1, 6));
+        displayTop();
         for (ChallengeResult challenge : challengeResultList) {
             String op = Objects.equals(current, challenge.getAttackerId()) ? challenge.getAttackedPlayerId() : challenge.getAttackerId();
             boolean isWinning = Objects.equals(current, challenge.getAttackerId()) && challenge.isWinnerAttacking();
@@ -71,7 +98,7 @@ public class HistoryScreen extends Screen {
             JLabel date = new JLabel(challenge.getDate() + " ");
             pane.add(date);
 
-            JButton show = new DefaultButton("+", e -> {
+            JButton show = new DefaultButton("Show", e -> {
                 showListElements(challenge.getHistory());});
             pane.add(show);
         }

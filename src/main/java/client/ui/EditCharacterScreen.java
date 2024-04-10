@@ -2,7 +2,6 @@ package client.ui;
 
 import client.Client;
 import client.ScreenManager;
-import com.intellij.uiDesigner.core.GridConstraints;
 import lib.RequestBody;
 import lib.ResponseBody;
 import server.Resistance;
@@ -185,6 +184,7 @@ public abstract class EditCharacterScreen<T extends Character> extends EditItems
                         buttonsPanelToUpdate.remove(button);
                     }
                 });
+
                 GridBagConstraints labelConstraints = ((GridBagLayout) panelToUpdate.getLayout()).getConstraints(label);
                 GridBagConstraints buttonConstraints = ((GridBagLayout) buttonsPanelToUpdate.getLayout()).getConstraints(button);
 
@@ -250,8 +250,8 @@ public abstract class EditCharacterScreen<T extends Character> extends EditItems
                 panel.revalidate();
                 panel.repaint();
             });
-            panel.add(label, new GridConstraints());
-            panel.add(removeButton, new GridConstraints());
+            panel.add(label, new GridBagConstraints());
+            panel.add(removeButton, new GridBagConstraints());
         });
     }
 }

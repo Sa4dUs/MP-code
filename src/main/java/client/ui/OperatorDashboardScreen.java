@@ -57,9 +57,11 @@ public class OperatorDashboardScreen extends Screen {
             if (screenClass != null) {
                 button.addActionListener(e -> ScreenManager.render(screenClass));
             } else {
-                Session.setCurrentUser(null);
-                Session.sudont();
-                button.addActionListener(e -> ScreenManager.goBack());
+                button.addActionListener(e -> {
+                    Session.setCurrentUser(null);
+                    Session.sudont();
+                    ScreenManager.goBack();
+                });
             }
         }
     }

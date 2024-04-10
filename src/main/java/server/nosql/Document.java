@@ -142,12 +142,23 @@ public class Document {
                     }
                     else if (fieldType.isArray())
                     {
+                        if(fieldType.getComponentType() == String.class)
+                        {
+                            field.set(object, property);
+                            continue;
+                        }
+
                         field.set(object, getObjectArrayFromDoc((String[]) property, fieldType.getComponentType()));
                     }
                     else if (List.class.isAssignableFrom(fieldType))
                     {
                         ParameterizedType parameterizedType = (ParameterizedType) field.getGenericType();
                         Class<?> elementType = (Class<?>) parameterizedType.getActualTypeArguments()[0];
+                        if(elementType == String.class)
+                        {
+                            field.set(object, new ArrayList<>(List.of((String[]) property)));
+                            continue;
+                        }
 
                         field.set(object, new ArrayList<>(Arrays.asList(getObjectArrayFromDoc((String[]) property, elementType))));
                     }

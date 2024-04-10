@@ -35,10 +35,10 @@
             "26eef297-bcb7-46da-a604-c73695f254aa",
             "808df08c-83c5-4aef-a73d-da50c419775d"
         ],
-        "activeWeaponL": "8de92c68-86ff-43c5-abb4-9f065078c20c",
-        "activeArmor": "70e3e35e-1808-4a67-8ed9-71555eb22644",
+        "activeWeaponL": "",
+        "activeArmor": "",
         "name": "Shion",
-        "id": "6d67326c-b4b2-4da7-8888-506d2d36621e",
+        "id": "35c5a917-9854-41a1-9983-537e3ddb6d8e",
         "debilitiesList": ["eda9ae46-0d09-403d-9e34-0f988a5e0114"]
     }
 }

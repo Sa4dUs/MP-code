@@ -51,9 +51,9 @@ public abstract class EditCharacterScreen<T extends Character> extends EditItems
     protected abstract List<T> getCharacterList();
 
     public void start(Class clazz) {
-        super.start(clazz, this.getContainerPanel());
         fetchItems();
         initializeComboBoxes();
+        super.start(clazz, this.getContainerPanel());
         updateAbilities();
         setActionListeners();
     }
@@ -124,7 +124,6 @@ public abstract class EditCharacterScreen<T extends Character> extends EditItems
 
     protected void initializeComboBoxes() {
         this.getBreedComboBox().setModel(new DefaultComboBoxModel<>(CharacterType.values()));
-
         this.getSpecialAbilityField().setModel(new DefaultComboBoxModel<Ability>(getSpecialAbilityList().toArray(Ability[]::new)));
     }
 
@@ -248,5 +247,15 @@ public abstract class EditCharacterScreen<T extends Character> extends EditItems
             container.add(removeButton, new GridBagConstraints());
             panel.add(container);
         });
+    }
+
+    protected void saveItem(Character character) {
+        this.getCurrent().setName(getNameField().getText());
+        this.getCurrent().setHealth(Integer.parseInt(this.getHealthField().getText()));
+        this.getCurrent().setGold(Integer.parseInt(this.getGoldField().getText()));
+
+        this.getCurrent().setSpecialAbility((Ability) this.getSpecialAbilityField().getSelectedItem());
+
+        super.saveItem(this.getCurrent());
     }
 }

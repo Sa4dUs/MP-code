@@ -37,12 +37,6 @@ public class EditPlayerCharactersScreen extends EditCharacterScreen<PlayerCharac
     private JButton saveButton;
     private JButton deleteButton;
     private JButton createButton;
-    private JPanel buttonsMinionsPanel;
-    private JPanel buttonsArmorsPanel;
-    private JPanel buttonsWeaponsPanel;
-    private JPanel buttonsWeaknessesPanel;
-    private JPanel buttonsStrengthsPanel;
-
     private PlayerCharacter current;
     private final List<Armor> armorList = new ArrayList<>();
     private final List<Weapon> weaponList = new ArrayList<>();

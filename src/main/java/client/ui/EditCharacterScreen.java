@@ -248,4 +248,14 @@ public abstract class EditCharacterScreen<T extends Character> extends EditItems
             panel.add(container);
         });
     }
+
+    protected void saveItem(Character character) {
+        this.getCurrent().setName(getNameField().getText());
+        this.getCurrent().setHealth(Integer.parseInt(this.getHealthField().getText()));
+        this.getCurrent().setGold(Integer.parseInt(this.getGoldField().getText()));
+
+        this.getCurrent().setSpecialAbility((Ability) this.getSpecialAbilityField().getSelectedItem());
+
+        super.saveItem(this.getCurrent());
+    }
 }

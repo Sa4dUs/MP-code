@@ -16,7 +16,7 @@ public class ChallengeResult implements JSONable {
     private String id;
     private String attackerId, attackedId;
     private int bet;
-    private int turns;
+    private int turns = 1;
     private int attackerMinionsLeft, attackedMinionsLeft;
     private boolean winnerAttacking = true;
     private final String date = java.time.ZonedDateTime.now().toString();
@@ -84,7 +84,7 @@ public class ChallengeResult implements JSONable {
             attacker = defender;
             defender = aux;
 
-            this.turns++;
+            ++this.turns;
         }
 
         this.winnerAttacking = attacker == attackingCharacter;
@@ -101,7 +101,7 @@ public class ChallengeResult implements JSONable {
             attacker.dealtDamage();
         }
         
-        history.add("Turn " + (this.turns + 1) + ":");
+        history.add("Turn " + this.turns + ":");
         history.add(attacker.getLastTurn());
         history.add(defender.getLastTurn());
     }

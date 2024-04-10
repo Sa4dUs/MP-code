@@ -94,6 +94,28 @@ public class Demon extends Minion{
         return super.getHealth() + getMinionsHealth();
     }
 
+    public boolean containsMinion(Minion minion)
+    {
+        if(minion.getId().equals(this.getId()))
+            return true;
+        
+        for(Minion m: minions)
+        {
+            if(m.getId().equals(minion.getId()))
+                return true;
+
+            if(m instanceof Demon)
+                if(((Demon) m).containsMinion(minion))
+                    return true;
+        }
+        return false;
+    }
+
+    public boolean canAddMinion(Minion minion)
+    {
+        return !containsMinion(minion);
+    }
+
     @Override
     public Document getDocument()
     {

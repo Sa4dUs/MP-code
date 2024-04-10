@@ -49,6 +49,10 @@ public abstract class Minion implements JSONable {
         this.health = (health > maxHealth) ? maxHealth : Math.max(health, 1);
     }
 
+    public String getId() {
+        return id != null ? id: getDocument().getId();
+    }
+
     @Override
     public Document getDocument()
     {

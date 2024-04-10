@@ -1,5 +1,12 @@
-{"eda9ae46-0d09-403d-9e34-0f988a5e0114": {
-    "name": "Debilidad al sol",
-    "id": "eda9ae46-0d09-403d-9e34-0f988a5e0114",
-    "value": 3
-}}
+{
+    "6ef23c19-3de1-4fd2-8956-c233346289ac": {
+        "name": "Debilidad a la plata",
+        "id": "6ef23c19-3de1-4fd2-8956-c233346289ac",
+        "value": 3
+    },
+    "eda9ae46-0d09-403d-9e34-0f988a5e0114": {
+        "name": "Debilidad al sol",
+        "id": "eda9ae46-0d09-403d-9e34-0f988a5e0114",
+        "value": 3
+    }
+}

@@ -18,15 +18,15 @@
     },
     "c2c1181f-d8bc-4ecc-aa6b-4afc88aa3357": {
         "gold": 500,
-        "armorList": [],
+        "armorList": ["35c04751-21df-4c42-9a99-c6424c35d116"],
         "specialAbility": "2eacc01d-b626-4914-8842-a45c06b8fd24",
-        "resistancesList": [],
-        "minionList": [],
+        "resistancesList": ["3ea2ddf6-1720-4ecd-b985-e8928f9cb379"],
+        "minionList": ["a788f909-6b32-4bef-a7c2-4827feb42965"],
         "name": "Vayne",
         "health": 1,
         "id": "c2c1181f-d8bc-4ecc-aa6b-4afc88aa3357",
         "breed": 0,
-        "weaponsList": [],
+        "weaponsList": ["de54f493-69dd-4106-82ba-dac59f8d158b"],
         "debilitiesList": []
     }
 }

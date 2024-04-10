@@ -1,4 +1,11 @@
 {
+    "c11e3fc7-7fcc-4bc9-acc1-f941c987ddca": {
+        "cost": 1,
+        "defense": 2,
+        "attack": 1,
+        "name": "Mordisco",
+        "id": "c11e3fc7-7fcc-4bc9-acc1-f941c987ddca"
+    },
     "370acd5c-14e2-48b0-900d-4cd7982db14e": {
         "cost": 3,
         "defense": 3,

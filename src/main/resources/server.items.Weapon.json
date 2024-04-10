@@ -26,5 +26,12 @@
         "attack": 3,
         "name": "Mandoble",
         "id": "8de92c68-86ff-43c5-abb4-9f065078c20c"
+    },
+    "92735f13-adad-4da2-9f78-b9c01b2e81db": {
+        "twoHanded": "false",
+        "defense": 1,
+        "attack": 2,
+        "name": "Zarpas",
+        "id": "92735f13-adad-4da2-9f78-b9c01b2e81db"
     }
 }

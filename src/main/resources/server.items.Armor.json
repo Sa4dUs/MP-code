@@ -5,6 +5,12 @@
         "name": "Coraza impenetrable",
         "id": "70e3e35e-1808-4a67-8ed9-71555eb22644"
     },
+    "35c04751-21df-4c42-9a99-c6424c35d116": {
+        "defense": 1,
+        "attack": 0,
+        "name": "Chaqueta de cuero",
+        "id": "35c04751-21df-4c42-9a99-c6424c35d116"
+    },
     "a60a065f-0ab6-430c-b465-3150e2df2971": {
         "defense": 1,
         "attack": 2,

@@ -16,5 +16,11 @@
         "health": 2,
         "dependence": 3,
         "id": "9d021525-696d-4810-b4b2-39ddbff559a4"
+    },
+    "b0992513-3556-4306-aef2-b11c734972c4": {
+        "name": "Perrete",
+        "health": 2,
+        "dependence": 3,
+        "id": "b0992513-3556-4306-aef2-b11c734972c4"
     }
 }

@@ -240,18 +240,21 @@ public abstract class EditCharacterScreen<T extends Character> extends EditItems
 
     private void populateItemList(JPanel panel, List<? extends Object> itemList) {
         panel.removeAll();
+        panel.setLayout(new GridLayout(0,1));
         itemList.forEach(item -> {
+            JPanel container = new JPanel();
+
             JLabel label = new JLabel(item.toString());
-            JButton removeButton = new JButton("-");
-            removeButton.addActionListener(e -> {
+            JButton removeButton = new DefaultButton("-", e -> {
                 itemList.remove(item);
-                panel.remove(label);
-                panel.remove(removeButton);
+                panel.remove(container);
                 panel.revalidate();
                 panel.repaint();
             });
-            panel.add(label, new GridBagConstraints());
-            panel.add(removeButton, new GridBagConstraints());
+
+            container.add(label, new GridBagConstraints());
+            container.add(removeButton, new GridBagConstraints());
+            panel.add(container);
         });
     }
 }

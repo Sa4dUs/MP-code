@@ -91,7 +91,7 @@ public class ChallengeResult implements JSONable {
 
             ++this.turns;
         }
-
+        this.history = null;
         this.winnerAttacking = attacker == attackingCharacter;
     }
 
@@ -163,7 +163,7 @@ public class ChallengeResult implements JSONable {
         document.setProperty("attackerMinionsLeft", this.attackerMinionsLeft);
         document.setProperty("attackedMinionsLeft", this.attackedMinionsLeft);
         document.setProperty("winnerAttacking",this.winnerAttacking);
-        document.setProperty("history", this.history.toArray());
+        document.setProperty("history", this.history.toArray(new String[0]));
         document.setProperty("date", this.date);
         return document;
     }

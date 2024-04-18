@@ -58,7 +58,7 @@ public class ChallengeService implements Service {
         Player attackedPlayer = (Player) Document.getObjectFromDoc(challenge.getAttackedId(), Player.class);
         int bet = challenge.getBet();
 
-        if(attackingPlayer == null || attackedPlayer == null)
+        if(attackingPlayer == null || attackedPlayer == null || attackedPlayer.getCharacter() == null || attackingPlayer.getCharacter() == null && (attackedPlayer.getCharacter().getActiveWeaponL() == null && attackedPlayer.getCharacter().getActiveWeaponR() == null) || (attackingPlayer.getCharacter().getActiveWeaponL() == null && attackingPlayer.getCharacter().getActiveWeaponR() == null))
             return new ResponseBody(false);
 
         ChallengeResult challengeResult = new ChallengeResult(attackingPlayer, attackedPlayer, bet);
@@ -165,8 +165,8 @@ public class ChallengeService implements Service {
 
         bet = result.isWinnerAttacking() ? bet: -result.getBet();
 
-        attackingPlayer.changeGold(bet);
-        attackedPlayer.changeGold(-bet);
+        attackingPlayer.changeGold((int) Math.round(bet*0.1));
+        attackedPlayer.changeGold((int) -Math.round(bet*0.1));
 
         attackingPlayer.getDocument().saveToDatabase(Player.class);
         attackedPlayer.getDocument().saveToDatabase(Player.class);

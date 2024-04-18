@@ -10,6 +10,8 @@ import server.services.ChallengeService;
 
 import javax.print.Doc;
 import java.lang.reflect.Field;
+import java.time.ZonedDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +20,7 @@ public class Player extends User {
     private List<ChallengeResult> results = new ArrayList<>();
     private PlayerCharacter character;
     private boolean blocked;
+    private ZonedDateTime timeBlocked;
 
     public Player() {
         super();
@@ -56,11 +59,14 @@ public class Player extends User {
     }
 
     public boolean isBlocked() {
+        if(blocked && timeBlocked.until(ZonedDateTime.now(), ChronoUnit.DAYS) >= 1)
+            blocked = false;
         return blocked;
     }
 
     public void setBlocked(boolean blocked) {
         this.blocked = blocked;
+        this.timeBlocked = ZonedDateTime.now();
     }
 
     public void changeGold(int amount){this.character.setGold(this.character.getGold() + amount);}

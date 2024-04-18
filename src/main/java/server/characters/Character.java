@@ -37,7 +37,9 @@ public class Character implements JSONable {
     private List<Weakness> debilitiesList = new ArrayList<>();
     private List<Resistance> resistancesList = new ArrayList<>();
 
-    public Character(){}
+    public Character(){
+        this.breed = CharacterType.Hunter;
+    }
 
     public Character(Character character) {
         this.name = character.getName();

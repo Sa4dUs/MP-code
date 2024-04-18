@@ -1,5 +1,6 @@
 package server;
 
+import lib.RandomGenerator;
 import org.json.Property;
 import server.characters.Character;
 import server.characters.PlayerCharacter;
@@ -76,7 +77,7 @@ public class Player extends User {
         Document document = new Document(new PlayerSchema());
         document.updateFromDocument(super.getDocument());
 
-        document.setProperty("id", this.getNick());
+        document.setProperty("id", this.getNick() != null ? this.getNick(): RandomGenerator.generateRandomString(5));
 
         document.setProperty("pendingDuels", getIdArrayFromArray(pendingDuels.toArray(new JSONable[0])));
         document.setProperty("results", getIdArrayFromArray(results.toArray(new JSONable[0])));

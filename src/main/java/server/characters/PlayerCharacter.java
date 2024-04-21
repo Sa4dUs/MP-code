@@ -12,7 +12,7 @@ import javax.print.Doc;
 public class PlayerCharacter extends Character{
     private Weapon activeWeaponL, activeWeaponR;
     private Armor activeArmor;
-    private Ability activeNormalAbility, activeSpecialAbility;
+    private Ability activeSpecialAbility;
 
     public PlayerCharacter(){}
 
@@ -44,14 +44,6 @@ public class PlayerCharacter extends Character{
         this.activeArmor = activeArmor;
     }
 
-    public Ability getActiveNormalAbility() {
-        return activeNormalAbility;
-    }
-
-    public void setActiveNormalAbility(Ability activeNormalAbility) {
-        this.activeNormalAbility = activeNormalAbility;
-    }
-
     public Ability getActiveSpecialAbility() {
         return activeSpecialAbility;
     }
@@ -67,7 +59,6 @@ public class PlayerCharacter extends Character{
         document.setProperty("activeWeaponL", this.activeWeaponL != null ? this.activeWeaponL.getDocument().getId(): "");
         document.setProperty("activeWeaponR", this.activeWeaponR != null ? this.activeWeaponR.getDocument().getId(): "");
         document.setProperty("activeArmor", this.activeArmor != null ? this.activeArmor.getDocument().getId(): "");
-        document.setProperty("activeNormalAbility", this.activeNormalAbility != null ? this.activeNormalAbility.getDocument().getId(): "");
         document.setProperty("activeSpecialAbility", this.activeSpecialAbility != null ? this.activeSpecialAbility.getDocument().getId(): "");
 
         return document;

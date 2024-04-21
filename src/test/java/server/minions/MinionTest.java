@@ -1,28 +1,53 @@
 package server.minions;
 
-import org.junit.Test;
-
-import java.util.ArrayList;
-import java.util.List;
+import org.junit.jupiter.api.Test;
+import server.minions.Minion;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class MinionTest {
+class MinionTest {
 
     @Test
-    public void DemonHealthTess() {
-        Demon d = new Demon();
-        d.setHealth(3);
-
-        Human minion1 = new Human();
-        minion1.setHealth(2);
-        d.addMinion(minion1);
-
-        Human minion2 = new Human();
-        minion2.setHealth(1);
-        d.addMinion(minion2);
-
-        assertSame(d.getHealth(), 6);
+    void testMinionInitializationWithNameAndHealth() {
+        Minion minion = new Human();
+        assertEquals("Undefined", minion.getName());
+        assertEquals(1, minion.getHealth());
     }
 
+    @Test
+    void testMinionInitializationWithName() {
+        Minion minion = new Human();
+        minion.setName("Goblin");
+        assertEquals("Goblin", minion.getName());
+        assertEquals(1, minion.getHealth());
+    }
+
+    @Test
+    void testMinionInitializationWithHealth() {
+        Minion minion = new Ghoul();
+        minion.setHealth(5);
+        assertEquals("Undefined", minion.getName());
+        assertEquals(3, minion.getHealth()); // Health capped at maxHealth
+    }
+
+    @Test
+    void testMinionInitializationWithNameAndExcessiveHealth() {
+        Minion minion = new Human();
+        minion.setName("Orc");
+        minion.setHealth(10);
+        assertEquals("Orc", minion.getName());
+        assertEquals(3, minion.getHealth()); // Health capped at maxHealth
+    }
+
+    @Test
+    void testMinionDocumentGeneration() {
+        Minion minion = new Human();
+        minion.setName("Kobold");
+        minion.setHealth(2);
+        minion.setId("123");
+        assertNotNull(minion.getDocument());
+        assertEquals("123", minion.getDocument().getId());
+        assertEquals("Kobold", minion.getDocument().getProperty("name"));
+        assertEquals(2, minion.getDocument().getProperty("health"));
+    }
 }

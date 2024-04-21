@@ -32,6 +32,8 @@ public class ChallengeRequest implements JSONable {
     }
 
     public void setAttackerId(String attackerId) {
+        if(attackerId == null)
+            throw new IllegalArgumentException("AttackerId cannot be null");
         this.attackerId = attackerId;
     }
 
@@ -40,6 +42,8 @@ public class ChallengeRequest implements JSONable {
     }
 
     public void setAttackedId(String attackedId) {
+        if(attackedId == null)
+            throw new IllegalArgumentException("AttackedId cannot be null");
         this.attackedId = attackedId;
     }
 
@@ -48,6 +52,8 @@ public class ChallengeRequest implements JSONable {
     }
 
     public void setBet(int bet) {
+        if(bet <= 0)
+            throw new IllegalArgumentException("Bet cannot be negative");
         this.bet = bet;
     }
 

@@ -177,6 +177,8 @@ public abstract class FightCharacter {
         return this.name;
     }
 
+    public int getHealth(){return this.health;}
+
     public String getLastTurn(){
         String res = this.turnResume.toString();
         this.turnResume = new StringBuilder("(").append(this.playerName).append(") ").append(this.name);

@@ -8,6 +8,12 @@ import server.nosql.Schemas.WeaponSchema;
 public class Weapon extends Stats {
 
     public Weapon(){}
+
+    public Weapon(String name, int attack, int defense, boolean twoHanded)
+    {
+        super(name, attack, defense);
+        this.twoHanded = twoHanded;
+    }
     private boolean twoHanded;
     @Override
     public String toString() {

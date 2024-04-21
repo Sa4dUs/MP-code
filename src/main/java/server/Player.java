@@ -70,7 +70,7 @@ public class Player extends User {
         this.timeBlocked = ZonedDateTime.now();
     }
 
-    public void changeGold(int amount){this.character.setGold(this.character.getGold() + amount);}
+    public void changeGold(int amount){this.character.setGold(Math.max(this.character.getGold() + amount, 0));}
 
     @Override
     public Document getDocument() {

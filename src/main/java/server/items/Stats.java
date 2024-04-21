@@ -14,6 +14,13 @@ public abstract class Stats implements JSONable {
 
 
     public Stats(){}
+
+    public Stats(String name, int attack, int defense)
+    {
+        this.name = name;
+        this.attack = attack;
+        this.defense = defense;
+    }
     @Override
     public String toString()
     {

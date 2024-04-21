@@ -31,6 +31,12 @@ public abstract class Ability extends Stats{
     }
 
     public Ability(){}
+
+    public Ability(String name, int attack, int defense, int cost)
+    {
+        super(name, attack, defense);
+        this.cost = cost;
+    }
     @Override
     public String toString() {
         return super.toString() + " Cost:" + this.cost;

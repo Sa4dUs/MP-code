@@ -47,11 +47,12 @@ public class User implements JSONable {
     }
 
     public String getId() {
-        return this.nick;
+        return this.id != null ? this.id : this.nick;
     }
 
     public void setId(String id) {
         this.id = id;
+        this.nick = id;
     }
 
     @Override

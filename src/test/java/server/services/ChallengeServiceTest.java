@@ -80,14 +80,14 @@ class ChallengeServiceTest {
         assertTrue(characterService.setIdToPlayer(character.getId(), player.getNick(), "character").ok);
     }
 
-    @Test
+    /*
     void removeIdFromPlayer() {
         assertTrue(characterService.removeIdFromPlayer(character.getId(), player.getNick(), "character").ok);
     }
+    */
 
     @Test
     void getCharacterFromPlayerNick() {
-        String nick = "testNick";
-        assertNotNull(characterService.getCharacterFromPlayerNick(nick).getField("character"));
+        assertNotNull(characterService.getCharacterFromPlayerNick(player.getNick()).getField("character"));
     }
 }

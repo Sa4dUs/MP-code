@@ -121,6 +121,8 @@ public class CharacterService implements Service {
         return new ResponseBody(true);
     }
 
+
+    /*
     public ResponseBody removeIdFromPlayer(String id, String nick, String property)
     {
         Query query = new Query();
@@ -152,6 +154,7 @@ public class CharacterService implements Service {
 
         return new ResponseBody(true);
     }
+    */
 
     public ResponseBody getCharacterFromPlayerNick(String nick) {
         ResponseBody response = new ResponseBody();

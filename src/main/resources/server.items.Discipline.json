@@ -1,4 +1,53 @@
 {
+    "2eacc01d-b626-4914-8842-a45c06b8fd24": {
+        "cost": 2,
+        "defense": 0,
+        "attack": 3,
+        "name": "Proyectiles de plata",
+        "id": "2eacc01d-b626-4914-8842-a45c06b8fd24"
+    },
+    "49ff72b0-15ce-42cc-af38-f58b17d49d9a": {
+        "cost": 2,
+        "defense": 0,
+        "attack": 3,
+        "name": "Proyectiles de plata",
+        "id": "49ff72b0-15ce-42cc-af38-f58b17d49d9a"
+    },
+    "433b915e-8388-445c-8335-6cc079ee4e49": {
+        "cost": 2,
+        "defense": 2,
+        "attack": 3,
+        "name": "Voltereta",
+        "id": "433b915e-8388-445c-8335-6cc079ee4e49"
+    },
+    "ca19a2fc-a226-4e29-b338-c7ed09f422d7": {
+        "cost": 2,
+        "defense": 2,
+        "attack": 3,
+        "name": "Voltereta",
+        "id": "ca19a2fc-a226-4e29-b338-c7ed09f422d7"
+    },
+    "40f655e7-d04b-4f8b-bb6f-dbf92081b51d": {
+        "cost": 2,
+        "defense": 0,
+        "attack": 3,
+        "name": "Proyectiles de plata",
+        "id": "40f655e7-d04b-4f8b-bb6f-dbf92081b51d"
+    },
+    "68e0b34c-6796-4be9-abc5-fe86a4cddd94": {
+        "cost": 2,
+        "defense": 0,
+        "attack": 3,
+        "name": "Proyectiles de plata",
+        "id": "68e0b34c-6796-4be9-abc5-fe86a4cddd94"
+    },
+    "a93a9b50-f72c-4713-8236-e6d850202b41": {
+        "cost": 2,
+        "defense": 2,
+        "attack": 3,
+        "name": "Voltereta",
+        "id": "a93a9b50-f72c-4713-8236-e6d850202b41"
+    },
     "dcbabfbb-53dc-421e-83d4-6a82f6707fb2": {
         "cost": 2,
         "defense": 2,
@@ -6,11 +55,60 @@
         "name": "Voltereta",
         "id": "dcbabfbb-53dc-421e-83d4-6a82f6707fb2"
     },
-    "2eacc01d-b626-4914-8842-a45c06b8fd24": {
+    "ae70ee98-5153-40d9-aed6-06ad195fe089": {
         "cost": 2,
         "defense": 0,
         "attack": 3,
         "name": "Proyectiles de plata",
-        "id": "2eacc01d-b626-4914-8842-a45c06b8fd24"
+        "id": "ae70ee98-5153-40d9-aed6-06ad195fe089"
+    },
+    "311a5b04-cf24-4d6b-8e6c-5c82112864f9": {
+        "cost": 2,
+        "defense": 2,
+        "attack": 3,
+        "name": "Voltereta",
+        "id": "311a5b04-cf24-4d6b-8e6c-5c82112864f9"
+    },
+    "03404d1f-70a4-43a5-8ad2-cb0fa7877a0a": {
+        "cost": 2,
+        "defense": 2,
+        "attack": 3,
+        "name": "Voltereta",
+        "id": "03404d1f-70a4-43a5-8ad2-cb0fa7877a0a"
+    },
+    "4f31c8cc-5992-4871-959f-03ad28e269dd": {
+        "cost": 2,
+        "defense": 2,
+        "attack": 3,
+        "name": "Voltereta",
+        "id": "4f31c8cc-5992-4871-959f-03ad28e269dd"
+    },
+    "e6e0b5b7-0814-4349-9128-b2dd0bdb0c87": {
+        "cost": 2,
+        "defense": 0,
+        "attack": 3,
+        "name": "Proyectiles de plata",
+        "id": "e6e0b5b7-0814-4349-9128-b2dd0bdb0c87"
+    },
+    "4d212dd8-9fb1-4b8b-8bce-da6fa5cbdaf3": {
+        "cost": 2,
+        "defense": 2,
+        "attack": 3,
+        "name": "Voltereta",
+        "id": "4d212dd8-9fb1-4b8b-8bce-da6fa5cbdaf3"
+    },
+    "f1339853-d5cf-423c-8f51-e02447596488": {
+        "cost": 2,
+        "defense": 0,
+        "attack": 3,
+        "name": "Proyectiles de plata",
+        "id": "f1339853-d5cf-423c-8f51-e02447596488"
+    },
+    "6bec5410-d85f-4bdc-9a9a-4b95aa0b52f7": {
+        "cost": 2,
+        "defense": 0,
+        "attack": 3,
+        "name": "Proyectiles de plata",
+        "id": "6bec5410-d85f-4bdc-9a9a-4b95aa0b52f7"
     }
 }

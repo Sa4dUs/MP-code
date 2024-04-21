@@ -10,7 +10,7 @@ import server.nosql.Schemas.AbilitySchema;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Ability extends Stats{
+public abstract class Ability extends Stats {
     private int cost;
 
     public enum AbilityType
@@ -37,6 +37,7 @@ public abstract class Ability extends Stats{
         super(name, attack, defense);
         this.cost = cost;
     }
+    
     @Override
     public String toString() {
         return super.toString() + " Cost:" + this.cost;

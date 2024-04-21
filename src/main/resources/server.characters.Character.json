@@ -12,13 +12,28 @@
         "weaponsList": ["92735f13-adad-4da2-9f78-b9c01b2e81db"],
         "debilitiesList": ["6ef23c19-3de1-4fd2-8956-c233346289ac"]
     },
+    "eed0d188-f389-4204-9cd0-607d0dd37469": {
+        "gold": 600,
+        "armorList": [],
+        "specialAbility": "0428722e-00cc-47bb-b8f6-c470da582090",
+        "resistancesList": [],
+        "minionList": ["a788f909-6b32-4bef-a7c2-4827feb42965"],
+        "name": "Zoe",
+        "health": 2,
+        "id": "eed0d188-f389-4204-9cd0-607d0dd37469",
+        "breed": 0,
+        "weaponsList": ["8de92c68-86ff-43c5-abb4-9f065078c20c"],
+        "debilitiesList": []
+    },
     "c643397c-37d5-49b7-8d7f-74a55be311b3": {
         "gold": 500,
-        "armorList": ["70e3e35e-1808-4a67-8ed9-71555eb22644"],
-        "specialAbility": "2eacc01d-b626-4914-8842-a45c06b8fd24",
+        "armorList": [
+            "70e3e35e-1808-4a67-8ed9-71555eb22644",
+            "a60a065f-0ab6-430c-b465-3150e2df2971"
+        ],
+        "specialAbility": "dcbabfbb-53dc-421e-83d4-6a82f6707fb2",
         "resistancesList": ["d91ddda8-55cd-4772-9d1a-4b25e39100bb"],
         "minionList": [
-            "80653048-9bec-4b1d-9ae9-fcdbc091b5ac",
             "26eef297-bcb7-46da-a604-c73695f254aa",
             "808df08c-83c5-4aef-a73d-da50c419775d"
         ],

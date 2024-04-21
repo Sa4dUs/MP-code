@@ -1,4 +1,27 @@
 {
+    "C14EE": {
+        "nick": "C14EE",
+        "password": "8gxjuE0re/m2qcLWpUPnjQ==",
+        "character": "314620f5-76b5-44bb-8986-f23bddae4661",
+        "blocked": "false",
+        "name": "Pepe",
+        "pendingDuels": [],
+        "id": "C14EE",
+        "results": []
+    },
+    "C94SS": {
+        "nick": "C94SS",
+        "password": "cr4zsRnw2+el38GLwmuzzQ==",
+        "character": "dea8817b-4390-4a04-aa6f-575ce523cf6a",
+        "blocked": "false",
+        "name": "Pepe2",
+        "pendingDuels": ["e97647fc-a338-46ad-8a95-acabcf71a5a8"],
+        "id": "C94SS",
+        "results": [
+            "83af5daf-aa51-4ab6-9a74-384c69909983",
+            "5fdca376-07ae-4d9e-9868-1c3e38cd3569"
+        ]
+    },
     "Y95ZZ": {
         "nick": "Y95ZZ",
         "password": "lraG5KYLUCMLKMaMmhtM+A==",
@@ -8,6 +31,19 @@
         "pendingDuels": [],
         "id": "Y95ZZ",
         "results": ["7049d86c-987c-4190-a9b5-42453e6f00d0"]
+    },
+    "W80AA": {
+        "nick": "W80AA",
+        "password": "lraG5KYLUCMLKMaMmhtM+A==",
+        "character": "6fd66a7f-c2b6-41a4-a3fb-4413283864ba",
+        "blocked": "false",
+        "name": "Juanete",
+        "pendingDuels": ["7bf522a3-379c-49b8-a9a0-dd3f344b7443"],
+        "id": "W80AA",
+        "results": [
+            "83af5daf-aa51-4ab6-9a74-384c69909983",
+            "5fdca376-07ae-4d9e-9868-1c3e38cd3569"
+        ]
     },
     "L60YY": {
         "nick": "L60YY",

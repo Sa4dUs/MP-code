@@ -19,6 +19,10 @@ import java.util.List;
 
 public class Character implements JSONable {
 
+    public void setId(String id) {
+        this.id = id;
+    }
+
     private String id;
     private String name;
     private int health;

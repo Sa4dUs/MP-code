@@ -1,16 +1,135 @@
 {
-    "600a09b6-2677-4091-84ca-5ba7ce23740a": {
-        "gold": 750,
+    "6a3ba94f-a84b-42a0-b4c1-84af78063841": {
+        "gold": 0,
         "armorList": [],
-        "specialAbility": "c11e3fc7-7fcc-4bc9-acc1-f941c987ddca",
+        "specialAbility": "",
         "resistancesList": [],
-        "minionList": ["b0992513-3556-4306-aef2-b11c734972c4"],
-        "name": "Warwick",
-        "health": 2,
-        "id": "600a09b6-2677-4091-84ca-5ba7ce23740a",
-        "breed": 1,
-        "weaponsList": ["92735f13-adad-4da2-9f78-b9c01b2e81db"],
-        "debilitiesList": ["6ef23c19-3de1-4fd2-8956-c233346289ac"]
+        "minionList": [],
+        "health": 0,
+        "id": "6a3ba94f-a84b-42a0-b4c1-84af78063841",
+        "breed": 0,
+        "weaponsList": [],
+        "debilitiesList": []
+    },
+    "5a2ec33a-5642-45d1-83e1-39c87129af99": {
+        "gold": 0,
+        "armorList": [],
+        "specialAbility": "",
+        "resistancesList": [],
+        "minionList": [],
+        "health": 0,
+        "id": "5a2ec33a-5642-45d1-83e1-39c87129af99",
+        "breed": 0,
+        "weaponsList": [],
+        "debilitiesList": []
+    },
+    "04281364-f7b0-4e54-88a4-cc2ca067ad0c": {
+        "gold": 0,
+        "armorList": [],
+        "specialAbility": "",
+        "resistancesList": [],
+        "minionList": [],
+        "health": 0,
+        "id": "04281364-f7b0-4e54-88a4-cc2ca067ad0c",
+        "breed": 0,
+        "weaponsList": [],
+        "debilitiesList": []
+    },
+    "bd22e474-66a1-4563-bf36-464b36d2cfe1": {
+        "gold": 0,
+        "armorList": [],
+        "specialAbility": "",
+        "resistancesList": [],
+        "minionList": [],
+        "health": 0,
+        "id": "bd22e474-66a1-4563-bf36-464b36d2cfe1",
+        "breed": 0,
+        "weaponsList": [],
+        "debilitiesList": []
+    },
+    "5d6f03d3-0b77-4d19-805d-67d4e578814e": {
+        "gold": 0,
+        "armorList": [],
+        "specialAbility": "",
+        "resistancesList": [],
+        "minionList": [],
+        "health": 0,
+        "id": "5d6f03d3-0b77-4d19-805d-67d4e578814e",
+        "breed": 0,
+        "weaponsList": [],
+        "debilitiesList": []
+    },
+    "9524df79-79fe-4bdb-bc96-75e405c5c8cb": {
+        "gold": 0,
+        "armorList": [],
+        "specialAbility": "",
+        "resistancesList": [],
+        "minionList": [],
+        "health": 0,
+        "id": "9524df79-79fe-4bdb-bc96-75e405c5c8cb",
+        "breed": 0,
+        "weaponsList": [],
+        "debilitiesList": []
+    },
+    "e649e646-9b34-4ecc-a34a-6f5d900eb234": {
+        "gold": 0,
+        "armorList": [],
+        "specialAbility": "",
+        "resistancesList": [],
+        "minionList": [],
+        "health": 0,
+        "id": "e649e646-9b34-4ecc-a34a-6f5d900eb234",
+        "breed": 0,
+        "weaponsList": [],
+        "debilitiesList": []
+    },
+    "678efa59-f449-4308-8f08-db8347b61eec": {
+        "gold": 0,
+        "armorList": [],
+        "specialAbility": "",
+        "resistancesList": [],
+        "minionList": [],
+        "health": 0,
+        "id": "678efa59-f449-4308-8f08-db8347b61eec",
+        "breed": 0,
+        "weaponsList": [],
+        "debilitiesList": []
+    },
+    "c2189389-7845-4416-91aa-4f61c26b489b": {
+        "gold": 0,
+        "armorList": [],
+        "specialAbility": "",
+        "resistancesList": [],
+        "minionList": [],
+        "health": 0,
+        "id": "c2189389-7845-4416-91aa-4f61c26b489b",
+        "breed": 0,
+        "weaponsList": [],
+        "debilitiesList": []
+    },
+    "dd6b0582-2fd4-45b5-ac39-79f9158febdb": {
+        "gold": 0,
+        "armorList": [],
+        "specialAbility": "",
+        "resistancesList": [],
+        "minionList": [],
+        "health": 0,
+        "id": "dd6b0582-2fd4-45b5-ac39-79f9158febdb",
+        "breed": 0,
+        "weaponsList": [],
+        "debilitiesList": []
+    },
+    "aea4b987-eda8-456a-bc1f-54377dbae1b6": {
+        "gold": 0,
+        "armorList": [],
+        "specialAbility": "",
+        "resistancesList": [],
+        "minionList": [],
+        "health": 0,
+        "id": "aea4b987-eda8-456a-bc1f-54377dbae1b6",
+        "breed": 0,
+        "weaponsList": [],
+        "debilitiesList": []
     },
     "eed0d188-f389-4204-9cd0-607d0dd37469": {
         "gold": 600,
@@ -44,6 +163,54 @@
         "weaponsList": ["8de92c68-86ff-43c5-abb4-9f065078c20c"],
         "debilitiesList": ["eda9ae46-0d09-403d-9e34-0f988a5e0114"]
     },
+    "78d18437-8f4f-4693-b01a-133b3b8fc26f": {
+        "gold": 0,
+        "armorList": [],
+        "specialAbility": "",
+        "resistancesList": [],
+        "minionList": [],
+        "health": 0,
+        "id": "78d18437-8f4f-4693-b01a-133b3b8fc26f",
+        "breed": 0,
+        "weaponsList": [],
+        "debilitiesList": []
+    },
+    "02c4458a-5933-41af-be62-9c775987f9c9": {
+        "gold": 0,
+        "armorList": [],
+        "specialAbility": "",
+        "resistancesList": [],
+        "minionList": [],
+        "health": 0,
+        "id": "02c4458a-5933-41af-be62-9c775987f9c9",
+        "breed": 0,
+        "weaponsList": [],
+        "debilitiesList": []
+    },
+    "f42ea815-b154-4709-b679-1a8203c0d8b0": {
+        "gold": 0,
+        "armorList": [],
+        "specialAbility": "",
+        "resistancesList": [],
+        "minionList": [],
+        "health": 0,
+        "id": "f42ea815-b154-4709-b679-1a8203c0d8b0",
+        "breed": 0,
+        "weaponsList": [],
+        "debilitiesList": []
+    },
+    "f65b9ddf-20f5-433e-a75b-1d40f0c3c39a": {
+        "gold": 0,
+        "armorList": [],
+        "specialAbility": "",
+        "resistancesList": [],
+        "minionList": [],
+        "health": 0,
+        "id": "f65b9ddf-20f5-433e-a75b-1d40f0c3c39a",
+        "breed": 0,
+        "weaponsList": [],
+        "debilitiesList": []
+    },
     "c2c1181f-d8bc-4ecc-aa6b-4afc88aa3357": {
         "gold": 500,
         "armorList": ["35c04751-21df-4c42-9a99-c6424c35d116"],
@@ -55,6 +222,30 @@
         "id": "c2c1181f-d8bc-4ecc-aa6b-4afc88aa3357",
         "breed": 0,
         "weaponsList": ["de54f493-69dd-4106-82ba-dac59f8d158b"],
+        "debilitiesList": []
+    },
+    "cf1ab760-d5a8-48dc-a340-289c6a4ca03f": {
+        "gold": 0,
+        "armorList": [],
+        "specialAbility": "",
+        "resistancesList": [],
+        "minionList": [],
+        "health": 0,
+        "id": "cf1ab760-d5a8-48dc-a340-289c6a4ca03f",
+        "breed": 0,
+        "weaponsList": [],
+        "debilitiesList": []
+    },
+    "65aea5ae-c32e-4aa2-84e2-6aa91e1b822c": {
+        "gold": 0,
+        "armorList": [],
+        "specialAbility": "",
+        "resistancesList": [],
+        "minionList": [],
+        "health": 0,
+        "id": "65aea5ae-c32e-4aa2-84e2-6aa91e1b822c",
+        "breed": 0,
+        "weaponsList": [],
         "debilitiesList": []
     }
 }

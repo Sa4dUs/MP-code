@@ -32,6 +32,14 @@
         "id": "Y95ZZ",
         "results": ["7049d86c-987c-4190-a9b5-42453e6f00d0"]
     },
+    "A12BC": {
+        "nick": "A12BC",
+        "character": "00000000-0000-0000-0000-000000000000",
+        "blocked": "false",
+        "pendingDuels": [],
+        "id": "A12BC",
+        "results": []
+    },
     "W80AA": {
         "nick": "W80AA",
         "password": "lraG5KYLUCMLKMaMmhtM+A==",
@@ -48,7 +56,7 @@
     "L60YY": {
         "nick": "L60YY",
         "password": "lraG5KYLUCMLKMaMmhtM+A==",
-        "character": "35c5a917-9854-41a1-9983-537e3ddb6d8e",
+        "character": "600a09b6-2677-4091-84ca-5ba7ce23740a",
         "blocked": "false",
         "name": "sa4dus",
         "pendingDuels": [

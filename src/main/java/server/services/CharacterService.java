@@ -158,7 +158,14 @@ public class CharacterService implements Service {
         Query query = new Query();
         query.addFilter("nick", nick);
 
-        Player player = (Player) Database.findOne(Player.class.getName(), query).deJSONDocument(Player.class);
+        Document playerDoc = Database.findOne(Player.class.getName(), query);
+
+        if (playerDoc == null) {
+            response.setOk(false);
+            return response;
+        }
+
+        Player player = (Player) playerDoc.deJSONDocument(Player.class);
 
         if (player == null) {
             response.setOk(false);

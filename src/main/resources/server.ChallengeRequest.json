@@ -10,5 +10,11 @@
         "id": "6321b298-4eb2-43de-8e70-0d8504f99255",
         "attackerId": "Y95ZZ",
         "attackedId": "L60YY"
+    },
+    "12345678": {
+        "bet": 100,
+        "id": "12345678",
+        "attackerId": "A12BC",
+        "attackedId": "D13EF"
     }
 }

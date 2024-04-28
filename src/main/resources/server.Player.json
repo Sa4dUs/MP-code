@@ -9,6 +9,14 @@
         "id": "C14EE",
         "results": []
     },
+    "D13EF": {
+        "nick": "D13EF",
+        "character": "00000000-0000-0000-0000-000000000001",
+        "blocked": "false",
+        "pendingDuels": [],
+        "id": "D13EF",
+        "results": []
+    },
     "C94SS": {
         "nick": "C94SS",
         "password": "cr4zsRnw2+el38GLwmuzzQ==",
@@ -36,7 +44,7 @@
         "nick": "A12BC",
         "character": "00000000-0000-0000-0000-000000000000",
         "blocked": "false",
-        "pendingDuels": [],
+        "pendingDuels": ["12345678"],
         "id": "A12BC",
         "results": []
     },

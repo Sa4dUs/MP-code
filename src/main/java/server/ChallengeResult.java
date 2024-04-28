@@ -30,6 +30,7 @@ public class ChallengeResult implements JSONable {
         this.bet = bet;
         this.attackerId = attackingPlayer.getId();
         this.attackedId = attackedPlayer.getId();
+        this.history = new ArrayList<>();
 
         this.date = java.time.ZonedDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy, HH:mm"));
 
@@ -50,7 +51,6 @@ public class ChallengeResult implements JSONable {
             this.attackedMinionsLeft -= attackedPlayerCharacter.calculateMinionsKilledAfterDamage(attackedCharacter.getReceivedDamage());
         }
 
-        //Quitar oro
     }
 
     public ChallengeResult(Player attackingPlayer, Player attackedPlayer, int bet, boolean deniedFromOperator)
@@ -91,7 +91,6 @@ public class ChallengeResult implements JSONable {
 
             ++this.turns;
         }
-        this.history = null;
         this.winnerAttacking = attacker == attackingCharacter;
     }
 

@@ -235,7 +235,10 @@ public class ChallengeService implements Service {
 
         }
 
-        playerDoc.setProperty(property, newArray);
+        if (newArray.length == 0)
+            playerDoc.setProperty(property, null);
+        else
+            playerDoc.setProperty(property, newArray);
 
         Database.updateOne(Player.class.getName(), playerDoc, query);
 

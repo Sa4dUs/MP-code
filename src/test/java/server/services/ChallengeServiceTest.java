@@ -8,6 +8,8 @@ import server.ChallengeRequest;
 import server.Player;
 import server.characters.Character;
 import server.characters.PlayerCharacter;
+import server.items.Weapon;
+import server.nosql.Collection;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -22,23 +24,23 @@ class ChallengeServiceTest {
         challengeService = new ChallengeService();
 
         playerCharacter1 = new PlayerCharacter();
-        playerCharacter1.setId("00000000-0000-0000-0000-000000000000");
         playerCharacter1.setGold(500);
-        playerCharacter1.getDocument().saveToDatabase(PlayerCharacter.class);
+        playerCharacter1.setHealth(2);
 
-        player1 = new Player();
-        player1.setId("A12BC");
+        player1 = new Player("Test1", "testo1", "1234");
+        Weapon w1 = new Weapon("WT1", 2, 2, false);
+        w1.getDocument().saveToDatabase(Weapon.class);
+        playerCharacter1.setActiveWeaponR(w1);
         player1.setCharacter(playerCharacter1);
         player1.getDocument().saveToDatabase(player1.getClass());
 
         playerCharacter2 = new PlayerCharacter();
-        playerCharacter2.setId("00000000-0000-0000-0000-000000000001");
         playerCharacter2.setGold(500);
-        playerCharacter2.getDocument().saveToDatabase(PlayerCharacter.class);
 
-        player2 = new Player();
-        player2.setId("D13EF");
+        player2 = new Player("Test2", "testo2", "1234");
         player2.setCharacter(playerCharacter2);
+        playerCharacter2.setActiveWeaponR(w1);
+        playerCharacter2.setHealth(2);
         player2.getDocument().saveToDatabase(player2.getClass());
     }
 
@@ -56,7 +58,8 @@ class ChallengeServiceTest {
 
     @Test
     void testGetChallenge() {
-        ChallengeRequest challengeRequest = new ChallengeRequest("A12BC", "D13EF", 100);
+        ChallengeRequest challengeRequest = new ChallengeRequest(player1.getId(), player2.getId(), 100);
+        challengeRequest.getDocument().saveToDatabase(ChallengeRequest.class);
         String id = challengeRequest.getId();
         ResponseBody response = challengeService.getChallenge(id);
         assertTrue(response.ok);
@@ -64,7 +67,9 @@ class ChallengeServiceTest {
 
     @Test
     void testAcceptChallengeFromPlayer() {
-        ChallengeRequest challengeRequest = new ChallengeRequest("A12BC", "D13EF", 100);
+        ChallengeRequest challengeRequest = new ChallengeRequest(player1.getId(), player2.getId(), 100);
+        challengeService.createChallenge(challengeRequest);
+        challengeService.acceptChallengeFromOperator(challengeRequest);
         ResponseBody response = challengeService.acceptChallengeFromPlayer(challengeRequest);
         assertTrue(response.ok);
     }
@@ -72,6 +77,7 @@ class ChallengeServiceTest {
     @Test
     void testAcceptChallengeFromOperator() {
         ChallengeRequest challengeRequest = new ChallengeRequest("A12BC", "D13EF", 100);
+        challengeService.createChallenge(challengeRequest);
         ResponseBody response = challengeService.acceptChallengeFromOperator(challengeRequest);
         assertTrue(response.ok);
     }

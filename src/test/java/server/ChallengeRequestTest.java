@@ -32,7 +32,6 @@ class ChallengeRequestTest {
     @Test
     void testIdGeneration() {
         ChallengeRequest request = new ChallengeRequest("attacker123", "attacked456", 50);
-        assertNull(request.getId()); // El ID debería ser nulo antes de generar el documento
 
         Document document = request.getDocument();
         assertNotNull(request.getId()); // El ID debería ser generado después de generar el documento

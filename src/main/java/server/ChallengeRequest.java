@@ -11,6 +11,8 @@ public class ChallengeRequest implements JSONable {
 
     public String getId()
     {
+        if(id == null)
+            getDocument();
         return id;
     }
 

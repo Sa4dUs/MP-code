@@ -48,7 +48,7 @@ public class AuthenticationService implements Service {
             return response;
         }
 
-        Player player = new Player(name, "jorgenicktales", password); // TODO! Make a proper nick function
+        Player player = new Player(name, password); // TODO! Make a proper nick function
         player.getDocument().saveToDatabase(Player.class);
 
         response.setOk(true);

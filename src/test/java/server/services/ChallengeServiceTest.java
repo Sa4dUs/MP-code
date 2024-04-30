@@ -27,7 +27,8 @@ class ChallengeServiceTest {
         playerCharacter1.setGold(500);
         playerCharacter1.setHealth(2);
 
-        player1 = new Player("Test1", "testo1", "1234");
+        player1 = new Player("Test1", "1234");
+        player1.setId("A12BC");
         Weapon w1 = new Weapon("WT1", 2, 2, false);
         w1.getDocument().saveToDatabase(Weapon.class);
         playerCharacter1.setActiveWeaponR(w1);
@@ -37,7 +38,8 @@ class ChallengeServiceTest {
         playerCharacter2 = new PlayerCharacter();
         playerCharacter2.setGold(500);
 
-        player2 = new Player("Test2", "testo2", "1234");
+        player2 = new Player("Test2", "1234");
+        player2.setId("D13EF");
         player2.setCharacter(playerCharacter2);
         playerCharacter2.setActiveWeaponR(w1);
         playerCharacter2.setHealth(2);

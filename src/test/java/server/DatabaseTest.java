@@ -29,7 +29,7 @@ class DatabaseTest {
     @Test
     void insertOne() {
         Document doc = new Document(new UserSchema());
-        doc.setProperty("username", "Sa4dUs");
+        doc.setProperty("name", "Sa4dUs");
         doc.setProperty("password", "1234");
         Database.insertOne(COLLECTION_NAME, doc);
     }
@@ -41,7 +41,7 @@ class DatabaseTest {
 
         for (int i = 0; i < n; i++) {
             Document doc = new Document(new UserSchema());
-            doc.setProperty("username", RandomGenerator.generateRandomString(10));
+            doc.setProperty("name", RandomGenerator.generateRandomString(10));
             doc.setProperty("password", RandomGenerator.generateRandomString(50));
             documents.add(doc);
         }
@@ -52,12 +52,12 @@ class DatabaseTest {
     @Test
     void updateOne() {
         Document initialDoc = new Document(new UserSchema());
-        initialDoc.setProperty("username", "testuser");
+        initialDoc.setProperty("name", "testuser");
         initialDoc.setProperty("password", "initialpassword");
         Database.insertOne(COLLECTION_NAME, initialDoc);
 
         Query query = new Query();
-        query.addFilter("username", "testuser");
+        query.addFilter("name", "testuser");
 
         Document updatedDoc = new Document(new UserSchema());
         updatedDoc.setProperty("password", "newpassword");
@@ -65,41 +65,41 @@ class DatabaseTest {
 
         Document retrievedDoc = Database.findOne(COLLECTION_NAME, query);
         assertNotNull(retrievedDoc);
-        assertEquals("testuser", retrievedDoc.getProperty("username"));
+        assertEquals("testuser", retrievedDoc.getProperty("name"));
         assertEquals("newpassword", retrievedDoc.getProperty("password"));
     }
 
     @Test
     void findOne() {
         Document initialDoc = new Document(new UserSchema());
-        initialDoc.setProperty("username", "testuser");
+        initialDoc.setProperty("name", "testuser");
         initialDoc.setProperty("password", "testpassword");
         Database.insertOne(COLLECTION_NAME, initialDoc);
 
         Query query = new Query();
-        query.addFilter("username", "testuser");
+        query.addFilter("name", "testuser");
 
         Document foundDoc = Database.findOne(COLLECTION_NAME, query);
 
         assertNotNull(foundDoc);
-        assertEquals("testuser", foundDoc.getProperty("username"));
+        assertEquals("testuser", foundDoc.getProperty("name"));
         assertEquals("testpassword", foundDoc.getProperty("password"));
     }
 
     @Test
     void findMany() {
         Document initialDoc1 = new Document(new UserSchema());
-        initialDoc1.setProperty("username", "user1");
+        initialDoc1.setProperty("name", "user1");
         initialDoc1.setProperty("password", "password1");
         Database.insertOne(COLLECTION_NAME, initialDoc1);
 
         Document initialDoc2 = new Document(new UserSchema());
-        initialDoc2.setProperty("username", "user2");
+        initialDoc2.setProperty("name", "user2");
         initialDoc2.setProperty("password", "password2");
         Database.insertOne(COLLECTION_NAME, initialDoc2);
 
         Query query = new Query();
-        query.addFilter("username", "user1");
+        query.addFilter("name", "user1");
 
         List<Document> foundDocs = Database.findMany(COLLECTION_NAME, query);
 
@@ -107,7 +107,7 @@ class DatabaseTest {
         assertEquals(1, foundDocs.size());
 
         Document foundDoc = foundDocs.get(0);
-        assertEquals("user1", foundDoc.getProperty("username"));
+        assertEquals("user1", foundDoc.getProperty("name"));
         assertEquals("password1", foundDoc.getProperty("password"));
     }
 
@@ -117,14 +117,14 @@ class DatabaseTest {
 
         for (int i = 0; i < n; i++) {
             Document doc = new Document(new UserSchema());
-            doc.setProperty("username", "user" + i);
+            doc.setProperty("name", "user" + i);
             doc.setProperty("password", "password" + i);
             Database.insertOne(COLLECTION_NAME, doc);
         }
 
         Query query = new Query();
         for (int i = 0; i < n; i += 2) {
-            query.addFilter("username", "user" + i);
+            query.addFilter("name", "user" + i);
         }
 
         Database.deleteMany(COLLECTION_NAME, query);

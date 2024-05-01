@@ -14,7 +14,7 @@ public class PlayerCharacter extends Character{
     private Armor activeArmor;
     private Ability activeSpecialAbility;
 
-    public PlayerCharacter(){}
+    public PlayerCharacter(){super();}
 
     public PlayerCharacter(Character character) {
         super(character);

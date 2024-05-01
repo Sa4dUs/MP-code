@@ -140,7 +140,11 @@ public class ChallengeResult implements JSONable {
 
     public String getDate(){return this.date;}
 
-    public String getId(){return id;}
+    public String getId(){
+        if (id == null)
+            this.getDocument();
+        return id;
+    }
 
     public void setId(String id){this.id = id;}
 

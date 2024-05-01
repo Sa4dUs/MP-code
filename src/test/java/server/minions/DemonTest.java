@@ -1,9 +1,6 @@
 package server.minions;
 
 import org.junit.jupiter.api.Test;
-import server.minions.Demon;
-import server.minions.Ghoul;
-import server.minions.Human;
 
 import static org.junit.jupiter.api.Assertions.*;
 

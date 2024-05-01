@@ -32,6 +32,11 @@ class DatabaseTest {
         doc.setProperty("name", "Sa4dUs");
         doc.setProperty("password", "1234");
         Database.insertOne(COLLECTION_NAME, doc);
+
+        Query q = new Query();
+        q.addFilter("name", "Sa4dUs");
+
+        assertNotNull(Database.findOne(COLLECTION_NAME, q));
     }
 
     @Test
@@ -47,6 +52,7 @@ class DatabaseTest {
         }
 
         Database.insertMany(COLLECTION_NAME, documents);
+        assertEquals(Database.findMany(COLLECTION_NAME, new Query()).size(), n);
     }
 
     @Test
@@ -135,6 +141,6 @@ class DatabaseTest {
 
     @AfterAll
     static void tearDown() {
-        // Database.deleteMany(COLLECTION_NAME, new Query());
+        Database.deleteMany(COLLECTION_NAME, new Query());
     }
 }

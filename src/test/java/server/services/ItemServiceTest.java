@@ -1,21 +1,11 @@
 package server.services;
 
-<<<<<<< Updated upstream
-import lib.JSON;
-import lib.ResponseBody;
-import org.junit.Before;
+import org.junit.Test;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
-import server.nosql.Document;
-import server.nosql.JSONable;
-import server.nosql.Schemas.ItemSchema;
 import server.nosql.Item;
 
 import java.util.List;
-=======
-import org.junit.jupiter.api.Test;
->>>>>>> Stashed changes
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -43,19 +33,19 @@ class ItemServiceTest {
     }
 
     @Test
-    void getItem() {
+    public void getItem() {
         String id = ((Item) service.getItem(item.getId(), Item.class).getField("data")).getId();
         assertEquals(id, item.getId());
     }
 
     @Test
-    void getAll() {
+    public void getAll() {
         List<Item> list = (List<Item>) service.getAll(Item.class).getField("data");
         assertEquals(list.size(), 2);
     }
 
     @Test
-    void setItem() {
+    public void setItem() {
         item.setField("Hola Mundo");
 
         service.setItem(item);
@@ -66,7 +56,7 @@ class ItemServiceTest {
     }
 
     @Test
-    void deleteItem() {
+    public void deleteItem() {
         Integer length;
 
         {

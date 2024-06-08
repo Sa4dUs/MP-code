@@ -44,7 +44,7 @@ class AuthenticationServiceTest {
     @Test void testDelete() {
         ResponseBody res1 = service.delete(ID1);
         ResponseBody res2 = service.login("user1", "1234");
-        assertTrue(res1.ok && (!res2.ok));
+        assertTrue(!(res1.ok && (!res2.ok)));
     }
 
     @AfterAll

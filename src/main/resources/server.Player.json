@@ -1,77 +1,22 @@
 {
-    "C14EE": {
-        "nick": "C14EE",
-        "password": "8gxjuE0re/m2qcLWpUPnjQ==",
-        "character": "314620f5-76b5-44bb-8986-f23bddae4661",
+    "f8afcf35-4126-49fb-89d5-bada9d2aa309": {
+        "nick": "f8afcf35-4126-49fb-89d5-bada9d2aa309",
+        "password": "vPrcgUrNfRl4+mNGGj9gkA==",
+        "character": "",
         "blocked": "false",
-        "name": "Pepe",
+        "name": "user2",
         "pendingDuels": [],
-        "id": "C14EE",
+        "id": "f8afcf35-4126-49fb-89d5-bada9d2aa309",
         "results": []
     },
-    "D13EF": {
-        "nick": "D13EF",
-        "character": "00000000-0000-0000-0000-000000000001",
+    "bec645a3-5600-4629-a4b7-7c676c3b6c59": {
+        "nick": "bec645a3-5600-4629-a4b7-7c676c3b6c59",
+        "password": "lraG5KYLUCMLKMaMmhtM+A==",
+        "character": "",
         "blocked": "false",
+        "name": "user1",
         "pendingDuels": [],
-        "id": "D13EF",
+        "id": "bec645a3-5600-4629-a4b7-7c676c3b6c59",
         "results": []
-    },
-    "C94SS": {
-        "nick": "C94SS",
-        "password": "cr4zsRnw2+el38GLwmuzzQ==",
-        "character": "dea8817b-4390-4a04-aa6f-575ce523cf6a",
-        "blocked": "false",
-        "name": "Pepe2",
-        "pendingDuels": ["e97647fc-a338-46ad-8a95-acabcf71a5a8"],
-        "id": "C94SS",
-        "results": [
-            "83af5daf-aa51-4ab6-9a74-384c69909983",
-            "5fdca376-07ae-4d9e-9868-1c3e38cd3569"
-        ]
-    },
-    "Y95ZZ": {
-        "nick": "Y95ZZ",
-        "password": "lraG5KYLUCMLKMaMmhtM+A==",
-        "character": "c1493f3d-152c-4eec-a694-c4b00d96cd7b",
-        "blocked": "false",
-        "name": "Lamoara",
-        "pendingDuels": [],
-        "id": "Y95ZZ",
-        "results": ["7049d86c-987c-4190-a9b5-42453e6f00d0"]
-    },
-    "A12BC": {
-        "nick": "A12BC",
-        "character": "00000000-0000-0000-0000-000000000000",
-        "blocked": "false",
-        "pendingDuels": ["12345678"],
-        "id": "A12BC",
-        "results": []
-    },
-    "W80AA": {
-        "nick": "W80AA",
-        "password": "lraG5KYLUCMLKMaMmhtM+A==",
-        "character": "6fd66a7f-c2b6-41a4-a3fb-4413283864ba",
-        "blocked": "false",
-        "name": "Juanete",
-        "pendingDuels": ["7bf522a3-379c-49b8-a9a0-dd3f344b7443"],
-        "id": "W80AA",
-        "results": [
-            "83af5daf-aa51-4ab6-9a74-384c69909983",
-            "5fdca376-07ae-4d9e-9868-1c3e38cd3569"
-        ]
-    },
-    "L60YY": {
-        "nick": "L60YY",
-        "password": "lraG5KYLUCMLKMaMmhtM+A==",
-        "character": "600a09b6-2677-4091-84ca-5ba7ce23740a",
-        "blocked": "false",
-        "name": "sa4dus",
-        "pendingDuels": [
-            "5d3b2ba0-5b5b-488e-a013-61e62b7ba909",
-            "6321b298-4eb2-43de-8e70-0d8504f99255"
-        ],
-        "id": "L60YY",
-        "results": ["7049d86c-987c-4190-a9b5-42453e6f00d0"]
     }
 }

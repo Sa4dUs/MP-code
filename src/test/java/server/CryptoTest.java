@@ -29,6 +29,8 @@ class CryptoTest {
 
         assertTrue(Crypto.compare(encrypted, key));
         assertFalse(Crypto.compare(encrypted, key + "a"));
+    }
+
     @Test
     void UUIDv4() {
     }
